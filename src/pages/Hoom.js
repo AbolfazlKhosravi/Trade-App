@@ -3,7 +3,7 @@ import Layout from "../layout/layout";
 const Hoom = () => {
     return ( 
         <Layout>
-            <div >
+            <div className="min-h-screen  bg-red-700">
             <div>حسین</div>
             </div>
         </Layout>
