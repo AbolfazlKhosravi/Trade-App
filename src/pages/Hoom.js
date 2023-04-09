@@ -3,7 +3,9 @@ import Layout from "../layout/layout";
 const Hoom = () => {
     return ( 
         <Layout>
-            <div>ali</div>
+            <div >
+            <div>حسین</div>
+            </div>
         </Layout>
      );
 }

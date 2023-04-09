@@ -4,6 +4,8 @@ const AboutMe = () => {
     return ( 
         <Layout>
             <div>hosain</div>
+            <div>hosain</div>
+            <div>hosain</div>
         </Layout>
      );
 }
