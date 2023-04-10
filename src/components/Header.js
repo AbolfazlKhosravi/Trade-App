@@ -51,7 +51,7 @@ const Header = () => {
             </p>
           </div>
         </div>
-        <ul className="text-lg max-[1155px]:hidden flex text-slate-600 ">
+        <ul className="text-[1.1rem] max-[1155px]:hidden flex text-slate-600 ">
           <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-700">
             اخبار
           </li>
