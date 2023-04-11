@@ -38,11 +38,8 @@ const Header = () => {
         document.body.style.overflow = "auto";
       }
     };
-
     handleResize();
-
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -74,7 +71,6 @@ const Header = () => {
           <FaHome className="max-[495px]:text-[1.9rem] text-[2.3rem] text-blue-700" />
           <div className="flex flex-col items-center justify-center mx-3">
             <h1 className="max-[495px]:text-sm  text-2xl text-blue-700 font-extrabold">
-              {" "}
               ترید هوم
             </h1>
             <p className="max-[546px]:hidden  text-[.7rem] text-blue-700">
@@ -303,7 +299,6 @@ const Dropshot = ({
   dropdownLearn,
   dropdownContactUs,
 }) => {
-  console.log(dropdownLearn);
   return (
     <div
       className={`${
@@ -313,7 +308,7 @@ const Dropshot = ({
       <div
         className={`${
           dropshot ? "w-full opacity-50 " : "w-0 opacity-0 "
-        }  bg-slate-900 h-screen  transition-all duration-0 absolute  z-20 top-0 right-0 `}
+        }  bg-slate-900 h-screen absolute  z-20 top-0 right-0 `}
       ></div>
       <div
         className={`${
@@ -371,35 +366,47 @@ const Dropshot = ({
                   <HiAcademicCap className="text-xl ml-3" />
                   <h2>اموزش</h2>
                 </div>
-                <FaCaretDown className={`${dropdownLearn?'rotate-180':''} text-lg mr-2 transition-all duration-500`} />
+                <FaCaretDown
+                  className={`${
+                    dropdownLearn ? "rotate-180" : ""
+                  } text-lg mr-2 transition-all duration-500`}
+                />
               </div>
               <div
                 className={`${
-                  dropdownLearn ? "h-[8rem]  opacity-100  " : " h-0 opacity-0 -z-50 "
+                  dropdownLearn
+                    ? "h-[8rem]  opacity-100  "
+                    : " h-0 opacity-0 -z-50 "
                 }  w-full transition-all ease-in-out duration-700    pt-2  `}
               >
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg">
-                    <div className="flex justify-between items-center ">
-                      <FaInfoCircle className="text-xl ml-3 " />
-                      <p className=""> اموزش های رایگان </p>
-                    </div>
+                <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg">
+                  <div className="flex justify-between items-center ">
+                    <FaInfoCircle className="text-xl ml-3 " />
+                    <p className=""> اموزش های رایگان </p>
                   </div>
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg">
-                    <div className="flex justify-between items-center ">
-                      <FaProductHunt className="text-xl ml-3" />
-                      <p className="">صفحه محصولات</p>
-                    </div>
-                   
+                </div>
+                <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg">
+                  <div className="flex justify-between items-center ">
+                    <FaProductHunt className="text-xl ml-3" />
+                    <p className="">صفحه محصولات</p>
                   </div>
+                </div>
               </div>
             </li>
             <li className="relative flex flex-col items-start justify-start w-full  pt-3 my-0 cursor-pointer hover:text-blue-700 ">
-              <div className="flex items-center justify-between w-full " onClick={()=>setDropdownContactUs(!dropdownContactUs)}>
+              <div
+                className="flex items-center justify-between w-full "
+                onClick={() => setDropdownContactUs(!dropdownContactUs)}
+              >
                 <div className="flex items-center justify-start">
                   <HiChatBubbleLeftRight className="text-xl ml-3" />
                   <h2>ارتباط با ما</h2>
                 </div>
-                <FaCaretDown className={`${dropdownContactUs?'rotate-180':''} text-lg mr-2 transition-all duration-500`} />
+                <FaCaretDown
+                  className={`${
+                    dropdownContactUs ? "rotate-180" : ""
+                  } text-lg mr-2 transition-all duration-500`}
+                />
               </div>
               <div
                 className={`${
@@ -440,6 +447,7 @@ function ChangeThem({ them, setThem }) {
   return (
     <Switch
       checked={enabled}
+      onChange={setEnabled}
       className={`${
         them === "white" ? "bg-gray-200" : "bg-gray-400"
       } relative inline-flex h-7 w-12 items-center rounded-full`}
