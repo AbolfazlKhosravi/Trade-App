@@ -91,17 +91,17 @@ const Header = () => {
           <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white  ">
             اخبار
           </li>
-          <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white" >
+          <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
             مارکت
           </li>
-          <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white" >
+          <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
             تحلیل روزانه
           </li>
-          <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white" >
+          <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
             NFT & Airdrop
           </li>
           <li
-            className="px-3 py-5 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white" 
+            className="px-3 py-5 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white"
             onMouseEnter={() => setDropdownLearn(true)}
             onMouseLeave={() => {
               setDropdownLearn(false);
@@ -257,7 +257,7 @@ const Header = () => {
                     showFlash.telegram
                       ? "opacity-100 animate-arrow-left"
                       : "opacity-0"
-                  } text-blue-700 dark:text-blue-500` }
+                  } text-blue-700 dark:text-blue-500`}
                 />
               </div>
               <div
@@ -338,7 +338,9 @@ const Dropshot = ({
                   {" "}
                   ترید هوم
                 </h1>
-                <p className="  text-[.7rem] text-blue-700 dark:text-slate-300">سایت اموزش ترید</p>
+                <p className="  text-[.7rem] text-blue-700 dark:text-slate-300">
+                  سایت اموزش ترید
+                </p>
               </div>
             </div>
             <FiX
@@ -347,33 +349,34 @@ const Dropshot = ({
             />
           </div>
           <ul className="text-[1.1rem]  flex text-slate-600 dark:text-slate-300 flex-col p-6 w-full">
-            <li className=" w-full  py-3   hover:text-blue-600 dark:hover:text-white ">
-              <div className="flex items-center justify-start cursor-pointer">
+            <li className=" w-full  py-3    ">
+              <div
+                className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white" >
                 <HiNewspaper className="text-xl ml-3" />
                 <h2>اخبار</h2>
               </div>
             </li>
-            <li className=" w-full  py-3 my-3  hover:text-blue-600 dark:hover:text-white">
-              <div className="flex items-center justify-start cursor-pointer">
+            <li className=" w-full  py-3 my-3  ">
+              <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                 <HiChartBar className="text-xl ml-3 " />
                 <h2>مارکت</h2>
               </div>{" "}
             </li>
-            <li className=" w-full  py-3 my-3  hover:text-blue-600 dark:hover:text-white">
-              <div className="flex items-center justify-start cursor-pointer">
+            <li className=" w-full  py-3 my-3  ">
+              <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                 <BiAnalyse className="text-xl ml-3" />
                 <h2>تحلیل روزانه</h2>
               </div>
             </li>
-            <li className=" w-full  py-3 my-3  hover:text-blue-600 dark:hover:text-white">
-              <div className="flex items-center justify-start cursor-pointer">
+            <li className=" w-full  py-3 my-3  ">
+              <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                 <FaBtc className="text-xl ml-3" />
                 <h2>NFT & Airdrop</h2>
               </div>
             </li>
-            <li className="  flex flex-col items-start justify-start w-full  py-3 my-0  hover:text-blue-600 dark:hover:text-white">
+            <li className="  flex flex-col items-start justify-start w-full  py-3 my-3  ">
               <div
-                className="flex items-center justify-between w-full cursor-pointer"
+                className="flex items-center justify-between w-full cursor-pointer z-20 hover:text-blue-600 dark:hover:text-white"
                 onClick={() => setDropdownLearn(!dropdownLearn)}
               >
                 <div className="flex items-center justify-start">
@@ -389,8 +392,8 @@ const Dropshot = ({
               <div
                 className={`${
                   dropdownLearn
-                    ? "h-[8rem]  opacity-100  translate-y-0"
-                    : " h-0 opacity-0 -translate-y-12 -z-30"
+                    ? "h-[8rem]  opacity-100  translate-y-0 "
+                    : "  -translate-y-10  opacity-0 h-0"
                 }  w-full transition-all ease-in-out duration-700    pt-4  `}
               >
                 <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
@@ -407,9 +410,9 @@ const Dropshot = ({
                 </div>
               </div>
             </li>
-            <li className="relative flex flex-col items-start justify-start w-full  pt-3 my-0  hover:text-blue-600 dark:hover:text-white ">
+            <li className="relative flex flex-col items-start justify-start w-full  pt-3 my-3   ">
               <div
-                className="flex items-center justify-between w-full cursor-pointer"
+                className="flex items-center justify-between w-full cursor-pointer hover:text-blue-600 dark:hover:text-white"
                 onClick={() => setDropdownContactUs(!dropdownContactUs)}
               >
                 <div className="flex items-center justify-start">
@@ -457,7 +460,6 @@ const Dropshot = ({
 };
 
 function ChangeThem({ setDarkMode, darkMode }) {
-  console.log(darkMode);
   const [enabled, setEnabled] = useState(false);
   return (
     <Switch
@@ -469,7 +471,9 @@ function ChangeThem({ setDarkMode, darkMode }) {
     >
       <span
         className={`${
-          darkMode ? "-translate-x-[1px] bg-slate-200 " : "-translate-x-[23px] bg-white"
+          darkMode
+            ? "-translate-x-[1px] bg-slate-200 "
+            : "-translate-x-[23px] bg-white"
         }  h-6 w-6 transform rounded-full transition flex items-center justify-center`}
       >
         {!darkMode ? (
