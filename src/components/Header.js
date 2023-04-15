@@ -31,6 +31,13 @@ const Header = () => {
     products: false,
   });
   const [darkMode, setDarkMode] = useState(false);
+ useEffect(()=>{
+  const getThem=JSON.parse(localStorage.getItem("darkMode"))||false;
+  setDarkMode(getThem)
+ },[])
+  useEffect(()=>{
+    localStorage.setItem('darkMode',JSON.stringify(darkMode))
+  },[darkMode])
 
   useEffect(() => {
     const htmlElement = document.querySelector("html");
@@ -374,7 +381,7 @@ const Dropshot = ({
                 <h2>NFT & Airdrop</h2>
               </div>
             </li>
-            <li className="  flex flex-col items-start justify-start w-full  py-3 my-3  ">
+            <li className="  flex flex-col items-start justify-start w-full  py-3 my-1  ">
               <div
                 className="flex items-center justify-between w-full cursor-pointer z-20 hover:text-blue-600 dark:hover:text-white"
                 onClick={() => setDropdownLearn(!dropdownLearn)}
@@ -410,7 +417,7 @@ const Dropshot = ({
                 </div>
               </div>
             </li>
-            <li className="relative flex flex-col items-start justify-start w-full  pt-3 my-3   ">
+            <li className="relative flex flex-col items-start justify-start w-full  pt-3 my-1   ">
               <div
                 className="flex items-center justify-between w-full cursor-pointer hover:text-blue-600 dark:hover:text-white"
                 onClick={() => setDropdownContactUs(!dropdownContactUs)}

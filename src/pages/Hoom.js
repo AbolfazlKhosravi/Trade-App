@@ -10,4 +10,5 @@ const Hoom = () => {
      );
 }
  
-export default Hoom;
+export default
+ Hoom;
