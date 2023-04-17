@@ -16,7 +16,7 @@ import {
 import { BiAnalyse } from "react-icons/bi";
 import { FiSun, FiMoon, FiAlignRight, FiX, FiArrowLeft } from "react-icons/fi";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Switch } from "@headlessui/react";
 
 const Header = () => {
@@ -31,6 +31,8 @@ const Header = () => {
     products: false,
   });
   const [darkMode, setDarkMode] = useState(false);
+  const removeDropShot=useRef(null)
+  console.log();
  useEffect(()=>{
   const getThem=JSON.parse(localStorage.getItem("darkMode"))||false;
   setDarkMode(getThem)
@@ -52,6 +54,9 @@ const Header = () => {
       if (window.innerWidth > 1155) {
         setDropshot(false);
         document.body.style.overflow = "auto";
+        removeDropShot.current.style.display = "none"
+      }else{
+        removeDropShot.current.style.display = "block"
       }
     };
     handleResize();
@@ -69,7 +74,8 @@ const Header = () => {
     }
   }, [dropshot]);
   return (
-    <div className="backdrop-blur-2xl blur-0 opacity-100 sticky top-0 w-full  flex items-center justify-between px-4  max-[495px]:px-1 h-16 dark:bg-gray-800">
+   <div className="dark:bg-gray-800 backdrop-blur-2xl blur-0 sticky top-0 ">
+     <div className="2xl:container mx-auto  opacity-100   w-full  flex items-center justify-between px-4  max-[495px]:px-1 h-16 ">
       <Dropshot
         setDropshot={setDropshot}
         dropshot={dropshot}
@@ -77,6 +83,7 @@ const Header = () => {
         setDropdownContactUs={setDropdownContactUs}
         dropdownLearn={dropdownLearn}
         dropdownContactUs={dropdownContactUs}
+        removeDropShot={removeDropShot}
       />
       <div className="flex items-center justify-between h-full">
         <FiAlignRight
@@ -308,6 +315,7 @@ const Header = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
 
@@ -318,6 +326,7 @@ const Dropshot = ({
   setDropdownContactUs,
   dropdownLearn,
   dropdownContactUs,
+  removeDropShot
 }) => {
   return (
     <div
@@ -332,8 +341,9 @@ const Dropshot = ({
         }  bg-slate-900 h-screen absolute  z-20 top-0 right-0 `}
       ></div>
       <div
+        ref={removeDropShot}
         className={`${
-          dropshot ? "" : "translate-x-96"
+          dropshot ? "" : "translate-x-96 "
         } w-[100vw]  dark:bg-slate-800 bg-white max-w-[375px]  transition-all duration-500 absolute  h-screen z-30 right-0 ease-in-out overflow-y-auto`}
       >
         <div className=" flex flex-col items-start max-h-screen min-h-screen  overflow-y-auto">

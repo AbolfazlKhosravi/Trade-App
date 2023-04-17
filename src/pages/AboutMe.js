@@ -1,15 +1,15 @@
 import Layout from "../layout/layout";
 
 const AboutMe = () => {
-    return ( 
-        <Layout>
-           <div className="min-h-screen bg-gray-400">
-           <div>hosain</div>
-            <div>hosain</div>
-            <div>hosain</div>
-           </div>
-        </Layout>
-     );
-}
- 
+  return (
+    <Layout>
+      <div className="bg-red-700  dark:bg-slate-950">
+        <div className="2xl:container mx-auto min-h-screen  ">
+          <div>حسین</div>
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
 export default AboutMe;
