@@ -92,7 +92,7 @@ const Header = () => {
         />
         <div className="flex items-center justify-between ml-8">
           <FaHome className="max-[495px]:text-[1.9rem] text-[2.3rem] text-blue-700 dark:text-white" />
-          <div className="flex flex-col items-center justify-center mx-3">
+          <div className="flex flex-col items-center justify-center max-[546px]:mx-0 max-[546px]:mr-3  mx-3">
             <h1 className="max-[495px]:text-sm  text-2xl text-blue-700 font-extrabold dark:text-white">
               ترید هوم
             </h1>
@@ -409,9 +409,9 @@ const Dropshot = ({
               <div
                 className={`${
                   dropdownLearn
-                    ? "h-[8rem]  opacity-100  translate-y-0 "
-                    : "  -translate-y-10  opacity-0 h-0"
-                }  w-full transition-all ease-in-out duration-700    pt-4  `}
+                    ? " overflow-auto h-[8.3rem]"
+                    : " overflow-hidden h-0"
+                }  w-full transition-all ease-in-out duration-700  pt-4  `}
               >
                 <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
                   <div className="flex justify-between items-center ">
@@ -445,8 +445,8 @@ const Dropshot = ({
               <div
                 className={`${
                   dropdownContactUs
-                    ? "h-[11rem]  opacity-100 translate-y-0"
-                    : " h-0  opacity-0 -translate-y-12 -z-30"
+                    ? "h-[12rem]  overflow-auto"
+                    : " h-0  overflow-hidden"
                 } w-full transition-all ease-in-out duration-700 pt-4`}
               >
                 <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full  hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
