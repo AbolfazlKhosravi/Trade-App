@@ -13,7 +13,7 @@ module.exports = {
       keyframes: {
         'arrow-left': {
           '0%': { transform: 'translateX(5px)' },
-          '50%': { transform: 'translateX(-10px)' },
+          '50%': { transform: 'translateX(-6px)' },
           '100%': {  transform: 'translateX(5px)' },
         },
       },
