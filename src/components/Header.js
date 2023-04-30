@@ -101,7 +101,7 @@ const Header = () => {
             </p>
           </div>
         </div>
-        <ul className="text-[1rem] max-[1155px]:hidden flex items-center text-slate-600 max-h-full min-h-full dark:text-slate-300">
+        <ul className="text-[1.1rem] max-[1155px]:hidden flex items-center text-slate-600 max-h-full min-h-full dark:text-slate-300">
           <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white  ">
             اخبار
           </li>
@@ -140,7 +140,7 @@ const Header = () => {
               }}
               className={`${
                 dropdownLearn ? "  w-96 h-50" : " hidden"
-              } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.25rem] p-2 dark:bg-slate-800 `}
+              } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-800 `}
             >
               <div
                 className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
@@ -222,7 +222,7 @@ const Header = () => {
               }}
               className={`${
                 dropdownContactUs ? "  w-80 h-50" : " hidden"
-              } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.25rem] p-2 dark:bg-slate-800`}
+              } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-800`}
             >
               <div
                 className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
