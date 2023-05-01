@@ -1,11 +1,11 @@
 import Layout from "../layout/layout";
-import { ReactSVG } from "react-svg";
+import {ReactSVG} from "react-svg";
 import imgTitle from "../assets/images/telecommuting-animate.svg";
 
 const Hoom = () => {
   return (
     <Layout>
-      <div className="bg-gray-50  dark:bg-slate-950">
+      <main className="bg-gray-50  dark:bg-slate-950">
         <div className="2xl:container mx-auto min-h-screen  ">
           <div className="flex flex-col  md:flex-row md:px-2 md:justify-between md:items-center md:gap-6 lg:pr-3 xl:px-28 xl:gap-10  ">
             <img
@@ -33,7 +33,7 @@ const Hoom = () => {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </Layout>
   );
 };
