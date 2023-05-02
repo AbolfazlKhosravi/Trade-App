@@ -7,7 +7,7 @@ const Hoom = () => {
     <Layout>
       <main className="bg-gray-50  dark:bg-slate-950">
         <div className="2xl:container mx-auto min-h-screen  ">
-          <div className="flex flex-col  md:flex-row md:px-2 md:justify-between md:items-center md:gap-6 lg:pr-3 xl:px-28 xl:gap-10  ">
+          <div className="flex flex-col  md:flex-row md:px-2 md:pt-4 md:justify-between md:items-center md:gap-6 lg:pr-3 xl:pt-2 xl:px-28 xl:gap-10  ">
             <img
               src={imgTitle}
               alt="وبسایت اموزش ترید و خدمات "

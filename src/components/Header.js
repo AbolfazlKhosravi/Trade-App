@@ -113,7 +113,7 @@ const Header = () => {
                 تحلیل روزانه
               </li>
               <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
-                NFT & Airdrop
+                NFT <span className=" text-[.8rem]">and</span> Airdrop
               </li>
               <li
                 className="px-3 py-5 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white"
@@ -357,7 +357,7 @@ const Dropshot = ({
               onClick={() => setDropshot(false)}
             />
           </div>
-          <nav>
+          <nav className="w-full">
             <ul className="text-[1.1rem]  flex text-slate-600 dark:text-slate-300 flex-col p-6 w-full">
               <li className=" w-full  py-3    ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
@@ -380,7 +380,7 @@ const Dropshot = ({
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                   <FaBtc className="text-xl ml-3" />
-                  <h2>NFT & Airdrop</h2>
+                  <h2>NFT <span className=" text-[.8rem]">and</span> Airdrop</h2>
                 </div>
               </li>
               <li className="  flex flex-col items-start justify-start w-full  py-3 my-1  ">
