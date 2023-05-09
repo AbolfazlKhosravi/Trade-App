@@ -88,10 +88,10 @@ const Header = () => {
         <div className="flex items-center justify-between h-full">
           <FiAlignRight
             onClick={() => setDropshot(true)}
-            className="min-[1155px]:hidden text-[2.3rem] ml-4 text-slate-600 max-[500px]:text-[1.9rem] cursor-pointer dark:text-slate-300 "
+            className="min-[1155px]:hidden text-[2.3rem] ml-4 text-slate-600 max-[500px]:text-[2rem] cursor-pointer dark:text-slate-300 "
           />
           <div className="flex items-center justify-between ml-8">
-            <FaHome className="max-[500px]:text-[2rem] text-[2.3rem] text-blue-700 dark:text-blue-600" />
+            <FaHome className="max-[500px]:text-[2.1rem] text-[2.3rem] text-blue-700 dark:text-blue-600" />
             <div className="flex flex-col items-center justify-center max-[546px]:mx-0 max-[546px]:mr-3  mr-3">
               <h1 className="max-[370px]:hidden max-[500px]:text-sm  text-2xl text-blue-700 font-extrabold dark:text-slate-300">
                 ترید هوم
