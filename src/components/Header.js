@@ -18,7 +18,7 @@ import {FiSun, FiMoon, FiAlignRight, FiX, FiArrowLeft} from "react-icons/fi";
 
 import {useEffect, useRef, useState} from "react";
 import {Switch} from "@headlessui/react";
-
+import imgCart from "../assets/images/shopping-cart.svg"
 const Header = () => {
   const [dropshot, setDropshot] = useState(false);
   const [dropdownLearn, setDropdownLearn] = useState(false);
@@ -75,7 +75,7 @@ const Header = () => {
   }, [dropshot]);
   return (
     <div className="dark:bg-gray-800 backdrop-blur-2xl blur-0 sticky top-0 ">
-      <div className="2xl:container mx-auto  opacity-100   w-full  flex items-center justify-between px-4  max-[495px]:px-1 h-16 ">
+      <div className="2xl:container mx-auto  opacity-100   w-full  flex items-center justify-between px-4  max-[500px]:px-1 h-16 ">
         <Dropshot
           setDropshot={setDropshot}
           dropshot={dropshot}
@@ -88,15 +88,15 @@ const Header = () => {
         <div className="flex items-center justify-between h-full">
           <FiAlignRight
             onClick={() => setDropshot(true)}
-            className="min-[1155px]:hidden text-[2.3rem] ml-4 text-slate-600 max-[495px]:text-[1.9rem] cursor-pointer dark:text-slate-300 "
+            className="min-[1155px]:hidden text-[2.3rem] ml-4 text-slate-600 max-[500px]:text-[1.9rem] cursor-pointer dark:text-slate-300 "
           />
           <div className="flex items-center justify-between ml-8">
-            <FaHome className="max-[495px]:text-[2rem] text-[2.3rem] text-blue-700 dark:text-blue-600" />
-            <div className="flex flex-col items-center justify-center max-[546px]:mx-0 max-[546px]:mr-3  mx-3">
-              <h1 className="max-[320px]:hidden max-[495px]:text-sm  text-2xl text-blue-700 font-extrabold dark:text-slate-300">
+            <FaHome className="max-[500px]:text-[2rem] text-[2.3rem] text-blue-700 dark:text-blue-600" />
+            <div className="flex flex-col items-center justify-center max-[546px]:mx-0 max-[546px]:mr-3  mr-3">
+              <h1 className="max-[370px]:hidden max-[500px]:text-sm  text-2xl text-blue-700 font-extrabold dark:text-slate-300">
                 ترید هوم
               </h1>
-              <p className="max-[546px]:hidden  text-[.7rem] text-blue-700 dark:text-slate-400">
+              <p className="max-[552px]:hidden  text-[.7rem] text-blue-700 dark:text-slate-400">
                 سایت اموزش ترید
               </p>
             </div>
@@ -298,14 +298,17 @@ const Header = () => {
             </ul>
           </nav>
         </div>
-        <div className="flex items-center justify-between text-lg  text-slate-600 max-[495px]:text-sm h-full">
-          <div className="max-[546px]:hidden  px-4 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:text-slate-300 dark:hover:text-white ">
+        <div className="flex items-center justify-between text-lg  text-slate-600 max-[500px]:text-sm h-full ">
+          <div className="max-[552px]:hidden  pl-4 py-1 ml-1 cursor-pointer  hover:text-blue-600 dark:text-slate-300 dark:hover:text-white font-bold">
             ورود
           </div>
-          <div className="max-[495px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
+          <div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
             عضویت
           </div>
-          <div className="max-[495px]:px-2 max-[495px]:mx-0 px-4 py-1  mx-1 text-[1.35rem]  cursor-pointer">
+          <div className="max-[500px]:pr-2   cursor-pointer pr-4 font-bold ">
+              <img src={imgCart} alt="shopping cart" className=" h-8  max-[500px]:h-7 "/>
+          </div>
+          <div className="max-[500px]:pr-1 pr-3 py-1  mx-1  cursor-pointer">
             <ChangeThem setDarkMode={setDarkMode} darkMode={darkMode} />
           </div>
         </div>

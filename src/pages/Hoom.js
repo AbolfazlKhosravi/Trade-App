@@ -1,5 +1,4 @@
 import Layout from "../layout/layout";
-import {ReactSVG} from "react-svg";
 import imgTitle from "../assets/images/telecommuting-animate.svg";
 
 const Hoom = () => {
