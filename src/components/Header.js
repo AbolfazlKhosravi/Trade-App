@@ -299,16 +299,16 @@ const Header = () => {
           </nav>
         </div>
         <div className="flex items-center justify-between text-lg  text-slate-600 max-[500px]:text-sm h-full ">
-          <div className="max-[552px]:hidden  pl-4 py-1 ml-1 cursor-pointer  hover:text-blue-600 dark:text-slate-300 dark:hover:text-white font-bold">
+          <div className="max-[552px]:hidden  ml-4 py-1  cursor-pointer  hover:text-blue-600 dark:text-slate-300 dark:hover:text-white font-bold">
             ورود
           </div>
           <div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
             عضویت
           </div>
-          <div className="max-[500px]:pr-2   cursor-pointer pr-4 font-bold ">
+          <div className="max-[500px]:mr-2   cursor-pointer mr-4 font-bold ">
               <img src={imgCart} alt="shopping cart" className=" h-8  max-[500px]:h-7 "/>
           </div>
-          <div className="max-[500px]:pr-1 pr-3 py-1  mx-1  cursor-pointer">
+          <div className="max-[500px]:mr-1 mr-3 my-1  mx-1  ">
             <ChangeThem setDarkMode={setDarkMode} darkMode={darkMode} />
           </div>
         </div>
@@ -476,21 +476,21 @@ function ChangeThem({setDarkMode, darkMode}) {
       onChange={setEnabled}
       className={`${
         darkMode ? "bg-gray-700" : "bg-gray-200"
-      } relative inline-flex h-7 w-12 items-center rounded-full`}>
+      } relative inline-flex h-7 w-12 items-center rounded-full cursor-auto`}>
       <span
         className={`${
           darkMode
             ? "-translate-x-[1px] bg-slate-200 "
             : "-translate-x-[23px] bg-white"
-        }  h-6 w-6 transform rounded-full transition flex items-center justify-center`}>
+        }  h-6 w-6 transform rounded-full transition flex items-center justify-center `}>
         {!darkMode ? (
           <FiSun
-            className="text-yellow-500 text-lg"
+            className="text-yellow-500 text-lg cursor-pointer"
             onClick={() => setDarkMode(true)}
           />
         ) : (
           <FiMoon
-            className="text-blue-800 text-lg"
+            className="text-blue-800 text-lg cursor-pointer"
             onClick={() => setDarkMode(false)}
           />
         )}
