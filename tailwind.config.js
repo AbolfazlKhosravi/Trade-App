@@ -21,6 +21,9 @@ module.exports = {
         'height': 'height',
         'spacing': 'margin, padding',
       },
+      boxShadow: {
+        'button': ' rgba(0, 0, 0, 0.04) 0px 10px 10px -5px',
+      }
     },
   },
   plugins: [],

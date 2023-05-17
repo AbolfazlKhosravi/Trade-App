@@ -74,7 +74,7 @@ const Header = () => {
     }
   }, [dropshot]);
   return (
-    <div className="dark:bg-gray-800 backdrop-blur-2xl blur-0 sticky top-0 ">
+    <div className="dark:bg-slate-950 backdrop-blur-2xl blur-0 sticky top-0 z-50">
       <div className="2xl:container mx-auto  opacity-100   w-full  flex items-center justify-between px-4  max-[500px]:px-1 h-16 ">
         <Dropshot
           setDropshot={setDropshot}
@@ -142,7 +142,7 @@ const Header = () => {
                   }}
                   className={`${
                     dropdownLearn ? "  w-96 h-50" : " hidden"
-                  } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-800 `}>
+                  } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-900 `}>
                   <div
                     className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
                     onMouseEnter={() =>
@@ -220,7 +220,7 @@ const Header = () => {
                   }}
                   className={`${
                     dropdownContactUs ? "  w-80 h-50" : " hidden"
-                  } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-800`}>
+                  } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-900`}>
                   <div
                     className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
                     onMouseEnter={() =>
