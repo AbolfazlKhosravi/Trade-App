@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Take The Risk",
+      "price": "400,000",
+      "rate":"4.1",
+      "img":"../assets/images/products/bookRisk.png"
+    },
+    {
+      "id": 2,
+      "name": "Take The Risk",
+      "price": "400,000",
+      "rate":"4.1",
+      "img":"../assets/images/products/bookRisk.png"
+    },
+    {
+      "id": 3,
+      "name": "Take The Risk",
+      "price": "400,000",
+      "rate":"4.1",
+      "img":"../assets/images/products/bookRisk.png"
+    },
+    {
+      "id": 4,
+      "name": "Take The Risk",
+      "price": "400,000",
+      "rate":"4.1",
+      "img":"../assets/images/products/bookRisk.png"
+    },
+    {
+      "id": 5,
+      "name": "Take The Risk",
+      "price": "400,000",
+      "rate":"4.1",
+      "img":"../assets/images/products/bookRisk.png"
+    }
+  ]
+}
