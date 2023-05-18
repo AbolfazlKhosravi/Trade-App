@@ -2,12 +2,14 @@ import Layout from "../layout/layout";
 import imgTitle from "../assets/images/telecommuting-animate.svg";
 import bookRisk from "../assets/images/products/bookRisk.png";
 import {FaRegHeart, FaHeart, FaPlusCircle} from "react-icons/fa";
+import convertToPersianNumber from "../utils/ConverToPersianNumber";
 
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import {Pagination} from "swiper";
 import StarRating from "../components/StarRating";
+
 
 const Hoom = () => {
   return (
@@ -55,23 +57,6 @@ const DescriptionSite = () => {
 };
 
 const Products = () => {
-  const convertToPersianNumber = (number) => {
-    const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-    const numberString = String(number);
-    let persianNumber = "";
-
-    for (let i = 0; i < numberString.length; i++) {
-      const digit = parseInt(numberString[i]);
-      console.log(digit);
-      if (isNaN(digit)) {
-        persianNumber += numberString[i];
-      } else {
-        persianNumber += persianDigits[digit];
-      }
-    }
-
-    return persianNumber;
-  };
   return (
     <section className="mt-2 py-3 px-3 bg-[#F2F0F0] dark:bg-slate-900 rounded-t-3xl lg:py-6 lg:px-6">
       <h2 className="text-2xl pt-2 font-extrabold text-blue-700 lg:text-3xl">
@@ -117,7 +102,7 @@ const Products = () => {
                   <div className="text-[1.05rem] ">
                     <div className="flex ">
                       <div className="text-red-600">
-                        {convertToPersianNumber(40000)}{" "}
+                        {convertToPersianNumber("40,000")}{" "}
                         <span className="text-[.7rem] text-slate-500">
                           تومان
                         </span>
