@@ -1,6 +1,6 @@
 import Layout from "../layout/layout";
 import imgTitle from "../assets/images/telecommuting-animate.svg";
-import Products from "../components/ProductsHoom";
+import ProductsHoom from "../components/HoomComponents/ProductsHoom";
 
 
 const Hoom = () => {
@@ -9,7 +9,7 @@ const Hoom = () => {
       <main className="bg-gray-50  dark:bg-slate-950 min-h-screen max-w-full">
         <div className="2xl:container mx-auto flex flex-col  ">
           <DescriptionSite />
-          <Products />
+          <ProductsHoom />
         </div>
       </main>
     </Layout>

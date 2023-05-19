@@ -49,6 +49,7 @@ const Header = () => {
       htmlElement.classList.remove("dark");
     }
   }, [darkMode]);
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1155) {

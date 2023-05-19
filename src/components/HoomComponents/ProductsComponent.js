@@ -1,7 +1,6 @@
-import { type } from "@testing-library/user-event/dist/type";
 import SwiperProducts from "./SwiperProducts";
 
-const ProductHoom = ({data,error,loding,seeAll,text,type}) => {
+const ProductsComponent = ({data, error, loding, seeAll, text, type}) => {
   return (
     <article className="mt-7 px-1">
       <div className="flex justify-between items-center w-full">
@@ -17,4 +16,4 @@ const ProductHoom = ({data,error,loding,seeAll,text,type}) => {
   );
 };
 
-export default ProductHoom;
+export default ProductsComponent;
