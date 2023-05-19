@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Take The Risk",
       "price":450000,
-      "rate":"4.1",
+      "rate":"5",
       "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
       "discountedPrice":350000,
       "isPopular":true
@@ -12,52 +12,102 @@
     {
       "id": 2,
       "name": "Take The Risk",
-      "price": 500000,
+      "price": 80000,
       "rate":"4.1",
       "img":"https://ketabweb.com/uploads/product/1401-06/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B3%D9%88%D8%A7%D9%86%D8%AD-%E2%80%8C%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D9%82.jpg",
+      "discountedPrice":80000,
       "isPopular":false
     },
     {
       "id": 3,
-      "name": "Take The Risk",
-      "price": 400000,
-      "rate":"4.1",
-      "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "name": " اقتصاد زامبی",
+      "price": 150000,
+      "rate":"3.1",
+      "img":"https://ketabweb.com/uploads/product/1402-02/20/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%B2%D8%A7%D9%85%D8%A8%DB%8C.jpg",
+      "discountedPrice":150000,
       "isPopular":true
     },
     {
       "id": 4,
-      "name": "Take The Risk",
+      "name": " سرمایه گزاری",
       "price": 500000,
       "rate":"3.1",
-      "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "img":"https://ketabweb.com/uploads/product/1402-02/11/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87%E2%80%8C-%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D8%AF%D8%B1-%D8%AD%D9%88%D8%B2%D9%87%E2%80%8C%E2%80%8C-%D8%B1%D9%85%D8%B2%E2%80%8C%D8%A7%D8%B1%D8%B2%D9%87.jpg",
       "discountedPrice":100000,
       "isPopular":false
     },
     {
       "id": 5,
-      "name": "Take The Risk",
+      "name": " مختصر اقتصاد",
       "price":700000,
       "rate":"2.1",
-      "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "img":"https://ketabweb.com/uploads/product/1402-01/29/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%85%D8%AE%D8%AA%D8%B5%D8%B1-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF.jpg",
+      "discountedPrice":550000,
       "isPopular":true
     },
     {
       "id": 6,
-      "name": "Take The Risk",
+      "name": "پسا سرمایه داری",
       "price": 500000,
       "rate":"4.1",
-      "img":"https://ketabweb.com/uploads/product/1401-06/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B3%D9%88%D8%A7%D9%86%D8%AD-%E2%80%8C%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D9%82.jpg",
+      "img":"https://ketabweb.com/uploads/product/1401-12/03/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D9%BE%D8%B3%D8%A7%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87-%D8%AF%D8%A7%D8%B1%DB%8C.jpg",
+      "discountedPrice": 450000,
       "isPopular":true
     },
     {
       "id": 7,
-      "name": "Take The Riskffff",
-      "price": 500000,
+      "name": "  تحلیل بنیادی",
+      "price": 105000,
       "rate":"4.1",
-      "img":"https://ketabweb.com/uploads/product/1401-06/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B3%D9%88%D8%A7%D9%86%D8%AD-%E2%80%8C%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D9%82.jpg",
-      "discountedPrice":350000,
+      "img":"https://ketabweb.com/uploads/product/1401-11/23/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%AA%D8%AD%D9%84%DB%8C%D9%84-%D8%A8%D9%86%DB%8C%D8%A7%D8%AF%DB%8C%D9%86-%D8%A8%D8%A7%D8%B2%D8%A7%D8%B1-%D8%A7%D8%B1%D8%B2%D9%87%D8%A7.jpg",
+      "discountedPrice":80000,
+      "isPopular":false
+    },
+    {
+      "id": 8,
+      "name": " اندیشه های اقتصادی",
+      "price": 120000,
+      "rate":"4.1",
+      "img":"https://ketabweb.com/uploads/product/size-311.54x450-tarikhe-mokhtasar-andisheh-haye-eghtesadi.jpg",
+      "discountedPrice":80000,
       "isPopular":true
+    },
+    {
+      "id": 9,
+      "name": " ادبیات جهان ",
+      "price": 50000,
+      "rate":"4.1",
+      "img":"https://ketabweb.com/uploads/product/1401-05/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%AC%D9%88%D9%84%DB%8C%D9%88%D8%B3-%D9%88%DB%8C%D9%86%D8%B3%D8%A7%D9%85.jpg",
+      "discountedPrice":50000,
+      "isPopular":false
+    },
+    {
+      "id": 10,
+      "name": "پرنده باز ",
+      "price": 90000,
+      "rate":"4.1",
+      "img":"https://ketabweb.com/uploads/product/1400-11/%DA%A9%D8%AA%D8%A7%D8%A8-%D9%BE%D8%B1%D9%86%D8%AF%D9%87-%D8%A8%D8%A7%D8%B2.jpg",
+      "discountedPrice":80000,
+      "isPopular":true
+    },
+    {
+      "id": 11,
+      "name": " عادت های موفقیت ",
+      "price": 100000,
+      "rate":"4.1",
+      "img":"https://ketabweb.com/uploads/product/1402-02/29/%DA%A9%D8%AA%D8%A7%D8%A8converted-size-276.92x400--%D8%B9%D8%A7%D8%AF%D8%AA-%D9%87%D8%A7%DB%8C-%D9%85%D9%88%D9%81%D9%82%DB%8C%D8%AA.webp",
+      "discountedPrice":100000,
+      "isPopular":true
+    },
+    {
+      "id": 12,
+      "name": "عصر هوش مصنوعی ",
+      "price": 40000,
+      "rate":"4.1",
+      "img":"https://ketabweb.com/uploads/product/1401-10/19/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%B9%D8%B5%D8%B1-%D9%87%D9%88%D8%B4-%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C-%D9%88-%D8%A2%DB%8C%D9%86%D8%AF%D9%87-%D8%A7%D9%86%D8%B3%D8%A7%D9%86%DB%8C-%D9%85%D8%A7.jpg",
+      "discountedPrice":40000,
+      "isPopular":false
     }
+    
   ]
 }
