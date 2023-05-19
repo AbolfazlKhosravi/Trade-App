@@ -59,7 +59,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
                   ""
                 )}
               </div>
-              <div className=" w-full px-7 border- border-blue-700 flex items-center justify-center">
+              <div className=" w-full px-7 h-[10rem]  flex items-center justify-center">
                 <img
                   src={product.img}
                   alt={product.name}
@@ -121,7 +121,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
                   ""
                 )}
               </div>
-              <div className=" w-full px-7 border- border-blue-700 flex items-center justify-center">
+              <div className=" w-full px-7 h-[10rem] flex items-center justify-center">
                 <img
                   src={product.img}
                   alt={product.name}
@@ -164,7 +164,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
             </SwiperSlide>
           );
         }
-        if (type === "all" ) {
+        if (type === "all") {
           return (
             <SwiperSlide
               key={product.id}
@@ -183,7 +183,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
                   ""
                 )}
               </div>
-              <div className=" w-full px-7 border- border-blue-700 flex items-center justify-center">
+              <div className=" w-full px-7 h-[10rem] flex items-center justify-center">
                 <img
                   src={product.img}
                   alt={product.name}
