@@ -100,6 +100,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
                 </div>
               </div>
             </SwiperSlide>
+            
           );
         }
         if (type === "discount" && product.discountedPrice !== product.price) {
@@ -227,6 +228,9 @@ const SwiperProducts = ({data, error, loding, type}) => {
           );
         }
       })}
+       <SwiperSlide  className=" my-4  text-blue-600 font-bold  max-w-[8rem]  max-h-7  mt-36 mr-[3.8rem]  mb-8 text-xl">
+             <p className="">دیدن همه</p>  
+        </SwiperSlide>
     </Swiper>
   );
 };
