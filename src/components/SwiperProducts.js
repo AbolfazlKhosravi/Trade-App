@@ -47,7 +47,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
               className=" shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
               <div className="flex items-center justify-between p-3">
                 <FaRegHeart className="text-red-500 text-lg" />
-                {product.discountedPrice ? (
+                {product.discountedPrice !== product.price ? (
                   <div className="text-sm px-2 text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
                     %{" "}
                     {calculationOfDiscountPercentage(
@@ -71,7 +71,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
                 <div className="flex justify-between items-center w-full pt-1">
                   <div className="flex flex-col items-start justify-center">
                     <div className="text-[1.05rem] ">
-                      {product.discountedPrice ? (
+                      {product.discountedPrice !== product.price ? (
                         <div className="flex items-end">
                           <div className="text-red-600 text-[1.05rem]">
                             {product.discountedPrice.toLocaleString("fa")}{" "}
@@ -102,14 +102,14 @@ const SwiperProducts = ({data, error, loding, type}) => {
             </SwiperSlide>
           );
         }
-        if (type === "discount" && product.discountedPrice) {
+        if (type === "discount" && product.discountedPrice !== product.price) {
           return (
             <SwiperSlide
               key={product.id}
               className=" shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
               <div className="flex items-center justify-between p-3">
                 <FaRegHeart className="text-red-500 text-lg" />
-                {product.discountedPrice ? (
+                {product.discountedPrice !== product.price ? (
                   <div className="text-sm px-2 text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
                     %{" "}
                     {calculationOfDiscountPercentage(
@@ -133,7 +133,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
                 <div className="flex justify-between items-center w-full pt-1">
                   <div className="flex flex-col items-start justify-center">
                     <div className="text-[1.05rem] ">
-                      {product.discountedPrice ? (
+                      {product.discountedPrice !== product.price ? (
                         <div className="flex items-end">
                           <div className="text-red-600 text-[1.05rem]">
                             {product.discountedPrice.toLocaleString("fa")}{" "}
@@ -171,7 +171,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
               className=" shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
               <div className="flex items-center justify-between p-3">
                 <FaRegHeart className="text-red-500 text-lg" />
-                {product.discountedPrice ? (
+                {product.discountedPrice !== product.price ? (
                   <div className="text-sm px-2 text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
                     %{" "}
                     {calculationOfDiscountPercentage(
@@ -195,7 +195,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
                 <div className="flex justify-between items-center w-full pt-1">
                   <div className="flex flex-col items-start justify-center">
                     <div className="text-[1.05rem] ">
-                      {product.discountedPrice ? (
+                      {product.discountedPrice !== product.price ? (
                         <div className="flex items-end">
                           <div className="text-red-600 text-[1.05rem]">
                             {product.discountedPrice.toLocaleString("fa")}{" "}
