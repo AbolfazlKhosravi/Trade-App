@@ -15,9 +15,9 @@ const ProductsHoom = () => {
       <h2 className="text-2xl pt-2 font-extrabold text-blue-700 lg:text-3xl lg:pb-2">
         فروشگاه 
       </h2>
-      <ProductHoom data={data} error={error} loding={loding} seeAll="دیدن همه" type=" پیشنهاد شگفت انگیز"/>
-      <ProductHoom data={data} error={error} loding={loding} seeAll="دیدن همه" type="محبوب ترین"/>
-      <ProductHoom data={data} error={error} loding={loding} seeAll="دیدن همه" type="محصولات"/>
+      <ProductHoom data={data} error={error} loding={loding} seeAll="دیدن همه" type="discount" text=" پیشنهاد شگفت انگیز"/>
+      <ProductHoom data={data} error={error} loding={loding} seeAll="دیدن همه" type="populer" text="محبوب ترین"/>
+      <ProductHoom data={data} error={error} loding={loding} seeAll="دیدن همه" type="all" text="همه محصولات"/>
     </section>
   );
 };
