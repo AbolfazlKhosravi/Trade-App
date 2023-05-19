@@ -1,4 +1,4 @@
-const convertToPersianNumber = (number) => {
+function convertToPersianNumber(number) {
   const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
   const numberString = String(number);
   let persianNumber = "";
@@ -13,6 +13,6 @@ const convertToPersianNumber = (number) => {
   }
 
   return persianNumber;
-};
+}
 
 export default convertToPersianNumber;

@@ -6,7 +6,6 @@ import SwiperProducts from "./SwiperProducts";
 const ProductsHoom = () => {
   const dispatch = useDispatch();
   const {data,error,loding}=useSelector(state=>state.products)
-  console.log(data);
   useEffect(() => {
     dispatch(fetchData());
   }, []);
@@ -24,7 +23,7 @@ const ProductsHoom = () => {
             دیدن همه{" "}
           </p>
         </div>
-       <SwiperProducts/>
+       <SwiperProducts data={data} error={error} loding={loding}/>
       </article>
     </section>
   );

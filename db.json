@@ -3,37 +3,44 @@
     {
       "id": 1,
       "name": "Take The Risk",
-      "price": "400,000",
+      "price":450000,
       "rate":"4.1",
-      "img":"../assets/images/products/bookRisk.png"
+      "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "discountedPrice":350000,
+      "favorite":true
     },
     {
       "id": 2,
       "name": "Take The Risk",
-      "price": "400,000",
+      "price": 500000,
       "rate":"4.1",
-      "img":"../assets/images/products/bookRisk.png"
+      "img":"https://ketabweb.com/uploads/product/1401-06/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B3%D9%88%D8%A7%D9%86%D8%AD-%E2%80%8C%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D9%82.jpg",
+      "favorite":true
     },
     {
       "id": 3,
       "name": "Take The Risk",
-      "price": "400,000",
+      "price": 400000,
       "rate":"4.1",
-      "img":"../assets/images/products/bookRisk.png"
+      "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "favorite":true
     },
     {
       "id": 4,
       "name": "Take The Risk",
-      "price": "400,000",
-      "rate":"4.1",
-      "img":"../assets/images/products/bookRisk.png"
+      "price": 500000,
+      "rate":"3.1",
+      "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "favorite":true,
+      "discountedPrice":100000
     },
     {
       "id": 5,
       "name": "Take The Risk",
-      "price": "400,000",
-      "rate":"4.1",
-      "img":"../assets/images/products/bookRisk.png"
+      "price":700000,
+      "rate":"2.1",
+      "img":"https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "favorite":true
     }
   ]
 }
