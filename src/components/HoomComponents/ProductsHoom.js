@@ -2,12 +2,15 @@ import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {fetchData} from "../../features/products/productsSlice";
 import ProductsComponent from "./ProductsComponent"
+import { fetchFavorite } from "../../features/products/favoritesSlice";
 
 const ProductsHoom = () => {
   const dispatch = useDispatch();
-  const {data, error, loding} = useSelector((state) => state.products);
+  const productsData = useSelector((state) => state.products);
+  const favoritesData=useSelector((state)=>state.favorites)
   useEffect(() => {
     dispatch(fetchData());
+    dispatch(fetchFavorite())
   }, []);
   return (
     <section className="mt-2 py-3 px-3 bg-[#F2F0F0] dark:bg-slate-900 rounded-t-3xl lg:py-6 lg:px-6">
@@ -15,28 +18,25 @@ const ProductsHoom = () => {
         فروشگاه
       </h2>
       <ProductsComponent
-        data={data}
-        error={error}
-        loding={loding}
+       productsData={productsData}
         seeAll="دیدن همه"
         type="discount"
         text=" پیشنهاد شگفت انگیز"
+        favoritesData={favoritesData}
       />
       <ProductsComponent
-        data={data}
-        error={error}
-        loding={loding}
+       productsData={productsData}
         seeAll="دیدن همه"
         type="populer"
         text="محبوب ترین"
+        favoritesData={favoritesData}
       />
       <ProductsComponent
-        data={data}
-        error={error}
-        loding={loding}
+       productsData={productsData}
         seeAll="دیدن همه"
         type="all"
         text="همه محصولات"
+        favoritesData={favoritesData}
       />
     </section>
   );

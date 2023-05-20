@@ -9,7 +9,7 @@ module.exports = {
       },
       animation: {
         'arrow-left': 'arrow-left 1.5s ease-out infinite',
-        'spin2' : ' spin 1.3s linear infinite'
+        'spin2' : ' spin 1.2s linear infinite'
       },
       keyframes: {
         'arrow-left': {

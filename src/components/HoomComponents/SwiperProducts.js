@@ -8,21 +8,21 @@ import lodingSvg from "../../assets/images/loading.svg";
 import {useState} from "react";
 import ProductComponent from "./productComponent";
 
-const SwiperProducts = ({data, error, loding, type}) => {
-  if (loding)
+const SwiperProducts = ({productsData, type,favoritesData}) => {
+  if (productsData.loding)
     return (
       <div className="w-full my-12 flex justify-center">
         <img
-          className="w-20 animate-spin2 duration-[100000ms] "
+          className="w-20  "
           src={lodingSvg}
           alt="loding Svg"
         />
       </div>
     );
-  if (error)
+  if (productsData.error)
     return (
-      <div className="w-full my-12 flex justify-center text-xl lg:text-2xl text-red-500">
-        <span className="text-blue-600 ml-4 ">خطا</span> : {error}
+      <div className="w-full my-12 flex justify-center text-xl  text-red-500">
+        <span className="text-blue-600 ml-4 ">خطا</span> : {productsData.error}
       </div>
     );
   return (
@@ -35,13 +35,13 @@ const SwiperProducts = ({data, error, loding, type}) => {
       }}
       className=" cursor-grab py-8 "
       modules={[Pagination]}>
-      {data.map((product) => {
+      {productsData.data.map((product) => {
         if (type === "discount" && product.discountedPrice !== product.price) {
           return (
             <SwiperSlide
               key={product.id}
               className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
-              <ProductComponent product={product} />
+              <ProductComponent product={product} favoritesData={favoritesData}/>
             </SwiperSlide>
           );
         }
@@ -50,7 +50,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
             <SwiperSlide
               key={product.id}
               className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
-              <ProductComponent product={product} />
+              <ProductComponent product={product} favoritesData={favoritesData} />
             </SwiperSlide>
           );
         }
@@ -60,7 +60,7 @@ const SwiperProducts = ({data, error, loding, type}) => {
             <SwiperSlide
               key={product.id}
               className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
-              <ProductComponent product={product} />
+              <ProductComponent product={product} favoritesData={favoritesData} />
             </SwiperSlide>
           );
         }

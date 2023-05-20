@@ -1,9 +1,9 @@
-import {SwiperSlide} from "swiper/react";
 import StarRating from "../StarRating";
-import {FaRegHeart, FaHeart, FaPlusCircle} from "react-icons/fa";
 import {useState} from "react";
+import HandleFavorate from "../handleFavorate";
+import lodingSvg from "../../assets/images/loading.svg";
 
-const ProductComponent = ({product}) => {
+const ProductComponent = ({product, favoritesData}) => {
   const [moreInformation, setMoreInformation] = useState("");
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
@@ -11,8 +11,17 @@ const ProductComponent = ({product}) => {
   };
   return (
     <article className="w-full h-full">
-      <div className="flex items-center justify-between p-3">
-        <FaRegHeart className="text-red-500 text-lg" />
+      <div className="flex items-center justify-between p-3 max-h-9">
+        {favoritesData.loding ? (
+          <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
+        ) : favoritesData.error ? (
+          <div className=" flex justify-center text-[.7rem]  text-red-500">
+            <span className="text-blue-600  ml-1">خطا</span> :{" "}
+            {favoritesData.error}
+          </div>
+        ) : (
+          <HandleFavorate product={product}  />
+        )}
         {product.discountedPrice !== product.price ? (
           <div className="text-sm px-2 text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
             %{" "}
@@ -64,7 +73,7 @@ const ProductComponent = ({product}) => {
             </div>
             <StarRating rating={product.rate} />
           </div>
-          <button className=" hover:animate-pulse delay-1000 shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  h-9 w-9 rounded-full  font-light  text-center text-2xl">
+          <button className=" hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  h-9 w-9 rounded-full  font-light  text-center text-2xl">
             <p className="mt-[4.8px]">+</p>
           </button>
         </div>
