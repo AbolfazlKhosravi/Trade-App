@@ -21,6 +21,18 @@ export const addFavorite = createAsyncThunk(
     }
   }
 );
+export const deleteFavorite = createAsyncThunk(
+  "favorites/deleteFavorite",
+  async (payload, {rejectWithValue}) => {
+    try {
+       await axios.delete(`http://localhost:3001/myFavorites/${payload}`);
+      console.log(payload);
+      return payload
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const initialState = {
   favorites:[],
@@ -52,6 +64,21 @@ export const favoritesSlice  = createSlice({
       return {...state, favorite: action.payload.favorite, loading: false, error: null,favorites:[...state.favorites,action.payload.favorite]};
     });
     builder.addCase(addFavorite.rejected, (state, action) => {
+      return {
+        ...state,
+        favorite: null,
+        loading: false,
+        error: action.payload.message,
+      };
+    });
+    builder.addCase(deleteFavorite.pending, (state, action) => {
+      return {...state, favorite: null, loading: true, error: null,clicked:action.meta.arg};
+    });
+    builder.addCase(deleteFavorite.fulfilled, (state, action) => {
+      const updatedFavorites = state.favorites.filter((fav) => fav.id !== action.payload);
+      return {...state, favorite: null, loading: false, error: null,favorites:updatedFavorites};
+    });
+    builder.addCase(deleteFavorite.rejected, (state, action) => {
       return {
         ...state,
         favorite: null,
