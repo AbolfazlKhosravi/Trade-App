@@ -1,20 +1,38 @@
 import {FaRegHeart, FaHeart, FaPlusCircle} from "react-icons/fa";
-import {addFavorite} from "../features/products/favoritesSlice";
+import {addFavorite, fetchFavorite} from "../features/products/favoritesSlice";
 import {useDispatch, useSelector} from "react-redux";
+import lodingSvg from "../assets/images/loading.svg";
+import {useEffect} from "react";
 
-const HandleFavorate = ({product }) => {
-  // console.log(favorites);
-  const {favorite, loding, error,clicked,favorites} = useSelector((state) => state.favorites);
-  console.log(favorites);
+const HandleFavorite = ({product}) => {
+  const {favorite, addLoding, addError, clicked, favorites} = useSelector(
+    (state) => state.favorites
+  );
+
   const dispatch = useDispatch();
-   if( loding && clicked === product.id ) return <p>loding</p>
-   if(error && clicked === product.id ) return <p>{error}</p>
+  if (addLoding && clicked === product.id)
+    return <img className="w-6 h-6" src={lodingSvg} alt="svg loading" />;
+  if (addError && clicked === product.id)
+    return (
+      <div className="flex justify-center text-[.7rem] text-red-500">
+        <span className="text-blue-600 ml-1">خطا</span>: این محصول وجود دارد
+      </div>
+    );
+  const isFavorite = favorites.find((fav) => fav.id === product.id);
   return (
-    <FaRegHeart
-      className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
-      onClick={() => dispatch(addFavorite(product))}
-    />
+    <div>
+      {isFavorite ? (
+        <FaHeart className="text-red-500 text-lg cursor-pointer hover:animate-pulse" />
+      ) : (
+        <FaRegHeart
+          className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
+          onClick={() => {
+            dispatch(addFavorite(product)) 
+          }}
+        />
+      )}
+    </div>
   );
 };
 
-export default HandleFavorate;
+export default HandleFavorite;

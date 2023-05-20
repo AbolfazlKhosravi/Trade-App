@@ -15,7 +15,7 @@ export const addFavorite = createAsyncThunk(
   async (payload, {rejectWithValue}) => {
     try {
       const response = await axios.post("http://localhost:3001/myFavorites",payload);
-      return {favorites:response.data,id:payload.id};
+      return {favorite:response.data,id:payload.id};
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -28,6 +28,8 @@ const initialState = {
   error: null,
   loding: false,
   clicked:null,
+  addError:null,
+  addLoding:false,
 };
 
 export const favoritesSlice  = createSlice({
@@ -44,17 +46,17 @@ export const favoritesSlice  = createSlice({
       return {...state,favorites:null,loding:false,error:action.payload.message}
     })
     builder.addCase(addFavorite.pending, (state, action) => {
-      return {...state, favorite: null, loding: true, error: null,clicked:action.meta.arg.id};
+      return {...state, favorite: null, addLoding: true, addError: null,clicked:action.meta.arg.id};
     });
     builder.addCase(addFavorite.fulfilled, (state, action) => {
-      return {...state, favorite: action.payload.favorites, loding: false, error: null};
+      return {...state, favorite: action.payload.favorite, addLoding: false, addError: null,favorites:[...state.favorites,action.payload.favorite]};
     });
     builder.addCase(addFavorite.rejected, (state, action) => {
       return {
         ...state,
         favorite: null,
-        loding: false,
-        error: action.payload.message,
+        addLoding: false,
+        addError: action.payload.message,
       };
     });
   },
