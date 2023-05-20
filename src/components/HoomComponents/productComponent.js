@@ -12,12 +12,12 @@ const ProductComponent = ({product, favoritesData}) => {
   return (
     <article className="w-full h-full">
       <div className="flex items-center justify-between p-3 max-h-9">
-        {favoritesData.loding ? (
+        {favoritesData.lodingAll ? (
           <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
-        ) : favoritesData.error ? (
+        ) : favoritesData.errorAll ? (
           <div className=" flex justify-center text-[.7rem]  text-red-500">
             <span className="text-blue-600  ml-1">خطا</span> :{" "}
-            {favoritesData.error}
+            {favoritesData.errorAll}
           </div>
         ) : (
           <HandleFavorate product={product}  />

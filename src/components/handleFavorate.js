@@ -5,14 +5,14 @@ import lodingSvg from "../assets/images/loading.svg";
 import {useEffect} from "react";
 
 const HandleFavorite = ({product}) => {
-  const {favorite, addLoding, addError, clicked, favorites} = useSelector(
+  const {favorite, loading, error, clicked, favorites} = useSelector(
     (state) => state.favorites
   );
 
   const dispatch = useDispatch();
-  if (addLoding && clicked === product.id)
+  if (loading && clicked === product.id)
     return <img className="w-6 h-6" src={lodingSvg} alt="svg loading" />;
-  if (addError && clicked === product.id)
+  if (error && clicked === product.id)
     return (
       <div className="flex justify-center text-[.7rem] text-red-500">
         <span className="text-blue-600 ml-1">خطا</span>: این محصول وجود دارد

@@ -25,11 +25,11 @@ export const addFavorite = createAsyncThunk(
 const initialState = {
   favorites:[],
   favorite: "",
-  error: null,
-  loding: false,
+  errorAll: null,
+  loadingAll: false,
   clicked:null,
-  addError:null,
-  addLoding:false,
+  error:null,
+  loading:false,
 };
 
 export const favoritesSlice  = createSlice({
@@ -37,26 +37,26 @@ export const favoritesSlice  = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchFavorite.pending,(state,action)=>{
-      return {...state,favorites:null,loding:true,error:null}
+      return {...state,favorites:[],loadingAll:true,errorAll:null}
     })
     builder.addCase(fetchFavorite.fulfilled,(state,action)=>{
-      return {...state,favorites:action.payload,loding:false,error:null}
+      return {...state,favorites:action.payload,loadingAll:false,errorAll:null}
     })
     builder.addCase(fetchFavorite.rejected,(state,action)=>{
-      return {...state,favorites:null,loding:false,error:action.payload.message}
+      return {...state,favorites:[],loadingAll:false,errorAll:action.payload.message}
     })
     builder.addCase(addFavorite.pending, (state, action) => {
-      return {...state, favorite: null, addLoding: true, addError: null,clicked:action.meta.arg.id};
+      return {...state, favorite: null, loading: true, error: null,clicked:action.meta.arg.id};
     });
     builder.addCase(addFavorite.fulfilled, (state, action) => {
-      return {...state, favorite: action.payload.favorite, addLoding: false, addError: null,favorites:[...state.favorites,action.payload.favorite]};
+      return {...state, favorite: action.payload.favorite, loading: false, error: null,favorites:[...state.favorites,action.payload.favorite]};
     });
     builder.addCase(addFavorite.rejected, (state, action) => {
       return {
         ...state,
         favorite: null,
-        addLoding: false,
-        addError: action.payload.message,
+        loading: false,
+        error: action.payload.message,
       };
     });
   },
