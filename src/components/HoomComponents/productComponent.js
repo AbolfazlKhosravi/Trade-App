@@ -2,8 +2,12 @@ import StarRating from "../StarRating";
 import {useState} from "react";
 import HandleFavorate from "../handleFavorate";
 import lodingSvg from "../../assets/images/loading.svg";
+import { useSelector } from "react-redux";
 
-const ProductComponent = ({product, favoritesData}) => {
+const ProductComponent = ({product}) => {
+  const favoritesData=useSelector((state)=>state.favorites)
+  const cartData=useSelector((state)=>state.cart)
+  console.log(cartData);
   const [moreInformation, setMoreInformation] = useState("");
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);

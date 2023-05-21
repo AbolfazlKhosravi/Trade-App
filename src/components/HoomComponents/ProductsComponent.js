@@ -1,6 +1,6 @@
 import SwiperProducts from "./SwiperProducts";
 
-const ProductsComponent = ({productsData, seeAll, text, type,favoritesData}) => {
+const ProductsComponent = ({ seeAll, text, type}) => {
   return (
     <article className="mt-7 px-1">
       <div className="flex justify-between items-center w-full">
@@ -11,7 +11,7 @@ const ProductsComponent = ({productsData, seeAll, text, type,favoritesData}) => 
           {seeAll}
         </p>
       </div>
-      <SwiperProducts productsData={productsData} type={type} favoritesData={favoritesData}/>
+      <SwiperProducts type={type} />
     </article>
   );
 };

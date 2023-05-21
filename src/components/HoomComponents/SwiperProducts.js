@@ -1,14 +1,13 @@
-import {FaRegHeart, FaHeart, FaPlusCircle} from "react-icons/fa";
 import {Pagination} from "swiper";
-import StarRating from "../StarRating";
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import lodingSvg from "../../assets/images/loading.svg";
-import {useState} from "react";
 import ProductComponent from "./productComponent";
+import { useSelector } from "react-redux";
 
-const SwiperProducts = ({productsData, type,favoritesData}) => {
+const SwiperProducts = ({type}) => {
+    const productsData = useSelector((state) => state.products);
   if (productsData.loding)
     return (
       <div className="w-full my-12 flex justify-center">
@@ -41,7 +40,7 @@ const SwiperProducts = ({productsData, type,favoritesData}) => {
             <SwiperSlide
               key={product.id}
               className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
-              <ProductComponent product={product} favoritesData={favoritesData}/>
+              <ProductComponent product={product} />
             </SwiperSlide>
           );
         }
@@ -50,7 +49,7 @@ const SwiperProducts = ({productsData, type,favoritesData}) => {
             <SwiperSlide
               key={product.id}
               className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
-              <ProductComponent product={product} favoritesData={favoritesData} />
+              <ProductComponent product={product}  />
             </SwiperSlide>
           );
         }
@@ -60,7 +59,7 @@ const SwiperProducts = ({productsData, type,favoritesData}) => {
             <SwiperSlide
               key={product.id}
               className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
-              <ProductComponent product={product} favoritesData={favoritesData} />
+              <ProductComponent product={product}  />
             </SwiperSlide>
           );
         }

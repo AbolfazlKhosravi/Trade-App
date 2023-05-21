@@ -7,8 +7,7 @@ import { fetchCart } from "../../features/products/cartSlice";
 
 const ProductsHoom = () => {
   const dispatch = useDispatch();
-  const productsData = useSelector((state) => state.products);
-  const favoritesData=useSelector((state)=>state.favorites)
+
   useEffect(() => {
     dispatch(fetchData());
     dispatch(fetchFavorite())
@@ -20,25 +19,19 @@ const ProductsHoom = () => {
         فروشگاه
       </h2>
       <ProductsComponent
-       productsData={productsData}
         seeAll="دیدن همه"
         type="discount"
         text=" پیشنهاد شگفت انگیز"
-        favoritesData={favoritesData}
       />
       <ProductsComponent
-       productsData={productsData}
         seeAll="دیدن همه"
         type="populer"
         text="محبوب ترین"
-        favoritesData={favoritesData}
       />
       <ProductsComponent
-       productsData={productsData}
         seeAll="دیدن همه"
         type="all"
         text="همه محصولات"
-        favoritesData={favoritesData}
       />
     </section>
   );
