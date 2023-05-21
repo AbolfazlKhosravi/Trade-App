@@ -127,7 +127,9 @@
       "img": "https://ketabweb.com/uploads/product/1401-05/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%AC%D9%88%D9%84%DB%8C%D9%88%D8%B3-%D9%88%DB%8C%D9%86%D8%B3%D8%A7%D9%85.jpg",
       "discountedPrice": 50000,
       "isPopular": false
-    },
+    }
+  ],
+  "cart": [
     {
       "id": 5,
       "name": " مختصر اقتصاد",
@@ -145,25 +147,14 @@
       "img": "https://ketabweb.com/uploads/product/1402-02/11/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87%E2%80%8C-%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D8%AF%D8%B1-%D8%AD%D9%88%D8%B2%D9%87%E2%80%8C%E2%80%8C-%D8%B1%D9%85%D8%B2%E2%80%8C%D8%A7%D8%B1%D8%B2%D9%87.jpg",
       "discountedPrice": 100000,
       "isPopular": false
-    }
-  ],
-  "cart": [
-    {
-      "id": 4,
-      "name": " سرمایه گزاری",
-      "price": 500000,
-      "rate": "3.1",
-      "img": "https://ketabweb.com/uploads/product/1402-02/11/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87%E2%80%8C-%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D8%AF%D8%B1-%D8%AD%D9%88%D8%B2%D9%87%E2%80%8C%E2%80%8C-%D8%B1%D9%85%D8%B2%E2%80%8C%D8%A7%D8%B1%D8%B2%D9%87.jpg",
-      "discountedPrice": 100000,
-      "isPopular": false
     },
     {
-      "id": 3,
-      "name": " اقتصاد زامبی",
-      "price": 150000,
-      "rate": "3.1",
-      "img": "https://ketabweb.com/uploads/product/1402-02/20/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%B2%D8%A7%D9%85%D8%A8%DB%8C.jpg",
-      "discountedPrice": 150000,
+      "id": 1,
+      "name": "Take The Risk",
+      "price": 450000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "discountedPrice": 350000,
       "isPopular": true
     }
   ]

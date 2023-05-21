@@ -2,14 +2,17 @@ import StarRating from "../StarRating";
 import {useState} from "react";
 import HandleFavorate from "../handleFavorate";
 import lodingSvg from "../../assets/images/loading.svg";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import HandleCart from "../handleCart";
+import {fetchCart} from "../../features/products/cartSlice";
+import {FaRedoAlt} from "react-icons/fa";
+import { fetchFavorite } from "../../features/products/favoritesSlice";
 
 const ProductComponent = ({product}) => {
   const favoritesData = useSelector((state) => state.favorites);
   const cartData = useSelector((state) => state.cart);
-  console.log(cartData);
   const [moreInformation, setMoreInformation] = useState("");
+  const dispatch = useDispatch();
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
     return parseInt(discount);
@@ -20,9 +23,10 @@ const ProductComponent = ({product}) => {
         {favoritesData.loadingAll ? (
           <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
         ) : favoritesData.errorAll ? (
-          <div className=" flex justify-center text-[.7rem]  text-red-500">
+          <div onClick={()=>dispatch(fetchFavorite())} className=" cursor-pointer flex justify-center text-[.7rem]  text-red-500">
             <span className="text-blue-600  ml-1">خطا</span> :{" "}
             {favoritesData.errorAll}
+            <FaRedoAlt className="text-blue-600 mt-[1.5px] mr-2" />
           </div>
         ) : (
           <HandleFavorate product={product} />
@@ -81,11 +85,14 @@ const ProductComponent = ({product}) => {
           {cartData.loadingAll ? (
             <img className="w-7 h-7" src={lodingSvg} alt="svg loding" />
           ) : cartData.errorAll ? (
-            <div className=" flex justify-center text-[.8rem]  text-red-500">
-              <span className="text-blue-600  ml-1">خطا</span>
+            <div
+              className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer"
+              onClick={()=>dispatch(fetchCart())}>
+              <FaRedoAlt className="text-blue-600 mt-[1.5px] " />
+              <span className="text-blue-600 ml-1 ">خطا</span>
             </div>
           ) : (
-          <HandleCart product={product}/>
+            <HandleCart product={product} />
           )}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import lodingSvg from "../assets/images/loading.svg";
 import {addCart, deleteCart} from "../features/products/cartSlice";
-import {FaCheck, FaRedoAlt} from "react-icons/fa";
+import { FaRedoAlt} from "react-icons/fa";
 
 const HandleCart = ({product}) => {
   const {error, clickedShowLoding, clickedShowError, cart} = useSelector(
