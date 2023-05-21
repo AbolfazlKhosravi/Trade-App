@@ -3,6 +3,7 @@ import {useState} from "react";
 import HandleFavorate from "../handleFavorate";
 import lodingSvg from "../../assets/images/loading.svg";
 import {useSelector} from "react-redux";
+import HandleCart from "../handleCart";
 
 const ProductComponent = ({product}) => {
   const favoritesData = useSelector((state) => state.favorites);
@@ -84,9 +85,7 @@ const ProductComponent = ({product}) => {
               <span className="text-blue-600  ml-1">خطا</span>
             </div>
           ) : (
-            <button className=" hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  h-9 w-9 rounded-full  font-light  text-center text-2xl">
-              <p className="mt-[4.8px]">+</p>
-            </button>
+          <HandleCart product={product}/>
           )}
         </div>
       </div>
