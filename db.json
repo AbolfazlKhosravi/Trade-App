@@ -111,15 +111,6 @@
   ],
   "myFavorites": [
     {
-      "id": 2,
-      "name": "Take The Risk",
-      "price": 80000,
-      "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1401-06/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B3%D9%88%D8%A7%D9%86%D8%AD-%E2%80%8C%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D9%82.jpg",
-      "discountedPrice": 80000,
-      "isPopular": false
-    },
-    {
       "id": 12,
       "name": "عصر هوش مصنوعی ",
       "price": 40000,
