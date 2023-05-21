@@ -2,11 +2,11 @@ import StarRating from "../StarRating";
 import {useState} from "react";
 import HandleFavorate from "../handleFavorate";
 import lodingSvg from "../../assets/images/loading.svg";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 const ProductComponent = ({product}) => {
-  const favoritesData=useSelector((state)=>state.favorites)
-  const cartData=useSelector((state)=>state.cart)
+  const favoritesData = useSelector((state) => state.favorites);
+  const cartData = useSelector((state) => state.cart);
   console.log(cartData);
   const [moreInformation, setMoreInformation] = useState("");
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
@@ -24,7 +24,7 @@ const ProductComponent = ({product}) => {
             {favoritesData.errorAll}
           </div>
         ) : (
-          <HandleFavorate product={product}  />
+          <HandleFavorate product={product} />
         )}
         {product.discountedPrice !== product.price ? (
           <div className="text-sm px-2 text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
@@ -77,9 +77,17 @@ const ProductComponent = ({product}) => {
             </div>
             <StarRating rating={product.rate} />
           </div>
-          <button className=" hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  h-9 w-9 rounded-full  font-light  text-center text-2xl">
-            <p className="mt-[4.8px]">+</p>
-          </button>
+          {cartData.loadingAll ? (
+            <img className="w-7 h-7" src={lodingSvg} alt="svg loding" />
+          ) : cartData.errorAll ? (
+            <div className=" flex justify-center text-[.8rem]  text-red-500">
+              <span className="text-blue-600  ml-1">خطا</span>
+            </div>
+          ) : (
+            <button className=" hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  h-9 w-9 rounded-full  font-light  text-center text-2xl">
+              <p className="mt-[4.8px]">+</p>
+            </button>
+          )}
         </div>
       </div>
       {moreInformation === product.id ? (
