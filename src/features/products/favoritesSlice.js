@@ -39,9 +39,9 @@ const initialState = {
   favorite: "",
   errorAll: null,
   loadingAll: false,
-  clicked:null,
+  clickedShowLoding:[],
+  clickedShowError:[],
   error:null,
-  loading:false,
 };
 
 export const favoritesSlice  = createSlice({
@@ -58,32 +58,43 @@ export const favoritesSlice  = createSlice({
       return {...state,favorites:[],loadingAll:false,errorAll:action.payload.message}
     })
     builder.addCase(addFavorite.pending, (state, action) => {
-      return {...state, favorite: null, loading: true, error: null,clicked:action.meta.arg.id};
+      const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.meta.arg.id)
+      return {...state,clickedShowError:updatedClickedShowError ,favorite: null,  error: null,clickedShowLoding:[...state.clickedShowLoding,action.meta.arg.id]};
     });
     builder.addCase(addFavorite.fulfilled, (state, action) => {
-      return {...state, favorite: action.payload.favorite, loading: false, error: null,favorites:[...state.favorites,action.payload.favorite]};
+      const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.payload.id)
+      const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.payload.id)
+      return {...state, clickedShowError:updatedClickedShowError ,clickedShowLoding:updatedClickedShowLoding,favorite: action.payload.favorite, error: null,favorites:[...state.favorites,action.payload.favorite]};
     });
     builder.addCase(addFavorite.rejected, (state, action) => {
+      const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.meta.arg.id)
       return {
         ...state,
+        clickedShowLoding:updatedClickedShowLoding,
         favorite: null,
-        loading: false,
+        clickedShowError:[...state.clickedShowError,action.meta.arg.id],
         error: action.payload.message,
       };
+      
     });
     builder.addCase(deleteFavorite.pending, (state, action) => {
-      return {...state, favorite: null, loading: true, error: null,clicked:action.meta.arg};
+      const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.meta.arg)
+      return {...state,clickedShowError:updatedClickedShowError , favorite: null, error: null,clickedShowLoding:[...state.clickedShowLoding,action.meta.arg]};
     });
     builder.addCase(deleteFavorite.fulfilled, (state, action) => {
       const updatedFavorites = state.favorites.filter((fav) => fav.id !== action.payload);
-      return {...state, favorite: null, loading: false, error: null,favorites:updatedFavorites};
+      const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.payload)
+      const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.payload)
+      return {...state,clickedShowError:updatedClickedShowError , clickedShowLoding:updatedClickedShowLoding ,favorite: null,  error: null,favorites:updatedFavorites};
     });
     builder.addCase(deleteFavorite.rejected, (state, action) => {
+      const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.meta.arg)
       return {
         ...state,
+        clickedShowLoding:updatedClickedShowLoding,
         favorite: null,
-        loading: false,
         error: action.payload.message,
+        clickedShowError:[...state.clickedShowError,action.meta.arg],
       };
     });
   },
