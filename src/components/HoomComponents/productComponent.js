@@ -18,8 +18,8 @@ const ProductComponent = ({product}) => {
     return parseInt(discount);
   };
   return (
-    <article className="w-full h-full">
-      <div className="flex items-center justify-between p-3 max-h-9">
+    <article className="w-full h-full flex justify-start flex-col items-center">
+      <div className="flex items-center justify-between p-3 max-h-9 w-full">
         {favoritesData.loadingAll ? (
           <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
         ) : favoritesData.errorAll ? (
@@ -34,7 +34,7 @@ const ProductComponent = ({product}) => {
           <HandleFavorate product={product} />
         )}
         {product.discountedPrice !== product.price ? (
-          <div className="text-sm px-2 text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
+          <div className="text-sm px-[.3rem] pt-[1px] text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
             %{" "}
             {calculationOfDiscountPercentage(
               product.discountedPrice,
@@ -45,27 +45,29 @@ const ProductComponent = ({product}) => {
           ""
         )}
       </div>
-      <div className=" w-full px-7 h-[10rem]  flex items-center justify-center cursor-pointer">
+      <div className="overflow-hidden w-[9.5rem] rounded-lg   h-[10rem]  flex items-center justify-center cursor-pointer">
         <img
           onMouseEnter={() => setMoreInformation(product.id)}
           onMouseLeave={() => setMoreInformation("")}
           src={product.img}
           alt={product.name}
-          className="w-full  max-h-[10rem]  object-cover rounded-lg  cursor-pointer"
+          className="w-[9.5rem]   transition-all duration-100 ease-in-out  max-h-[10rem]  object-cover rounded-lg hover:scale-110   cursor-pointer "
         />
         {moreInformation === product.id ? (
-          <div
-            className=" absolute w-[9.5rem]  h-[10rem] bg-gray-950 dark:bg-slate-950 dark:opacity-70 opacity-40 text-white  rounded-lg flex items-center justify-center cursor-pointer"
-            onMouseEnter={() => setMoreInformation(product.id)}
-            onMouseLeave={() => setMoreInformation("")}>
+          <div className=" absolute top-2  text-[.8rem] text-slate-500 dark:text-slate-500">
             اطلاعات بیشتر
           </div>
         ) : (
           ""
         )}
       </div>
-      <div className="flex flex-col p-3 font-bold text-sm text-slate-700 dark:text-slate-200">
-        <p className="cursor-pointer">{product.name}</p>
+      <div className="flex flex-col pb-3 px-3 font-bold text-sm text-slate-700 dark:text-slate-200 w-full">
+        <p
+          onMouseEnter={() => setMoreInformation(product.id)}
+          onMouseLeave={() => setMoreInformation("")}
+          className="cursor-pointer pt-3">
+          {product.name}
+        </p>
         <div className="flex justify-between items-center w-full pt-1">
           <div className="flex flex-col items-start justify-center">
             <div className="text-[1.05rem] ">
