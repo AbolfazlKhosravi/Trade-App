@@ -129,15 +129,6 @@
       "isPopular": false
     },
     {
-      "id": 7,
-      "name": "  تحلیل بنیادی",
-      "price": 105000,
-      "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1401-11/23/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%AA%D8%AD%D9%84%DB%8C%D9%84-%D8%A8%D9%86%DB%8C%D8%A7%D8%AF%DB%8C%D9%86-%D8%A8%D8%A7%D8%B2%D8%A7%D8%B1-%D8%A7%D8%B1%D8%B2%D9%87%D8%A7.jpg",
-      "discountedPrice": 80000,
-      "isPopular": false
-    },
-    {
       "id": 8,
       "name": " اندیشه های اقتصادی",
       "price": 120000,
@@ -153,6 +144,24 @@
       "rate": "4.1",
       "img": "https://ketabweb.com/uploads/product/1400-11/%DA%A9%D8%AA%D8%A7%D8%A8-%D9%BE%D8%B1%D9%86%D8%AF%D9%87-%D8%A8%D8%A7%D8%B2.jpg",
       "discountedPrice": 80000,
+      "isPopular": true
+    },
+    {
+      "id": 4,
+      "name": " سرمایه گزاری",
+      "price": 500000,
+      "rate": "3.1",
+      "img": "https://ketabweb.com/uploads/product/1402-02/11/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87%E2%80%8C-%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D8%AF%D8%B1-%D8%AD%D9%88%D8%B2%D9%87%E2%80%8C%E2%80%8C-%D8%B1%D9%85%D8%B2%E2%80%8C%D8%A7%D8%B1%D8%B2%D9%87.jpg",
+      "discountedPrice": 100000,
+      "isPopular": false
+    },
+    {
+      "id": 6,
+      "name": "پسا سرمایه داری",
+      "price": 500000,
+      "rate": "4.1",
+      "img": "https://ketabweb.com/uploads/product/1401-12/03/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D9%BE%D8%B3%D8%A7%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87-%D8%AF%D8%A7%D8%B1%DB%8C.jpg",
+      "discountedPrice": 450000,
       "isPopular": true
     }
   ],
@@ -185,13 +194,13 @@
       "isPopular": false
     },
     {
-      "id": 1,
-      "name": "Take The Risk",
-      "price": 450000,
-      "rate": "5",
-      "img": "https://s8.uupload.ir/files/result_(1)_w76v.png",
-      "discountedPrice": 350000,
-      "isPopular": true
+      "id": 7,
+      "name": "  تحلیل بنیادی",
+      "price": 105000,
+      "rate": "4.1",
+      "img": "https://ketabweb.com/uploads/product/1401-11/23/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%AA%D8%AD%D9%84%DB%8C%D9%84-%D8%A8%D9%86%DB%8C%D8%A7%D8%AF%DB%8C%D9%86-%D8%A8%D8%A7%D8%B2%D8%A7%D8%B1-%D8%A7%D8%B1%D8%B2%D9%87%D8%A7.jpg",
+      "discountedPrice": 80000,
+      "isPopular": false
     }
   ]
 }

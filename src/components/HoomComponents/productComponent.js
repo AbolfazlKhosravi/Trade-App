@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import HandleCart from "../handleCart";
 import {fetchCart} from "../../features/products/cartSlice";
 import {FaRedoAlt} from "react-icons/fa";
-import { fetchFavorite } from "../../features/products/favoritesSlice";
+import {fetchFavorite} from "../../features/products/favoritesSlice";
 
 const ProductComponent = ({product}) => {
   const favoritesData = useSelector((state) => state.favorites);
@@ -23,7 +23,9 @@ const ProductComponent = ({product}) => {
         {favoritesData.loadingAll ? (
           <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
         ) : favoritesData.errorAll ? (
-          <div onClick={()=>dispatch(fetchFavorite())} className=" cursor-pointer flex justify-center text-[.7rem]  text-red-500">
+          <div
+            onClick={() => dispatch(fetchFavorite())}
+            className=" cursor-pointer flex justify-center text-[.7rem]  text-red-500">
             <span className="text-blue-600  ml-1">خطا</span> :{" "}
             {favoritesData.errorAll}
             <FaRedoAlt className="text-blue-600 mt-[1.5px] mr-2" />
@@ -51,15 +53,19 @@ const ProductComponent = ({product}) => {
           alt={product.name}
           className="w-full  max-h-[10rem]  object-cover rounded-lg  cursor-pointer"
         />
+        {moreInformation === product.id ? (
+          <div
+            className=" absolute w-[9.5rem]  h-[10rem] bg-gray-950 dark:bg-slate-950 dark:opacity-70 opacity-40 text-white  rounded-lg flex items-center justify-center cursor-pointer"
+            onMouseEnter={() => setMoreInformation(product.id)}
+            onMouseLeave={() => setMoreInformation("")}>
+            اطلاعات بیشتر
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="flex flex-col p-3 font-bold text-sm text-slate-700 dark:text-slate-200">
-        <p
-          onMouseEnter={() => setMoreInformation(product.id)}
-          onMouseLeave={() => setMoreInformation("")}
-          className="cursor-pointer">
-          {" "}
-          {product.name}
-        </p>
+        <p className="cursor-pointer">{product.name}</p>
         <div className="flex justify-between items-center w-full pt-1">
           <div className="flex flex-col items-start justify-center">
             <div className="text-[1.05rem] ">
@@ -87,7 +93,7 @@ const ProductComponent = ({product}) => {
           ) : cartData.errorAll ? (
             <div
               className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer"
-              onClick={()=>dispatch(fetchCart())}>
+              onClick={() => dispatch(fetchCart())}>
               <FaRedoAlt className="text-blue-600 mt-[1.5px] " />
               <span className="text-blue-600 ml-1 ">خطا</span>
             </div>
@@ -96,16 +102,6 @@ const ProductComponent = ({product}) => {
           )}
         </div>
       </div>
-      {moreInformation === product.id ? (
-        <div
-          className=" absolute w-full h-full bg-gray-950 dark:bg-slate-950 dark:opacity-70 opacity-50 text-white top-0 rounded-xl flex items-center justify-center cursor-pointer"
-          onMouseEnter={() => setMoreInformation(product.id)}
-          onMouseLeave={() => setMoreInformation("")}>
-          اطلاعات بیشتر
-        </div>
-      ) : (
-        ""
-      )}
     </article>
   );
 };
