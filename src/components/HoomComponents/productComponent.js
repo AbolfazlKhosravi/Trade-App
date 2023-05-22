@@ -18,7 +18,7 @@ const ProductComponent = ({product}) => {
     return parseInt(discount);
   };
   return (
-    <article className="w-full h-full flex justify-start flex-col items-center">
+    <article className="w-full h-full flex justify-start flex-col items-center text-center">
       <div className="flex items-center justify-between p-3 max-h-9 w-full">
         {favoritesData.loadingAll ? (
           <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
@@ -34,7 +34,7 @@ const ProductComponent = ({product}) => {
           <HandleFavorate product={product} />
         )}
         {product.discountedPrice !== product.price ? (
-          <div className="text-sm px-[.3rem] pt-[1px] text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
+          <div className="text-sm px-[.3rem]  text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
             %{" "}
             {calculationOfDiscountPercentage(
               product.discountedPrice,
@@ -53,15 +53,13 @@ const ProductComponent = ({product}) => {
           alt={product.name}
           className="w-[9.5rem]   transition-all duration-100 ease-in-out  max-h-[10rem]  object-cover rounded-lg hover:scale-110   cursor-pointer "
         />
-        {moreInformation === product.id ? (
-          <div className=" absolute top-2  text-[.8rem] text-slate-500 dark:text-slate-500">
+        {moreInformation === product.id && (
+          <div className=" absolute top-2 left-0 right-0  text-[.8rem] text-slate-500 dark:text-slate-500">
             اطلاعات بیشتر
           </div>
-        ) : (
-          ""
-        )}
+        ) }
       </div>
-      <div className="flex flex-col pb-3 px-3 font-bold text-sm text-slate-700 dark:text-slate-200 w-full">
+      <div className="flex flex-col items-start pb-3 px-3 font-bold text-sm text-slate-700 dark:text-slate-200 w-full">
         <p
           onMouseEnter={() => setMoreInformation(product.id)}
           onMouseLeave={() => setMoreInformation("")}

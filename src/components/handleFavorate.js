@@ -2,11 +2,13 @@ import {FaRegHeart, FaHeart, FaRedoAlt} from "react-icons/fa";
 import {addFavorite, deleteFavorite} from "../features/products/favoritesSlice";
 import {useDispatch, useSelector} from "react-redux";
 import lodingSvg from "../assets/images/loading.svg";
+import { useState } from "react";
 
 const HandleFavorite = ({product}) => {
+  const [guide, setGuide] = useState("");
   const {favorite, error, clickedShowLoding, clickedShowError, favorites} =
     useSelector((state) => state.favorites);
-    
+
   const isClickedLoding = clickedShowLoding.find((cli) => cli === product.id);
   const isClickedError = clickedShowError.find((cli) => cli === product.id);
   const dispatch = useDispatch();
@@ -39,19 +41,37 @@ const HandleFavorite = ({product}) => {
   return (
     <div>
       {isFavorite ? (
-        <FaHeart
-          className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
-          onClick={() => {
-            dispatch(deleteFavorite(product.id));
-          }}
-        />
+        <>
+          <FaHeart
+            onMouseEnter={() => setGuide(product.id)}
+            onMouseLeave={() => setGuide("")}
+            className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
+            onClick={() => {
+              dispatch(deleteFavorite(product.id));
+            }}
+          />
+          {guide === product.id && (
+            <div className=" absolute top-2 right-0 left-0  mx-12   font-normal text-[.75rem] text-slate-500 dark:text-slate-500">
+              حذف کردن
+            </div>
+          )}
+        </>
       ) : (
-        <FaRegHeart
-          className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
-          onClick={() => {
-            dispatch(addFavorite(product));
-          }}
-        />
+        <>
+          <FaRegHeart
+            onMouseEnter={() => setGuide(product.id)}
+            onMouseLeave={() => setGuide("")}
+            className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
+            onClick={() => {
+              dispatch(addFavorite(product));
+            }}
+          />
+          {guide === product.id && (
+            <div className=" absolute top-2 right-0 left-0  mx-11 font-normal text-[.75rem] text-slate-500 dark:text-slate-500">
+               اضافه کردن 
+            </div>
+          )}
+        </>
       )}
     </div>
   );
