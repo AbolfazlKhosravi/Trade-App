@@ -4,7 +4,7 @@ import {addCart, deleteCart} from "../features/products/cartSlice";
 import { FaRedoAlt} from "react-icons/fa";
 
 const HandleCart = ({product}) => {
-  const {error, clickedShowLoding, clickedShowError, cart} = useSelector(
+  const {errorCart, clickedShowLoding, clickedShowError, cart} = useSelector(
     (state) => state.cart
   );
 

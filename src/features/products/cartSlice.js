@@ -41,7 +41,9 @@ const initialState = {
   loadingAll: false,
   clickedShowLoding:[],
   clickedShowError:[],
-  error:null,
+  errorCart:null,
+  checkedAddedToThecard:null,
+  checkedRemovedToThecard:null,
 };
 
 export const cartSlice  = createSlice({
@@ -59,12 +61,12 @@ export const cartSlice  = createSlice({
     })
     builder.addCase(addCart.pending, (state, action) => {
       const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.meta.arg.id)
-      return {...state,clickedShowError:updatedClickedShowError ,product: null,  error: null,clickedShowLoding:[...state.clickedShowLoding,action.meta.arg.id]};
+      return {...state,checkedAddedToThecard:null,checkedRemovedToThecard:null,clickedShowError:updatedClickedShowError ,product: null,  errorCart: null,clickedShowLoding:[...state.clickedShowLoding,action.meta.arg.id]};
     });
     builder.addCase(addCart.fulfilled, (state, action) => {
       const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.payload.id)
       const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.payload.id)
-      return {...state, clickedShowError:updatedClickedShowError ,clickedShowLoding:updatedClickedShowLoding,product: action.payload.product, error: null,cart:[...state.cart,action.payload.product]};
+      return {...state,checkedRemovedToThecard:null,checkedAddedToThecard:action.payload.id ,clickedShowError:updatedClickedShowError ,clickedShowLoding:updatedClickedShowLoding,product: action.payload.product, errorCart: null,cart:[...state.cart,action.payload.product]};
     });
     builder.addCase(addCart.rejected, (state, action) => {
       const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.meta.arg.id)
@@ -72,20 +74,22 @@ export const cartSlice  = createSlice({
         ...state,
         clickedShowLoding:updatedClickedShowLoding,
         product: null,
+        checkedRemovedToThecard:null,
+        checkedAddedToThecard:action.meta.arg.id,
         clickedShowError:[...state.clickedShowError,action.meta.arg.id],
-        error: action.payload.message,
+        errorCart: action.payload.message,
       };
       
     });
     builder.addCase(deleteCart.pending, (state, action) => {
       const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.meta.arg)
-      return {...state,clickedShowError:updatedClickedShowError , product: null, error: null,clickedShowLoding:[...state.clickedShowLoding,action.meta.arg]};
+      return {...state,checkedAddedToThecard:null,checkedRemovedToThecard:null,clickedShowError:updatedClickedShowError , product: null, errorCart: null,clickedShowLoding:[...state.clickedShowLoding,action.meta.arg]};
     });
     builder.addCase(deleteCart.fulfilled, (state, action) => {
       const updatedCart = state.cart.filter((fav) => fav.id !== action.payload);
       const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.payload)
       const updatedClickedShowError=state.clickedShowError.filter(cli=>cli!== action.payload)
-      return {...state,clickedShowError:updatedClickedShowError , clickedShowLoding:updatedClickedShowLoding ,product: null,  error: null,cart:updatedCart};
+      return {...state,checkedAddedToThecard:null,clickedShowError:updatedClickedShowError , checkedRemovedToThecard:action.payload,clickedShowLoding:updatedClickedShowLoding ,product: null,  errorCart: null,cart:updatedCart};
     });
     builder.addCase(deleteCart.rejected, (state, action) => {
       const updatedClickedShowLoding=state.clickedShowLoding.filter(cli=>cli!== action.meta.arg)
@@ -93,7 +97,9 @@ export const cartSlice  = createSlice({
         ...state,
         clickedShowLoding:updatedClickedShowLoding,
         product: null,
-        error: action.payload.message,
+        checkedRemovedToThecard:action.meta.arg,
+        errorCart: action.payload.message,
+        checkedAddedToThecard:null,
         clickedShowError:[...state.clickedShowError,action.meta.arg],
       };
     });

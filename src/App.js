@@ -2,6 +2,8 @@ import {Route, Routes, BrowserRouter} from "react-router-dom";
 import routes from "./routes";
 import store from "./features/store";
 import {Provider} from "react-redux";
+import { Toaster } from 'react-hot-toast';
+
 function App() {
   return (
     <Provider store={store}>
@@ -18,6 +20,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
+      <Toaster />
     </Provider>
   );
 }
