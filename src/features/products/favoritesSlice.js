@@ -26,7 +26,6 @@ export const deleteFavorite = createAsyncThunk(
   async (payload, {rejectWithValue}) => {
     try {
        await axios.delete(`http://localhost:3001/myFavorites/${payload}`);
-      console.log(payload);
       return payload
     } catch (error) {
       return rejectWithValue(error);
