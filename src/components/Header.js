@@ -19,7 +19,9 @@ import {FiSun, FiMoon, FiAlignRight, FiX, FiArrowLeft} from "react-icons/fi";
 import {useEffect, useRef, useState} from "react";
 import {Switch} from "@headlessui/react";
 import imgCart from "../assets/images/shopping-cart.svg"
+import { useSelector } from "react-redux";
 const Header = () => {
+  const {cart} =useSelector(state=>state.cart)
   const [dropshot, setDropshot] = useState(false);
   const [dropdownLearn, setDropdownLearn] = useState(false);
   const [dropdownContactUs, setDropdownContactUs] = useState(false);
@@ -306,8 +308,9 @@ const Header = () => {
           <div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
             عضویت
           </div>
-          <div className="max-[500px]:mr-2   cursor-pointer mr-4 font-bold ">
+          <div className="max-[500px]:mr-2   cursor-pointer mr-4 font-bold relative">
               <img src={imgCart} alt="shopping cart" className=" h-8  max-[500px]:h-7 "/>
+              {cart.length>0 && <span className="absolute text-lg top-0 -translate-y-[.4rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center" > <p className="mt-[.23rem]"> {cart.length.toLocaleString("fa")}</p></span> }
           </div>
           <div className="max-[500px]:mr-1 mr-3 my-1  mx-1  ">
             <ChangeThem setDarkMode={setDarkMode} darkMode={darkMode} />
