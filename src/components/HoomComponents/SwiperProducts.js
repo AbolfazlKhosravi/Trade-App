@@ -63,6 +63,7 @@ const SwiperProducts = ({type}) => {
             </SwiperSlide>
           );
         }
+        return ""
       })}
       <SwiperSlide className=" my-4  text-blue-600 font-bold  max-w-[8rem]  max-h-7  mt-36 mr-[3.8rem]  mb-8 text-lg">
         <p className="">دیدن همه</p>

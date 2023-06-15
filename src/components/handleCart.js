@@ -6,7 +6,7 @@ import {useState} from "react";
 
 const HandleCart = ({product}) => {
   const [guide, setGuide] = useState("");
-  const {errorCart, clickedShowLoding, clickedShowError, cart} = useSelector(
+  const { clickedShowLoding, clickedShowError, cart} = useSelector(
     (state) => state.cart
   );
 

@@ -13,7 +13,7 @@ const ProductsHoom = () => {
     dispatch(fetchData());
     dispatch(fetchFavorite());
     dispatch(fetchCart());
-  }, []);
+  }, [dispatch]);
 
   const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
     useSelector((state) => state.cart);

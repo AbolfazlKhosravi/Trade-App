@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const HandleFavorite = ({product}) => {
   const [guide, setGuide] = useState("");
-  const {favorite, error, clickedShowLoding, clickedShowError, favorites} =
+  const { error, clickedShowLoding, clickedShowError, favorites} =
     useSelector((state) => state.favorites);
 
   const isClickedLoding = clickedShowLoding.find((cli) => cli === product.id);
