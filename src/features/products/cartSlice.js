@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const fetchCart=createAsyncThunk("cart/fetchCart", async(_,{rejectWithValue})=>{
   try {
-   const data= await axios.get("http://localhost:3001/cart");
+   const data= await axios.get("https://khosravitradapp.glitch.me/cart");
    return data.data
   } catch (error) {
    return rejectWithValue(error)
@@ -14,7 +14,7 @@ export const addCart = createAsyncThunk(
   "cart/addCart",
   async (payload, {rejectWithValue}) => {
     try {
-      const response = await axios.post("http://localhost:3001/cart",payload);
+      const response = await axios.post("https://khosravitradapp.glitch.me/cart",payload);
       return {product:response.data,id:payload.id};
     } catch (error) {
       return rejectWithValue(error);
@@ -25,7 +25,7 @@ export const deleteCart = createAsyncThunk(
   "cart/deleteCart",
   async (payload, {rejectWithValue}) => {
     try {
-       await axios.delete(`http://localhost:3001/cart/${payload}`);
+       await axios.delete(`https://khosravitradapp.glitch.me/cart/${payload}`);
       console.log(payload);
       return payload
     } catch (error) {

@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const fetchFavorite=createAsyncThunk("favorites/fetchFavorite", async(_,{rejectWithValue})=>{
   try {
-   const data= await axios.get("http://localhost:3001/myFavorites");
+   const data= await axios.get("https://khosravitradapp.glitch.me/myFavorites");
    return data.data
   } catch (error) {
    return rejectWithValue(error)
@@ -14,7 +14,7 @@ export const addFavorite = createAsyncThunk(
   "favorites/addFavorite",
   async (payload, {rejectWithValue}) => {
     try {
-      const response = await axios.post("http://localhost:3001/myFavorites",payload);
+      const response = await axios.post("https://khosravitradapp.glitch.me/myFavorites",payload);
       return {favorite:response.data,id:payload.id};
     } catch (error) {
       return rejectWithValue(error);
@@ -25,7 +25,7 @@ export const deleteFavorite = createAsyncThunk(
   "favorites/deleteFavorite",
   async (payload, {rejectWithValue}) => {
     try {
-       await axios.delete(`http://localhost:3001/myFavorites/${payload}`);
+       await axios.delete(`https://khosravitradapp.glitch.me/myFavorites/${payload}`);
       return payload
     } catch (error) {
       return rejectWithValue(error);

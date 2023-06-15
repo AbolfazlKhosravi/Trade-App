@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const fetchData=createAsyncThunk("Products/fetchData", async(_,{rejectWithValue})=>{
  try {
-  const data= await axios.get("http://localhost:3001/products");
+  const data= await axios.get("https://khosravitradapp.glitch.me/products");
   return data.data
  } catch (error) {
   return rejectWithValue(error)
