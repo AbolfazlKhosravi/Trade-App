@@ -6,6 +6,7 @@ import {
   FaInstagramSquare,
   FaStore,
   FaYoutubeSquare,
+  FaHeart,
 } from "react-icons/fa";
 import {
   HiAcademicCap,
@@ -22,13 +23,14 @@ import imgCart from "../assets/images/shopping-cart.svg";
 import {useSelector} from "react-redux";
 const Header = () => {
   const {cart} = useSelector((state) => state.cart);
+  const {favorites} = useSelector((state) => state.favorites);
   const [dropshot, setDropshot] = useState(false);
   const [dropdownLearn, setDropdownLearn] = useState(false);
   const [dropdownContactUs, setDropdownContactUs] = useState(false);
   const [showFlash, setShowFlash] = useState({
     instagram: false,
     telegram: false,
-    youtube:false,
+    youtube: false,
     aboutMe: false,
     freeLearn: false,
     products: false,
@@ -95,7 +97,11 @@ const Header = () => {
             className="min-[1155px]:hidden text-[2.5rem] ml-3 text-slate-600 max-[500px]:text-[2rem] cursor-pointer dark:text-slate-300 "
           />
           <div className="flex items-center justify-between ml-8">
-            <img src={iconeBrand} alt="iconeBrand" className="w-9 h-9 ml-1 max-[500px]:w-8 max-[500px]:h-8" />
+            <img
+              src={iconeBrand}
+              alt="iconeBrand"
+              className="w-9 h-9 ml-1 max-[500px]:w-8 max-[500px]:h-8"
+            />
             <div className="flex flex-col items-center justify-center max-[546px]:mx-0 max-[546px]:mr-3  mr-3">
               <h1 className="max-[370px]:hidden max-[500px]:text-sm  text-2xl text-blue-700 font-extrabold dark:text-slate-300">
                 ترید هوم
@@ -139,7 +145,7 @@ const Header = () => {
                       telegram: false,
                       products: false,
                       freeLearn: false,
-                      youtube:false,
+                      youtube: false,
                     });
                   }}
                   className={`${
@@ -155,7 +161,7 @@ const Header = () => {
                         telegram: false,
                         products: false,
                         freeLearn: true,
-                        youtube:false,
+                        youtube: false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -180,7 +186,7 @@ const Header = () => {
                         telegram: false,
                         products: true,
                         freeLearn: false,
-                        youtube:false,
+                        youtube: false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -220,7 +226,7 @@ const Header = () => {
                       telegram: false,
                       products: false,
                       freeLearn: false,
-                      youtube:false,
+                      youtube: false,
                     });
                   }}
                   className={`${
@@ -236,7 +242,7 @@ const Header = () => {
                         telegram: false,
                         products: false,
                         freeLearn: false,
-                        youtube:false,
+                        youtube: false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -261,7 +267,7 @@ const Header = () => {
                         telegram: true,
                         products: false,
                         freeLearn: false,
-                        youtube:false,
+                        youtube: false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -286,7 +292,7 @@ const Header = () => {
                         telegram: false,
                         products: false,
                         freeLearn: false,
-                        youtube:true,
+                        youtube: true,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -311,7 +317,7 @@ const Header = () => {
                         telegram: false,
                         products: false,
                         freeLearn: false,
-                        youtube:false,
+                        youtube: false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -338,7 +344,19 @@ const Header = () => {
           <div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
             عضویت
           </div>
-          <div className="max-[500px]:mr-2   cursor-pointer mr-4 font-bold relative">
+          <div className="max-[600px]:hidden  cursor-pointer mr-4  relative ">
+            <FaHeart className=" text-[1.7rem]  text-red-500 max-[500px]: " />
+            {favorites.length > 0 && (
+              <span className="absolute text-lg top-0 -translate-y-[.6rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
+                {" "}
+                <p className="mt-[.23rem]">
+                  {" "}
+                  {favorites.length.toLocaleString("fa")}
+                </p>
+              </span>
+            )}
+          </div>
+          <div className="max-[500px]:mr-3   cursor-pointer mr-4 font-bold relative">
             <img
               src={imgCart}
               alt="shopping cart"
@@ -354,7 +372,7 @@ const Header = () => {
               </span>
             )}
           </div>
-          <div className="max-[500px]:mr-1 mr-3 my-1  mx-1  ">
+          <div className="max-[500px]:mr-2 mr-3 my-1  mx-1  ">
             <ChangeThem setDarkMode={setDarkMode} darkMode={darkMode} />
           </div>
         </div>
@@ -372,6 +390,7 @@ const Dropshot = ({
   dropdownContactUs,
   removeDropShot,
 }) => {
+  const {favorites} = useSelector((state) => state.favorites);
   return (
     <div
       className={`${
@@ -390,7 +409,7 @@ const Dropshot = ({
         <div className=" flex flex-col items-start max-h-screen min-h-screen  overflow-y-auto">
           <div className="flex justify-between items-center w-full border-b-2 pb-4 p-8">
             <div className="flex items-center justify-between ml-8">
-              <img src={iconeBrand} alt="iconeBrand" className="w-10 h-10" />
+              <img src={iconeBrand} alt="iconeBrand" className="w-9 h-9" />
               <div className="flex flex-col items-center justify-center mx-3">
                 <h1 className=" text-2xl text-blue-700 font-extrabold dark:text-white">
                   {" "}
@@ -417,15 +436,22 @@ const Dropshot = ({
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                   <FaStore className="text-xl ml-3" />
-                  <h2>
-                    فروشگاه
-                  </h2>
+                  <h2>فروشگاه</h2>
                 </div>
               </li>
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                   <BiAnalyse className="text-xl ml-3" />
                   <h2>تحلیل روزانه</h2>
+                </div>
+              </li>
+              <li className=" w-full  py-3 my-3  ">
+                <div className="flex items-center justify-between w-full   cursor-pointer hover:text-blue-600 dark:hover:text-white ">
+                  <div className="flex items-center justify-start ">
+                    <FaHeart className="text-xl ml-3 text-red-500 " />
+                    <h2>لیست علاقه مندی ها</h2>
+                  </div>
+                  <span className="bg-red-500 text-white h-6 w-6 rounded-full  flex justify-center ">{favorites.length.toLocaleString("fa")}</span>
                 </div>
               </li>
               <li className="  flex flex-col items-start justify-start w-full  py-3 my-1  ">
