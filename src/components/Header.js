@@ -1,5 +1,4 @@
 import {
-  FaHome,
   FaCaretDown,
   FaTelegram,
   FaProductHunt,
@@ -15,13 +14,14 @@ import {
 } from "react-icons/hi2";
 import {BiAnalyse} from "react-icons/bi";
 import {FiSun, FiMoon, FiAlignRight, FiX, FiArrowLeft} from "react-icons/fi";
+import iconeBrand from "../assets/images/iconeBrand.svg";
 
 import {useEffect, useRef, useState} from "react";
 import {Switch} from "@headlessui/react";
-import imgCart from "../assets/images/shopping-cart.svg"
-import { useSelector } from "react-redux";
+import imgCart from "../assets/images/shopping-cart.svg";
+import {useSelector} from "react-redux";
 const Header = () => {
-  const {cart} =useSelector(state=>state.cart)
+  const {cart} = useSelector((state) => state.cart);
   const [dropshot, setDropshot] = useState(false);
   const [dropdownLearn, setDropdownLearn] = useState(false);
   const [dropdownContactUs, setDropdownContactUs] = useState(false);
@@ -51,7 +51,7 @@ const Header = () => {
       htmlElement.classList.remove("dark");
     }
   }, [darkMode]);
-  
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1155) {
@@ -91,10 +91,10 @@ const Header = () => {
         <div className="flex items-center justify-between h-full">
           <FiAlignRight
             onClick={() => setDropshot(true)}
-            className="min-[1155px]:hidden text-[2.3rem] ml-4 text-slate-600 max-[500px]:text-[2rem] cursor-pointer dark:text-slate-300 "
+            className="min-[1155px]:hidden text-[2.5rem] ml-3 text-slate-600 max-[500px]:text-[2rem] cursor-pointer dark:text-slate-300 "
           />
           <div className="flex items-center justify-between ml-8">
-            <FaHome className="max-[500px]:text-[2.1rem] text-[2.3rem] text-blue-700 dark:text-blue-600" />
+            <img src={iconeBrand} alt="iconeBrand" className="w-10 h-10 ml-1 max-[500px]:w-8 max-[500px]:h-8" />
             <div className="flex flex-col items-center justify-center max-[546px]:mx-0 max-[546px]:mr-3  mr-3">
               <h1 className="max-[370px]:hidden max-[500px]:text-sm  text-2xl text-blue-700 font-extrabold dark:text-slate-300">
                 ترید هوم
@@ -309,8 +309,20 @@ const Header = () => {
             عضویت
           </div>
           <div className="max-[500px]:mr-2   cursor-pointer mr-4 font-bold relative">
-              <img src={imgCart} alt="shopping cart" className=" h-8  max-[500px]:h-7 "/>
-              {cart.length>0 && <span className="absolute text-lg top-0 -translate-y-[.4rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center" > <p className="mt-[.23rem]"> {cart.length.toLocaleString("fa")}</p></span> }
+            <img
+              src={imgCart}
+              alt="shopping cart"
+              className=" h-8  max-[500px]:h-7 "
+            />
+            {cart.length > 0 && (
+              <span className="absolute text-lg top-0 -translate-y-[.4rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
+                {" "}
+                <p className="mt-[.23rem]">
+                  {" "}
+                  {cart.length.toLocaleString("fa")}
+                </p>
+              </span>
+            )}
           </div>
           <div className="max-[500px]:mr-1 mr-3 my-1  mx-1  ">
             <ChangeThem setDarkMode={setDarkMode} darkMode={darkMode} />
@@ -348,7 +360,7 @@ const Dropshot = ({
         <div className=" flex flex-col items-start max-h-screen min-h-screen  overflow-y-auto">
           <div className="flex justify-between items-center w-full border-b-2 pb-4 p-8">
             <div className="flex items-center justify-between ml-8">
-              <FaHome className=" text-[2.3rem] text-blue-700 dark:text-blue-500" />
+              <img src={iconeBrand} alt="iconeBrand" className="w-10 h-10" />
               <div className="flex flex-col items-center justify-center mx-3">
                 <h1 className=" text-2xl text-blue-700 font-extrabold dark:text-white">
                   {" "}
@@ -387,7 +399,9 @@ const Dropshot = ({
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                   <FaBtc className="text-xl ml-3" />
-                  <h2>NFT <span className=" text-[.8rem]">and</span> Airdrop</h2>
+                  <h2>
+                    NFT <span className=" text-[.8rem]">and</span> Airdrop
+                  </h2>
                 </div>
               </li>
               <li className="  flex flex-col items-start justify-start w-full  py-3 my-1  ">
