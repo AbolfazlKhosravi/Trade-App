@@ -2,12 +2,12 @@ import {
   FaCaretDown,
   FaTelegram,
   FaProductHunt,
-  FaBtc,
   FaInfoCircle,
   FaInstagramSquare,
+  FaStore,
+  FaYoutubeSquare,
 } from "react-icons/fa";
 import {
-  HiNewspaper,
   HiAcademicCap,
   HiChartBar,
   HiChatBubbleLeftRight,
@@ -28,13 +28,14 @@ const Header = () => {
   const [showFlash, setShowFlash] = useState({
     instagram: false,
     telegram: false,
+    youtube:false,
     aboutMe: false,
     freeLearn: false,
     products: false,
   });
   const [darkMode, setDarkMode] = useState(false);
   const removeDropShot = useRef(null);
-  console.log();
+
   useEffect(() => {
     const getThem = JSON.parse(localStorage.getItem("darkMode")) || false;
     setDarkMode(getThem);
@@ -94,7 +95,7 @@ const Header = () => {
             className="min-[1155px]:hidden text-[2.5rem] ml-3 text-slate-600 max-[500px]:text-[2rem] cursor-pointer dark:text-slate-300 "
           />
           <div className="flex items-center justify-between ml-8">
-            <img src={iconeBrand} alt="iconeBrand" className="w-10 h-10 ml-1 max-[500px]:w-8 max-[500px]:h-8" />
+            <img src={iconeBrand} alt="iconeBrand" className="w-9 h-9 ml-1 max-[500px]:w-8 max-[500px]:h-8" />
             <div className="flex flex-col items-center justify-center max-[546px]:mx-0 max-[546px]:mr-3  mr-3">
               <h1 className="max-[370px]:hidden max-[500px]:text-sm  text-2xl text-blue-700 font-extrabold dark:text-slate-300">
                 ترید هوم
@@ -106,9 +107,6 @@ const Header = () => {
           </div>
           <nav>
             <ul className="text-[1.1rem] max-[1155px]:hidden flex items-center text-slate-600 max-h-full min-h-full dark:text-slate-300">
-              <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white  ">
-                اخبار
-              </li>
               <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
                 مارکت
               </li>
@@ -116,7 +114,7 @@ const Header = () => {
                 تحلیل روزانه
               </li>
               <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
-                NFT <span className=" text-[.8rem]">and</span> Airdrop
+                فروشگاه
               </li>
               <li
                 className="px-3 py-5 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white"
@@ -141,6 +139,7 @@ const Header = () => {
                       telegram: false,
                       products: false,
                       freeLearn: false,
+                      youtube:false,
                     });
                   }}
                   className={`${
@@ -156,6 +155,7 @@ const Header = () => {
                         telegram: false,
                         products: false,
                         freeLearn: true,
+                        youtube:false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -180,11 +180,12 @@ const Header = () => {
                         telegram: false,
                         products: true,
                         freeLearn: false,
+                        youtube:false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
                       <FaProductHunt className="text-xl ml-3" />
-                      <p className="">صفحه محصولات</p>
+                      <p className="">اموزش های پولی </p>
                     </div>
                     <FiArrowLeft
                       className={`${
@@ -219,10 +220,11 @@ const Header = () => {
                       telegram: false,
                       products: false,
                       freeLearn: false,
+                      youtube:false,
                     });
                   }}
                   className={`${
-                    dropdownContactUs ? "  w-80 h-50" : " hidden"
+                    dropdownContactUs ? "  w-96 h-50" : " hidden"
                   } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-900`}>
                   <div
                     className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
@@ -234,6 +236,7 @@ const Header = () => {
                         telegram: false,
                         products: false,
                         freeLearn: false,
+                        youtube:false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -258,6 +261,7 @@ const Header = () => {
                         telegram: true,
                         products: false,
                         freeLearn: false,
+                        youtube:false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -278,10 +282,36 @@ const Header = () => {
                       setShowFlash({
                         ...showFlash,
                         aboutMe: false,
+                        instagram: false,
+                        telegram: false,
+                        products: false,
+                        freeLearn: false,
+                        youtube:true,
+                      })
+                    }>
+                    <div className="flex justify-between items-center ">
+                      <FaYoutubeSquare className="text-xl ml-3" />
+                      <p className=""> کانال یوتوب</p>
+                    </div>
+                    <FiArrowLeft
+                      className={`${
+                        showFlash.youtube
+                          ? "opacity-100 animate-arrow-left"
+                          : "opacity-0"
+                      } text-blue-700 dark:text-blue-500`}
+                    />
+                  </div>
+                  <div
+                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
+                    onMouseEnter={() =>
+                      setShowFlash({
+                        ...showFlash,
+                        aboutMe: false,
                         instagram: true,
                         telegram: false,
                         products: false,
                         freeLearn: false,
+                        youtube:false,
                       })
                     }>
                     <div className="flex justify-between items-center ">
@@ -346,12 +376,12 @@ const Dropshot = ({
     <div
       className={`${
         dropshot ? "w-full " : "w-0"
-      }  absolute   top-0 right-0 h-full`}>
+      }  absolute   top-0 right-0 h-full `}>
       <div
         onClick={() => setDropshot(false)}
         className={`${
           dropshot ? "w-full opacity-50 " : "w-0 opacity-0 "
-        }  bg-slate-900 h-screen absolute  z-20 top-0 right-0 `}></div>
+        }  bg-slate-900 h-screen absolute  z-20 top-0 right-0`}></div>
       <div
         ref={removeDropShot}
         className={`${
@@ -378,12 +408,6 @@ const Dropshot = ({
           </div>
           <nav className="w-full">
             <ul className="text-[1.1rem]  flex text-slate-600 dark:text-slate-300 flex-col p-6 w-full">
-              <li className=" w-full  py-3    ">
-                <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
-                  <HiNewspaper className="text-xl ml-3" />
-                  <h2>اخبار</h2>
-                </div>
-              </li>
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                   <HiChartBar className="text-xl ml-3 " />
@@ -392,16 +416,16 @@ const Dropshot = ({
               </li>
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
-                  <BiAnalyse className="text-xl ml-3" />
-                  <h2>تحلیل روزانه</h2>
+                  <FaStore className="text-xl ml-3" />
+                  <h2>
+                    فروشگاه
+                  </h2>
                 </div>
               </li>
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
-                  <FaBtc className="text-xl ml-3" />
-                  <h2>
-                    NFT <span className=" text-[.8rem]">and</span> Airdrop
-                  </h2>
+                  <BiAnalyse className="text-xl ml-3" />
+                  <h2>تحلیل روزانه</h2>
                 </div>
               </li>
               <li className="  flex flex-col items-start justify-start w-full  py-3 my-1  ">
@@ -433,7 +457,7 @@ const Dropshot = ({
                   <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
                     <div className="flex justify-between items-center ">
                       <FaProductHunt className="text-xl ml-3" />
-                      <p className="">صفحه محصولات</p>
+                      <p className="">اموزش های پولی </p>
                     </div>
                   </div>
                 </div>
@@ -455,7 +479,7 @@ const Dropshot = ({
                 <div
                   className={`${
                     dropdownContactUs
-                      ? "h-[12rem]  overflow-auto"
+                      ? "h-[16rem]  overflow-auto"
                       : " h-0  overflow-hidden"
                   } w-full transition-all ease-in-out duration-700 pt-4`}>
                   <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full  hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
@@ -468,6 +492,12 @@ const Dropshot = ({
                     <div className="flex justify-between items-center ">
                       <FaTelegram className="text-xl ml-3" />
                       <p className=""> کانال تلگرام</p>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
+                    <div className="flex justify-between items-center ">
+                      <FaYoutubeSquare className="text-xl ml-3" />
+                      <p className=""> کانال یوتوب</p>
                     </div>
                   </div>
                   <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
