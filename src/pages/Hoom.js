@@ -2,6 +2,7 @@ import Layout from "../layout/layout";
 import imgTitle from "../assets/images/telecommuting-animate.svg";
 import ProductsHoom from "../components/HoomComponents/ProductsHoom";
 
+import SwiperBanner from "../components/HoomComponents/SwiperBanner";
 
 const Hoom = () => {
   return (
@@ -9,7 +10,10 @@ const Hoom = () => {
       <main className="bg-gray-50  dark:bg-slate-950 min-h-screen max-w-full">
         <div className="2xl:container mx-auto flex flex-col  ">
           <DescriptionSite />
-          <ProductsHoom />
+          <div className="w-full flex flex-col bg-[#F2F0F0] dark:bg-slate-900 pt-6 md:pt-12 rounded-t-3xl shadow-2xl  ">
+            <SwiperBanner/>
+            <ProductsHoom />
+          </div>
         </div>
       </main>
     </Layout>
@@ -47,5 +51,6 @@ const DescriptionSite = () => {
     </div>
   );
 };
+
 
 export default Hoom;
