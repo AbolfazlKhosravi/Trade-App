@@ -7,8 +7,8 @@ import {
 import iconeBrand from "../assets/images/iconeBrand.svg";
 const Footer = () => {
   return (
-    <footer className="bg-[#f4f2ed] flex flex-col w-full h-full  sticky dark:bg-slate-800">
-      <div className="flex justify-between items-center w-full   pb-4 py-8 px-4 md:px-8 ">
+    <footer className="bg-[#f4f2ed] flex flex-col w-full h-full  sticky dark:bg-slate-800 ">
+      <div className="flex justify-between items-center w-full   pb-4 py-8 px-4  md:px-16">
         <div className="flex justify-between items-center">
           <div className="flex items-center justify-between ml-8">
             <img src={iconeBrand} alt="iconeBrand" className="w-9 h-9" />
@@ -27,7 +27,7 @@ const Footer = () => {
           درباره ما
         </a>
       </div>
-      <div className="flex items-start justify-between mt-8 mx-4 md:mx-8 ">
+      <div className="flex items-start justify-between mt-8 px-4 md:px-16 ">
         <div className="flex justify-between items-start w-[14rem] md:w-1/2  xl:w-1/4">
         <div className="flex flex-col">
             <h3 className="text-2xl text-blue-600">خدمات</h3>
