@@ -64,7 +64,6 @@ const ProductsHoom = () => {
         type="discount"
         text=" پیشنهاد شگفت انگیز"
       />
-      <ProductsComponent seeAll="دیدن همه" type="populer" text="محبوب ترین" />
       <ProductsComponent seeAll="دیدن همه" type="all" text="همه محصولات" />
     </section>
   );

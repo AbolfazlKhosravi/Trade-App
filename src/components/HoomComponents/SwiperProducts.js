@@ -44,16 +44,6 @@ const SwiperProducts = ({type}) => {
             </SwiperSlide>
           );
         }
-        if (type === "populer" && product.isPopular) {
-          return (
-            <SwiperSlide
-              key={product.id}
-              className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
-              <ProductComponent product={product}  />
-            </SwiperSlide>
-          );
-        }
-
         if (type === "all") {
           return (
             <SwiperSlide
