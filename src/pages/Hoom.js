@@ -108,22 +108,22 @@ const DescriptionSite = () => {
         </div>
       </div>
       <div className=" mb-8 flex justify-between items-start flex-wrap content-center mx-4 border-t border-slate-400 md:px-8 lg:px-12 lg:pb-2">
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-lg  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           شروع
         </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-lg  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           فروشگاه
         </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-lg  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           اموزش
         </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-lg  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           مارکت
         </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-lg  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           تحلیل روزانه
         </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-lg  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           ثبت نام
         </button>
       </div>
