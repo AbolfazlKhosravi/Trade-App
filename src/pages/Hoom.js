@@ -11,13 +11,15 @@ import {fetchFavorite} from "../features/products/favoritesSlice";
 import {fetchCart} from "../features/products/cartSlice";
 import { fetchDataCourses } from "../features/products/coursesSlice";
 import EducationComponents from "../components/HoomComponents/EducationComponents";
+import { fetchDataDailyAnalysis } from "../features/products/dailyAnalysisSlice";
 
 const Hoom = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDataProducts());
-    dispatch(fetchDataCourses())
+    dispatch(fetchDataCourses());
+    dispatch(fetchDataDailyAnalysis())
     dispatch(fetchFavorite());
     dispatch(fetchCart());
   }, [dispatch]);
