@@ -3,6 +3,7 @@ import imgTitle from "../assets/images/telecommuting-animate.svg";
 import ProductsHoom from "../components/HoomComponents/ProductsHoom";
 
 import SwiperBanner from "../components/HoomComponents/SwiperBanner";
+import MarketHoom from "../components/HoomComponents/marketHoom";
 
 const Hoom = () => {
   return (
@@ -12,6 +13,7 @@ const Hoom = () => {
           <DescriptionSite />
           <div className="w-full flex flex-col bg-[#F2F0F0] dark:bg-slate-900 pt-6 md:pt-12 rounded-t-3xl shadow-2xl  ">
             <SwiperBanner />
+            <MarketHoom/>
             <ProductsHoom />
           </div>
         </div>
@@ -32,7 +34,7 @@ const DescriptionSite = () => {
         <div className="flex flex-col items-center justify-center md:w-1/2 md:items-start min-[1488px]:w-2/5">
           <div className="flex flex-col items-center  px-3 pb-2    md:items-start   ">
             <h1 className="text-slate-600 dark:text-slate-300 text-[1.9rem] text-center font-extrabold  min-[495px]:mb-2   md:text-start md:text-4xl md:leading-[3.2rem] lg:text-5xl lg:leading-[5rem]">
-              ترید را سریع و اصولی یاد بگیرید !
+              ترید را سریع و اصولی یاد بگیرید 
             </h1>
             <p className="text-slate-500 text-[1rem]  pt-6  text-center lg:text-[.9rem] dark:text-slate-400 md:text-start  lg:text-lg lg:py-4">
               ما در این مسیر کنارتون هستیم تا ترید را اصولی یاد بگیرید و
