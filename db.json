@@ -267,26 +267,60 @@
        "recordingStatus":false
     }
   ],
-  "myFavorites": [
+  "dailyAnalysis":[
     {
-      "id": 1,
-      "name": "Strak",
-      "price": 450000,
-      "rate": "5",
-      "img": "https://s8.uupload.ir/files/help_author_with_a_new_book_or_magazine_cover_book_cover_contest-removebg-preview_el6f.png",
-      "discountedPrice": 350000,
-      "isPopular": true
-    }
-  ],
-  "cart": [
+     "id": 1,
+     "title": "تحلیل بیت کوین",
+     "price": 0,
+     "rate": "4.1",
+     "img": "https://s8.uupload.ir/files/planos_e_preços_leadlovers_-_plataforma_de_email_marketing_j21a.jpg",
+     "discountedPrice": 0,
+     "isPopular": true,
+     "instructor": "حسین خسروی",
+      "hours":"40 m",
+      "recordingStatus":false,
+      "Date":"2023-06-20T20:39:24.289Z"
+   },
     {
-      "id": 1,
-      "name": "Strak",
-      "price": 450000,
-      "rate": "5",
-      "img": "https://s8.uupload.ir/files/help_author_with_a_new_book_or_magazine_cover_book_cover_contest-removebg-preview_el6f.png",
-      "discountedPrice": 350000,
-      "isPopular": true
-    }
-  ]
+     "id": 2,
+     "title": " تحلیل فارکس  ",
+     "price": 0,
+     "rate": "4",
+     "img": "https://s8.uupload.ir/files/don_39_t_wait_for_a_market_crash_to_buy_these_2_growth_stocks_-_motley_fool_8cil.jpg",
+     "discountedPrice": 0,
+     "isPopular": true,
+     "instructor": "حسین خسروی",
+      "hours":" 30 m",
+      "recordingStatus":false,
+      "Date":"2023-06-20T20:39:24.289Z"
+   },
+    {
+     "id": 3,
+     "title": "تحلیل نفت",
+     "price": 0,
+     "rate": "4.5",
+     "img": "https://s8.uupload.ir/files/nvidia_stock_bear_vs_bull_-_motley_fool_inab.jpg",
+     "discountedPrice": 0,
+     "isPopular": true,
+     "instructor": "حسین خسروی",
+      "hours":" 20 m",
+      "recordingStatus":true,
+      "Date":"2023-06-20T20:39:24.289Z"
+   },
+    {
+     "id": 4,
+     "title": "تحلیل طلا",
+     "price": 0,
+     "rate": "5",
+     "img": "https://s8.uupload.ir/files/best_free_real-time_stock_charts_iec.jpg",
+     "discountedPrice": 0,
+     "isPopular": true,
+     "instructor": "حسین خسروی",
+      "hours":" 10 m",
+      "recordingStatus":true,
+      "Date":"2023-06-20T20:39:24.289Z"
+   }
+ ],
+  "myFavorites": [ ],
+  "cart": []
 }
