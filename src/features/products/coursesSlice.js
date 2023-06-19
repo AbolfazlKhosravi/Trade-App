@@ -1,7 +1,7 @@
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchData=createAsyncThunk("Courses/fetchData", async(_,{rejectWithValue})=>{
+export const fetchDataCourses=createAsyncThunk("Courses/fetchDataCourses", async(_,{rejectWithValue})=>{
  try {
   const data= await axios.get("https://khosravitradapp.glitch.me/courses");
   return data.data
@@ -20,13 +20,13 @@ export const coursesSlice = createSlice({
   name: 'courses',
   initialState,
   extraReducers:(builder)=> {
-    builder.addCase(fetchData.pending,(state,action)=>{
+    builder.addCase(fetchDataCourses.pending,(state,action)=>{
       return {...state,data:null,loding:true,error:null}
     })
-    builder.addCase(fetchData.fulfilled,(state,action)=>{
+    builder.addCase(fetchDataCourses.fulfilled,(state,action)=>{
       return {...state,data:action.payload,loding:false,error:null}
     })
-    builder.addCase(fetchData.rejected,(state,action)=>{
+    builder.addCase(fetchDataCourses.rejected,(state,action)=>{
       return {...state,data:null,loding:false,error:action.payload.message}
     })
   }
