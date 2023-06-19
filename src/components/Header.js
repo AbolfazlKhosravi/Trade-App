@@ -347,7 +347,7 @@ const Header = () => {
           <div className="max-[600px]:hidden  cursor-pointer mr-4  relative ">
             <FaHeart className=" text-[1.7rem]  text-red-500 max-[500px]: " />
             {favorites.length > 0 && (
-              <span className="absolute text-lg top-0 -translate-y-[.6rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
+              <span className="absolute text-lg top-0 -translate-y-[.6rem] translate-x-3 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
                 {" "}
                 <p className="mt-[.23rem]">
                   {" "}

@@ -2,113 +2,291 @@
   "products": [
     {
       "id": 1,
-      "name": "Take The Risk",
+      "name": "Strak",
       "price": 450000,
       "rate": "5",
-      "img": "https://s8.uupload.ir/files/result_(1)_w76v.png",
+      "img": "https://s8.uupload.ir/files/help_author_with_a_new_book_or_magazine_cover_book_cover_contest-removebg-preview_el6f.png",
       "discountedPrice": 350000,
       "isPopular": true
     },
     {
       "id": 2,
-      "name": "Take The Risk",
+      "name": "Glory & Grace",
       "price": 80000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1401-06/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%B3%D9%88%D8%A7%D9%86%D8%AD-%E2%80%8C%D8%A7%D9%84%D8%B9%D8%B4%D8%A7%D9%82.jpg",
+      "img": "https://s8.uupload.ir/files/book_cover_design_for_the_experts_only_book_cover_contest-removebg-preview_2ilv.png",
       "discountedPrice": 80000,
       "isPopular": false
     },
     {
       "id": 3,
-      "name": " اقتصاد زامبی",
+      "name": "Pary Time",
       "price": 150000,
       "rate": "3.1",
-      "img": "https://ketabweb.com/uploads/product/1402-02/20/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF-%D8%B2%D8%A7%D9%85%D8%A8%DB%8C.jpg",
+      "img": "https://s8.uupload.ir/files/book_cover_-_how_to_pray_when_you_don_t_have_time_book_cover_contest-removebg-preview_ub6w.png",
       "discountedPrice": 150000,
       "isPopular": true
     },
     {
       "id": 4,
-      "name": " سرمایه گزاری",
+      "name": " Reset ",
       "price": 500000,
       "rate": "3.1",
-      "img": "https://ketabweb.com/uploads/product/1402-02/11/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87%E2%80%8C-%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C-%D8%AF%D8%B1-%D8%AD%D9%88%D8%B2%D9%87%E2%80%8C%E2%80%8C-%D8%B1%D9%85%D8%B2%E2%80%8C%D8%A7%D8%B1%D8%B2%D9%87.jpg",
-      "discountedPrice": 100000,
+      "img": " https://s8.uupload.ir/files/rejection_reset_book_design_with_a_vibrant_positive_feel_book_cover_contest-removebg-preview_ez5o.png",
+      "discountedPrice": 400000,
       "isPopular": false
     },
     {
       "id": 5,
-      "name": " مختصر اقتصاد",
+      "name": "Expert",
       "price": 700000,
       "rate": "2.1",
-      "img": "https://ketabweb.com/uploads/product/1402-01/29/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%AA%D8%A7%D8%B1%DB%8C%D8%AE-%D9%85%D8%AE%D8%AA%D8%B5%D8%B1-%D8%A7%D9%82%D8%AA%D8%B5%D8%A7%D8%AF.jpg",
+      "img": "https://s8.uupload.ir/files/design_a_rock_star_book_cover_for_a_book_teaching_people_to_become_world-class_book_cover_contest-removebg-preview_sgtg.png",
       "discountedPrice": 550000,
       "isPopular": true
     },
     {
       "id": 6,
-      "name": "پسا سرمایه داری",
+      "name": " 30 DAy Lucud",
       "price": 500000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1401-12/03/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D9%BE%D8%B3%D8%A7%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87-%D8%AF%D8%A7%D8%B1%DB%8C.jpg",
+      "img": "https://s8.uupload.ir/files/win_a_036_30_lucid_dreaming_course_a_036_24_99_superpowers_ebook_for_free_33__3imr.png",
       "discountedPrice": 450000,
       "isPopular": true
     },
     {
       "id": 7,
-      "name": "  تحلیل بنیادی",
+      "name": "Living ",
       "price": 105000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1401-11/23/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%AA%D8%AD%D9%84%DB%8C%D9%84-%D8%A8%D9%86%DB%8C%D8%A7%D8%AF%DB%8C%D9%86-%D8%A8%D8%A7%D8%B2%D8%A7%D8%B1-%D8%A7%D8%B1%D8%B2%D9%87%D8%A7.jpg",
+      "img": "https://s8.uupload.ir/files/book_cover--_living_uncommonly_book_cover_contest-removebg-preview_yubf.png",
       "discountedPrice": 80000,
       "isPopular": false
     },
     {
       "id": 8,
-      "name": " اندیشه های اقتصادی",
+      "name": "Your Exit ",
       "price": 120000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/size-311.54x450-tarikhe-mokhtasar-andisheh-haye-eghtesadi.jpg",
+      "img": "https://s8.uupload.ir/files/book_design_-_hacking_your_exit_valuation_book_cover_contest_1_-removebg-preview_8yt5.png",
       "discountedPrice": 80000,
       "isPopular": true
     },
     {
       "id": 9,
-      "name": " ادبیات جهان ",
+      "name": " 21 Years of Wisdom  ",
       "price": 50000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1401-05/%DA%A9%D8%AA%D8%A7%D8%A8-%D8%AC%D9%88%D9%84%DB%8C%D9%88%D8%B3-%D9%88%DB%8C%D9%86%D8%B3%D8%A7%D9%85.jpg",
+      "img": "https://s8.uupload.ir/files/business_babes_and_bribes_one_american_s_improbable_18_year_odyssey_in_japan_memoir_needs_image_book_cover_contest-removebg-preview_760j.png",
       "discountedPrice": 50000,
       "isPopular": false
     },
     {
       "id": 10,
-      "name": "پرنده باز ",
+      "name": "Timeless ",
       "price": 90000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1400-11/%DA%A9%D8%AA%D8%A7%D8%A8-%D9%BE%D8%B1%D9%86%D8%AF%D9%87-%D8%A8%D8%A7%D8%B2.jpg",
+      "img": "https://s8.uupload.ir/files/design_a_creative_and_powerful_book_cover_for_a_book_about_personnel_management_book_cover_contest-removebg-preview_6ua8.png",
       "discountedPrice": 80000,
       "isPopular": true
     },
     {
       "id": 11,
-      "name": " عادت های موفقیت ",
+      "name": " Luzide ",
       "price": 100000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1402-02/29/%DA%A9%D8%AA%D8%A7%D8%A8converted-size-276.92x400--%D8%B9%D8%A7%D8%AF%D8%AA-%D9%87%D8%A7%DB%8C-%D9%85%D9%88%D9%81%D9%82%DB%8C%D8%AA.webp",
+      "img": "https://s8.uupload.ir/files/design_a_great_thriller_e_book_cover_about_spooky_lucid_dreams_wich_reach_into_the_readers_reality_book_cover_contest-removebg-preview_(1)_lvi9.png",
       "discountedPrice": 100000,
       "isPopular": true
     },
     {
       "id": 12,
-      "name": "عصر هوش مصنوعی ",
+      "name": " Time  ",
       "price": 40000,
       "rate": "4.1",
-      "img": "https://ketabweb.com/uploads/product/1401-10/19/%DA%A9%D8%AA%D8%A7%D8%A8size-311.54x450--%D8%B9%D8%B5%D8%B1-%D9%87%D9%88%D8%B4-%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C-%D9%88-%D8%A2%DB%8C%D9%86%D8%AF%D9%87-%D8%A7%D9%86%D8%B3%D8%A7%D9%86%DB%8C-%D9%85%D8%A7.jpg",
+      "img": "https://s8.uupload.ir/files/hubspot_pro_i_will_do_book_cover_design_for_45_on_fiverr_com-removebg-preview_(1)_qo7h.png",
       "discountedPrice": 40000,
       "isPopular": false
+    },
+    {
+      "id": 13,
+      "name": " Real Estate  ",
+      "price": 35000,
+      "rate": "4",
+      "img": "https://s8.uupload.ir/files/hubspot_pro_i_will_do_book_cover_design_for_45_on_fiverr_com-removebg-preview_wt6x.png",
+      "discountedPrice": 34000,
+      "isPopular": false
+    },
+    {
+      "id": 14,
+      "name": " Artemets  ",
+      "price": 50000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/in_this_moment_your_truth_will_come_book_cover_contest-removebg-preview_h54o.png",
+      "discountedPrice": 40000,
+      "isPopular": true
+    },
+    {
+      "id": 15,
+      "name": " Miracles  ",
+      "price": 30000,
+      "rate": "3.1",
+      "img": "https://s8.uupload.ir/files/josepepitojr_i_will_do_book_cover_design_book_layout_and_ebook_design_for_75_on_fiverr_com-removebg-preview_vv4j.png",
+      "discountedPrice": 30000,
+      "isPopular": false
+    },
+    {
+      "id": 16,
+      "name": " Auramicb  ",
+      "price": 35000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/laminate_catalogue-removebg-preview_rpz4.png",
+      "discountedPrice": 35000,
+      "isPopular": true
+    },
+    {
+      "id": 17,
+      "name": " Passion  ",
+      "price": 50000,
+      "rate": "4.6",
+      "img": "https://s8.uupload.ir/files/pexels-pixabay-256450-removebg-preview_qp5d.png",
+      "discountedPrice": 50000,
+      "isPopular": false
+    },
+    {
+      "id": 18,
+      "name": " The Creative Thinking  ",
+      "price": 45000,
+      "rate": "3.5",
+      "img": "https://s8.uupload.ir/files/creative_thinking_17_tactics_to_skyrocket_your_creativity_success_creative_thinking_creativity_creative_process_how_to_be_creative_-removebg-preview_a3co.png",
+      "discountedPrice": 45000,
+      "isPopular": false
+    },
+    {
+      "id": 19,
+      "name": " The Power Of Being  ",
+      "price": 40000,
+      "rate": "4.1",
+      "img": "https://s8.uupload.ir/files/the_power_of_being_yourself_k3bo.png",
+      "discountedPrice": 20000,
+      "isPopular": true
+    },
+    {
+      "id": 20,
+      "name": "The Paven's Call",
+      "price": 10000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/book_cover_designer-removebg-preview_ov89.png",
+      "discountedPrice": 10000,
+      "isPopular": true
     }
   ],
-  "myFavorites": [],
-  "cart": []
+  "courses":[
+     {
+      "id": 1,
+      "title": "ثبت نام در صرافی",
+      "price": 0,
+      "rate": "4.1",
+      "img": "https://s8.uupload.ir/files/planos_e_preços_leadlovers_-_plataforma_de_email_marketing_j21a.jpg",
+      "discountedPrice": 0,
+      "instructor": "حسین خسروی",
+      "isPopular": true,
+       "hours":"1 h",
+       "recordingStatus":false
+    },
+     {
+      "id": 2,
+      "title": "مقدمه ای به بازار",
+      "price": 0,
+      "rate": "4",
+      "img": "https://s8.uupload.ir/files/don_39_t_wait_for_a_market_crash_to_buy_these_2_growth_stocks_-_motley_fool_8cil.jpg",
+      "discountedPrice": 0,
+      "instructor": "حسین خسروی",
+      "isPopular": true,
+       "hours":"1 h 30 m",
+       "recordingStatus":false
+    },
+     {
+      "id": 3,
+      "title": "تحلیل بنیادی",
+      "price": 0,
+      "rate": "4.5",
+      "img": "https://s8.uupload.ir/files/nvidia_stock_bear_vs_bull_-_motley_fool_inab.jpg",
+      "discountedPrice": 0,
+      "instructor": "حسین خسروی",
+      "isPopular": false,
+       "hours":"3 h 30 m",
+       "recordingStatus":true
+    },
+     {
+      "id": 4,
+      "title": "تحلیل تکنیکال",
+      "price": 200000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/best_free_real-time_stock_charts_iec.jpg",
+      "discountedPrice": 200000,
+      "instructor": "حسین خسروی",
+      "isPopular": true,
+       "hours":"4 h 30 m",
+       "recordingStatus":true
+    },
+     {
+      "id": 5,
+      "title": "مدیریت سرمایه",
+      "price": 150000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/premium_photo_stock_market_or_forex_trading_graph_in_graphic_concept_(1)_54oy.jpg",
+      "discountedPrice": 100000,
+      "instructor": "حسین خسروی",
+      "isPopular": true,
+       "hours":"2 h",
+       "recordingStatus":false
+    },
+     {
+      "id": 6,
+      "title": "روش‌های معامله‌گری",
+      "price": 0,
+      "rate": "4.2",
+      "img": "https://s8.uupload.ir/files/premium_photo_stock_market_or_forex_trading_graph_in_graphic_concept_(2)_0c3r.jpg",
+      "discountedPrice": 0,
+      "instructor": "حسین خسروی",
+      "isPopular": false,
+       "hours":"1 h 20 m",
+       "recordingStatus":false
+    },
+     {
+      "id": 7,
+      "title": "روانشناسی ترید",
+      "price": 0,
+      "rate": "4.5",
+      "img": "https://s8.uupload.ir/files/using_the_dividend_capture_strategy_o7l9.jpg",
+      "discountedPrice": 0,
+      "instructor": "حسین خسروی",
+      "isPopular": true,
+       "hours":"1 h 40 m",
+       "recordingStatus":false
+    }
+  ],
+  "myFavorites": [
+    {
+      "id": 1,
+      "name": "Strak",
+      "price": 450000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/help_author_with_a_new_book_or_magazine_cover_book_cover_contest-removebg-preview_el6f.png",
+      "discountedPrice": 350000,
+      "isPopular": true
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "name": "Strak",
+      "price": 450000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/help_author_with_a_new_book_or_magazine_cover_book_cover_contest-removebg-preview_el6f.png",
+      "discountedPrice": 350000,
+      "isPopular": true
+    }
+  ]
 }
