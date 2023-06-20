@@ -88,7 +88,7 @@ const Header = () => {
   }, [dropshot]);
 
   return (
-    <div className="dark:bg-slate-950 backdrop-blur-2xl blur-0 sticky top-0 z-50">
+    <div className="dark:bg-slate-900  sticky top-0 z-50 bg-[#F2F0F0]">
       <div className="2xl:container mx-auto  opacity-100   w-full  flex items-center justify-between px-4  max-[500px]:px-1 h-16 ">
         <Dropshot
           setDropshot={setDropshot}

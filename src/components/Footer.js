@@ -7,7 +7,7 @@ import {
 import iconeBrand from "../assets/images/iconeBrand.svg";
 const Footer = () => {
   return (
-    <footer className="bg-[#f4f2ed] flex flex-col w-full h-full  sticky dark:bg-slate-800 ">
+    <footer className="bg-[#F2F0F0] flex flex-col w-full h-full  sticky dark:bg-slate-900 ">
       <div className="flex justify-between items-center w-full   pb-4 py-8 px-4  md:px-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center justify-between ml-8">
