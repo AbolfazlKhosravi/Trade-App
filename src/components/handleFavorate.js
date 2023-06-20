@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import lodingSvg from "../assets/images/loading.svg";
 
 const HandleFavorite = ({product}) => {
+
   const {error, clickedShowLoding, clickedShowError, favorites} = useSelector(
     (state) => state.favorites
   );

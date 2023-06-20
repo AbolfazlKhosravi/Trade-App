@@ -1,15 +1,14 @@
 import StarRating from "../StarRating";
 import {useState} from "react";
-import HandleFavorate from "../handleFavorate";
 import lodingSvg from "../../assets/images/loading.svg";
 import {useDispatch, useSelector} from "react-redux";
 import HandleCart from "../handleCart";
 import {fetchCart} from "../../features/products/cartSlice";
 import {FaRedoAlt} from "react-icons/fa";
-import {fetchFavorite} from "../../features/products/favoritesSlice";
+import HandleFavorateAll from "../HandleFavorateAll";
 
 const ProductComponent = ({product}) => {
-  const favoritesData = useSelector((state) => state.favorites);
+
   const cartData = useSelector((state) => state.cart);
   const [moreInformation, setMoreInformation] = useState("");
   const dispatch = useDispatch();
@@ -18,21 +17,9 @@ const ProductComponent = ({product}) => {
     return parseInt(discount);
   };
   return (
-    <article className="w-full h-full flex justify-start flex-col items-center text-center">
+    <article className="w-full h-full flex justify-start flex-col items-center text-center shadow-sm rounded-xl ">
       <div className="flex items-center justify-between p-3 max-h-9 w-full">
-        {favoritesData.loadingAll ? (
-          <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
-        ) : favoritesData.errorAll ? (
-          <div
-            onClick={() => dispatch(fetchFavorite())}
-            className=" cursor-pointer flex justify-center text-[.7rem]  text-red-500">
-            <span className="text-blue-600  ml-1">خطا</span> :{" "}
-            {favoritesData.errorAll}
-            <FaRedoAlt className="text-blue-600 mt-[1.5px] mr-2" />
-          </div>
-        ) : (
-          <HandleFavorate product={product} />
-        )}
+        <HandleFavorateAll product={product}/>
         {product.discountedPrice !== product.price ? (
           <div className="text-sm px-[.3rem]  text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
             %{" "}

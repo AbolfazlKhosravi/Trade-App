@@ -5,6 +5,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import React from "react";
+import CourseComponente from "./CourseComponente";
 
 const EducationComponents = () => {
   return (
@@ -39,10 +40,11 @@ const SwiperProducts = ({id}) => {
 
   const productsData = useSelector((state) => state.courses);
   const dailyAnalysisData = useSelector((state) => state.dailyAnalysis);
+
   if (id === "dailyAnalysis") {
-    data = productsData;
-  } else {
     data = dailyAnalysisData;
+  } else {
+    data = productsData;
   }
 
   if (data.loding)
@@ -67,10 +69,11 @@ const SwiperProducts = ({id}) => {
       }}
       className=" cursor-grab py-8 "
       modules={[Pagination]}>
-      {data.data.map((product) => {
-        <SwiperSlide
-          key={product.id}
-          className=" relative shadow-sm my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[13rem]    rounded-xl mb-8 ">
+      {data.data.map((course) => {
+       return <SwiperSlide
+          key={course.id}
+          className=" relative  my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[20rem]  min-w-[20rem] min-h-[20rem] max-h-[20rem] rounded-b-2xl rounded-t-3xl mb-8 shadow-sm ">
+            <CourseComponente course={course} />
         </SwiperSlide>;
       })}
     </Swiper>
