@@ -181,9 +181,9 @@
       "isPopular": true
     }
   ],
-  "courses":[
-     {
-      "id": 1,
+  "courses": [
+    {
+      "id": 21,
       "title": "ثبت نام در صرافی",
       "price": 0,
       "rate": "4.1",
@@ -191,11 +191,11 @@
       "discountedPrice": 0,
       "instructor": "حسین خسروی",
       "isPopular": true,
-       "hours":"1 h",
-       "recordingStatus":false
+      "hours": "1 h",
+      "recordingStatus": false
     },
-     {
-      "id": 2,
+    {
+      "id": 22,
       "title": "مقدمه ای به بازار",
       "price": 0,
       "rate": "4",
@@ -203,11 +203,11 @@
       "discountedPrice": 0,
       "instructor": "حسین خسروی",
       "isPopular": true,
-       "hours":"1 h 30 m",
-       "recordingStatus":false
+      "hours": "1 h 30 m",
+      "recordingStatus": false
     },
-     {
-      "id": 3,
+    {
+      "id": 23,
       "title": "تحلیل بنیادی",
       "price": 0,
       "rate": "4.5",
@@ -215,11 +215,11 @@
       "discountedPrice": 0,
       "instructor": "حسین خسروی",
       "isPopular": false,
-       "hours":"3 h 30 m",
-       "recordingStatus":true
+      "hours": "3 h 30 m",
+      "recordingStatus": true
     },
-     {
-      "id": 4,
+    {
+      "id": 24,
       "title": "تحلیل تکنیکال",
       "price": 200000,
       "rate": "5",
@@ -227,11 +227,11 @@
       "discountedPrice": 200000,
       "instructor": "حسین خسروی",
       "isPopular": true,
-       "hours":"4 h 30 m",
-       "recordingStatus":true
+      "hours": "4 h 30 m",
+      "recordingStatus": true
     },
-     {
-      "id": 5,
+    {
+      "id": 25,
       "title": "مدیریت سرمایه",
       "price": 150000,
       "rate": "5",
@@ -239,11 +239,11 @@
       "discountedPrice": 100000,
       "instructor": "حسین خسروی",
       "isPopular": true,
-       "hours":"2 h",
-       "recordingStatus":false
+      "hours": "2 h",
+      "recordingStatus": false
     },
-     {
-      "id": 6,
+    {
+      "id": 26,
       "title": "روش‌های معامله‌گری",
       "price": 0,
       "rate": "4.2",
@@ -251,11 +251,11 @@
       "discountedPrice": 0,
       "instructor": "حسین خسروی",
       "isPopular": false,
-       "hours":"1 h 20 m",
-       "recordingStatus":false
+      "hours": "1 h 20 m",
+      "recordingStatus": false
     },
-     {
-      "id": 7,
+    {
+      "id": 27,
       "title": "روانشناسی ترید",
       "price": 0,
       "rate": "4.5",
@@ -263,64 +263,64 @@
       "discountedPrice": 0,
       "instructor": "حسین خسروی",
       "isPopular": true,
-       "hours":"1 h 40 m",
-       "recordingStatus":false
+      "hours": "1 h 40 m",
+      "recordingStatus": false
     }
   ],
-  "dailyAnalysis":[
+  "dailyAnalysis": [
     {
-     "id": 1,
-     "title": "تحلیل بیت کوین",
-     "price": 0,
-     "rate": "4.1",
-     "img": "https://s8.uupload.ir/files/planos_e_preços_leadlovers_-_plataforma_de_email_marketing_j21a.jpg",
-     "discountedPrice": 0,
-     "isPopular": true,
-     "instructor": "حسین خسروی",
-      "hours":"40 m",
-      "recordingStatus":false,
-      "Date":"2023-06-20T20:39:24.289Z"
-   },
+      "id": 28,
+      "title": "تحلیل بیت کوین",
+      "price": 0,
+      "rate": "4.1",
+      "img": "https://s8.uupload.ir/files/planos_e_preços_leadlovers_-_plataforma_de_email_marketing_j21a.jpg",
+      "discountedPrice": 0,
+      "isPopular": true,
+      "instructor": "حسین خسروی",
+      "hours": "40 m",
+      "recordingStatus": false,
+      "Date": "2023-06-20T20:39:24.289Z"
+    },
     {
-     "id": 2,
-     "title": " تحلیل فارکس  ",
-     "price": 0,
-     "rate": "4",
-     "img": "https://s8.uupload.ir/files/don_39_t_wait_for_a_market_crash_to_buy_these_2_growth_stocks_-_motley_fool_8cil.jpg",
-     "discountedPrice": 0,
-     "isPopular": true,
-     "instructor": "حسین خسروی",
-      "hours":" 30 m",
-      "recordingStatus":false,
-      "Date":"2023-06-20T20:39:24.289Z"
-   },
+      "id": 29,
+      "title": " تحلیل فارکس  ",
+      "price": 0,
+      "rate": "4",
+      "img": "https://s8.uupload.ir/files/don_39_t_wait_for_a_market_crash_to_buy_these_2_growth_stocks_-_motley_fool_8cil.jpg",
+      "discountedPrice": 0,
+      "isPopular": true,
+      "instructor": "حسین خسروی",
+      "hours": " 30 m",
+      "recordingStatus": false,
+      "Date": "2023-06-20T20:39:24.289Z"
+    },
     {
-     "id": 3,
-     "title": "تحلیل نفت",
-     "price": 0,
-     "rate": "4.5",
-     "img": "https://s8.uupload.ir/files/nvidia_stock_bear_vs_bull_-_motley_fool_inab.jpg",
-     "discountedPrice": 0,
-     "isPopular": true,
-     "instructor": "حسین خسروی",
-      "hours":" 20 m",
-      "recordingStatus":true,
-      "Date":"2023-06-20T20:39:24.289Z"
-   },
+      "id": 30,
+      "title": "تحلیل نفت",
+      "price": 0,
+      "rate": "4.5",
+      "img": "https://s8.uupload.ir/files/nvidia_stock_bear_vs_bull_-_motley_fool_inab.jpg",
+      "discountedPrice": 0,
+      "isPopular": true,
+      "instructor": "حسین خسروی",
+      "hours": " 20 m",
+      "recordingStatus": true,
+      "Date": "2023-06-20T20:39:24.289Z"
+    },
     {
-     "id": 4,
-     "title": "تحلیل طلا",
-     "price": 0,
-     "rate": "5",
-     "img": "https://s8.uupload.ir/files/best_free_real-time_stock_charts_iec.jpg",
-     "discountedPrice": 0,
-     "isPopular": true,
-     "instructor": "حسین خسروی",
-      "hours":" 10 m",
-      "recordingStatus":true,
-      "Date":"2023-06-20T20:39:24.289Z"
-   }
- ],
-  "myFavorites": [ ],
+      "id": 31,
+      "title": "تحلیل طلا",
+      "price": 0,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/best_free_real-time_stock_charts_iec.jpg",
+      "discountedPrice": 0,
+      "isPopular": true,
+      "instructor": "حسین خسروی",
+      "hours": " 10 m",
+      "recordingStatus": true,
+      "Date": "2023-06-20T20:39:24.289Z"
+    }
+  ],
+  "myFavorites": [],
   "cart": []
 }
