@@ -1,17 +1,10 @@
 import StarRating from "../StarRating";
 import {useState} from "react";
-import lodingSvg from "../../assets/images/loading.svg";
-import {useDispatch, useSelector} from "react-redux";
-import HandleCart from "../handleCart";
-import {fetchCart} from "../../features/products/cartSlice";
-import {FaRedoAlt} from "react-icons/fa";
 import HandleFavorateAll from "../HandleFavorateAll";
+import HandleCartAll from "../HandleCartAll";
 
 const ProductComponent = ({product}) => {
-
-  const cartData = useSelector((state) => state.cart);
   const [moreInformation, setMoreInformation] = useState("");
-  const dispatch = useDispatch();
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
     return parseInt(discount);
@@ -19,7 +12,7 @@ const ProductComponent = ({product}) => {
   return (
     <article className="w-full h-full flex justify-start flex-col items-center text-center shadow-sm rounded-xl ">
       <div className="flex items-center justify-between p-3 max-h-9 w-full">
-        <HandleFavorateAll product={product}/>
+        <HandleFavorateAll product={product} />
         {product.discountedPrice !== product.price ? (
           <div className="text-sm px-[.3rem]  text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
             %{" "}
@@ -44,7 +37,7 @@ const ProductComponent = ({product}) => {
           <div className=" absolute top-2 left-0 right-0  text-[.8rem] text-slate-500 dark:text-slate-500">
             اطلاعات بیشتر
           </div>
-        ) }
+        )}
       </div>
       <div className="flex flex-col items-start pb-3 px-3 font-bold text-sm text-slate-700 dark:text-slate-200 w-full">
         <p
@@ -75,18 +68,7 @@ const ProductComponent = ({product}) => {
             </div>
             <StarRating rating={product.rate} />
           </div>
-          {cartData.loadingAll ? (
-            <img className="w-7 h-7" src={lodingSvg} alt="svg loding" />
-          ) : cartData.errorAll ? (
-            <div
-              className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer"
-              onClick={() => dispatch(fetchCart())}>
-              <FaRedoAlt className="text-blue-600 mt-[1.5px] " />
-              <span className="text-blue-600 ml-1 ">خطا</span>
-            </div>
-          ) : (
-            <HandleCart product={product} />
-          )}
+          <HandleCartAll product={product} />
         </div>
       </div>
     </article>

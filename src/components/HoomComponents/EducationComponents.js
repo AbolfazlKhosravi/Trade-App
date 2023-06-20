@@ -72,7 +72,7 @@ const SwiperProducts = ({id}) => {
       {data.data.map((course) => {
        return <SwiperSlide
           key={course.id}
-          className=" relative  my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[20rem]  min-w-[20rem] min-h-[20rem] max-h-[20rem] rounded-b-2xl rounded-t-3xl mb-8 shadow-sm ">
+          className=" relative  my-4 bg-white dark:bg-slate-950  flex flex-col justify-start items-center  max-w-[20rem]  min-w-[20rem]  rounded-b-2xl rounded-t-3xl mb-8 shadow-sm ">
             <CourseComponente course={course} />
         </SwiperSlide>;
       })}
