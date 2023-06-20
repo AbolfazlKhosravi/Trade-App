@@ -1,5 +1,5 @@
 import Layout from "../layout/layout";
-import imgTitle from "../assets/images/telecommuting-animate.svg";
+import imgTitle from "../assets/images/imageDiscription.svg";
 import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
 import ProductsHoom from "../components/HoomComponents/ProductsHoom";
