@@ -6,6 +6,7 @@ import {
   FaHeart,
   FaGithub,
   FaLinkedin,
+  FaRedoAlt,
 } from "react-icons/fa";
 import {
   HiAcademicCap,
@@ -15,12 +16,14 @@ import {
 import {BiAnalyse} from "react-icons/bi";
 import {FiSun, FiMoon, FiAlignRight, FiX, FiArrowLeft} from "react-icons/fi";
 import iconeBrand from "../assets/images/iconeBrand.svg";
-
+import lodingSvg from "../assets/images/loading.svg";
 import {useEffect, useRef, useState} from "react";
 import {Switch} from "@headlessui/react";
 import imgCart from "../assets/images/shopping-cart.svg";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {fetchCart} from "../features/products/cartSlice";
+import {fetchFavorite} from "../features/products/favoritesSlice";
 const Header = () => {
   const {cart} = useSelector((state) => state.cart);
   const {favorites} = useSelector((state) => state.favorites);
@@ -38,7 +41,10 @@ const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
   const removeDropShot = useRef(null);
   const navigate = useNavigate();
-
+  const cartData = useSelector((state) => state.cart);
+  const favoritesData = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
+  console.log(cartData);
   useEffect(() => {
     const getThem = JSON.parse(localStorage.getItem("darkMode")) || false;
     setDarkMode(getThem);
@@ -80,6 +86,7 @@ const Header = () => {
       document.body.style.overflow = "auto";
     }
   }, [dropshot]);
+
   return (
     <div className="dark:bg-slate-950 backdrop-blur-2xl blur-0 sticky top-0 z-50">
       <div className="2xl:container mx-auto  opacity-100   w-full  flex items-center justify-between px-4  max-[500px]:px-1 h-16 ">
@@ -331,14 +338,27 @@ const Header = () => {
           </div>
           <div className="max-[600px]:hidden  cursor-pointer mr-4  relative ">
             <FaHeart className=" text-[1.7rem]  text-red-500 max-[500px]: " />
-            {favorites.length > 0 && (
-              <span className="absolute text-lg top-0 -translate-y-[.6rem] translate-x-3 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
-                {" "}
-                <p className="mt-[.23rem]">
+            {favoritesData.loadingAll ? (
+              <img
+                className="w-7 h-7 absolute text-lg top-0 -translate-y-[.6rem] translate-x-3"
+                src={lodingSvg}
+                alt="svg loding"
+              />
+            ) : favoritesData.errorAll ? (
+              <FaRedoAlt
+                onClick={() => dispatch(fetchFavorite())}
+                className=" absolute text-[.9rem] top-0 -translate-y-[.3rem] translate-x-1 text-blue-500"
+              />
+            ) : (
+              favorites.length > 0 && (
+                <span className="absolute text-lg top-0 -translate-y-[.5rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
                   {" "}
-                  {favorites.length.toLocaleString("fa")}
-                </p>
-              </span>
+                  <p className="mt-[.23rem]">
+                    {" "}
+                    {favorites.length.toLocaleString("fa")}
+                  </p>
+                </span>
+              )
             )}
           </div>
           <div className="max-[500px]:mr-3   cursor-pointer mr-4 font-bold relative">
@@ -347,14 +367,27 @@ const Header = () => {
               alt="shopping cart"
               className=" h-8  max-[500px]:h-7 "
             />
-            {cart.length > 0 && (
-              <span className="absolute text-lg top-0 -translate-y-[.4rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
-                {" "}
-                <p className="mt-[.23rem]">
+            {cartData.loadingAll ? (
+              <img
+                className="w-7 h-7 absolute text-lg top-0 -translate-y-[.6rem] translate-x-3"
+                src={lodingSvg}
+                alt="svg loding"
+              />
+            ) : cartData.errorAll ? (
+              <FaRedoAlt
+                onClick={() => dispatch(fetchCart())}
+                className=" absolute text-[.9rem] top-0 -translate-y-[.3rem] translate-x-1 text-blue-500"
+              />
+            ) : (
+              cart.length > 0 && (
+                <span className="absolute text-lg top-0 -translate-y-[.35rem] translate-x-2 text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
                   {" "}
-                  {cart.length.toLocaleString("fa")}
-                </p>
-              </span>
+                  <p className="mt-[.23rem]">
+                    {" "}
+                    {cart.length.toLocaleString("fa")}
+                  </p>
+                </span>
+              )
             )}
           </div>
           <div className="max-[500px]:mr-2 mr-3 my-1  mx-1  ">
@@ -376,6 +409,8 @@ const Dropshot = ({
   removeDropShot,
 }) => {
   const {favorites} = useSelector((state) => state.favorites);
+  const favoritesData = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <div
@@ -439,8 +474,29 @@ const Dropshot = ({
                     <FaHeart className="text-xl ml-3 text-red-500 " />
                     <h2>لیست علاقه مندی ها</h2>
                   </div>
-                  <span className="bg-red-500 text-white h-6 w-6 rounded-full  flex justify-center ">
-                    {favorites.length.toLocaleString("fa")}
+                  <span className="">
+                    {favoritesData.loadingAll ? (
+                      <img
+                        className="w-6 h-6 "
+                        src={lodingSvg}
+                        alt="svg loding"
+                      />
+                    ) : favoritesData.errorAll ? (
+                      <FaRedoAlt
+                        onClick={() => dispatch(fetchFavorite())}
+                        className="  text-[.95rem]  text-blue-500 ml-1"
+                      />
+                    ) : (
+                      favorites.length > 0 && (
+                        <span className=" text-white bg-red-500 h-5 w-5 rounded-full flex items-center justify-center">
+                          {" "}
+                          <p className="mt-[.23rem]">
+                            {" "}
+                            {favorites.length.toLocaleString("fa")}
+                          </p>
+                        </span>
+                      )
+                    )}
                   </span>
                 </div>
               </li>
