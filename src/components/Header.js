@@ -1,12 +1,11 @@
 import {
   FaCaretDown,
-  FaTelegram,
   FaProductHunt,
   FaInfoCircle,
-  FaInstagramSquare,
   FaStore,
-  FaYoutubeSquare,
   FaHeart,
+  FaGithub,
+  FaLinkedin,
 } from "react-icons/fa";
 import {
   HiAcademicCap,
@@ -21,6 +20,7 @@ import {useEffect, useRef, useState} from "react";
 import {Switch} from "@headlessui/react";
 import imgCart from "../assets/images/shopping-cart.svg";
 import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 const Header = () => {
   const {cart} = useSelector((state) => state.cart);
   const {favorites} = useSelector((state) => state.favorites);
@@ -37,6 +37,7 @@ const Header = () => {
   });
   const [darkMode, setDarkMode] = useState(false);
   const removeDropShot = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getThem = JSON.parse(localStorage.getItem("darkMode")) || false;
@@ -91,12 +92,14 @@ const Header = () => {
           dropdownContactUs={dropdownContactUs}
           removeDropShot={removeDropShot}
         />
-        <div className="flex items-center justify-between h-full">
+        <div className="flex items-center justify-between h-full ">
           <FiAlignRight
             onClick={() => setDropshot(true)}
             className="min-[1155px]:hidden text-[2.5rem] ml-3 text-slate-600 max-[500px]:text-[2rem] cursor-pointer dark:text-slate-300 "
           />
-          <div className="flex items-center justify-between ml-8">
+          <div
+            onClick={() => navigate("/")}
+            className="flex items-center justify-between ml-8 cursor-pointer">
             <img
               src={iconeBrand}
               alt="iconeBrand"
@@ -210,7 +213,7 @@ const Header = () => {
                   setDropdownContactUs(false);
                 }}>
                 <div className="flex items-center justify-between ">
-                  <h2> ارتباط با ما</h2>
+                  <h2> ارتباط با من</h2>
                   <FaCaretDown
                     className={`${
                       dropdownContactUs ? " rotate-180 " : ""
@@ -233,6 +236,7 @@ const Header = () => {
                     dropdownContactUs ? "  w-96 h-50" : " hidden"
                   } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-900`}>
                   <div
+                    onClick={() => navigate("/aboutMe")}
                     className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
                     onMouseEnter={() =>
                       setShowFlash({
@@ -247,7 +251,7 @@ const Header = () => {
                     }>
                     <div className="flex justify-between items-center ">
                       <FaInfoCircle className="text-xl ml-3 " />
-                      <p className=""> درباره ما</p>
+                      <p className=""> درباره من</p>
                     </div>
                     <FiArrowLeft
                       className={`${
@@ -257,7 +261,10 @@ const Header = () => {
                       } text-blue-700 dark:text-blue-500  `}
                     />
                   </div>
-                  <div
+                  <a
+                    href="https://github.com/AbolfazlKhosravi"
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
                     onMouseEnter={() =>
                       setShowFlash({
@@ -271,8 +278,8 @@ const Header = () => {
                       })
                     }>
                     <div className="flex justify-between items-center ">
-                      <FaTelegram className="text-xl ml-3" />
-                      <p className=""> کانال تلگرام</p>
+                      <FaGithub className="text-xl ml-3" />
+                      <p className=""> گیت هاب </p>
                     </div>
                     <FiArrowLeft
                       className={`${
@@ -281,8 +288,11 @@ const Header = () => {
                           : "opacity-0"
                       } text-blue-700 dark:text-blue-500`}
                     />
-                  </div>
-                  <div
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/abolfazl-khosravi-a17097268/"
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
                     onMouseEnter={() =>
                       setShowFlash({
@@ -296,8 +306,8 @@ const Header = () => {
                       })
                     }>
                     <div className="flex justify-between items-center ">
-                      <FaYoutubeSquare className="text-xl ml-3" />
-                      <p className=""> کانال یوتوب</p>
+                      <FaLinkedin className="text-xl ml-3" />
+                      <p className=""> لینکدین </p>
                     </div>
                     <FiArrowLeft
                       className={`${
@@ -306,32 +316,7 @@ const Header = () => {
                           : "opacity-0"
                       } text-blue-700 dark:text-blue-500`}
                     />
-                  </div>
-                  <div
-                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
-                    onMouseEnter={() =>
-                      setShowFlash({
-                        ...showFlash,
-                        aboutMe: false,
-                        instagram: true,
-                        telegram: false,
-                        products: false,
-                        freeLearn: false,
-                        youtube: false,
-                      })
-                    }>
-                    <div className="flex justify-between items-center ">
-                      <FaInstagramSquare className="text-xl ml-3" />
-                      <p className="">صفحه اینستاگرام</p>
-                    </div>
-                    <FiArrowLeft
-                      className={`${
-                        showFlash.instagram
-                          ? "opacity-100 animate-arrow-left"
-                          : "opacity-0"
-                      } text-blue-700 dark:text-blue-500 `}
-                    />
-                  </div>
+                  </a>
                 </div>
               </li>
             </ul>
@@ -391,6 +376,7 @@ const Dropshot = ({
   removeDropShot,
 }) => {
   const {favorites} = useSelector((state) => state.favorites);
+  const navigate = useNavigate();
   return (
     <div
       className={`${
@@ -408,7 +394,9 @@ const Dropshot = ({
         } w-[100vw]  dark:bg-slate-800 bg-white max-w-[375px]  transition-all duration-500 absolute  h-screen z-30 right-0 ease-in-out overflow-y-auto`}>
         <div className=" flex flex-col items-start max-h-screen min-h-screen  overflow-y-auto">
           <div className="flex justify-between items-center w-full border-b-2 pb-4 p-8">
-            <div className="flex items-center justify-between ml-8">
+            <div
+              onClick={() => navigate("/")}
+              className="flex items-center justify-between ml-8">
               <img src={iconeBrand} alt="iconeBrand" className="w-9 h-9" />
               <div className="flex flex-col items-center justify-center mx-3">
                 <h1 className=" text-2xl text-blue-700 font-extrabold dark:text-white">
@@ -451,7 +439,9 @@ const Dropshot = ({
                     <FaHeart className="text-xl ml-3 text-red-500 " />
                     <h2>لیست علاقه مندی ها</h2>
                   </div>
-                  <span className="bg-red-500 text-white h-6 w-6 rounded-full  flex justify-center ">{favorites.length.toLocaleString("fa")}</span>
+                  <span className="bg-red-500 text-white h-6 w-6 rounded-full  flex justify-center ">
+                    {favorites.length.toLocaleString("fa")}
+                  </span>
                 </div>
               </li>
               <li className="  flex flex-col items-start justify-start w-full  py-3 my-1  ">
@@ -494,7 +484,7 @@ const Dropshot = ({
                   onClick={() => setDropdownContactUs(!dropdownContactUs)}>
                   <div className="flex items-center justify-start">
                     <HiChatBubbleLeftRight className="text-xl ml-3" />
-                    <h2>ارتباط با ما</h2>
+                    <h2>ارتباط با من</h2>
                   </div>
                   <FaCaretDown
                     className={`${
@@ -508,30 +498,34 @@ const Dropshot = ({
                       ? "h-[16rem]  overflow-auto"
                       : " h-0  overflow-hidden"
                   } w-full transition-all ease-in-out duration-700 pt-4`}>
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full  hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
+                  <div
+                    onClick={() => navigate("/aboutMe")}
+                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full  hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
                     <div className="flex justify-between items-center ">
                       <FaInfoCircle className="text-xl ml-3 " />
-                      <p className=""> درباره ما</p>
+                      <p className=""> درباره من</p>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
+                  <a
+                    href="https://github.com/AbolfazlKhosravi"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
                     <div className="flex justify-between items-center ">
-                      <FaTelegram className="text-xl ml-3" />
-                      <p className=""> کانال تلگرام</p>
+                      <FaGithub className="text-xl ml-3" />
+                      <p className=""> گیت هاب </p>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/abolfazl-khosravi-a17097268/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
                     <div className="flex justify-between items-center ">
-                      <FaYoutubeSquare className="text-xl ml-3" />
-                      <p className=""> کانال یوتوب</p>
+                      <FaLinkedin className="text-xl ml-3" />
+                      <p className=""> لینکدین </p>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:hover:bg-slate-700 dark:text-slate-300">
-                    <div className="flex justify-between items-center ">
-                      <FaInstagramSquare className="text-xl ml-3" />
-                      <p className="">صفحه اینستاگرام</p>
-                    </div>
-                  </div>
+                  </a>
                 </div>
               </li>
             </ul>
