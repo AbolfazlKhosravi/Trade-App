@@ -1,5 +1,6 @@
 import Layout from "../layout/layout";
 import imgTitle from "../assets/images/imageDiscription.svg";
+import imgTitleDark from "../assets/images/imageDiscriptionDark.svg";
 import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
 import ProductsHoom from "../components/HoomComponents/ProductsHoom";
@@ -84,11 +85,13 @@ const Hoom = () => {
   );
 };
 const DescriptionSite = () => {
+  const {darkMode}=useSelector(state=>state.darkMode)
+  console.log(darkMode);
   return (
     <div className="flex flex-col bg-[#F2F0F0] dark:bg-slate-900">
       <div className="flex flex-col  md:flex-row md:justify-between md:items-center  md:px-20 md:mt-4 ">
         <img
-          src={imgTitle}
+          src={darkMode ? imgTitleDark : imgTitle}
           alt="وبسایت اموزش ترید و خدمات "
           className=" w-full  md:w-1/2  md:order-last"
         />
