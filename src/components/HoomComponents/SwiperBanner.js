@@ -19,15 +19,15 @@ const SwiperBanner = () => {
         loop={true}
         navigation={true}
         speed={700}
-        className="swiperBanner h-48 md:h-64 lg:h-96 rounded-3xl cursor-pointer w-full ">
+        className="swiperBanner h-48 md:h-64 lg:h-[28rem] rounded-3xl cursor-pointer w-full ">
         <SwiperSlide className="px-4  h-full md:px-16 lg:px-20 flex justify-center items-start ">
-          <img className="object-cover rounded-2xl h-3/4 lg:h-5/6 w-full" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02451a6c65be41c9c68cbcd915e1b16ef5f86944_1686639552.jpg?x-oss-process=image/quality,q_95/format,webp" alt="banner"></img>
+          <img className="object-cover rounded-2xl h-3/4 lg:h-5/6 w-full" src="https://s8.uupload.ir/files/pexels-markus-spiske-3806753_t4oq.jpg" alt="banner"></img>
         </SwiperSlide>
         <SwiperSlide className="px-4  h-full md:px-16 lg:px-20 flex justify-center items-start">
-          <img className="object-cover rounded-2xl h-3/4 lg:h-5/6 w-full" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02451a6c65be41c9c68cbcd915e1b16ef5f86944_1686639552.jpg?x-oss-process=image/quality,q_95/format,webp" alt="banner"></img>
+          <img className="object-cover rounded-2xl h-3/4 lg:h-5/6 w-full" src="https://s8.uupload.ir/files/pexels-ivan-babydov-7788009_en9i.jpg" alt="banner"></img>
         </SwiperSlide>
         <SwiperSlide className="px-4  h-full md:px-16 lg:px-20 flex justify-center items-start">
-          <img className="object-cover rounded-2xl h-3/4 lg:h-5/6 w-full" src="https://dkstatics-public.digikala.com/digikala-adservice-banners/02451a6c65be41c9c68cbcd915e1b16ef5f86944_1686639552.jpg?x-oss-process=image/quality,q_95/format,webp" alt="banner"></img>
+          <img className="object-cover rounded-2xl h-3/4 lg:h-5/6 w-full" src="https://s8.uupload.ir/files/pexels-crypto-crow-1447418_iw7e.jpg" alt="banner"></img>
         </SwiperSlide>
       </Swiper>
 
