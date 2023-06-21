@@ -21,15 +21,14 @@ const HandleFavorite = ({product}) => {
       dispatch(deleteFavorite(product.id));
     }
   };
-
   if (isClickedLoding) {
-    return <img className="w-6 h-6" src={lodingSvg} alt="svg loading" />;
+    return <img className={`w-6 h-6 translate-x-1 ${product.hours ? "-translate-y-1" : ""}`}src={lodingSvg} alt="svg loading" />;
   }
 
   if (isClickedError) {
     return (
       <div
-        className="flex justify-center text-[.7rem] text-red-500 cursor-pointer"
+        className="flex justify-center text-[.7rem] text-red-500 cursor-pointer translate-x-1"
         onClick={handleRetry}>
         <span className="text-blue-600 ml-1">خطا</span>:{" "}
         {error ? error : "Network Error"}{" "}

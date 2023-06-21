@@ -22,13 +22,13 @@ const HandleCart = ({product}) => {
   };
 
   if (isClickedLoding) {
-    return <img className="w-6 h-6" src={lodingSvg} alt="svg loading" />;
+    return <img className="w-6 h-6 translate-x-1" src={lodingSvg} alt="svg loading" />;
   }
 
   if (isClickedError) {
     return (
       <div
-        className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer"
+        className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer translate-x-1"
         onClick={handleRetry}>
         <FaRedoAlt className="text-blue-600 mt-[1.5px] " />
         <span className="text-blue-600 ml-1 ">خطا</span>

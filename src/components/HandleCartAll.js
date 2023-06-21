@@ -11,10 +11,10 @@ const HandleCartAll = ({product}) => {
   return (
     <>
        {cartData.loadingAll ? (
-            <img className="w-7 h-7" src={lodingSvg} alt="svg loding" />
+            <img className="w-7 h-7 translate-x-1" src={lodingSvg} alt="svg loding" />
           ) : cartData.errorAll ? (
             <div
-              className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer"
+              className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer translate-x-1"
               onClick={() => dispatch(fetchCart())}>
               <FaRedoAlt className="text-blue-600 mt-[1.5px] " />
               <span className="text-blue-600 ml-1 ">خطا</span>

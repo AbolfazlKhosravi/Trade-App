@@ -11,11 +11,11 @@ const HandleFavorateAll = ({product}) => {
   return (
     <>
       {favoritesData.loadingAll ? (
-        <img className="w-6 h-6" src={lodingSvg} alt="svg loding" />
+        <img className={`w-6 h-6 translate-x-1 ${product.hours ? "-translate-y-1" : ""}`} src={lodingSvg} alt="svg loding" />
       ) : favoritesData.errorAll ? (
         <div
           onClick={() => dispatch(fetchFavorite())}
-          className=" cursor-pointer flex justify-center text-[.7rem]  text-red-500">
+          className=" cursor-pointer flex justify-center text-[.7rem]  text-red-500 translate-x-1">
           <span className="text-blue-600  ml-1">خطا</span> :{" "}
           {favoritesData.errorAll}
           <FaRedoAlt className="text-blue-600 mt-[1.5px] mr-2" />

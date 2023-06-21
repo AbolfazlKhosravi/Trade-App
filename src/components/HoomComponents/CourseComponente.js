@@ -16,19 +16,21 @@ const CourseComponente = ({course}) => {
           alt={course.title}
           className="w-full  min-h-[10rem] max-h-[10rem] object-cover rounded-3xl cursor-pointer hover:scale-110 transition-all"
         />
-        <span className="absolute top-0 right-0 p-3 w-full flex justify-between items-center ">
+        <span className="absolute top-0 right-0 p-3 w-full flex justify-between ">
           <HandleFavorateAll product={course} />
-          {course.discountedPrice !== course.price ? (
-            <div className="text-sm px-[.3rem]  text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
-              %{" "}
-              {calculationOfDiscountPercentage(
-                course.discountedPrice,
-                course.price
-              ).toLocaleString("fa")}
-            </div>
-          ) : (
-            ""
-          )}
+          <div>
+            {course.discountedPrice !== course.price ? (
+              <div className="text-sm px-[.3rem]  text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
+                %{" "}
+                {calculationOfDiscountPercentage(
+                  course.discountedPrice,
+                  course.price
+                ).toLocaleString("fa")}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         </span>
       </div>
       <div className="w-full px-3 py-2 flex justify-between items-center">
@@ -43,7 +45,9 @@ const CourseComponente = ({course}) => {
           </p>
         </div>
         <div className="flex items-center">
-          <p className="text-sm text-stone-800 font-bold dark:text-slate-300">{course.title} </p>
+          <p className="text-sm text-stone-800 font-bold dark:text-slate-300">
+            {course.title}{" "}
+          </p>
           {course.Date ? (
             <p className="text-[.6rem] text-blue-500 font-bold mr-2">
               {new Date(course.Date).toLocaleString("fa-IR", {
@@ -56,7 +60,6 @@ const CourseComponente = ({course}) => {
         </div>
       </div>
       <div className="w-full px-3 pb-1 flex justify-between items-center">
-        
         <div className="flex  flex-col items-start ">
           <div className="text-[1.05rem] ">
             {course.discountedPrice !== course.price ? (
@@ -69,7 +72,9 @@ const CourseComponente = ({course}) => {
                   {course.price.toLocaleString("fa")}{" "}
                 </div>
               </div>
-            ) : course.price===0?<span className="text-[.85rem] text-blue-500">رایگان</span> : (
+            ) : course.price === 0 ? (
+              <span className="text-[.85rem] text-blue-500">رایگان</span>
+            ) : (
               <div className="text-[1.05rem] ">
                 {course.price.toLocaleString("fa")}{" "}
                 <span className="text-[.7rem] text-slate-500">تومان</span>
@@ -77,13 +82,18 @@ const CourseComponente = ({course}) => {
             )}
           </div>
           <div className="text-[.85rem] flex items-center ">
-          <StarRating rating={course.rate} />
-          <p dir="ltr" className="text-[.8rem] text-slate-600 mx-3 mt-1 font-bold dark:text-slate-400">{course.hours}</p>
-          <p  className="text-[.9rem] text-blue-500 mx-3 ">{course.recordingStatus? "درحال ضبط": "تکمیل شده"}</p>
+            <StarRating rating={course.rate} />
+            <p
+              dir="ltr"
+              className="text-[.8rem] text-slate-600 mx-3 mt-1 font-bold dark:text-slate-400">
+              {course.hours}
+            </p>
+            <p className="text-[.9rem] text-blue-500 mx-3 ">
+              {course.recordingStatus ? "درحال ضبط" : "تکمیل شده"}
+            </p>
           </div>
         </div>
         <HandleCartAll product={course} />
-
       </div>
     </article>
   );
