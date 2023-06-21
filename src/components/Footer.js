@@ -4,8 +4,8 @@ import {NavLink, useNavigate} from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
   return (
-    <footer className="bg-[#F2F0F0] flex flex-col w-full h-full  sticky dark:bg-slate-900 ">
-      <div className="flex justify-between items-center w-full   pb-4 py-8 px-4  md:px-4">
+    <footer className="2xl:container mx-auto flex flex-col w-full ">
+     <div className="flex justify-between items-center w-full   pb-4 py-8 px-4  md:px-4">
         <div className="flex justify-between items-center">
           <div
             onClick={() => navigate("/")}
@@ -25,7 +25,7 @@ const Footer = () => {
         <NavLink
           to="/aboutMe"
           className="text-xl text-blue-500 hover:text-blue-600">
-          درباره ما
+          درباره من
         </NavLink>
       </div>
       <div className="flex items-start justify-between mt-8 px-4 md:px-6 ">

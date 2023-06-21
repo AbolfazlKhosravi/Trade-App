@@ -7,7 +7,7 @@ import { ScrollLink } from "react-scroll";
 function App() {
   return (
     <Provider store={store}>
-      <div className="min-h-screen">
+      <div>
         <BrowserRouter>
           <Routes>
             {routes.map((route) => (

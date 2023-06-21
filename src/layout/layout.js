@@ -10,11 +10,11 @@ const Layout = ({children}) => {
     scroll.scrollToTop();
   }, [pathname]);
   return (
-    <>
+    <div className="min-h-screen bg-[#F2F0F0] dark:bg-slate-900 flex flex-col">
       <Header />
-      {children}
+      <div class="flex-1">{children}</div>
       <Footer />
-    </>
+    </div>
   );
 };
 

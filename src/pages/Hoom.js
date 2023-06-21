@@ -71,25 +71,23 @@ const Hoom = () => {
   ]);
   return (
     <Layout>
-      <main className="bg-gray-50  dark:bg-slate-900 min-h-screen max-w-full">
-        <div className="2xl:container mx-auto flex flex-col  ">
+      <main className="  max-w-full 2xl:container mx-auto flex flex-col">
           <DescriptionSite />
-          <div className="w-full flex flex-col bg-[#F2F0F0] dark:bg-slate-900 pt-6 md:pt-12 ">
+          <div className="w-full flex flex-col pt-6 md:pt-12 ">
             <SwiperBanner />
             <MarketHoom />
             <EducationComponents />
             <ProductsHoom />
           </div>
-        </div>
       </main>
     </Layout>
   );
 };
 const DescriptionSite = () => {
   const {darkMode} = useSelector((state) => state.darkMode);
-  console.log(darkMode);
+  
   return (
-    <div className="flex flex-col bg-[#F2F0F0] dark:bg-slate-900">
+    <div className="flex flex-col">
       <div className="flex flex-col  md:flex-row md:justify-between md:items-center  md:px-20 md:mt-4 ">
         <img
           src={darkMode ? imgTitleDark : imgTitle}
