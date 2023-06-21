@@ -9,9 +9,9 @@ import MarketHoom from "../components/HoomComponents/marketHoom";
 import {fetchDataProducts} from "../features/products/productsSlice";
 import {fetchFavorite} from "../features/products/favoritesSlice";
 import {fetchCart} from "../features/products/cartSlice";
-import { fetchDataCourses } from "../features/products/coursesSlice";
+import {fetchDataCourses} from "../features/products/coursesSlice";
 import EducationComponents from "../components/HoomComponents/EducationComponents";
-import { fetchDataDailyAnalysis } from "../features/products/dailyAnalysisSlice";
+import {fetchDataDailyAnalysis} from "../features/products/dailyAnalysisSlice";
 
 const Hoom = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const Hoom = () => {
   useEffect(() => {
     dispatch(fetchDataProducts());
     dispatch(fetchDataCourses());
-    dispatch(fetchDataDailyAnalysis())
+    dispatch(fetchDataDailyAnalysis());
     dispatch(fetchFavorite());
     dispatch(fetchCart());
   }, [dispatch]);
@@ -75,7 +75,7 @@ const Hoom = () => {
           <div className="w-full flex flex-col bg-[#F2F0F0] dark:bg-slate-900 pt-6 md:pt-12 ">
             <SwiperBanner />
             <MarketHoom />
-            <EducationComponents/>
+            <EducationComponents />
             <ProductsHoom />
           </div>
         </div>
@@ -86,7 +86,7 @@ const Hoom = () => {
 const DescriptionSite = () => {
   return (
     <div className="flex flex-col bg-[#F2F0F0] dark:bg-slate-900">
-      <div className="flex flex-col  md:flex-row md:justify-between md:items-center  md:px-20 md:mt-4 " >
+      <div className="flex flex-col  md:flex-row md:justify-between md:items-center  md:px-20 md:mt-4 ">
         <img
           src={imgTitle}
           alt="وبسایت اموزش ترید و خدمات "

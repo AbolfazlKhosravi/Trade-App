@@ -24,9 +24,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {fetchCart} from "../features/products/cartSlice";
 import {fetchFavorite} from "../features/products/favoritesSlice";
+import { change } from "../features/Attributes/darkMode";
+
 const Header = () => {
   const {cart} = useSelector((state) => state.cart);
   const {favorites} = useSelector((state) => state.favorites);
+  const {darkMode} = useSelector((state) => state.darkMode);
   const [dropshot, setDropshot] = useState(false);
   const [dropdownLearn, setDropdownLearn] = useState(false);
   const [dropdownContactUs, setDropdownContactUs] = useState(false);
@@ -38,17 +41,13 @@ const Header = () => {
     freeLearn: false,
     products: false,
   });
-  const [darkMode, setDarkMode] = useState(false);
+
   const removeDropShot = useRef(null);
   const navigate = useNavigate();
   const cartData = useSelector((state) => state.cart);
   const favoritesData = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
-  console.log(cartData);
-  useEffect(() => {
-    const getThem = JSON.parse(localStorage.getItem("darkMode")) || false;
-    setDarkMode(getThem);
-  }, []);
+
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
@@ -391,7 +390,7 @@ const Header = () => {
             )}
           </div>
           <div className="max-[500px]:mr-2 mr-3 my-1  mx-1  ">
-            <ChangeThem setDarkMode={setDarkMode} darkMode={darkMode} />
+            <ChangeThem  darkMode={darkMode} />
           </div>
         </div>
       </div>
@@ -592,8 +591,9 @@ const Dropshot = ({
   );
 };
 
-function ChangeThem({setDarkMode, darkMode}) {
+function ChangeThem({ darkMode}) {
   const [enabled, setEnabled] = useState(false);
+  const dispatch = useDispatch();
   return (
     <Switch
       checked={enabled}
@@ -610,12 +610,12 @@ function ChangeThem({setDarkMode, darkMode}) {
         {!darkMode ? (
           <FiSun
             className="text-yellow-500 text-lg cursor-pointer"
-            onClick={() => setDarkMode(true)}
+            onClick={() => dispatch(change())}
           />
         ) : (
           <FiMoon
             className="text-blue-800 text-lg cursor-pointer"
-            onClick={() => setDarkMode(false)}
+            onClick={() => dispatch(change())}
           />
         )}
       </span>

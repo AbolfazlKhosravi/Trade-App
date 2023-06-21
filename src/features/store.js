@@ -4,13 +4,15 @@ import favoritesReducer from './products/favoritesSlice'
 import cartReducer from './products/cartSlice'
 import coursesSlice from './products/coursesSlice'
 import dailyAnalysisSlice from './products/dailyAnalysisSlice'
+import  darkModeSlice  from './Attributes/darkMode'
 const store = configureStore({
     reducer: {
         products:productsReducer,
         favorites:favoritesReducer,
         cart:cartReducer,
         courses:coursesSlice,
-        dailyAnalysis:dailyAnalysisSlice
+        dailyAnalysis:dailyAnalysisSlice,
+        darkMode:darkModeSlice
     },
 })
 
