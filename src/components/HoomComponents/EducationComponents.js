@@ -21,7 +21,7 @@ const EducationComponents = () => {
 
 const EducationComponent = ({text, id}) => {
   return (
-    <article className="mt-7 px-1">
+    <article className="mt-7 px-1" id={id==="dailyAnalysis"? "dailyAnalysis" : "courses"}>
       <div className="flex justify-between items-center w-full">
         <h3 className="text-slate-700 dark:text-slate-300 text-[1.1rem] font-bold lg:text-[1.15rem]">
           {text}

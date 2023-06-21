@@ -13,6 +13,7 @@ import {fetchCart} from "../features/products/cartSlice";
 import {fetchDataCourses} from "../features/products/coursesSlice";
 import EducationComponents from "../components/HoomComponents/EducationComponents";
 import {fetchDataDailyAnalysis} from "../features/products/dailyAnalysisSlice";
+import {Link} from "react-scroll";
 
 const Hoom = () => {
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ const Hoom = () => {
   );
 };
 const DescriptionSite = () => {
-  const {darkMode}=useSelector(state=>state.darkMode)
+  const {darkMode} = useSelector((state) => state.darkMode);
   console.log(darkMode);
   return (
     <div className="flex flex-col bg-[#F2F0F0] dark:bg-slate-900">
@@ -110,24 +111,45 @@ const DescriptionSite = () => {
         </div>
       </div>
       <div className=" mb-8 flex justify-between items-start flex-wrap  mx-4   md:px-8 lg:px-12 lg:pb-2">
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <a className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10  py-4 rounded-3xl mx-4  md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           شروع
-        </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        </a>
+        <Link
+          to="store"
+          className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10 py-4 rounded-3xl mx-4 md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem] bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900"
+          smooth={true}
+          offset={-50}
+          duration={500}>
           فروشگاه
-        </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
-          اموزش
-        </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
-          مارکت
-        </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        </Link>
+        <Link
+          to="courses"
+          className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10 py-4 rounded-3xl mx-4 md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem] bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900"
+          smooth={true}
+          offset={-70}
+          duration={500}>
+          دوره ها
+        </Link>
+        <Link
+          to="market"
+          className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10 py-4 rounded-3xl mx-4 md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem] bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900"
+          smooth={true}
+          duration={500}
+          offset={-50}
+          >
+           مارکت
+        </Link>
+        <Link
+          to="dailyAnalysis"
+          className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10 py-4 rounded-3xl mx-4 md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem] bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900"
+          smooth={true}
+          offset={-70}
+          duration={500}>
           تحلیل روزانه
-        </button>
-        <button className="flex justify-center items-center w-28 mt-10  py-4 rounded-3xl mx-4   md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        </Link>
+        <a className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10  py-4 rounded-3xl mx-4  md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           ثبت نام
-        </button>
+        </a>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import routes from "./routes";
 import store from "./features/store";
 import {Provider} from "react-redux";
 import { Toaster } from 'react-hot-toast';
-
+import { ScrollLink } from "react-scroll";
 function App() {
   return (
     <Provider store={store}>
@@ -21,6 +21,7 @@ function App() {
         </BrowserRouter>
       </div>
       <Toaster />
+      <ScrollLink />
     </Provider>
   );
 }
