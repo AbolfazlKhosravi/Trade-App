@@ -92,7 +92,7 @@ const DescriptionSite = () => {
         <img
           src={darkMode ? imgTitleDark : imgTitle}
           alt="وبسایت اموزش ترید و خدمات "
-          className=" w-full  md:w-1/2  md:order-last"
+          className=" w-full  md:w-1/2  md:order-last p-2 md:p-0 lg:p-4"
         />
         <div className="flex flex-col items-center justify-center md:w-1/2 md:items-start min-[1488px]:w-2/5">
           <div className="flex flex-col items-center  px-3 pb-2    md:items-start   ">
