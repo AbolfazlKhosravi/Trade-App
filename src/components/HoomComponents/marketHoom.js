@@ -78,17 +78,17 @@ const MarketHoom = () => {
         <td className="py-3  text-sm font-medium ">
           <div className="flex items-center justify-start ">
             <img className="w-8 h-8 lg:w-10 lg:h-10" src={crypto.src} alt={crypto.id} />
-            <h3 className="flex items-center mr-2 font-bold text-black dark:text-gray-200 lg:text-[1.1rem]">
+            <h3 className="flex items-center mr-2 font-bold text-black dark:text-gray-200 lg:text-[1rem]">
               {" "}
               {crypto.symbol}{" "}
-              <span className="mr-2 text-gray-500  text-[.8rem] lg:text-sm">
+              <span className="mr-2 text-gray-500  text-[.8rem] lg:text-[.82rem]">
                 {crypto.name}
               </span>
             </h3>
           </div>
         </td>
         <td className=" w-1/2 flex justify-between ">
-          <div className="py-3  text-[.85rem] font-medium flex text-slate-700 dark:text-slate-300 sm:min-w-[5rem] lg:text-[1rem]">
+          <div className="py-3  text-[.85rem] font-medium flex text-slate-700 dark:text-slate-300 sm:min-w-[5rem] lg:text-[.9rem] ">
             {cryptoCurrency ? (
               `$${cryptoCurrency.usd.toLocaleString("en", {
                 maximumFractionDigits: 5,
@@ -99,7 +99,7 @@ const MarketHoom = () => {
           </div>
           <div
             dir="ltr"
-            className={`py-3  text-[.85rem] font-medium lg:text-[1rem] ${
+            className={`py-3  text-[.85rem] font-medium lg:text-[.9rem] px-4 ${
               cryptoCurrency && cryptoCurrency.usd_24h_change >= 0
                 ? "text-green-600"
                 : "text-red-600"
@@ -109,16 +109,16 @@ const MarketHoom = () => {
                 maximumFractionDigits: 2,
               })}%`
             ) : (
-              <p className="text-green-600 text-sm px-4">0%</p>
+              <p className="text-green-600 text-sm px-2">0%</p>
             )}
           </div>
-          <div dir="ltr" className="py-3  text-[.85rem] font-medium  hidden sm:flex text-slate-700 dark:text-slate-300 sm:min-w-[6rem] lg:text-[1rem]">
+          <div dir="ltr" className="py-3  text-[.85rem] font-medium  hidden sm:flex text-slate-700 dark:text-slate-300 sm:min-w-[6rem] lg:text-[.9rem] px-2" >
             {cryptoCurrency ? `$${(
               (cryptoCurrency.usd_market_cap/1000000).toLocaleString("en", {
                 maximumFractionDigits: 0,
               })
             )} M ` : (
-              <p className=" text-sm px-6">$0</p>
+              <p className=" text-sm px-7 lg:px-8">$0</p>
             )}
           </div>
         </td>
@@ -135,18 +135,18 @@ const MarketHoom = () => {
         <table className="min-w-full max-w-full flex flex-col items-start">
           <thead className=" w-full flex">
             <tr className="w-full flex justify-between items-center">
-              <th className="py-3  text-sm font-medium tracking-wider text-right text-gray-700  dark:text-gray-400 lg:text-[.9rem]">
+              <th className="py-3  text-sm font-medium tracking-wider text-right text-gray-700  dark:text-gray-400 lg:text-[.8rem]">
                 نام
               </th>
               <th className=" w-1/2 flex justify-between items-center">
-                <div className="py-3  text-sm font-medium tracking-wider text-right text-gray-700  dark:text-gray-400 sm:min-w-[5rem] lg:text-[.9rem] ">
+                <div className="py-3  text-sm font-medium tracking-wider text-right text-gray-700  dark:text-gray-400 sm:min-w-[5rem] lg:text-[.8rem] ">
                   {" "}
                   قیمت
                 </div>
-                <div className="py-3  text-sm font-medium tracking-wider text-right text-gray-700  dark:text-gray-400 lg:text-[.9rem]">
+                <div className="py-3  text-sm font-medium tracking-wider text-right text-gray-700  dark:text-gray-400 lg:text-[.8rem]">
                   تغییر 24h{" "}
                 </div>
-                <div className="py-3  text-sm font-medium tracking-wider  text-gray-700  dark:text-gray-400 hidden sm:flex sm:min-w-[6rem] sm:text-center sm:pr-2 lg:text-[.9rem]">
+                <div className="py-3  text-sm font-medium tracking-wider  text-gray-700  dark:text-gray-400 hidden sm:flex sm:min-w-[6rem] sm:text-center sm:pr-2 lg:text-[.8rem]">
                   حجم معاملات
                 </div>
               </th>
