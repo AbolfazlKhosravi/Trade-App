@@ -51,7 +51,7 @@ export const cartSlice  = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchCart.pending,(state,action)=>{
-      return {...state,cart:[],loadingAll:true,errorAll:null}
+      return {...state,cart:[],loadingAll:true,errorAll:null,checkedAddedToThecard:null,checkedRemovedToThecard:null}
     })
     builder.addCase(fetchCart.fulfilled,(state,action)=>{
       return {...state,cart:action.payload,loadingAll:false,errorAll:null}

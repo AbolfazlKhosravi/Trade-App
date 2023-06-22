@@ -12,7 +12,7 @@ const Layout = ({children}) => {
   return (
     <div className="min-h-screen bg-[#F2F0F0] dark:bg-slate-900 flex flex-col">
       <Header />
-      <div class="flex-1">{children}</div>
+      <div className="flex-1">{children}</div>
       <Footer />
     </div>
   );
