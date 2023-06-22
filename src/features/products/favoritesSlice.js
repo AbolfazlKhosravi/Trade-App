@@ -50,7 +50,7 @@ export const favoritesSlice  = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchFavorite.pending,(state,action)=>{
-      return {...state,favorites:[],loadingAll:true,errorAll:null}
+      return {...state,favorites:[],loadingAll:true,errorAll:null,checkedAddedToTheFavorites:null,checkedRemovedToTheFavorites:null}
     })
     builder.addCase(fetchFavorite.fulfilled,(state,action)=>{
       return {...state,favorites:action.payload,loadingAll:false,errorAll:null}

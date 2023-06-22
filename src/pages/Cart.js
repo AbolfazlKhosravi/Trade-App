@@ -2,11 +2,22 @@ import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
 import {useEffect, useState} from "react";
 import {fetchFavorite} from "../features/products/favoritesSlice";
-import {deleteCart, fetchCart} from "../features/products/cartSlice";
+import {
+  deleteCart,
+  fetchCart,
+  inCreaseNumberProudctsCart,
+} from "../features/products/cartSlice";
 import lodingSvg from "../assets/images/loading.svg";
 import HandleFavorateAll from "../components/HandleFavorateAll";
 import StarRating from "../components/StarRating";
-import {FaTimes, FaRedoAlt, FaReply, FaSadTear ,FaPlusCircle ,FaMinusCircle } from "react-icons/fa";
+import {
+  FaTimes,
+  FaRedoAlt,
+  FaReply,
+  FaSadTear,
+  FaPlusCircle,
+  FaMinusCircle,
+} from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 
@@ -23,7 +34,15 @@ const Cart = () => {
     cart,
     clickedShowLoding,
     clickedShowError,
+    clickedShowLodingIncreaseNumber,
+    clickedShowErrorIncreaseNumber,
   } = useSelector((state) => state.cart);
+  const {
+    checkedAddedToTheFavorites,
+    favorite,
+    error,
+    checkedRemovedToTheFavorites,
+  } = useSelector((state) => state.favorites);
 
   const navigate = useNavigate();
 
@@ -55,6 +74,29 @@ const Cart = () => {
     product,
     errorCart,
     checkedRemovedToThecard,
+  ]);
+  useEffect(() => {
+    if (!shouldExecuteCode) {
+      return;
+    }
+    if (favorite && checkedAddedToTheFavorites === favorite.id) {
+      toast.success(`به لیست علاقه مندی ها اضافه شد`);
+    }
+    if (!error && checkedRemovedToTheFavorites) {
+      toast.success(`از لیست علاقه مندی ها حذف شد`);
+    }
+    if (error && checkedAddedToTheFavorites) {
+      toast.error(`به لیست علاقه مندی ها اضافه نشد`);
+    }
+    if (error && checkedRemovedToTheFavorites) {
+      toast.error(`از لیست علاقه مندی ها حذف نشد`);
+    }
+  }, [
+    shouldExecuteCode,
+    checkedAddedToTheFavorites,
+    favorite,
+    error,
+    checkedRemovedToTheFavorites,
   ]);
 
   useEffect(() => {
@@ -96,14 +138,17 @@ const Cart = () => {
     return (
       <div className="py-4 px-2 flex flex-col">
         {" "}
-        {cart.map((product) => {
-          console.log(product.name.length);
+        {cart.length && cart.map((product) => {
           const isClickedLoding = clickedShowLoding.find(
             (cli) => cli === product.id
           );
           const isClickedError = clickedShowError.find(
             (cli) => cli === product.id
           );
+          const isClickedLodingIncreaseNumber =
+            clickedShowLodingIncreaseNumber.find((cli) => cli === product.id);
+          const isClickedErrorIncreaseNumber =
+            clickedShowErrorIncreaseNumber.find((cli) => cli === product.id);
 
           return (
             <div
@@ -121,7 +166,12 @@ const Cart = () => {
               </div>
               <div className="flex flex-col items-start justify-start h-full w-2/4 pr-4  mt-2">
                 <div className="flex w-full items-center justify-between">
-                  <p className={` text-slate-700 font-extrabold ${product.name.length>=20? "text-[.8rem]":"text-[1.1rem]"}`}>
+                  <p
+                    className={` text-slate-700 font-extrabold ${
+                      product.name.length >= 20
+                        ? "text-[.8rem]"
+                        : "text-[1.1rem]"
+                    }`}>
                     {product.name}
                   </p>
                   {isClickedLoding ? (
@@ -147,10 +197,43 @@ const Cart = () => {
                 </div>
                 <div className="flex my-3 w-full items-center justify-between">
                   <div className="flex items-center ">
-                    <FaPlusCircle className="text-[1.3rem] ml-2"/>
-                    <FaMinusCircle className="text-[1.3rem] text-red-500"/>
+                      <FaPlusCircle
+                        className="text-[1.3rem] ml-2 hover:scale-105 transition-all cursor-pointer"
+                        onClick={() =>
+                          dispatch(
+                            inCreaseNumberProudctsCart({
+                              id: product.id,
+                              quantity: product.quantity + 1,
+                            })
+                          )
+                        }
+                      />
+                    <FaMinusCircle className="text-[1.3rem] text-red-500" />
                   </div>
-                  <p className="font-bold text-white bg-red-500 rounded-full w-[1.35rem] h-[1.35rem] flex justify-center  text-lg "> {product.quantity} </p>
+                  {isClickedLodingIncreaseNumber ? (
+                    <img
+                      className="w-[1.35rem] h-[1.35rem]"
+                      src={lodingSvg}
+                      alt="svg loading"
+                    />
+                  ) : isClickedErrorIncreaseNumber ? (
+                    <FaRedoAlt
+                    onClick={() =>
+                      dispatch(
+                        inCreaseNumberProudctsCart({
+                          id: product.id,
+                          quantity: product.quantity + 1,
+                        })
+                      )
+                    }
+                      className=" text-red-500 cursor-pointer text-sm"
+                    />
+                  ) : (
+                    <p className="font-bold text-white bg-red-500 rounded-full w-[1.35rem] h-[1.35rem] flex justify-center  text-lg ">
+                      {" "}
+                      {product.quantity.toLocaleString("fa")}{" "}
+                    </p>
+                  )}
                 </div>
                 {product.price === product.discountedPrice ? (
                   <p className="text-[1.05rem] text-slate-700 font-extrabold mt-6">
