@@ -5,6 +5,7 @@
       "name": "Strak",
       "price": 450000,
       "rate": "5",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/help_author_with_a_new_book_or_magazine_cover_book_cover_contest-removebg-preview_el6f.png",
       "discountedPrice": 350000,
       "isPopular": true
@@ -14,6 +15,7 @@
       "name": "Glory & Grace",
       "price": 80000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/book_cover_design_for_the_experts_only_book_cover_contest-removebg-preview_2ilv.png",
       "discountedPrice": 80000,
       "isPopular": false
@@ -23,6 +25,7 @@
       "name": "Pary Time",
       "price": 150000,
       "rate": "3.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/book_cover_-_how_to_pray_when_you_don_t_have_time_book_cover_contest-removebg-preview_ub6w.png",
       "discountedPrice": 150000,
       "isPopular": true
@@ -32,6 +35,7 @@
       "name": " Reset ",
       "price": 500000,
       "rate": "3.1",
+       "quantity":1,
       "img": " https://s8.uupload.ir/files/rejection_reset_book_design_with_a_vibrant_positive_feel_book_cover_contest-removebg-preview_ez5o.png",
       "discountedPrice": 400000,
       "isPopular": false
@@ -41,6 +45,7 @@
       "name": "Expert",
       "price": 700000,
       "rate": "2.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/design_a_rock_star_book_cover_for_a_book_teaching_people_to_become_world-class_book_cover_contest-removebg-preview_sgtg.png",
       "discountedPrice": 550000,
       "isPopular": true
@@ -50,6 +55,7 @@
       "name": " 30 DAy Lucud",
       "price": 500000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/win_a_036_30_lucid_dreaming_course_a_036_24_99_superpowers_ebook_for_free_33__3imr.png",
       "discountedPrice": 450000,
       "isPopular": true
@@ -59,6 +65,7 @@
       "name": "Living ",
       "price": 105000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/book_cover--_living_uncommonly_book_cover_contest-removebg-preview_yubf.png",
       "discountedPrice": 80000,
       "isPopular": false
@@ -68,6 +75,7 @@
       "name": "Your Exit ",
       "price": 120000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/book_design_-_hacking_your_exit_valuation_book_cover_contest_1_-removebg-preview_8yt5.png",
       "discountedPrice": 80000,
       "isPopular": true
@@ -77,6 +85,7 @@
       "name": " 21 Years of Wisdom  ",
       "price": 50000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/business_babes_and_bribes_one_american_s_improbable_18_year_odyssey_in_japan_memoir_needs_image_book_cover_contest-removebg-preview_760j.png",
       "discountedPrice": 50000,
       "isPopular": false
@@ -86,6 +95,7 @@
       "name": "Timeless ",
       "price": 90000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/design_a_creative_and_powerful_book_cover_for_a_book_about_personnel_management_book_cover_contest-removebg-preview_6ua8.png",
       "discountedPrice": 80000,
       "isPopular": true
@@ -95,6 +105,7 @@
       "name": " Luzide ",
       "price": 100000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/design_a_great_thriller_e_book_cover_about_spooky_lucid_dreams_wich_reach_into_the_readers_reality_book_cover_contest-removebg-preview_(1)_lvi9.png",
       "discountedPrice": 100000,
       "isPopular": true
@@ -104,6 +115,7 @@
       "name": " Time  ",
       "price": 40000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/hubspot_pro_i_will_do_book_cover_design_for_45_on_fiverr_com-removebg-preview_(1)_qo7h.png",
       "discountedPrice": 40000,
       "isPopular": false
@@ -113,6 +125,7 @@
       "name": " Real Estate  ",
       "price": 35000,
       "rate": "4",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/hubspot_pro_i_will_do_book_cover_design_for_45_on_fiverr_com-removebg-preview_wt6x.png",
       "discountedPrice": 34000,
       "isPopular": false
@@ -122,6 +135,7 @@
       "name": " Artemets  ",
       "price": 50000,
       "rate": "5",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/in_this_moment_your_truth_will_come_book_cover_contest-removebg-preview_h54o.png",
       "discountedPrice": 40000,
       "isPopular": true
@@ -131,6 +145,7 @@
       "name": " Miracles  ",
       "price": 30000,
       "rate": "3.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/josepepitojr_i_will_do_book_cover_design_book_layout_and_ebook_design_for_75_on_fiverr_com-removebg-preview_vv4j.png",
       "discountedPrice": 30000,
       "isPopular": false
@@ -140,6 +155,7 @@
       "name": " Auramicb  ",
       "price": 35000,
       "rate": "5",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/laminate_catalogue-removebg-preview_rpz4.png",
       "discountedPrice": 35000,
       "isPopular": true
@@ -149,6 +165,7 @@
       "name": " Passion  ",
       "price": 50000,
       "rate": "4.6",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/pexels-pixabay-256450-removebg-preview_qp5d.png",
       "discountedPrice": 50000,
       "isPopular": false
@@ -158,6 +175,7 @@
       "name": " The Creative Thinking  ",
       "price": 45000,
       "rate": "3.5",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/creative_thinking_17_tactics_to_skyrocket_your_creativity_success_creative_thinking_creativity_creative_process_how_to_be_creative_-removebg-preview_a3co.png",
       "discountedPrice": 45000,
       "isPopular": false
@@ -167,6 +185,7 @@
       "name": " The Power Of Being  ",
       "price": 40000,
       "rate": "4.1",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/the_power_of_being_yourself_k3bo.png",
       "discountedPrice": 20000,
       "isPopular": true
@@ -176,6 +195,7 @@
       "name": "The Paven's Call",
       "price": 10000,
       "rate": "5",
+       "quantity":1,
       "img": "https://s8.uupload.ir/files/book_cover_designer-removebg-preview_ov89.png",
       "discountedPrice": 10000,
       "isPopular": true
@@ -327,7 +347,7 @@
       "isPopular": true,
       "instructor": "وارن بافت",
       "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
-      "hours": " 10 m",
+      "hours": " 10 m ",
       "recordingStatus": true,
       "Date": "2023-06-20T20:39:24.289Z"
     }
