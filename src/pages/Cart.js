@@ -5,7 +5,7 @@ import {fetchFavorite} from "../features/products/favoritesSlice";
 import {
   deleteCart,
   fetchCart,
-  inCreaseNumberProudctsCart,
+  HandleNumberProudctsCart,
 } from "../features/products/cartSlice";
 import lodingSvg from "../assets/images/loading.svg";
 import HandleFavorateAll from "../components/HandleFavorateAll";
@@ -24,6 +24,7 @@ import {toast} from "react-hot-toast";
 const Cart = () => {
   const dispatch = useDispatch();
   const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
+  const [operationType, setOperationType] = useState("");
   const {
     checkedAddedToThecard,
     product,
@@ -34,8 +35,8 @@ const Cart = () => {
     cart,
     clickedShowLoding,
     clickedShowError,
-    clickedShowLodingIncreaseNumber,
-    clickedShowErrorIncreaseNumber,
+    clickedShowLodingchangeNumberProduct,
+    clickedShowErrorChangeNumberProduct,
   } = useSelector((state) => state.cart);
   const {
     checkedAddedToTheFavorites,
@@ -138,125 +139,146 @@ const Cart = () => {
     return (
       <div className="py-4 px-2 flex flex-col">
         {" "}
-        {cart.length && cart.map((product) => {
-          const isClickedLoding = clickedShowLoding.find(
-            (cli) => cli === product.id
-          );
-          const isClickedError = clickedShowError.find(
-            (cli) => cli === product.id
-          );
-          const isClickedLodingIncreaseNumber =
-            clickedShowLodingIncreaseNumber.find((cli) => cli === product.id);
-          const isClickedErrorIncreaseNumber =
-            clickedShowErrorIncreaseNumber.find((cli) => cli === product.id);
+        {cart.length &&
+          cart.map((product) => {
+            const isClickedLoding = clickedShowLoding.find(
+              (cli) => cli === product.id
+            );
+            const isClickedError = clickedShowError.find(
+              (cli) => cli === product.id
+            );
+            const isClickedLodingIncreaseNumber =
+              clickedShowLodingchangeNumberProduct.find((cli) => cli === product.id);
+            const isClickedErrorIncreaseNumber =
+              clickedShowErrorChangeNumberProduct.find((cli) => cli === product.id);
 
-          return (
-            <div
-              key={product.id}
-              className="bg-slate-50 flex items-start justify-between p-2 rounded-3xl mb-4 max-h-[12rem] min-h-[12rem]">
-              <div className="relative bg-[#F2F0F0] rounded-3xl h-full w-2/4 px-4 pt-6 pb-2">
-                <img
-                  className="h-full w-full hover:scale-105 transition-all object-cover"
-                  src={product.img}
-                  alt={product.name}
-                />
-                <button className="absolute top-4">
-                  <HandleFavorateAll product={product} />
-                </button>
-              </div>
-              <div className="flex flex-col items-start justify-start h-full w-2/4 pr-4  mt-2">
-                <div className="flex w-full items-center justify-between">
-                  <p
-                    className={` text-slate-700 font-extrabold ${
-                      product.name.length >= 20
-                        ? "text-[.8rem]"
-                        : "text-[1.1rem]"
-                    }`}>
-                    {product.name}
-                  </p>
-                  {isClickedLoding ? (
-                    <img
-                      className="w-6 h-6 "
-                      src={lodingSvg}
-                      alt="svg loading"
-                    />
-                  ) : isClickedError ? (
-                    <FaRedoAlt
-                      onClick={() => dispatch(deleteCart(product.id))}
-                      className=" text-red-500 cursor-pointer "
-                    />
-                  ) : (
-                    <FaTimes
-                      onClick={() => dispatch(deleteCart(product.id))}
-                      className="text-lg text-slate-500 cursor-pointer hover:scale-105 transition-all"
-                    />
-                  )}
+            return (
+              <div
+                key={product.id}
+                className="bg-slate-50 flex items-start justify-between p-2 rounded-3xl mb-4 max-h-[12rem] min-h-[12rem] max-w-[25rem] dark:bg-slate-800">
+                <div className="relative bg-[#F2F0F0] dark:bg-slate-900 rounded-3xl h-full w-2/4 px-4 pt-6 pb-2">
+                  <img
+                    className="h-full w-full hover:scale-105 transition-all object-cover"
+                    src={product.img}
+                    alt={product.name}
+                  />
+                  <button className="absolute top-2">
+                    <HandleFavorateAll product={product} />
+                  </button>
                 </div>
-                <div className="text-[.8rem] mb-4">
-                  <StarRating rating={product.rate} />
-                </div>
-                <div className="flex my-3 w-full items-center justify-between">
-                  <div className="flex items-center ">
+                <div className="flex flex-col items-start justify-start h-full w-2/4 pr-4  mt-2">
+                  <div className="flex w-full items-center justify-between">
+                    <p
+                      className={` text-slate-700 font-extrabold dark:text-slate-400 ${
+                        product.name.length >= 20
+                          ? "text-[.8rem]"
+                          : "text-[1.1rem]"
+                      }`}>
+                      {product.name}
+                    </p>
+                    {isClickedLoding ? (
+                      <img
+                        className="w-6 h-6 "
+                        src={lodingSvg}
+                        alt="svg loading"
+                      />
+                    ) : isClickedError ? (
+                      <FaRedoAlt
+                        onClick={() => dispatch(deleteCart(product.id))}
+                        className=" text-red-500 cursor-pointer "
+                      />
+                    ) : (
+                      <FaTimes
+                        onClick={() => dispatch(deleteCart(product.id))}
+                        className="text-lg text-slate-500 cursor-pointer hover:scale-105 transition-all"
+                      />
+                    )}
+                  </div>
+                  <div className="text-[.8rem] mb-4">
+                    <StarRating rating={product.rate} />
+                  </div>
+                  <div className="flex my-3 w-full items-center justify-between">
+                    <div className="flex items-center ">
                       <FaPlusCircle
                         className="text-[1.3rem] ml-2 hover:scale-105 transition-all cursor-pointer"
                         onClick={() =>
                           dispatch(
-                            inCreaseNumberProudctsCart({
-                              id: product.id,
-                              quantity: product.quantity + 1,
-                            })
+                            HandleNumberProudctsCart(
+                              {
+                                id: product.id,
+                                quantity: product.quantity + 1,
+                              },
+                              setOperationType(1)
+                            )
                           )
                         }
                       />
-                    <FaMinusCircle className="text-[1.3rem] text-red-500" />
+                      <FaMinusCircle
+                        onClick={() => {
+                          product.quantity === 1
+                            ? dispatch(deleteCart(product.id))
+                            : dispatch(
+                                HandleNumberProudctsCart(
+                                  {
+                                    id: product.id,
+                                    quantity: product.quantity - 1,
+                                  },
+                                  setOperationType(-1)
+                                )
+                              );
+                        }}
+                        className="text-[1.3rem] text-red-500 hover:scale-105 transition-all cursor-pointer"
+                      />
+                    </div>
+                    {isClickedLodingIncreaseNumber ? (
+                      <img
+                        className="w-[1.35rem] h-[1.35rem]"
+                        src={lodingSvg}
+                        alt="svg loading"
+                      />
+                    ) : isClickedErrorIncreaseNumber ? (
+                      <FaRedoAlt
+                        onClick={() =>
+                          dispatch(
+                            HandleNumberProudctsCart({
+                              id: product.id,
+                              quantity: product.quantity + operationType,
+                            })
+                          )
+                        }
+                        className=" text-red-500 cursor-pointer text-sm"
+                      />
+                    ) : (
+                      <p className="font-bold text-white bg-red-500 rounded-full w-[1.35rem] h-[1.35rem] flex justify-center  text-lg ">
+                        {" "}
+                        <span className="-translate-y-[.1rem]">{product.quantity.toLocaleString("fa")}</span>{" "}
+                      </p>
+                    )}
                   </div>
-                  {isClickedLodingIncreaseNumber ? (
-                    <img
-                      className="w-[1.35rem] h-[1.35rem]"
-                      src={lodingSvg}
-                      alt="svg loading"
-                    />
-                  ) : isClickedErrorIncreaseNumber ? (
-                    <FaRedoAlt
-                    onClick={() =>
-                      dispatch(
-                        inCreaseNumberProudctsCart({
-                          id: product.id,
-                          quantity: product.quantity + 1,
-                        })
-                      )
-                    }
-                      className=" text-red-500 cursor-pointer text-sm"
-                    />
-                  ) : (
-                    <p className="font-bold text-white bg-red-500 rounded-full w-[1.35rem] h-[1.35rem] flex justify-center  text-lg ">
-                      {" "}
-                      {product.quantity.toLocaleString("fa")}{" "}
-                    </p>
-                  )}
-                </div>
-                {product.price === product.discountedPrice ? (
-                  <p className="text-[1.05rem] text-slate-700 font-extrabold mt-6">
-                    {product.price.toLocaleString("fa")}
-                    <span className="mr-2 font-bold text-blue-500">تومان</span>
-                  </p>
-                ) : (
-                  <div className="flex flex-col mt-2">
-                    <p className="text-[1.05rem] text-slate-700 font-extrabold ">
-                      {product.discountedPrice.toLocaleString("fa")}
-                      <span className="mr-2 font-bold text-blue-500">
+                  {product.price === product.discountedPrice ? (
+                    <p className="text-[1.05rem] text-slate-700 font-extrabold mt-6 dark:text-slate-400">
+                      {product.price.toLocaleString("fa")}
+                      <span className="mr-2 font-bold text-blue-500 ">
                         تومان
                       </span>
                     </p>
-                    <p className="text-[.78rem] text-slate-500 line-through mt-0">
-                      {product.price.toLocaleString("fa")} تومان
-                    </p>
-                  </div>
-                )}
+                  ) : (
+                    <div className="flex flex-col mt-2">
+                      <p className="text-[1.05rem] text-slate-700 font-extrabold dark:text-slate-400 ">
+                        {product.discountedPrice.toLocaleString("fa")}
+                        <span className="mr-2 font-bold text-blue-500">
+                          تومان
+                        </span>
+                      </p>
+                      <p className="text-[.78rem] text-slate-500 line-through mt-0">
+                        {product.price.toLocaleString("fa")} تومان
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     );
   };

@@ -38,8 +38,8 @@ export const deleteCart = createAsyncThunk(
     }
   }
 );
-export const inCreaseNumberProudctsCart = createAsyncThunk(
-  "cart/inCreaseNumberProudctsCart",
+export const HandleNumberProudctsCart = createAsyncThunk(
+  "cart/HandleNumberProudctsCart",
   async (payload, {rejectWithValue}) => {
     try {
       const response = await axios.patch(
@@ -61,9 +61,9 @@ const initialState = {
   clickedShowLoding: [],
   clickedShowError: [],
   errorCart: null,
-  clickedShowLodingIncreaseNumber: [],
-  clickedShowErrorIncreaseNumber: [],
-  errorCartIncreasNumber: null,
+  clickedShowLodingchangeNumberProduct: [],
+  clickedShowErrorChangeNumberProduct: [],
+  errorCartchangeNumberProduct: null,
   checkedAddedToThecard: null,
   checkedRemovedToThecard: null,
 };
@@ -191,29 +191,31 @@ export const cartSlice = createSlice({
         clickedShowError: [...state.clickedShowError, action.meta.arg],
       };
     });
-    builder.addCase(inCreaseNumberProudctsCart.pending, (state, action) => {
+    builder.addCase(HandleNumberProudctsCart.pending, (state, action) => {
       const updatedClickedShowError =
-        state.clickedShowErrorIncreaseNumber.filter(
+        state.clickedShowErrorChangeNumberProduct.filter(
           (cli) => cli !== action.meta.arg.id
         );
       return {
         ...state,
-        clickedShowErrorIncreaseNumber: updatedClickedShowError,
+        clickedShowErrorChangeNumberProduct: updatedClickedShowError,
         product: null,
-        errorCartIncreasNumber: null,
-        clickedShowLodingIncreaseNumber: [
-          ...state.clickedShowLodingIncreaseNumber,
+        errorCartchangeNumberProduct: null,
+        clickedShowLodingchangeNumberProduct: [
+          ...state.clickedShowLodingchangeNumberProduct,
           action.meta.arg.id,
         ],
+        checkedAddedToThecard: null,
+        checkedRemovedToThecard: null,
       };
     });
-    builder.addCase(inCreaseNumberProudctsCart.fulfilled, (state, action) => {
+    builder.addCase(HandleNumberProudctsCart.fulfilled, (state, action) => {
       const updatedClickedShowLoding =
-        state.clickedShowLodingIncreaseNumber.filter(
+        state.clickedShowLodingchangeNumberProduct.filter(
           (cli) => cli !== action.payload.id
         );
       const updatedClickedShowError =
-        state.clickedShowErrorIncreaseNumber.filter(
+        state.clickedShowErrorChangeNumberProduct.filter(
           (cli) => cli !== action.payload.id
         );
         const index=state.cart.findIndex((p)=>p.id===action.payload.id)
@@ -223,21 +225,21 @@ export const cartSlice = createSlice({
         updateCart[index]=product
       return {
         ...state,
-        clickedShowErrorIncreaseNumber: updatedClickedShowError,
-        clickedShowLodingIncreaseNumber: updatedClickedShowLoding,
+        clickedShowErrorChangeNumberProduct: updatedClickedShowError,
+        clickedShowLodingchangeNumberProduct: updatedClickedShowLoding,
         product: action.payload.product,
-        errorCartIncreasNumber: null,
+        errorCartchangeNumberProduct: null,
         cart: updateCart,
       };
     });
-    builder.addCase(inCreaseNumberProudctsCart.rejected, (state, action) => {
-      const updatedClickedShowLoding=state.clickedShowLodingIncreaseNumber.filter(cli=>cli!== action.meta.arg.id)
+    builder.addCase(HandleNumberProudctsCart.rejected, (state, action) => {
+      const updatedClickedShowLoding=state.clickedShowLodingchangeNumberProduct.filter(cli=>cli!== action.meta.arg.id)
       return {
         ...state,
-        clickedShowLodingIncreaseNumber:updatedClickedShowLoding,
+        clickedShowLodingchangeNumberProduct:updatedClickedShowLoding,
         product: null,
-        clickedShowErrorIncreaseNumber:[...state.clickedShowErrorIncreaseNumber,action.meta.arg.id],
-        errorCartIncreasNumber: action.payload.message,
+        clickedShowErrorChangeNumberProduct:[...state.clickedShowErrorChangeNumberProduct,action.meta.arg.id],
+        errorCartchangeNumberProduct: action.payload.message,
       };
 
     });

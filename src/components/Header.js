@@ -384,7 +384,9 @@ const Header = () => {
                 {" "}
                 <p className="mt-[.23rem]">
                   {" "}
-                  {cart.length.toLocaleString("fa")}
+                  {cart.reduce((acu,crr)=>{
+                    return acu + crr.quantity
+                  },0).toLocaleString("fa")}
                 </p>
               </span>
             )
