@@ -335,7 +335,9 @@ const Header = () => {
           عضویت
         </div>
         <div className="max-[600px]:hidden  cursor-pointer mr-4  relative ">
-          <FaHeart className=" text-[1.7rem]  text-red-500 max-[500px]: " />
+          <NavLink to="/favorites">
+            <FaHeart className=" text-[1.7rem]  text-red-500 max-[500px]: " />
+          </NavLink>
           {favoritesData.loadingAll ? (
             <img
               className="w-7 h-7 absolute text-lg top-0 -translate-y-[.6rem] translate-x-3"
@@ -384,9 +386,11 @@ const Header = () => {
                 {" "}
                 <p className="mt-[.23rem]">
                   {" "}
-                  {cart.reduce((acu,crr)=>{
-                    return acu + crr.quantity
-                  },0).toLocaleString("fa")}
+                  {cart
+                    .reduce((acu, crr) => {
+                      return acu + crr.quantity;
+                    }, 0)
+                    .toLocaleString("fa")}
                 </p>
               </span>
             )
@@ -471,10 +475,13 @@ const Dropshot = ({
               </li>
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-between w-full   cursor-pointer hover:text-blue-600 dark:hover:text-white ">
-                  <div className="flex items-center justify-start ">
-                    <FaHeart className="text-xl ml-3 text-red-500 " />
-                    <h2>لیست علاقه مندی ها</h2>
-                  </div>
+                  <NavLink to="/favorites">
+                    {" "}
+                    <div className="flex items-center justify-start ">
+                      <FaHeart className="text-xl ml-3 text-red-500 " />
+                      <h2>لیست علاقه مندی ها</h2>
+                    </div>
+                  </NavLink>
                   <span className="">
                     {favoritesData.loadingAll ? (
                       <img
