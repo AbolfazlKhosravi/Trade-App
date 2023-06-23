@@ -127,7 +127,7 @@ const MarketHoom = () => {
   };
 
   return (
-    <div className="mt-2 pt-8 px-3 mb-6 md:px-16  lg:px-20" id="market">
+    <div className="mt-2 pt-8 px-3 mb-6 md:px-4  lg:px-20" id="market">
       <h2 className="text-[1.4rem] font-bold text-slate-700 dark:text-gray-300 mb-7 md:text-3xl md:mb-9 lg:text-[2rem]">
         محبوب ترین کریپتوکارنسی ها
       </h2>

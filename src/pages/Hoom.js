@@ -110,7 +110,7 @@ const DescriptionSite = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col  md:flex-row md:justify-between md:items-center  md:px-20 md:mt-4 ">
+      <div className="flex flex-col  md:flex-row md:justify-between md:items-center  lg:px-28  md:mt-4 ">
         <img
           src={darkMode ? imgTitleDark : imgTitle}
           alt="وبسایت اموزش ترید و خدمات "
@@ -130,7 +130,7 @@ const DescriptionSite = () => {
           </div>
         </div>
       </div>
-      <div className=" mb-8 flex justify-between items-start flex-wrap  mx-4   md:px-8 lg:px-12 lg:pb-2">
+      <div className=" mb-8 flex justify-between items-start flex-wrap  mx-4   lg:px-16 lg:pb-2">
         <a className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10  py-4 rounded-3xl mx-4  md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           شروع
         </a>

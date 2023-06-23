@@ -68,14 +68,14 @@ const CourseComponente = ({course}) => {
                   {course.discountedPrice.toLocaleString("fa")}{" "}
                   <span className="text-[.7rem] text-slate-500">تومان</span>
                 </div>
-                <div className="text-[.75rem] mr-2 opacity-50 line-through ">
+                <div className="text-[.75rem] mr-2 opacity-50 line-through dark:text-slate-400">
                   {course.price.toLocaleString("fa")}{" "}
                 </div>
               </div>
             ) : course.price === 0 ? (
               <span className="text-[.85rem] text-blue-500">رایگان</span>
             ) : (
-              <div className="text-[1.05rem] ">
+              <div className="text-[1.05rem] dark:text-slate-400">
                 {course.price.toLocaleString("fa")}{" "}
                 <span className="text-[.7rem] text-slate-500">تومان</span>
               </div>
