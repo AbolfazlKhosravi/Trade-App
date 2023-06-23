@@ -122,7 +122,7 @@ const Header = () => {
         <nav>
           <ul className="text-[1.1rem] max-[1155px]:hidden flex items-center text-slate-600 max-h-full min-h-full dark:text-slate-300">
             <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
-              مارکت
+              <NavLink to="market"> مارکت</NavLink>
             </li>
             <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
               تحلیل روزانه
@@ -456,10 +456,13 @@ const Dropshot = ({
           <nav className="w-full">
             <ul className="text-[1.1rem]  flex text-slate-600 dark:text-slate-300 flex-col p-6 w-full">
               <li className=" w-full  py-3 my-3  ">
-                <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
-                  <HiChartBar className="text-xl ml-3 " />
-                  <h2>مارکت</h2>
-                </div>{" "}
+                <NavLink to="market">
+                  {" "}
+                  <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
+                    <HiChartBar className="text-xl ml-3 " />
+                    <h2>مارکت</h2>
+                  </div>{" "}
+                </NavLink>
               </li>
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">

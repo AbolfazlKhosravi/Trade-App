@@ -39,9 +39,9 @@ const Footer = () => {
               <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 اموزش ها
               </p>
-              <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              <NavLink to="market" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 مارکت
-              </p>
+              </NavLink>
               <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 تحلیل روزانه
               </p>
