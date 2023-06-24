@@ -4,7 +4,6 @@ import HandleFavorateAll from "../HandleFavorateAll";
 import HandleCartAll from "../HandleCartAll";
 
 const ProductComponent = ({product}) => {
-  console.log(product);
   const [moreInformation, setMoreInformation] = useState("");
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);

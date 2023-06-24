@@ -69,6 +69,14 @@ export const productsSlice = createSlice({
           parseFloat(p.rate) >= parseFloat(action.payload.filter.filterRating)
         );
       });
+      console.log(action.payload.filter.rangePrice);
+      
+      filterdData = filterdData.filter((p) => {
+        return (
+          parseFloat(action.payload.filter.rangePrice[0]) <= parseFloat(p.discountedPrice) &&
+          parseFloat(p.discountedPrice) <= parseFloat(action.payload.filter.rangePrice[1])
+        );
+      });
 
       return {...state, data: filterdData, loding: false, error: null};
     });
