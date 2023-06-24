@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {fetchFavorite} from "../features/products/favoritesSlice";
 import {fetchCart} from "../features/products/cartSlice";
 import {toast} from "react-hot-toast";
@@ -132,25 +132,30 @@ function Courses() {
     }
   }, [moreFilters]);
 
-  const filtersHandler = (e) => {
+
+  const filtersHandler = useCallback((e) => {
     const {name, value} = e.target;
     SetFilters({...filters, [name]: value});
 
-    const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchCourses({...filters, [name]: value}));
-    }, 500);
+    debouncedFilters({name, value});
+  }, []);
 
-    debouncedSearch();
-  };
-  const filterReatingHandler = (value) => {
+  const debouncedFilters = debounce(({name, value}) => {
+    dispatch(multipleFilterAsynchCourses({...filters, [name]: value}));
+  }, 500);
+
+
+  const filterReatingHandler = useCallback((value) => {
     SetFilters({...filters, filterRating: value});
 
-    const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchCourses({...filters, filterRating: value}));
-    }, 300);
+    debouncedSearch({value});
+  }, []);
 
-    debouncedSearch();
-  };
+  const debouncedSearch = debounce(({value}) => {
+    dispatch(multipleFilterAsynchCourses({...filters, filterRating: value}));
+  }, 500);
+
+
   const removeFilterReatingHandler = (e) => {
     const {name, value} = e.target;
     SetFilters({...filters, [name]: value});

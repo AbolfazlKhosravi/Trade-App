@@ -61,6 +61,7 @@ function Store() {
       dispatch(multipleFilterAsynchStore({...filters, filrerPrice: redirect}));
     }
   }, [dispatch, redirect]);
+  
   const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
     useSelector((state) => state.cart);
   const {
@@ -151,31 +152,32 @@ function Store() {
     }
   }, [moreFilters]);
 
-  const filtersHandler = (e) => {
+  const filtersHandler = useCallback((e) => {
     const {name, value} = e.target;
     SetFilters({...filters, [name]: value});
 
-    const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchStore({...filters, [name]: value}));
-    }, 500);
+    debouncedFilters({name, value});
+  }, []);
 
-    debouncedSearch();
-  };
-  const filterReatingHandler = (value) => {
+  const debouncedFilters = debounce(({name, value}) => {
+    dispatch(multipleFilterAsynchStore({...filters, [name]: value}));
+  }, 500);
+
+  const filterReatingHandler = useCallback((value) => {
     SetFilters({...filters, filterRating: value});
 
-    const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchStore({...filters, filterRating: value}));
-    }, 300);
-
-    debouncedSearch();
-  };
+    debouncedRating({value});
+  }, []);
+  const debouncedRating = debounce(({value}) => {
+    dispatch(multipleFilterAsynchStore({...filters, filterRating: value}));
+  }, 500);
 
   const handleRangePrice = useCallback((newrangePrice) => {
     SetFilters({...filters, rangePrice: newrangePrice});
-    debouncedSearch(newrangePrice);
+    debouncedRangePrice(newrangePrice);
   }, []);
-  const debouncedSearch = debounce((newrangePrice) => {
+
+  const debouncedRangePrice = debounce((newrangePrice) => {
     dispatch(
       multipleFilterAsynchStore({...filters, rangePrice: newrangePrice})
     );
@@ -395,7 +397,7 @@ const Dropshot = ({
   filtersHandler,
   filterReatingHandler,
   removeFilterReatingHandler,
-  handleRangePrice
+  handleRangePrice,
 }) => {
   const handleStyle = {
     backgroundColor: "blue",
