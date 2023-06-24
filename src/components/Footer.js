@@ -32,13 +32,13 @@ const Footer = () => {
         <div className="flex justify-between items-start w-[14rem] md:w-1/2  xl:w-1/4">
           <div className="flex flex-col">
             <h3 className="text-2xl text-blue-600">خدمات</h3>
-            <div className="mt-5">
-              <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+            <div className="mt-5 flex flex-col items-start justify-between">
+              <NavLink to="/store" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 فروشگاه
-              </p>
-              <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              </NavLink>
+              <NavLink to="/courses" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 اموزش ها
-              </p>
+              </NavLink>
               <NavLink
                 to="/market"
                 className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
