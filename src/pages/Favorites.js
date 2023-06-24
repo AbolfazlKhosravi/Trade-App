@@ -124,7 +124,7 @@ const Favorites = () => {
       return (
         <div className="flex items-center justify-center w-full my-20">
           <p className=" text-slate-600 dark:text-slate-400">
-            محصولی در لیست علاقه مندی های شما نیست
+            محصولی در لیست علاقه مندی هانیست
           </p>
           <FaSadTear
             onClick={() => navigate("/")}
@@ -139,7 +139,7 @@ const Favorites = () => {
       return (
         <div className="flex items-center justify-center w-full my-20 ">
           <p className=" text-slate-600 dark:text-slate-400">
-            محصولی در لیست علاقه مندی های شما نیست
+            محصولی در لیست علاقه مندی هانیست
           </p>
           <FaSadTear
             onClick={() => navigate("/")}
@@ -260,7 +260,7 @@ const Favorites = () => {
       return (
         <div className="flex items-center justify-center w-full my-20 ">
           <p className=" text-slate-600 dark:text-slate-400">
-            دوره ای در لیست علاقه مندی های شما نیست
+            دوره ای در لیست علاقه مندی هانیست
           </p>
           <FaSadTear
             onClick={() => navigate("/")}
@@ -274,7 +274,7 @@ const Favorites = () => {
       return (
         <div className="flex items-center justify-center w-full my-20 ">
           <p className=" text-slate-600 dark:text-slate-400">
-            دوره ای در لیست علاقه مندی های شما نیست
+            دوره ای در لیست علاقه مندی هانیست
           </p>
           <FaSadTear
             onClick={() => navigate("/")}
