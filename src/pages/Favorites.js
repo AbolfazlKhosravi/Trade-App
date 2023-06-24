@@ -349,7 +349,7 @@ const Favorites = () => {
                         )
                       ) : (
                         <div className="flex items-center ">
-                          <p className="text-[1rem] text-slate-700 font-extrabold dark:text-slate-400 ">
+                          <p className="text-[.79rem] text-slate-700 font-extrabold dark:text-slate-400 ">
                             {product.discountedPrice.toLocaleString("fa")}
                             <span className="mr-2 font-bold text-blue-500">
                               تومان

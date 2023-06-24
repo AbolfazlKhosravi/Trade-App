@@ -122,10 +122,10 @@ const Header = () => {
         <nav>
           <ul className="text-[1.1rem] max-[1155px]:hidden flex items-center text-slate-600 max-h-full min-h-full dark:text-slate-300">
             <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
-              <NavLink to="market"> مارکت</NavLink>
+              <NavLink to="/market"> مارکت</NavLink>
             </li>
             <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
-              تحلیل روزانه
+              <NavLink to="/dilyAnalysis"> تحلیل روزانه</NavLink>
             </li>
             <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
               فروشگاه
@@ -456,7 +456,7 @@ const Dropshot = ({
           <nav className="w-full">
             <ul className="text-[1.1rem]  flex text-slate-600 dark:text-slate-300 flex-col p-6 w-full">
               <li className=" w-full  py-3 my-3  ">
-                <NavLink to="market">
+                <NavLink to="/market">
                   {" "}
                   <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                     <HiChartBar className="text-xl ml-3 " />
@@ -471,10 +471,12 @@ const Dropshot = ({
                 </div>
               </li>
               <li className=" w-full  py-3 my-3  ">
-                <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
-                  <BiAnalyse className="text-xl ml-3" />
-                  <h2>تحلیل روزانه</h2>
-                </div>
+                <NavLink to="/dilyAnalysis">
+                  <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
+                    <BiAnalyse className="text-xl ml-3" />
+                    <h2>تحلیل روزانه</h2>
+                  </div>
+                </NavLink>
               </li>
               <li className=" w-full  py-3 my-3  ">
                 <div className="flex items-center justify-between w-full   cursor-pointer hover:text-blue-600 dark:hover:text-white ">

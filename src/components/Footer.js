@@ -5,7 +5,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer className="2xl:container mx-auto flex flex-col w-full ">
-     <div className="flex justify-between items-center w-full   pb-4 py-8 px-4  md:px-4">
+      <div className="flex justify-between items-center w-full   pb-4 py-8 px-4  md:px-4">
         <div className="flex justify-between items-center">
           <div
             onClick={() => navigate("/")}
@@ -39,12 +39,17 @@ const Footer = () => {
               <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 اموزش ها
               </p>
-              <NavLink to="market" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              <NavLink
+                to="/market"
+                className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 مارکت
               </NavLink>
-              <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+
+              <NavLink
+                to="/dilyAnalysis"
+                className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 تحلیل روزانه
-              </p>
+              </NavLink>
             </div>
           </div>
           <div className="flex flex-col">

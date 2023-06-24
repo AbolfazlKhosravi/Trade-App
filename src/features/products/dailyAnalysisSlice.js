@@ -9,6 +9,15 @@ export const fetchDataDailyAnalysis=createAsyncThunk("dailyAnalysis/fetchDataDai
   return rejectWithValue(error)
  }
 })
+export const multipleFilterAsynchTodos=createAsyncThunk("Todos/multipleFilterAsynchTodos", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.get("https://khosravitradapp.glitch.me/dailyAnalysis");
+   console.log(payload);
+   return {dailyAnalysis:data.data,filter:payload}
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+})
 
 const initialState = {
   data:[],
@@ -27,6 +36,20 @@ export const dailyAnalysisSlice = createSlice({
       return {...state,data:action.payload,loding:false,error:null}
     })
     builder.addCase(fetchDataDailyAnalysis.rejected,(state,action)=>{
+      return {...state,data:null,loding:false,error:action.payload.message}
+    })
+    builder.addCase(multipleFilterAsynchTodos.pending,(state,action)=>{
+      return {...state,data:null,loding:true,error:null}
+    })
+    builder.addCase(multipleFilterAsynchTodos.fulfilled,(state,action)=>{
+      console.log(action.payload.filter.search.toLowerCase());
+      const searchFiltered=action.payload.dailyAnalysis.filter((p)=>{
+        return p.title.toLowerCase().includes(action.payload.filter.search.toLowerCase())
+     })
+     console.log(searchFiltered);
+      return {...state,data:searchFiltered,loding:false,error:null}
+    })
+    builder.addCase(multipleFilterAsynchTodos.rejected,(state,action)=>{
       return {...state,data:null,loding:false,error:action.payload.message}
     })
   }

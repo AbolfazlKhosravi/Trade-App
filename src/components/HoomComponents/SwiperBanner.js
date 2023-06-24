@@ -19,7 +19,7 @@ const SwiperBanner = () => {
         loop={true}
         navigation={true}
         speed={700}
-        className="swiperBanner h-48 md:h-64 lg:h-[28rem] rounded-3xl cursor-pointer w-full ">
+        className="swiperBanner h-48 md:h-64 mb-8 lg:h-[28rem] rounded-3xl cursor-pointer w-full ">
         <SwiperSlide className="px-4  h-full md:px-16 lg:px-20 flex justify-center items-start ">
           <img className="object-cover rounded-2xl h-3/4 lg:h-5/6 w-full" src="https://s8.uupload.ir/files/pexels-markus-spiske-3806753_t4oq.jpg" alt="banner"></img>
         </SwiperSlide>
