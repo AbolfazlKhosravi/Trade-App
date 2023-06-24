@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import React from "react";
 import CourseComponente from "./CourseComponente";
+import { NavLink } from "react-router-dom";
 
 const EducationComponents = () => {
   return (
@@ -26,9 +27,9 @@ const EducationComponent = ({text, id}) => {
         <h3 className="text-slate-700 dark:text-slate-300 text-[1.1rem] font-bold lg:text-[1.15rem]">
           {text}
         </h3>
-        <p className="opacity-70 text-[.75rem] text-slate-600 dark:text-slate-200">
+        <NavLink to={id==="dailyAnalysis"? "dilyAnalysis": "courses"} className="opacity-70 text-[.75rem] text-slate-600 dark:text-slate-200">
           دیدن همه
-        </p>
+        </NavLink>
       </div>
       <SwiperProducts id={id} />
     </article>

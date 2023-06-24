@@ -10,6 +10,19 @@ export const fetchDataProducts=createAsyncThunk("Products/fetchDataProducts", as
   return rejectWithValue(error)
  }
 })
+export const multipleFilterAsynchStore = createAsyncThunk(
+  "Store/multipleFilterAsynchStore",
+  async (payload, {rejectWithValue}) => {
+    try {
+      const data = await axios.get(
+        "https://khosravitradapp.glitch.me/products"
+      );
+      return {products: data.data, filter: payload};
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const initialState = {
   data:[],
@@ -30,6 +43,43 @@ export const productsSlice = createSlice({
     builder.addCase(fetchDataProducts.rejected,(state,action)=>{
       return {...state,data:null,loding:false,error:action.payload.message}
     })
+    builder.addCase(multipleFilterAsynchStore.pending, (state, action) => {
+      return {...state, data: null, loding: true, error: null};
+    });
+    builder.addCase(multipleFilterAsynchStore.fulfilled, (state, action) => {
+      let filterdData = action.payload.products.filter((p) => {
+        return p.name
+          .toLowerCase()
+          .includes(action.payload.filter.search.toLowerCase());
+      });
+
+      if (action.payload.filter.filrerPrice !== "") {
+        filterdData = filterdData.filter((p) => {
+          if (action.payload.filter.filrerPrice === "discount") {
+
+            return p.price !==p.discountedPrice;
+          } else {
+            return p.price === p.discountedPrice;
+          }
+        });
+      }
+     
+      filterdData = filterdData.filter((p) => {
+        return (
+          parseFloat(p.rate) >= parseFloat(action.payload.filter.filterRating)
+        );
+      });
+
+      return {...state, data: filterdData, loding: false, error: null};
+    });
+    builder.addCase(multipleFilterAsynchStore.rejected, (state, action) => {
+      return {
+        ...state,
+        data: null,
+        loding: false,
+        error: action.payload.message,
+      };
+    });
   }
 })
 export default productsSlice.reducer;

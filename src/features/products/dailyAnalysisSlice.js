@@ -14,8 +14,8 @@ export const fetchDataDailyAnalysis = createAsyncThunk(
     }
   }
 );
-export const multipleFilterAsynchTodos = createAsyncThunk(
-  "Todos/multipleFilterAsynchTodos",
+export const multipleFilterAsynchDaulyAnalysis = createAsyncThunk(
+  "DaulyAnalysis/multipleFilterAsynchDaulyAnalysis",
   async (payload, {rejectWithValue}) => {
     try {
       const data = await axios.get(
@@ -52,10 +52,10 @@ export const dailyAnalysisSlice = createSlice({
         error: action.payload.message,
       };
     });
-    builder.addCase(multipleFilterAsynchTodos.pending, (state, action) => {
+    builder.addCase(multipleFilterAsynchDaulyAnalysis.pending, (state, action) => {
       return {...state, data: null, loding: true, error: null};
     });
-    builder.addCase(multipleFilterAsynchTodos.fulfilled, (state, action) => {
+    builder.addCase(multipleFilterAsynchDaulyAnalysis.fulfilled, (state, action) => {
       let filterdData = action.payload.dailyAnalysis.filter((p) => {
         return p.title
           .toLowerCase()
@@ -106,7 +106,7 @@ export const dailyAnalysisSlice = createSlice({
 
       return {...state, data: filterdData, loding: false, error: null};
     });
-    builder.addCase(multipleFilterAsynchTodos.rejected, (state, action) => {
+    builder.addCase(multipleFilterAsynchDaulyAnalysis.rejected, (state, action) => {
       return {
         ...state,
         data: null,

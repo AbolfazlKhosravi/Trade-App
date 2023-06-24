@@ -39,6 +39,7 @@ const Header = () => {
     youtube: false,
     aboutMe: false,
     freeLearn: false,
+    noFreeLearn: false,
     products: false,
   });
 
@@ -128,7 +129,7 @@ const Header = () => {
               <NavLink to="/dilyAnalysis"> تحلیل روزانه</NavLink>
             </li>
             <li className="px-3 py-1 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white">
-              فروشگاه
+              <NavLink to="/store">فروشگاه</NavLink>
             </li>
             <li
               className="px-3 py-5 mx-1 cursor-pointer hover:text-blue-600 dark:hover:text-white"
@@ -153,13 +154,42 @@ const Header = () => {
                     telegram: false,
                     products: false,
                     freeLearn: false,
+                    noFreeLearn:false,
                     youtube: false,
                   });
                 }}
                 className={`${
                   dropdownLearn ? "  w-96 h-50" : " hidden"
                 } bg-white drop-shadow-xl rounded-b-md absolute translate-x-2 translate-y-[1.15rem] p-2 dark:bg-slate-900 `}>
-                <div
+                <NavLink
+                  to="/courses"
+                  className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
+                  onMouseEnter={() =>
+                    setShowFlash({
+                      ...showFlash,
+                      aboutMe: false,
+                      instagram: false,
+                      telegram: false,
+                      products: true,
+                      freeLearn: false,
+                      noFreeLearn:false,
+                      youtube: false,
+                    })
+                  }>
+                  <div className="flex justify-between items-center ">
+                    <FaProductHunt className="text-xl ml-3" />
+                    <p className="">همه اموزش ها</p>
+                  </div>
+                  <FiArrowLeft
+                    className={`${
+                      showFlash.products
+                        ? "opacity-100 animate-arrow-left"
+                        : "opacity-0"
+                    } text-blue-700 dark:text-blue-500  `}
+                  />
+                </NavLink>
+                <NavLink
+                  to="/courses?price=free"
                   className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
                   onMouseEnter={() =>
                     setShowFlash({
@@ -169,6 +199,7 @@ const Header = () => {
                       telegram: false,
                       products: false,
                       freeLearn: true,
+                      noFreeLearn:false,
                       youtube: false,
                     })
                   }>
@@ -183,8 +214,9 @@ const Header = () => {
                         : "opacity-0"
                     } text-blue-700 dark:text-blue-500 `}
                   />
-                </div>
-                <div
+                </NavLink>
+                <NavLink
+                  to="/courses?price=noFree"
                   className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 rounded-lg dark:text-slate-300 dark:hover:bg-slate-700"
                   onMouseEnter={() =>
                     setShowFlash({
@@ -192,8 +224,9 @@ const Header = () => {
                       aboutMe: false,
                       instagram: false,
                       telegram: false,
-                      products: true,
+                      products: false,
                       freeLearn: false,
+                      noFreeLearn:true,
                       youtube: false,
                     })
                   }>
@@ -203,12 +236,12 @@ const Header = () => {
                   </div>
                   <FiArrowLeft
                     className={`${
-                      showFlash.products
+                      showFlash.noFreeLearn
                         ? "opacity-100 animate-arrow-left"
                         : "opacity-0"
                     } text-blue-700 dark:text-blue-500  `}
                   />
-                </div>
+                </NavLink>
               </div>
             </li>
             <li
@@ -234,6 +267,7 @@ const Header = () => {
                     telegram: false,
                     products: false,
                     freeLearn: false,
+                    noFreeLearn:false,
                     youtube: false,
                   });
                 }}
@@ -251,6 +285,7 @@ const Header = () => {
                       telegram: false,
                       products: false,
                       freeLearn: false,
+                      noFreeLearn:false,
                       youtube: false,
                     })
                   }>
@@ -279,6 +314,7 @@ const Header = () => {
                       telegram: true,
                       products: false,
                       freeLearn: false,
+                      noFreeLearn:false,
                       youtube: false,
                     })
                   }>
@@ -307,6 +343,7 @@ const Header = () => {
                       telegram: false,
                       products: false,
                       freeLearn: false,
+                      noFreeLearn:false,
                       youtube: true,
                     })
                   }>
@@ -465,10 +502,10 @@ const Dropshot = ({
                 </NavLink>
               </li>
               <li className=" w-full  py-3 my-3  ">
-                <div className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
+                <NavLink to="/store" className="flex items-center justify-start cursor-pointer hover:text-blue-600 dark:hover:text-white">
                   <FaStore className="text-xl ml-3" />
                   <h2>فروشگاه</h2>
-                </div>
+                </NavLink>
               </li>
               <li className=" w-full  py-3 my-3  ">
                 <NavLink to="/dilyAnalysis">
@@ -530,21 +567,33 @@ const Dropshot = ({
                 <div
                   className={`${
                     dropdownLearn
-                      ? " overflow-auto h-[8.3rem]"
+                      ? " overflow-auto h-[12rem]"
                       : " overflow-hidden h-0"
                   }  w-full transition-all ease-in-out duration-700  pt-4  `}>
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
+                  <NavLink
+                    to="/courses"
+                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
+                    <div className="flex justify-between items-center ">
+                      <FaProductHunt className="text-xl ml-3" />
+                      <p className="">  همه اموزش ها</p>
+                    </div>
+                  </NavLink>
+                  <NavLink
+                    to="/courses?price=free"
+                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
                     <div className="flex justify-between items-center ">
                       <FaInfoCircle className="text-xl ml-3 " />
                       <p className=""> اموزش های رایگان </p>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
+                  </NavLink>
+                  <NavLink
+                    to="/courses?price=noFree"
+                    className="flex justify-between items-center py-4 px-2 text-slate-600 w-full hover:bg-stone-100 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg">
                     <div className="flex justify-between items-center ">
                       <FaProductHunt className="text-xl ml-3" />
                       <p className="">اموزش های پولی </p>
                     </div>
-                  </div>
+                  </NavLink>
                 </div>
               </li>
               <li className="relative flex flex-col items-start justify-start w-full  pt-3 my-1   ">

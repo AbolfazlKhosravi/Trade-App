@@ -15,6 +15,7 @@ import EducationComponents from "../components/HoomComponents/EducationComponent
 import {fetchDataDailyAnalysis} from "../features/products/dailyAnalysisSlice";
 import {Link} from "react-scroll";
 
+
 const Hoom = () => {
   const dispatch = useDispatch();
   const [shouldExecuteCode, setShouldExecuteCode] = useState(false);

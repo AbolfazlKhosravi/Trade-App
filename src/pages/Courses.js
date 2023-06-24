@@ -4,10 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import {fetchFavorite} from "../features/products/favoritesSlice";
 import {fetchCart} from "../features/products/cartSlice";
 import {toast} from "react-hot-toast";
-import {
-  fetchDataDailyAnalysis,
-  multipleFilterAsynchDaulyAnalysis,
-} from "../features/products/dailyAnalysisSlice";
+
 import lodingSvg from "../assets/images/loading.svg";
 import CourseComponente from "../components/HoomComponents/CourseComponente";
 import {debounce} from "debounce";
@@ -15,8 +12,10 @@ import {FiX} from "react-icons/fi";
 import ReactStars from "react-rating-stars-component";
 import {FaRegStar, FaStar, FaStarHalfAlt, FaSadTear} from "react-icons/fa";
 import {animateScroll as scroll} from "react-scroll";
+import { fetchDataCourses, multipleFilterAsynchCourses } from "../features/products/coursesSlice";
+import { useSearchParams } from "react-router-dom";
 
-function DailyAnalysis() {
+function Courses() {
   const dispatch = useDispatch();
   const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
   const [filters, SetFilters] = useState({
@@ -28,13 +27,21 @@ function DailyAnalysis() {
   });
 
   const [moreFilters, setMoreFilters] = useState(false);
-
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get("price") || "/";
   const removeDropShot = useRef(null);
+  console.log(redirect);
   useEffect(() => {
     dispatch(fetchFavorite());
     dispatch(fetchCart());
-    dispatch(fetchDataDailyAnalysis());
-  }, [dispatch]);
+    if(redirect==="/"){
+      SetFilters({...filters,filrerPrice:""})
+      dispatch(fetchDataCourses());
+    }else{
+      SetFilters({...filters,filrerPrice:redirect})
+      dispatch(multipleFilterAsynchCourses({...filters,filrerPrice:redirect}))
+    }
+  }, [dispatch,redirect]);
   const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
     useSelector((state) => state.cart);
   const {
@@ -44,7 +51,7 @@ function DailyAnalysis() {
     checkedRemovedToTheFavorites,
   } = useSelector((state) => state.favorites);
 
-  const dailyAnalysisData = useSelector((state) => state.dailyAnalysis);
+  const coursesData = useSelector((state) => state.courses);
 
   useEffect(() => {
     if (!shouldExecuteCode) {
@@ -130,7 +137,7 @@ function DailyAnalysis() {
     SetFilters({...filters, [name]: value});
 
     const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchDaulyAnalysis({...filters, [name]: value}));
+      dispatch(multipleFilterAsynchCourses({...filters, [name]: value}));
     }, 500);
 
     debouncedSearch();
@@ -139,7 +146,7 @@ function DailyAnalysis() {
     SetFilters({...filters, filterRating: value});
 
     const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchDaulyAnalysis({...filters, filterRating: value}));
+      dispatch(multipleFilterAsynchCourses({...filters, filterRating: value}));
     }, 300);
 
     debouncedSearch();
@@ -149,7 +156,7 @@ function DailyAnalysis() {
     SetFilters({...filters, [name]: value});
 
     const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchDaulyAnalysis({...filters, [name]: value}));
+      dispatch(multipleFilterAsynchCourses({...filters, [name]: value}));
     }, 500);
 
     debouncedSearch();
@@ -169,7 +176,7 @@ function DailyAnalysis() {
         />
         <div className="flex flex-col lg:flex-row justify-start">
           <h1 className="text-2xl px-2 pt-6 font-extrabold text-slate-600 dark:text-slate-300 lg:px-16 lg:w-1/4">
-            تحلیل روزانه
+            دوره های اموزشی
           </h1>
           <div className="w-full lg:w-3/4 flex justify-center ">
             <div className="flex items-center justify-between my-4 w-full max-w-[49rem] px-4 md:my-6">
@@ -399,18 +406,18 @@ function DailyAnalysis() {
                 />
               </div>
             </div>
-            {dailyAnalysisData.loding ? (
+            {coursesData.loding ? (
               <div className="w-full my-12 flex justify-center">
                 <img className="w-20  " src={lodingSvg} alt="loding Svg" />
               </div>
-            ) : dailyAnalysisData.error ? (
+            ) : coursesData.error ? (
               <div className="w-full my-12 flex justify-center text-xl  text-red-500">
                 <span className="text-blue-600 ml-4 ">خطا</span> :{" "}
-                {dailyAnalysisData.error}
+                {coursesData.error}
               </div>
-            ) : dailyAnalysisData.data.length ? (
+            ) : coursesData.data.length ? (
               <div className="  flex  justify-center md:justify-between lg:justify-start flex-wrap items-center w-screen px-2  lg:w-3/4 ">
-                {dailyAnalysisData.data.map((course) => {
+                {coursesData.data.map((course) => {
                   return (
                     <div
                       key={course.id}
@@ -676,4 +683,4 @@ const Dropshot = ({
   );
 };
 
-export default DailyAnalysis;
+export default Courses;
