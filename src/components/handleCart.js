@@ -3,7 +3,7 @@ import lodingSvg from "../assets/images/loading.svg";
 import {addCart, deleteCart} from "../features/products/cartSlice";
 import {FaRedoAlt} from "react-icons/fa";
 
-const HandleCart = ({product}) => {
+const HandleCart = ({product,prductPage}) => {
   const {clickedShowLoding, clickedShowError, cart} = useSelector(
     (state) => state.cart
   );
@@ -22,36 +22,36 @@ const HandleCart = ({product}) => {
   };
 
   if (isClickedLoding) {
-    return <img className="w-6 h-6 translate-x-1" src={lodingSvg} alt="svg loading" />;
+    return <img className={`w-6 h-6 translate-x-1 ${prductPage?"w-8 h-8 translate-y-2  translate-x-0":""}`} src={lodingSvg} alt="svg loading" />;
   }
 
   if (isClickedError) {
     return (
       <div
-        className="flex flex-col items-center justify-center text-[.7rem] text-red-500 cursor-pointer translate-x-1"
+        className={`flex flex-col items-center justify-center text-[.7rem] ${prductPage?"text-[.9rem] translate-y-2  translate-x-0":""}  text-red-500 cursor-pointer translate-x-1`}
         onClick={handleRetry}>
         <FaRedoAlt className="text-blue-600 mt-[1.5px] " />
         <span className="text-blue-600 ml-1 ">خطا</span>
       </div>
     );
   }
-
+   console.log(prductPage);
   return (
     <div>
       {isCart ? (
         <>
           <button
             onClick={() => dispatch(deleteCart(product.id))}
-            className=" hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  h-9 w-9 rounded-full  font-light  text-center text-lg">
-            <p className="mt-[4.8px]">✔</p>
+            className={` hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  ${prductPage?"h-12" : "h-9"} ${prductPage?"w-12" : "w-9"} rounded-full  font-light  text-center text-lg`}>
+            <p className={`mt-[4.8px] ${prductPage?"text-[1.5rem]":""}`}>✔</p>
           </button>
         </>
       ) : (
         <>
           <button
             onClick={() => dispatch(addCart(product))}
-            className=" hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  h-9 w-9 rounded-full  font-light  text-center text-2xl">
-            <p className="mt-[4.8px]">+</p>
+            className={` hover:animate-pulse  shadow-gray-400 dark:shadow-slate-900 shadow-button flex items-center justify-center text-white bg-blue-600  ${prductPage?"h-12" : "h-9"} ${prductPage?"w-12" : "w-9"}  rounded-full  font-light  text-center text-2xl`}>
+            <p className={`mt-[4.8px] ${prductPage?"text-[2.5rem] font-bold translate-y-[1.5px]":""}`}>+</p>
           </button>
         </>
       )}

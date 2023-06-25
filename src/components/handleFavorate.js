@@ -42,7 +42,7 @@ const HandleFavorite = ({product}) => {
       {isFavorite ? (
         <>
           <FaHeart
-            className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
+            className="text-red-500  cursor-pointer hover:animate-pulse"
             onClick={() => {
               dispatch(deleteFavorite(product.id));
             }}
@@ -51,7 +51,7 @@ const HandleFavorite = ({product}) => {
       ) : (
         <>
           <FaRegHeart
-            className="text-red-500 text-lg cursor-pointer hover:animate-pulse"
+            className="text-red-500  cursor-pointer hover:animate-pulse"
             onClick={() => {
               dispatch(addFavorite(product));
             }}

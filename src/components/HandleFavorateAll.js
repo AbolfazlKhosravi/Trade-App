@@ -21,7 +21,7 @@ const HandleFavorateAll = ({product}) => {
           <FaRedoAlt className="text-blue-600 mt-[1.5px] mr-2" />
         </div>
       ) : (
-        <HandleFavorate product={product} />
+        <HandleFavorate product={product}  />
       )}
     </>
   );

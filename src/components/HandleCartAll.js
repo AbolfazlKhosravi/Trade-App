@@ -4,7 +4,7 @@ import lodingSvg from "../assets/images/loading.svg";
 import HandleCart from "./handleCart";
 import { fetchCart } from "../features/products/cartSlice";
 
-const HandleCartAll = ({product}) => {
+const HandleCartAll = ({product,prductPage}) => {
  const cartData = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   
@@ -20,7 +20,7 @@ const HandleCartAll = ({product}) => {
               <span className="text-blue-600 ml-1 ">خطا</span>
             </div>
           ) : (
-            <HandleCart product={product} />
+            <HandleCart product={product} prductPage={prductPage} />
           )}
     </>
   );
