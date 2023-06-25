@@ -6,6 +6,7 @@ import Market from "./pages/Market";
 import DailyAnalysis from "./pages/DailyAnalysis";
 import Courses from "./pages/Courses";
 import Store from "./pages/Store";
+import Book from "./pages/Book";
 const routes=[
   {path:"/" ,element:<Hoom/>},
   {path:"/aboutMe" ,element:<AboutMe/>},
@@ -15,5 +16,6 @@ const routes=[
   {path:"/dilyAnalysis" ,element:<DailyAnalysis/>},
   {path:"/courses" ,element:<Courses/>},
   {path:"/store" ,element:<Store/>},
+  {path:"/store/:name" ,element:<Book/>},
 ]
 export default routes;

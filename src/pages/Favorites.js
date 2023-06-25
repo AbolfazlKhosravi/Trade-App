@@ -1,7 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
 import {useEffect, useState} from "react";
-import {deleteFavorite, fetchFavorite} from "../features/products/favoritesSlice";
+import {
+  deleteFavorite,
+  fetchFavorite,
+} from "../features/products/favoritesSlice";
 import {
   deleteCart,
   fetchCart,
@@ -18,9 +21,9 @@ import {
   FaPlusCircle,
   FaMinusCircle,
 } from "react-icons/fa";
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
-import HandleCartAll from "../components/HandleCartAll"
+import HandleCartAll from "../components/HandleCartAll";
 
 const Favorites = () => {
   const dispatch = useDispatch();
@@ -97,11 +100,14 @@ const Favorites = () => {
     checkedRemovedToTheFavorites,
   ]);
 
+
   useEffect(() => {
     if (!shouldExecuteCode) {
       setShouldExecuteCode(true);
     }
   }, [shouldExecuteCode]);
+
+
 
   const HandleShoweProductsFavorites = () => {
     if (loadingAll) {
@@ -161,16 +167,20 @@ const Favorites = () => {
               const isClickedError = clickedShowError.find(
                 (cli) => cli === product.id
               );
+              const encodedName = product.name.split(" ").join("-");
+              const productUrl = `/store/${encodedName}`;
               return (
                 <div
                   key={product.id}
                   className="bg-slate-50 flex items-center justify-between p-2 rounded-3xl mb-4 max-h-[12rem] h-[12rem]  max-w-[19.5rem]  md:min-w-[22rem]    dark:bg-slate-800 min-[500px]:mx-4 md:mx-1 lg:mr-2">
                   <div className="relative bg-[#F2F0F0] dark:bg-slate-900 rounded-3xl h-full w-2/4 px-4 flex p-4">
-                    <img
-                      className="h-full w-full hover:scale-105 transition-all object-cover"
-                      src={product.img}
-                      alt={product.name}
-                    />
+                    <NavLink state={{productId: product.id}} to={productUrl}>
+                      <img
+                        className="h-full w-full hover:scale-105 transition-all object-cover"
+                        src={product.img}
+                        alt={product.name}
+                      />
+                    </NavLink>
                     <button className="absolute top-2">
                       <HandleFavorateAll product={product} />
                     </button>
@@ -206,7 +216,7 @@ const Favorites = () => {
                     <div className="text-[.8rem] mb-4">
                       <StarRating rating={product.rate} />
                     </div>
-                   
+
                     {product.price === product.discountedPrice ? (
                       <p className="text-[1.05rem] text-slate-700 font-extrabold mt-6 dark:text-slate-400">
                         {product.price.toLocaleString("fa")}
@@ -227,14 +237,14 @@ const Favorites = () => {
                         </p>
                       </div>
                     )}
-                     <div className="flex my-3 w-full items-center justify-end">
-                        <HandleCartAll product={product}/>
+                    <div className="flex my-3 w-full items-center justify-end">
+                      <HandleCartAll product={product} />
                     </div>
                   </div>
                 </div>
               );
             }
-            return ""
+            return "";
           })}
       </div>
     );
@@ -334,38 +344,38 @@ const Favorites = () => {
                     </div>
                     <div className="px-2 pt-1 w-full flex justify-between items-center ">
                       <div className=" w-auto flex justify-start items-center ">
-                      {product.price === product.discountedPrice ? (
-                        product.price === 0 ? (
-                          <p className="text-[1.05rem] text-blue-500 font-bold  dark:text-slate-400">
-                            رایگان
-                          </p>
+                        {product.price === product.discountedPrice ? (
+                          product.price === 0 ? (
+                            <p className="text-[1.05rem] text-blue-500 font-bold  dark:text-slate-400">
+                              رایگان
+                            </p>
+                          ) : (
+                            <p className="text-[1rem] text-slate-700 font-extrabold dark:text-slate-400">
+                              {product.price.toLocaleString("fa")}
+                              <span className="mr-2 font-bold text-blue-500 ">
+                                تومان
+                              </span>
+                            </p>
+                          )
                         ) : (
-                          <p className="text-[1rem] text-slate-700 font-extrabold dark:text-slate-400">
-                            {product.price.toLocaleString("fa")}
-                            <span className="mr-2 font-bold text-blue-500 ">
-                              تومان
-                            </span>
-                          </p>
-                        )
-                      ) : (
-                        <div className="flex items-center ">
-                          <p className="text-[.79rem] text-slate-700 font-extrabold dark:text-slate-400 ">
-                            {product.discountedPrice.toLocaleString("fa")}
-                            <span className="mr-2 font-bold text-blue-500">
-                              تومان
-                            </span>
-                          </p>
-                          <p className="text-[.78rem] text-slate-500 line-through mt-0 mr-2">
-                            {product.price.toLocaleString("fa")} تومان
-                          </p>
+                          <div className="flex items-center ">
+                            <p className="text-[.79rem] text-slate-700 font-extrabold dark:text-slate-400 ">
+                              {product.discountedPrice.toLocaleString("fa")}
+                              <span className="mr-2 font-bold text-blue-500">
+                                تومان
+                              </span>
+                            </p>
+                            <p className="text-[.78rem] text-slate-500 line-through mt-0 mr-2">
+                              {product.price.toLocaleString("fa")} تومان
+                            </p>
+                          </div>
+                        )}
+                        <div className="text-sm mr-4">
+                          {" "}
+                          <StarRating rating={product.rate} />
                         </div>
-                      )}
-                      <div className="text-sm mr-4">
-                        {" "}
-                        <StarRating rating={product.rate} />
                       </div>
-                      </div>
-                        <HandleCartAll product={product}/>
+                      <HandleCartAll product={product} />
                     </div>
                   </div>
                 </div>

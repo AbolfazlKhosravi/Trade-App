@@ -2,6 +2,7 @@ import StarRating from "../StarRating";
 import {useState} from "react";
 import HandleFavorateAll from "../HandleFavorateAll";
 import HandleCartAll from "../HandleCartAll";
+import {NavLink} from "react-router-dom";
 
 const ProductComponent = ({product}) => {
   const [moreInformation, setMoreInformation] = useState("");
@@ -9,6 +10,8 @@ const ProductComponent = ({product}) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
     return parseInt(discount);
   };
+  const encodedName = product.name.split(" ").join("-");
+  const productUrl = `/store/${encodedName}`;
   return (
     <article className="w-full h-full flex justify-start flex-col items-center text-center shadow-sm rounded-xl ">
       <div className="flex items-center justify-between p-3 max-h-9 w-full">
@@ -26,26 +29,30 @@ const ProductComponent = ({product}) => {
         )}
       </div>
       <div className="overflow-hidden w-[9.5rem] rounded-lg   h-[10rem]  flex items-center justify-center cursor-pointer">
-        <img
-          onMouseEnter={() => setMoreInformation(product.id)}
-          onMouseLeave={() => setMoreInformation("")}
-          src={product.img}
-          alt={product.name}
-          className="w-[9.5rem]   transition-all duration-100 ease-in-out  max-h-[10rem]  object-cover rounded-lg hover:scale-110   cursor-pointer "
-        />
+        <NavLink state={{productId: product.id}} to={productUrl}>
+          <img
+            onMouseEnter={() => setMoreInformation(product.id)}
+            onMouseLeave={() => setMoreInformation("")}
+            src={product.img}
+            alt={product.name}
+            className="w-[9.5rem]   transition-all duration-100 ease-in-out  max-h-[10rem]  object-cover rounded-lg hover:scale-110   cursor-pointer "
+          />
+        </NavLink>
         {moreInformation === product.id && (
-          <div className=" absolute top-2 left-0 right-0  text-[.8rem] text-slate-500 dark:text-slate-500">
+          <p className=" absolute top-2 left-0 right-0  text-[.8rem] text-slate-500 dark:text-slate-500">
             اطلاعات بیشتر
-          </div>
+          </p>
         )}
       </div>
       <div className="flex flex-col items-start pb-3 px-3 font-bold text-sm text-slate-700 dark:text-slate-200 w-full">
-        <p
+        <NavLink
+          state={{productId: product.id}}
+          to={productUrl}
           onMouseEnter={() => setMoreInformation(product.id)}
           onMouseLeave={() => setMoreInformation("")}
           className="cursor-pointer pt-3">
           {product.name}
-        </p>
+        </NavLink>
         <div className="flex justify-between items-center w-full pt-1">
           <div className="flex flex-col items-start justify-center">
             <div className="text-[1.05rem] ">

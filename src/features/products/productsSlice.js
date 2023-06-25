@@ -23,11 +23,20 @@ export const multipleFilterAsynchStore = createAsyncThunk(
     }
   }
 );
+export const fetchDataProduct=createAsyncThunk("Products/fetchDataProduct", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.get(`https://khosravitradapp.glitch.me/products/${payload.id}`);
+   return data.data
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+ })
 
 const initialState = {
   data:[],
   error:null,
   loding:false,
+  product:null
 }
 
 export const productsSlice = createSlice({
@@ -88,6 +97,15 @@ export const productsSlice = createSlice({
         error: action.payload.message,
       };
     });
+    builder.addCase(fetchDataProduct.pending,(state,action)=>{
+      return {...state,product:null,loding:true,error:null}
+    })
+    builder.addCase(fetchDataProduct.fulfilled,(state,action)=>{
+      return {...state,product:action.payload,loding:false,error:null}
+    })
+    builder.addCase(fetchDataProduct.rejected,(state,action)=>{
+      return {...state,data:null,loding:false,error:action.payload.message}
+    })
   }
 })
 export default productsSlice.reducer;
