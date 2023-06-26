@@ -19,6 +19,14 @@ import ReactStars from "react-rating-stars-component";
 import {useState} from "react";
 import {useRef} from "react";
 
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/fa";
+import convertToPersianNumber from "../utils/ConverToPersianNumber";
+
+dayjs.extend(relativeTime);
+dayjs.locale("fa");
+
 const Book = () => {
   const location = useLocation();
   const {error, loding, product} = useSelector((state) => state.products);
@@ -27,8 +35,7 @@ const Book = () => {
   const writeCommentRef = useRef(null);
   const writeCommentReaplayRef = useRef(null);
   const [sendCommint, setSendCommint] = useState(false);
-  const [sendReplay, setSendReplay] = useState([]);
-  console.log(product);
+  const [sendReplay, setSendReplay] = useState(null);
 
   useEffect(() => {
     dispatch(fetchFavorite());
@@ -82,10 +89,10 @@ const Book = () => {
                 <div className="w-full   pt-4 pb-3 relative">
                   <div className="flex items-start justify-between w-full px-4">
                     <div className="flex flex-col items-center justify-start relative">
-                      <h1 className="text-slate-700 text-[1.9rem] font-bold">
+                      <h1 className="text-slate-700 text-[1.7rem] font-extrabold">
                         {product.name}
                       </h1>
-                      <div className="flex justify-center  absolute bottom-0 translate-y-4">
+                      <div className="flex justify-center  absolute bottom-0 translate-y-6">
                         <FaStar className="text-yellow-500 translate-y-[.07rem]" />
                         <p className="font-bold text-[1rem] text-slate-500  ">
                           {product.rate.toLocaleString("fa")}{" "}
@@ -95,7 +102,7 @@ const Book = () => {
                     {product.discountedPrice !== product.price ? (
                       <div className="flex flex-col items-center justify-end relative">
                         <div className="text-red-600 text-[1.4rem]  font-bold">
-                          <span className="text-[1.3rem] text-slate-500 mr-1">
+                          <span className="text-[1.3rem] text-slate-500 mr-1 ">
                             T
                           </span>
                           {product.discountedPrice.toLocaleString("fa")}{" "}
@@ -116,7 +123,7 @@ const Book = () => {
                   </div>
                   <div className="flex  items-start justify-between w-full mt-6 px-2 flex-wrap">
                     <div className="flex w-full justify-start items-center my-3">
-                      <p className="text-[1.3rem]  text-slate-700 font-bold mr-4">
+                      <p className="text-[1.3rem]  text-slate-700 font-extrabold mr-4">
                         نویسنده :
                       </p>
                       <img
@@ -129,7 +136,7 @@ const Book = () => {
                       </p>
                     </div>
                     <div className="flex w-full justify-start items-center my-3">
-                      <p className="text-[1.3rem]  text-slate-700 font-bold mr-4">
+                      <p className="text-[1.3rem]  text-slate-700 font-extrabold mr-4">
                         ناشر :
                       </p>
                       <img
@@ -145,8 +152,7 @@ const Book = () => {
                   <div className="flex items-center justify-start px-3 my-4">
                     <FaBook className="text-blue-500 text-[2.5rem]  my-2" />
                     <p className="text-slate-600 text-[1rem] font-bold mr-4">
-                      تعداد صفحه کتاب{" "}
-                      {product.numberOfPages.toLocaleString("fa")} تا
+                      تعداد صفحه {product.numberOfPages.toLocaleString("fa")} تا
                     </p>
                   </div>
                   <div className=" sticky bottom-5  w-full flex items-center justify-end pl-8 ">
@@ -213,102 +219,104 @@ const Book = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="flex flex-col justify-start items-start mt-5">
-                      <div className="flex flex-col min-w-full items-center justify-start mb-4 ml-2">
-                        <div className="flex items-start justify-start w-full ">
-                          <img
-                            className="w-12 h-12 rounded-full object-cover translate-y-[2px]"
-                            src={product.publisherImg}
-                            alt={product.writerImg}
-                          />
-                          <div className="flex flex-col items-start justify-start mr-3">
-                            <div className="flex items-center justify-start">
-                              <p className="text-slate-700 font-bold text-lg">
-                                {product.writer}
-                              </p>
-                              <span className="mx-2">.</span>
-                              <p className="text-slate-500  text-[.75rem] ">
-                                5 دقیق پیش
-                              </p>
+                    <div className="flex flex-col justify-start items-start mt-5 w-full">
+                      <div className="flex flex-col min-w-full items-center justify-start mb-4 ml-2 w-full">
+                        {product.commints.map((p) => {
+                          return (
+                            <div key={p.id} className="flex flex-col items-start justify-start w-full ">
+                              <div  className="flex items-start justify-start w-full ">
+                                <img
+                                  className="w-12 h-12 rounded-full object-cover translate-y-[2px]"
+                                  src={p.image}
+                                  alt={p.image}
+                                />
+                                <div className="flex flex-col items-start justify-start mr-3">
+                                  <div className="flex items-center justify-start">
+                                    <p className="text-slate-700 font-bold text-lg">
+                                      {p.name}
+                                    </p>
+                                    <span className="mx-2">.</span>
+                                    <p className="text-slate-500  text-[.75rem] ">
+                                    {convertToPersianNumber(dayjs(p.date).fromNow())}
+                                    </p>
+                                  </div>
+                                  <p className="text-slate-700 font-medium text-[1rem] my-2 ">
+                                    {" "}
+                                    {p.comment}{" "}
+                                  </p>
+                                  <div className="flex justify-between items-start w-full mt-1">
+                                    <p
+                                      onClick={() => {
+                                        setSendReplay(p.id);
+                                        setTimeout(() => {
+                                          writeCommentReaplayRef.current.focus();
+                                        }, 700);
+                                      }}
+                                      className="text-slate-500  text-[.9rem] ">
+                                      پاسخ
+                                    </p>
+                                    <span className="flex items-center ">
+                                      <FaStar className="text-yellow-500 text-lg" />
+                                      <p className="text-slate-600  text-[1rem] mr-1 justify-between translate-y-[2px]">
+                                        {p.rate}
+                                      </p>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                className={` ${
+                                  sendReplay === p.id
+                                    ? " h-44 overflow-auto mt-4 mb-4"
+                                    : "h-0 overflow-hidden mt-0 mb-0"
+                                } transition-all ease-in-out duration-700  flex flex-col items-center w-full bg-slate-50 rounded-2xl px-4`}>
+                                <span className="  w-full flex justify-end py-2">
+                                  <FaTimes
+                                    onClick={() => {
+                                      setSendReplay("");
+                                    }}
+                                    className="text-red-400 text-lg "
+                                  />
+                                </span>
+                                <textarea
+                                  ref={writeCommentReaplayRef}
+                                  className="w-full rounded-lg bg-white outline-none text-slate-600 focus:border-blue-500 border-slate-300 shadow-sm border transition-all h-24  py-3 px-3"
+                                  placeholder="نظر خودرا وارد کنید"
+                                />
+                                <button className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">
+                                  ارسال{" "}
+                                </button>
+                              </div>
+                              {p.replays.length > 0 &&
+                                p.replays.map((r) => {
+                                  return (
+                                    <div key={r.id} className="flex items-start justify-start w-full mr-6 my-4">
+                                      <img
+                                        className="w-11 h-11 rounded-full object-cover translate-y-[2px]"
+                                        src={r.image}
+                                        alt={r.name}
+                                      />
+                                      <div className="flex flex-col items-start justify-start mr-4">
+                                        <div className="flex items-center justify-start">
+                                          <p className="text-slate-700 font-bold text-[1rem]">
+                                            {r.name}
+                                          </p>
+                                          <span className="mx-2">.</span>
+                                          <p className="text-slate-500  text-[.75rem] ">
+                                          {convertToPersianNumber(dayjs(r.date).fromNow())}
+                                          </p>
+                                        </div>
+                                        <p className="text-slate-700 font-medium text-[.9rem] my-2 ml-2">
+                                          {" "}
+                                          {r.comment}{" "}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
                             </div>
-                            <p className="text-slate-700 font-medium text-[1rem] my-2 ">
-                              {" "}
-                              کتاب بسیار جالبی بود و واقعا مفید بود{" "}
-                            </p>
-                            <div className="flex justify-between items-start w-full mt-1">
-                              <p
-                                onClick={() => {
-                                  setSendReplay([...sendReplay, 1]);
-                                  setTimeout(() => {
-                                    console.log("sssssssssssss");
-                                    writeCommentReaplayRef.current.focus();
-                                  }, 700);
-                                }}
-                                className="text-slate-500  text-[.9rem] ">
-                                پاسخ
-                              </p>
-                              <span className="flex items-center ">
-                                <FaStar className="text-yellow-500 text-lg" />
-                                <p className="text-slate-600  text-[1rem] mr-1 justify-between translate-y-[2px]">
-                                  4.5
-                                </p>
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          className={` ${
-                            sendReplay.find((id) => id === 1)
-                              ? " h-44 overflow-auto"
-                              : "h-0 overflow-hidden "
-                          } transition-all ease-in-out duration-700  flex flex-col items-center w-full bg-slate-50 rounded-2xl px-4  mt-4`}>
-                          <span className="  w-full flex justify-end py-2">
-                            <FaTimes
-                              onClick={() => {
-                                const updateReplay = sendReplay.filter(
-                                  (id) => id !== 1
-                                );
-                                setSendReplay(updateReplay);
-                              }}
-                              className="text-red-400 text-lg "
-                            />
-                          </span>
-                          <textarea
-                            ref={writeCommentReaplayRef}
-                            className="w-full rounded-lg bg-white outline-none text-slate-600 focus:border-blue-500 border-slate-300 shadow-sm border transition-all h-24  py-3 px-3"
-                            placeholder="نظر خودرا وارد کنید"
-                          />
-                          <button className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">
-                            ارسال{" "}
-                          </button>
-                        </div>
-                        <div className="flex items-start justify-start w-full mr-6 mt-3">
-                          <img
-                            className="w-11 h-11 rounded-full object-cover translate-y-[2px]"
-                            src={product.publisherImg}
-                            alt={product.writerImg}
-                          />
-                          <div className="flex flex-col items-start justify-start mr-4">
-                            <div className="flex items-center justify-start">
-                              <p className="text-slate-700 font-bold text-[1rem]">
-                                {product.writer}
-                              </p>
-                              <span className="mx-2">.</span>
-                              <p className="text-slate-500  text-[.65rem] ">
-                                5 دقیق پیش
-                              </p>
-                            </div>
-                            <p className="text-slate-700 font-medium text-[.9rem] my-2 ml-2">
-                              {" "}
-                              کتاب بسیار جالبی بود و واقعا مفید بود{" "}
-                            </p>
-                            <div className="flex justify-between items-start w-full mt-1">
-                              <p className="text-slate-500  text-[.8rem] ">
-                                پاسخ
-                              </p>
-                            </div>
-                          </div>
-                        </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>

@@ -35,7 +35,6 @@ const HandleCart = ({product,prductPage}) => {
       </div>
     );
   }
-   console.log(prductPage);
   return (
     <div>
       {isCart ? (

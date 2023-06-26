@@ -167,7 +167,7 @@ const Favorites = () => {
               const isClickedError = clickedShowError.find(
                 (cli) => cli === product.id
               );
-              const encodedName = product.name.split(" ").join("-");
+              const encodedName = product.nameEnglish.split(" ").join("-");
               const productUrl = `/store/${encodedName}`;
               return (
                 <div

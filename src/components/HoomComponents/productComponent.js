@@ -10,7 +10,7 @@ const ProductComponent = ({product}) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
     return parseInt(discount);
   };
-  const encodedName = product.name.split(" ").join("-");
+  const encodedName = product.nameEnglish.split(" ").join("-");
   const productUrl = `/store/${encodedName}`;
   return (
     <article className="w-full h-full flex justify-start flex-col items-center text-center shadow-sm rounded-xl ">
