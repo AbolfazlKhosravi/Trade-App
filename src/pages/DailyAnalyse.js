@@ -2,7 +2,6 @@ import {useLocation} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchDataProduct} from "../features/products/productsSlice";
 import {fetchCart} from "../features/products/cartSlice";
 import {fetchFavorite} from "../features/products/favoritesSlice";
 import lodingSvg from "../assets/images/loading.svg";
@@ -23,15 +22,15 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/fa";
 import convertToPersianNumber from "../utils/ConverToPersianNumber";
-import {fetchDataCourse} from "../features/products/coursesSlice";
 import ReactPlayer from "react-player";
+import { fetchDatadailyAnalyse } from "../features/products/dailyAnalysisSlice";
 
 dayjs.extend(relativeTime);
 dayjs.locale("fa");
 
-const Course = () => {
+const DailyAnalyse = () => {
   const location = useLocation();
-  const {error, loding, course} = useSelector((state) => state.courses);
+  const {error, loding, dailyAnalyse} = useSelector((state) => state.dailyAnalysis);
   const courseId = location.state.courseId;
   const dispatch = useDispatch();
   const writeCommentRef = useRef(null);
@@ -42,7 +41,7 @@ const Course = () => {
   useEffect(() => {
     dispatch(fetchFavorite());
     dispatch(fetchCart());
-    dispatch(fetchDataCourse({id: courseId}));
+    dispatch(fetchDatadailyAnalyse({id: courseId}));
   }, [dispatch, courseId]);
 
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
@@ -62,11 +61,11 @@ const Course = () => {
             <span className="text-blue-600 ml-4 ">خطا</span> : {error}
           </div>
         ) : (
-          course && (
+            dailyAnalyse && (
             <div className="flex flex-col lg:flex-row  items-center lg:items-start lg:justify-between  justify-start  w-full lg:h-[35rem] lg:bg-slate-50 lg:dark:bg-slate-800 ">
               <div className="flex flex-col  md:flex-row lg:items-start lg:justify-between   items-center md:items-start justify-start md:justify-between w-full lg:w-auto md:mt-8 rounded-2xl">
                 <div className=" relative flex items-start justify-center w-full md:w-3/5   ">
-                  <div className="w-full h-full rounded-3xl relative lg:px-4">
+                  <div className="w-full h-full rounded-3xl relative lg:px-8 ">
                     <ReactPlayer
                       url="https://s8.uupload.ir/filelink/hmAYOUw7pqSm_3f60cf584d/pexels-ambientnature-atmosphere-6136576-1280x720-60fps_d9ql.mp4"
                       className=" overflow-hidden md:rounded-2xl"
@@ -75,15 +74,15 @@ const Course = () => {
                       height="100%"
                     />
                   </div>
-                  <span className="absolute top-4 right-2 lg:right-8  text-2xl">
-                    <HandleFavorite product={course} />
+                  <span className="absolute top-4 right-2 lg:right-10  text-2xl">
+                    <HandleFavorite product={dailyAnalyse} />
                   </span>
-                  {course.discountedPrice !== course.price ? (
+                  {dailyAnalyse.discountedPrice !== dailyAnalyse.price ? (
                     <span className="text-[1rem] absolute top-6 left-6   px-[.3rem]  text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
                       %{" "}
                       {calculationOfDiscountPercentage(
-                        course.discountedPrice,
-                        course.price
+                        dailyAnalyse.discountedPrice,
+                        dailyAnalyse.price
                       ).toLocaleString("fa")}
                     </span>
                   ) : (
@@ -95,28 +94,28 @@ const Course = () => {
                     <div className="flex items-start justify-between w-full px-4">
                       <div className="flex flex-col items-center justify-start relative">
                         <h1 className="text-slate-700 dark:text-slate-400 text-[1.5rem] font-extrabold">
-                          {course.title}
+                          {dailyAnalyse.title}
                         </h1>
                         <div className="flex justify-start  absolute bottom-0 translate-y-6 translate-x-14">
                           <FaStar className="text-yellow-500 translate-y-[.07rem]" />
                           <p className="font-bold text-[1rem] text-slate-500 dark:text-slate-400  ">
-                            {course.rate.toLocaleString("fa")}{" "}
+                            {dailyAnalyse.rate.toLocaleString("fa")}{" "}
                           </p>
                         </div>
                       </div>
-                      {course.discountedPrice !== course.price ? (
+                      {dailyAnalyse.discountedPrice !== dailyAnalyse.price ? (
                         <div className="flex flex-col items-center justify-end relative">
                           <div className="text-red-600 text-[1.4rem]  font-bold">
                             <span className="text-[1.3rem] text-slate-500 mr-1 ">
                               T
                             </span>
-                            {course.discountedPrice.toLocaleString("fa")}{" "}
+                            {dailyAnalyse.discountedPrice.toLocaleString("fa")}{" "}
                           </div>
                           <div className="text-[.85rem] mr-2 opacity-50 line-through absolute bottom-0 translate-y-4 dark:text-slate-500">
-                            {course.price.toLocaleString("fa")}{" "}
+                            {dailyAnalyse.price.toLocaleString("fa")}{" "}
                           </div>
                         </div>
-                      ) : course.price === 0 ? (
+                      ) : dailyAnalyse.price === 0 ? (
                         <h2 className="text-blue-500 text-md font-bold text-xl">
                           رایگان
                         </h2>
@@ -125,7 +124,7 @@ const Course = () => {
                           <span className="text-[1.3rem] text-slate-500 mr-1">
                             T
                           </span>
-                          {course.price.toLocaleString("fa")}
+                          {dailyAnalyse.price.toLocaleString("fa")}
                           {""}
                         </div>
                       )}
@@ -137,22 +136,22 @@ const Course = () => {
                         </p>
                         <img
                           className="w-12 h-12 rounded-full object-cover mr-2"
-                          src={course.instructorimg}
-                          alt={course.instructorimg}
+                          src={dailyAnalyse.instructorimg}
+                          alt={dailyAnalyse.instructorimg}
                         />
                         <p className="text-[1.1rem] text-slate-700 font-bold mr-2 dark:text-slate-500">
-                          {course.instructor}
+                          {dailyAnalyse.instructor}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center justify-start px-3 my-4 ">
                       <FaVideo className="text-blue-500 text-[2.5rem]  my-2" />
                       <p className="text-slate-600 text-[1rem] font-bold mr-4 dark:text-slate-500 flex-row-reverse">
-                        زمان ویدیو {course.hours}{" "}
+                        زمان ویدیو {dailyAnalyse.hours}{" "}
                       </p>
                     </div>
                     <div className=" sticky bottom-5  w-full flex items-center justify-end pl-8 ">
-                      <HandleCartAll product={course} prductPage={true} />
+                      <HandleCartAll product={dailyAnalyse} prductPage={true} />
                     </div>
                   </div>
                 </div>
@@ -217,7 +216,7 @@ const Course = () => {
                   </div>
                   <div className="flex flex-col justify-start items-start mt-5 w-full">
                     <div className="flex flex-col min-w-full items-center justify-start mb-4 ml-2 w-full">
-                      {course.commints.map((p) => {
+                      {dailyAnalyse.commints.map((p) => {
                         return (
                           <div
                             key={p.id}
@@ -333,4 +332,4 @@ const Course = () => {
   );
 };
 
-export default Course;
+export default DailyAnalyse;

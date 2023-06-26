@@ -27,15 +27,24 @@ export const multipleFilterAsynchDaulyAnalysis = createAsyncThunk(
     }
   }
 );
+export const fetchDatadailyAnalyse=createAsyncThunk("dailyAnalysis/fetchDatadailyAnalyse", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.get(`https://khosravitradapp.glitch.me/dailyAnalysis/${payload.id}`);
+   return data.data
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+ })
 
 const initialState = {
   data: [],
   error: null,
   loding: false,
+  dailyAnalyse:null,
 };
 
 export const dailyAnalysisSlice = createSlice({
-  name: "courses",
+  name: "dailyAnalyses",
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchDataDailyAnalysis.pending, (state, action) => {
@@ -114,6 +123,15 @@ export const dailyAnalysisSlice = createSlice({
         error: action.payload.message,
       };
     });
+    builder.addCase(fetchDatadailyAnalyse.pending,(state,action)=>{
+      return {...state,dailyAnalyse:null,loding:true,error:null}
+    })
+    builder.addCase(fetchDatadailyAnalyse.fulfilled,(state,action)=>{
+      return {...state,dailyAnalyse:action.payload,loding:false,error:null}
+    })
+    builder.addCase(fetchDatadailyAnalyse.rejected,(state,action)=>{
+      return {...state,dailyAnalyse:null,loding:false,error:action.payload.message}
+    })
   },
 });
 export default dailyAnalysisSlice.reducer;

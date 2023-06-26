@@ -8,6 +8,7 @@ import Courses from "./pages/Courses";
 import Store from "./pages/Store";
 import Book from "./pages/Book";
 import Course from "./pages/course";
+import DailyAnalyse from "./pages/DailyAnalyse";
 const routes=[
   {path:"/" ,element:<Hoom/>},
   {path:"/aboutMe" ,element:<AboutMe/>},
@@ -19,5 +20,6 @@ const routes=[
   {path:"/store" ,element:<Store/>},
   {path:"/store/:name" ,element:<Book/>},
   {path:"/courses/:name" ,element:<Course/>},
+  {path:"/dilyAnalysis/:name" ,element:<DailyAnalyse/>},
 ]
 export default routes;
