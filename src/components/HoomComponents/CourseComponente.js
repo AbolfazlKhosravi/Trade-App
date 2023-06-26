@@ -2,20 +2,30 @@ import React from "react";
 import HandleFavorateAll from "../HandleFavorateAll";
 import HandleCartAll from "../HandleCartAll";
 import StarRating from "../StarRating";
-const CourseComponente = ({course}) => {
+import {NavLink} from "react-router-dom";
+const CourseComponente = ({course, id}) => {
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
     return parseInt(discount);
   };
+  const encodedName = course.nameEnglish.split(" ").join("-");
+  let productUrl=""
+  if (id === "dailyAnalysis") {
+    productUrl = `/dilyAnalysis/${encodedName}`;
+  } else {
+    productUrl = `/courses/${encodedName}`;
+  }
 
   return (
     <article className="w-full h-full flex justify-start flex-col items-center text-center ">
       <div className="relative  w-full overflow-hidden rounded-3xl ">
-        <img
-          src={course.img}
-          alt={course.title}
-          className="w-full  min-h-[10rem] max-h-[10rem] object-cover rounded-3xl cursor-pointer hover:scale-110 transition-all"
-        />
+        <NavLink state={{courseId: course.id}} to={productUrl}>
+          <img
+            src={course.img}
+            alt={course.title}
+            className="w-full  min-h-[10rem] max-h-[10rem] object-cover rounded-3xl cursor-pointer hover:scale-110 transition-all"
+          />
+        </NavLink>
         <span className="absolute top-0 right-0 p-3 w-full flex justify-between ">
           <HandleFavorateAll product={course} />
           <div>

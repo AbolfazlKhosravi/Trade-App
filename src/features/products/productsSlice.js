@@ -104,7 +104,7 @@ export const productsSlice = createSlice({
       return {...state,product:action.payload,loding:false,error:null}
     })
     builder.addCase(fetchDataProduct.rejected,(state,action)=>{
-      return {...state,data:null,loding:false,error:action.payload.message}
+      return {...state,product:null,loding:false,error:action.payload.message}
     })
   }
 })

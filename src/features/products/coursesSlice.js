@@ -22,11 +22,20 @@ export const multipleFilterAsynchCourses = createAsyncThunk(
     }
   }
 );
+export const fetchDataCourse=createAsyncThunk("Courses/fetchDataCourse", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.get(`https://khosravitradapp.glitch.me/Courses/${payload.id}`);
+   return data.data
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+ })
 
 const initialState = {
   data:[],
   error:null,
   loding:false,
+  course:null,
 }
 
 export const coursesSlice = createSlice({
@@ -104,6 +113,15 @@ export const coursesSlice = createSlice({
         error: action.payload.message,
       };
     });
+    builder.addCase(fetchDataCourse.pending,(state,action)=>{
+      return {...state,course:null,loding:true,error:null}
+    })
+    builder.addCase(fetchDataCourse.fulfilled,(state,action)=>{
+      return {...state,course:action.payload,loding:false,error:null}
+    })
+    builder.addCase(fetchDataCourse.rejected,(state,action)=>{
+      return {...state,course:null,loding:false,error:action.payload.message}
+    })
   }
 })
 export default coursesSlice.reducer;

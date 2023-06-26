@@ -384,16 +384,25 @@ const Cart = () => {
               const isClickedError = clickedShowError.find(
                 (cli) => cli === product.id
               );
+              const encodedName = product.nameEnglish.split(" ").join("-");
+              let productUrl = "";
+              if (product.type === "dailyAnalyise") {
+                productUrl = `/dilyAnalysis/${encodedName}`;
+              } else {
+                productUrl = `/courses/${encodedName}`;
+              }
               return (
                 <div
                   key={product.id}
                   className="bg-slate-50 flex flex-col items-start justify-start  rounded-3xl mb-4 max-h-[15.5rem] min-h-[15.5rem]  max-w-[20rem] md:min-w-[22rem]   dark:bg-slate-800 min-[500px]:mx-4 md:mx-1 2xl:mx-4">
                   <div className="relative bg-[#F2F0F0] dark:bg-slate-900 rounded-3xl max-h-[10rem] min-h-[10rem] w-full  overflow-hidden">
-                    <img
-                      className="h-full w-full hover:scale-105 transition-all object-cover rounded-3xl"
-                      src={product.img}
-                      alt={product.name}
-                    />
+                    <NavLink state={{courseId: product.id}} to={productUrl}>
+                      <img
+                        className="h-full w-full hover:scale-105 transition-all object-cover rounded-3xl"
+                        src={product.img}
+                        alt={product.name}
+                      />
+                    </NavLink>
                     <button className="absolute top-3 right-3">
                       <HandleFavorateAll product={product} />
                     </button>

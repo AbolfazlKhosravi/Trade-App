@@ -10,7 +10,7 @@ import HandleFavorite from "../components/handleFavorate";
 import HandleCartAll from "../components/HandleCartAll";
 import {
   FaStar,
-  FaBook,
+  FaVideo,
   FaRegStar,
   FaStarHalfAlt,
   FaTimes,
@@ -23,14 +23,16 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/fa";
 import convertToPersianNumber from "../utils/ConverToPersianNumber";
+import {fetchDataCourse} from "../features/products/coursesSlice";
+import ReactPlayer from "react-player";
 
 dayjs.extend(relativeTime);
 dayjs.locale("fa");
 
-const Book = () => {
+const Course = () => {
   const location = useLocation();
-  const {error, loding, product} = useSelector((state) => state.products);
-  const productId = location.state.productId;
+  const {error, loding, course} = useSelector((state) => state.courses);
+  const courseId = location.state.courseId;
   const dispatch = useDispatch();
   const writeCommentRef = useRef(null);
   const writeCommentReaplayRef = useRef(null);
@@ -40,8 +42,8 @@ const Book = () => {
   useEffect(() => {
     dispatch(fetchFavorite());
     dispatch(fetchCart());
-    dispatch(fetchDataProduct({id: productId}));
-  }, [dispatch, productId]);
+    dispatch(fetchDataCourse({id: courseId}));
+  }, [dispatch, courseId]);
 
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
@@ -60,64 +62,70 @@ const Book = () => {
             <span className="text-blue-600 ml-4 ">خطا</span> : {error}
           </div>
         ) : (
-          product && (
+          course && (
             <div className="flex flex-col lg:flex-row  items-center lg:items-start lg:justify-between  justify-start  w-full lg:h-[35rem] lg:bg-slate-50 lg:dark:bg-slate-800 ">
               <div className="flex flex-col  md:flex-row lg:items-start lg:justify-between   items-center md:items-start justify-start md:justify-between w-full lg:w-auto md:mt-8 rounded-2xl">
-                <div className=" relative flex items-start justify-center w-full md:w-1/2 px-8 py-6 ">
-                  <div className="w-full h-auto overflow-hidden">
-                    <img
-                      src={product.img}
-                      alt={product.name}
-                      className="overflow-hidden w-full h-full object-cover hover:scale-105 transition-all"
+                <div className=" relative flex items-start justify-center w-full md:w-3/5   ">
+                  <div className="w-full h-full rounded-3xl relative ">
+                    <ReactPlayer
+                      url="https://s8.uupload.ir/filelink/6ViHK4YcHIMz_fa3c95ead5/pexels-ambientnature-atmosphere-6136576-1280x720-60fps_mvlq.mp4"
+                      className=" overflow-hidden md:rounded-2xl"
+                      controls
+                      width="100%"
+                      height="100%"
                     />
                   </div>
-                  <span className="absolute top-6 right-9  text-2xl">
-                    <HandleFavorite product={product} />
+                  <span className="absolute top-4 right-2  text-2xl">
+                    <HandleFavorite product={course} />
                   </span>
-                  {product.discountedPrice !== product.price ? (
+                  {course.discountedPrice !== course.price ? (
                     <span className="text-[1rem] absolute top-6 left-6   px-[.3rem]  text-white font-bold bg-red-500 rounded-lg flex items-center justify-center">
                       %{" "}
                       {calculationOfDiscountPercentage(
-                        product.discountedPrice,
-                        product.price
+                        course.discountedPrice,
+                        course.price
                       ).toLocaleString("fa")}
                     </span>
                   ) : (
                     ""
                   )}
                 </div>
-                <div className="w-full md:w-1/2  flex flex-col bg-slate-50 dark:bg-slate-800 md:bg-[#F2F0F0] md:dark:bg-slate-900 lg:bg-slate-50 lg:dark:bg-slate-800 rounded-2xl">
+                <div className="w-full md:w-2/5  flex flex-col bg-slate-50 dark:bg-slate-800 md:bg-[#F2F0F0] md:dark:bg-slate-900 lg:bg-slate-50 lg:dark:bg-slate-800 rounded-2xl">
                   <div className="w-full   pt-4 pb-3 relative">
                     <div className="flex items-start justify-between w-full px-4">
                       <div className="flex flex-col items-center justify-start relative">
-                        <h1 className="text-slate-700 dark:text-slate-400 text-[1.7rem] font-extrabold">
-                          {product.name}
+                        <h1 className="text-slate-700 dark:text-slate-400 text-[1.5rem] font-extrabold">
+                          {course.title}
                         </h1>
-                        <div className="flex justify-center  absolute bottom-0 translate-y-6">
+                        <div className="flex justify-start  absolute bottom-0 translate-y-6 translate-x-16">
                           <FaStar className="text-yellow-500 translate-y-[.07rem]" />
                           <p className="font-bold text-[1rem] text-slate-500 dark:text-slate-400  ">
-                            {product.rate.toLocaleString("fa")}{" "}
+                            {course.rate.toLocaleString("fa")}{" "}
                           </p>
                         </div>
                       </div>
-                      {product.discountedPrice !== product.price ? (
+                      {course.discountedPrice !== course.price ? (
                         <div className="flex flex-col items-center justify-end relative">
                           <div className="text-red-600 text-[1.4rem]  font-bold">
                             <span className="text-[1.3rem] text-slate-500 mr-1 ">
                               T
                             </span>
-                            {product.discountedPrice.toLocaleString("fa")}{" "}
+                            {course.discountedPrice.toLocaleString("fa")}{" "}
                           </div>
                           <div className="text-[.85rem] mr-2 opacity-50 line-through absolute bottom-0 translate-y-4 dark:text-slate-500">
-                            {product.price.toLocaleString("fa")}{" "}
+                            {course.price.toLocaleString("fa")}{" "}
                           </div>
                         </div>
+                      ) : course.price === 0 ? (
+                        <h2 className="text-blue-500 text-md font-bold text-xl">
+                          رایگان
+                        </h2>
                       ) : (
                         <div className="text-[1.4rem] font-bold text-slate-700 dark:text-slate-400">
                           <span className="text-[1.3rem] text-slate-500 mr-1">
                             T
                           </span>
-                          {product.price.toLocaleString("fa")}
+                          {course.price.toLocaleString("fa")}
                           {""}
                         </div>
                       )}
@@ -125,45 +133,31 @@ const Book = () => {
                     <div className="flex  items-start justify-between w-full mt-6 px-2 flex-wrap">
                       <div className="flex w-full justify-start items-center my-3">
                         <p className="text-[1.3rem]  text-slate-700 font-extrabold mr-4 dark:text-slate-400">
-                          نویسنده :
+                          مدرس :
                         </p>
                         <img
                           className="w-12 h-12 rounded-full object-cover mr-2"
-                          src={product.writerImg}
-                          alt={product.writerImg}
+                          src={course.instructorimg}
+                          alt={course.instructorimg}
                         />
                         <p className="text-[1.1rem] text-slate-700 font-bold mr-2 dark:text-slate-500">
-                          {product.writer}
-                        </p>
-                      </div>
-                      <div className="flex w-full justify-start items-center my-3">
-                        <p className="text-[1.3rem]  text-slate-700 font-extrabold mr-4 dark:text-slate-400">
-                          ناشر :
-                        </p>
-                        <img
-                          className="w-12 h-12 rounded-full object-cover mr-2"
-                          src={product.publisherImg}
-                          alt={product.writerImg}
-                        />
-                        <p className="text-[1.1rem] text-slate-700 font-bold mr-2 dark:text-slate-500">
-                          {product.publisher}
+                          {course.instructor}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center justify-start px-3 my-4 ">
-                      <FaBook className="text-blue-500 text-[2.5rem]  my-2" />
-                      <p className="text-slate-600 text-[1rem] font-bold mr-4 dark:text-slate-500">
-                        تعداد صفحه {product.numberOfPages.toLocaleString("fa")}{" "}
-                        تا
+                      <FaVideo className="text-blue-500 text-[2.5rem]  my-2" />
+                      <p className="text-slate-600 text-[1rem] font-bold mr-4 dark:text-slate-500 flex-row-reverse">
+                        زمان ویدیو {course.hours}{" "}
                       </p>
                     </div>
                     <div className=" sticky bottom-5  w-full flex items-center justify-end pl-8 ">
-                      <HandleCartAll product={product} prductPage={true} />
+                      <HandleCartAll product={course} prductPage={true} />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="w-full  lg:h-full lg:overflow-y-auto  lg:w-[30rem]  bg-[#F2F0F0] dark:bg-slate-900 lg:rounded-r-sm lg:rounded-none py-4 relative rounded-t-3xl md:px-4 lg:pt-14 scrollbar-hide">
+              <div className="w-full  lg:h-full lg:overflow-y-auto  lg:w-[40rem]  bg-[#F2F0F0] dark:bg-slate-900 lg:rounded-r-sm lg:rounded-none py-4 relative rounded-t-3xl md:px-4 lg:pt-14 scrollbar-hide">
                 <div className="flex flex-col items-start justify-between w-full px-4">
                   <div className="flex items-center justify-between w-full">
                     <h1 className="text-slate-700 text-[1.7rem] font-bold dark:text-slate-400">
@@ -223,7 +217,7 @@ const Book = () => {
                   </div>
                   <div className="flex flex-col justify-start items-start mt-5 w-full">
                     <div className="flex flex-col min-w-full items-center justify-start mb-4 ml-2 w-full">
-                      {product.commints.map((p) => {
+                      {course.commints.map((p) => {
                         return (
                           <div
                             key={p.id}
@@ -339,4 +333,4 @@ const Book = () => {
   );
 };
 
-export default Book;
+export default Course;
