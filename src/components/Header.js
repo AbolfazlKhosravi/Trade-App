@@ -366,10 +366,10 @@ const Header = () => {
       </div>
       <div className="flex items-center justify-between text-lg  text-slate-600 max-[500px]:text-sm h-full ">
         <div className="max-[552px]:hidden  ml-4 py-1  cursor-pointer  hover:text-blue-600 dark:text-slate-300 dark:hover:text-white font-bold">
-          ورود
+          <NavLink to="/login">ورود</NavLink>
         </div>
         <div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
-          عضویت
+          <NavLink to="/sign-up">عضویت </NavLink>
         </div>
         <div className="max-[600px]:hidden  cursor-pointer mr-4  relative ">
           <NavLink to="/favorites">

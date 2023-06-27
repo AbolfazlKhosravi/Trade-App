@@ -6,7 +6,7 @@ import {Toaster} from "react-hot-toast";
 function App() {
   return (
     <Provider store={store}>
-      <div>
+      <div >
         <BrowserRouter>
           <Routes>
             {routes.map((route) => (
