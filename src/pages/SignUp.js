@@ -42,7 +42,7 @@ const SignUp = () => {
   //   }, [auth, redirect, navigate]);
 
   const onSubmit = (values) => {
-    dispatch(posthDataUsers({...values, rule: "user",img:""}));
+    dispatch(posthDataUsers({...values, rule: "user",img:"https://s8.uupload.ir/files/_fundamental_pitching_drills_-_baseball_tutorials_52eq.png"}));
   };
   useEffect(()=>{
     if(user){

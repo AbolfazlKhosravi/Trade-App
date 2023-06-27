@@ -21,7 +21,7 @@ import {useEffect, useRef, useState} from "react";
 import {Switch} from "@headlessui/react";
 import imgCart from "../assets/images/shopping-cart.svg";
 import {useDispatch, useSelector} from "react-redux";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink, json, useNavigate} from "react-router-dom";
 import {fetchCart} from "../features/products/cartSlice";
 import {fetchFavorite} from "../features/products/favoritesSlice";
 import {change} from "../features/Attributes/darkMode";
@@ -43,15 +43,22 @@ const Header = () => {
     products: false,
   });
 
+  const [user,setUser]=useState(null)
+
   const removeDropShot = useRef(null);
   const navigate = useNavigate();
   const cartData = useSelector((state) => state.cart);
   const favoritesData = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
-
+  
+  useEffect(()=>{
+    const user=JSON.parse(localStorage.getItem("user"))
+    setUser(user)
+  },[])
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
+  console.log(user);
 
   useEffect(() => {
     const htmlElement = document.querySelector("html");
@@ -365,12 +372,14 @@ const Header = () => {
         </nav>
       </div>
       <div className="flex items-center justify-between text-lg  text-slate-600 max-[500px]:text-sm h-full ">
-        <div className="max-[552px]:hidden  ml-4 py-1  cursor-pointer  hover:text-blue-600 dark:text-slate-300 dark:hover:text-white font-bold">
+        {user?<></>:<div className="max-[552px]:hidden  ml-4 py-1  cursor-pointer  hover:text-blue-600 dark:text-slate-300 dark:hover:text-white font-bold">
           <NavLink to="/login">ورود</NavLink>
-        </div>
-        <div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
+        </div>}
+        {user?<div className="w-10 h-10">
+          <img className="w-full h-full rounded-full object-cover hover:scale-105 transition-all cursor-pointer" onClick={()=>navigate(`user/${user.name}`)} src={user.img} alt="userImg"/>
+        </div>:<div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
           <NavLink to="/sign-up">عضویت </NavLink>
-        </div>
+        </div>}
         <div className="max-[600px]:hidden  cursor-pointer mr-4  relative ">
           <NavLink to="/favorites">
             <FaHeart className=" text-[1.7rem]  text-red-500 max-[500px]: " />
