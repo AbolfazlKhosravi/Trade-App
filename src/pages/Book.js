@@ -163,7 +163,7 @@ const Book = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-full  lg:h-full lg:overflow-y-auto  lg:w-[30rem]  bg-[#F2F0F0] dark:bg-slate-900 lg:rounded-r-sm lg:rounded-none py-4 relative rounded-t-3xl md:px-4 lg:pt-14 scrollbar-hide">
+              <div className="w-full  lg:h-full lg:overflow-y-auto  lg:w-[30rem]  bg-[#F2F0F0] dark:bg-slate-900  lg:rounded-none py-4 relative rounded-t-3xl md:px-4 lg:pt-14 scrollbar-hide">
                 <div className="flex flex-col items-start justify-between w-full px-4">
                   <div className="flex items-center justify-between w-full">
                     <h1 className="text-slate-700 text-[1.7rem] font-bold dark:text-slate-400">

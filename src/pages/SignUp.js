@@ -52,27 +52,27 @@ const SignUp = () => {
   });
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center bg-[#F2F0F0] dark:bg-slate-900 py-12 px-6">
-      <div className="flex justify-center md:justify-between items-start h-full w-full rounded-lg bg-[#F2F0F0] dark:bg-slate-900">
-        <section className="h-full hidden  lg:w-[35%] lg:flex">
+    <main className="min-h-screen md:h-full w-full flex items-center justify-center bg-[#F2F0F0] dark:bg-slate-900 py-12 px-6">
+      <div className="flex justify-center md:justify-between items-start h-full md:h-[30rem] w-full lg:w-[55rem] rounded-lg bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 md:p-2">
+        <section className="h-full hidden   md:flex md:w-1/2">
           <img
             className="w-full h-full object-cover rounded-l-lg"
             src={signUpImg}
             alt="signUpImg"
           />
         </section>
-        <section className=" w-full  h-full flex flex-col items-start rounded-lg relative ">
+        <section className=" w-full md:w-1/2 h-full flex flex-col items-start rounded-lg relative ">
           <FaArrowLeft
-            className="cursor-pointer left-4 m-4 text-xl text-slate-600 dark:text-slate-400"
+            className="cursor-pointer left-4  md:mr-5 m-1 text-xl mt-2  text-slate-600 dark:text-slate-400"
             onClick={() => navigate("/")}
           />
-          <section className="flex flex-col items-start justify-between w-full mt-6 ">
-            <h2 className="text-blue-500 font-extrabold text-[1.8rem] mt-2 my-8 pr-4">
+          <section className="flex flex-col items-start justify-between w-full mt-6 md:mt-2">
+            <h2 className="text-blue-500 font-extrabold text-[1.8rem] mt-2 my-8 md:my-4 pr-4">
               {" "}
               ثبت نام{" "}
             </h2>
             <form
-              className="flex flex-col items-center justify-between mt-8 w-full pr-4"
+              className="flex flex-col items-center justify-between mt-8 md:mt-0 w-full pr-4"
               onSubmit={formik.handleSubmit}>
               <div className="my-3 w-full relative">
                 {formik.errors.name && formik.touched.name && (
@@ -82,7 +82,7 @@ const SignUp = () => {
                 )}
                 <input
                   type="text"
-                  className=" border-b border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
+                  className=" border-b border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   placeholder="اسم"
                   name="name"
                   {...formik.getFieldProps("name")}
@@ -100,7 +100,7 @@ const SignUp = () => {
                 <input
                   type="tel"
                   placeholder="شماره موبایل"
-                  className=" border-b border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
+                  className=" border-b border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="phoneNumber"
                   {...formik.getFieldProps("phoneNumber")}
                 />
@@ -117,7 +117,7 @@ const SignUp = () => {
                 <input
                   type={show ? "text" : "password"}
                   placeholder="رمز عبور"
-                  className=" border-b border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
+                  className=" border-b border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="password"
                   {...formik.getFieldProps("password")}
                 />
@@ -139,12 +139,12 @@ const SignUp = () => {
               <button
                 type="submit"
                 disabled={!formik.isValid}
-                className="cursor-pointer mt-8 mx-4 w-44 h-14 ml-10 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
+                className="cursor-pointer mt-8 md:mt-2  mx-4 w-44 h-14 ml-10 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
                 ثبت نام
               </button>
             </form>
             <button
-              className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500"
+              className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500 "
               onClick={() => navigate("/login")}
             >
               <p> ایا حساب باز کردین ؟</p>

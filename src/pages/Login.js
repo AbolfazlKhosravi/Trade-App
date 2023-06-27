@@ -50,21 +50,21 @@ const Login = () => {
 
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-[#F2F0F0] dark:bg-slate-900 py-12 px-6">
-      <div className="flex justify-center md:justify-between items-start h-full w-full rounded-lg bg-[#F2F0F0] dark:bg-slate-900">
-        <section className="h-full hidden  lg:w-[35%] lg:flex">
+      <div className="flex justify-center md:justify-between md:items-center items-start h-full w-full md:h-[30rem]  lg:w-[55rem]  rounded-lg bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 p-4">
+        <section className="h-full hidden   md:flex md:w-1/2 ">
           <img
-            className="w-full h-full object-cover rounded-l-lg"
+            className="w-full h-full object-cover "
             src={loginImg}
             alt="signUpImg"
           />
         </section>
-        <section className=" w-full  h-full flex flex-col items-start rounded-lg relative ">
+        <section className=" w-full md:w-1/2   flex flex-col items-start rounded-lg relativec ">
           <FaArrowLeft
             className="cursor-pointer left-4 m-4 text-xl text-slate-600 dark:text-slate-400"
             onClick={() => navigate("/")}
           />
           <section className="flex flex-col items-start justify-between w-full h-full mt-6 ">
-            <h2 className="text-blue-500 font-extrabold text-[1.8rem] mt-2 my-8 pr-4">
+            <h2 className="text-blue-500 font-extrabold text-[1.8rem] mt-2 my-8  md:my-0 pr-4">
               {" "}
                ورود{" "}
             </h2>
@@ -81,7 +81,7 @@ const Login = () => {
                 <input
                   type="tel"
                   placeholder="شماره موبایل"
-                  className=" border-b border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
+                  className=" border-b border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900  md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
                   name="phoneNumber"
                   {...formik.getFieldProps("phoneNumber")}
                 />
@@ -98,7 +98,7 @@ const Login = () => {
                 <input
                   type={show ? "text" : "password"}
                   placeholder="رمز عبور"
-                  className=" border-b border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
+                  className=" border-b border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0]  dark:bg-slate-900 md:dark:bg-slate-800 md:bg-slate-50 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
                   name="password"
                   {...formik.getFieldProps("password")}
                 />
@@ -125,7 +125,7 @@ const Login = () => {
               </button>
             </form>
             <button
-              className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500"
+              className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500 "
               onClick={() => navigate("/sign-up")}
             >
               <p> ایا هنوز  حساب باز نکردین ؟</p>

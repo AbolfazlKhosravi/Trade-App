@@ -55,12 +55,12 @@ const Footer = () => {
           <div className="flex flex-col">
             <h3 className="text-md text-blue-600 mt-1 ">پیوستن به ما</h3>
             <div className="mt-[1.4rem]">
-              <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              <NavLink to="/sign-up" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 ثبت نام
-              </p>
-              <p className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              </NavLink>
+              <NavLink to="/login" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 ورود
-              </p>
+              </NavLink>
             </div>
           </div>
         </div>
