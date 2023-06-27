@@ -11,6 +11,7 @@ import Course from "./pages/course";
 import DailyAnalyse from "./pages/DailyAnalyse";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import NotFoundPage from "./pages/NotFountPage";
 const routes=[
   {path:"/" ,element:<Hoom/>},
   {path:"/aboutMe" ,element:<AboutMe/>},
@@ -25,5 +26,6 @@ const routes=[
   {path:"/sign-up" ,element:<SignUp/>},
   {path:"/login" ,element:<Login/>},
   {path:"/dilyAnalysis/:name" ,element:<DailyAnalyse/>},
+  {path:"*", element:<NotFoundPage/>},
 ]
 export default routes;
