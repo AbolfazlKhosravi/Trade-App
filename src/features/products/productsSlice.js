@@ -31,12 +31,32 @@ export const fetchDataProduct=createAsyncThunk("Products/fetchDataProduct", asyn
    return rejectWithValue(error)
   }
  })
+ export const sendCommintProducte=createAsyncThunk("Products/sendCommint", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.patch(`https://khosravitradapp.glitch.me/products/${payload.id}`,payload.commints);
+   return data.data
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+ })
+ export const sendReplayProducte=createAsyncThunk("Products/sendReplay", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.patch(`https://khosravitradapp.glitch.me/products/${payload.id}`,payload.commints);
+   return data.data
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+ })
 
 const initialState = {
   data:[],
   error:null,
   loding:false,
-  product:null
+  product:null,
+  errorSendCommint:null,
+  lodingSendCommint:null,
+  errorSendReplay:null,
+  lodingSendReplay:null,
 }
 
 export const productsSlice = createSlice({
@@ -105,6 +125,24 @@ export const productsSlice = createSlice({
     })
     builder.addCase(fetchDataProduct.rejected,(state,action)=>{
       return {...state,product:null,loding:false,error:action.payload.message}
+    })
+    builder.addCase(sendCommintProducte.pending,(state,action)=>{
+      return {...state,lodingSendCommint:true,errorSendCommint:null}
+    })
+    builder.addCase(sendCommintProducte.fulfilled,(state,action)=>{
+      return {...state,product:action.payload,lodingSendCommint:false,errorSendCommint:null}
+    })
+    builder.addCase(sendCommintProducte.rejected,(state,action)=>{
+      return {...state,lodingSendCommint:false,errorSendCommint:action.payload.message}
+    })
+    builder.addCase(sendReplayProducte.pending,(state,action)=>{
+      return {...state,lodingSendReplay:true,errorSendReplay:null}
+    })
+    builder.addCase(sendReplayProducte.fulfilled,(state,action)=>{
+      return {...state,product:action.payload,lodingSendReplay:false,errorSendReplay:null}
+    })
+    builder.addCase(sendReplayProducte.rejected,(state,action)=>{
+      return {...state,lodingSendReplay:false,errorSendReplay:action.payload.message}
     })
   }
 })

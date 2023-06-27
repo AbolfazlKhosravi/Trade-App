@@ -35,12 +35,32 @@ export const fetchDatadailyAnalyse=createAsyncThunk("dailyAnalysis/fetchDatadail
    return rejectWithValue(error)
   }
  })
+export const sendCommintDailyAnalyse=createAsyncThunk("dailyAnalysis/sendCommint", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.patch(`https://khosravitradapp.glitch.me/dailyAnalysis/${payload.id}`,payload.commints);
+   return data.data
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+ })
+ export const sendReplayDailyAnalyse=createAsyncThunk("dailyAnalysis/sendReplay", async(payload,{rejectWithValue})=>{
+  try {
+   const data= await axios.patch(`https://khosravitradapp.glitch.me/dailyAnalysis/${payload.id}`,payload.commints);
+   return data.data
+  } catch (error) {
+   return rejectWithValue(error)
+  }
+ })
 
 const initialState = {
   data: [],
   error: null,
   loding: false,
   dailyAnalyse:null,
+  errorSendCommint:null,
+  lodingSendCommint:null,
+  errorSendReplay:null,
+  lodingSendReplay:null,
 };
 
 export const dailyAnalysisSlice = createSlice({
@@ -131,6 +151,24 @@ export const dailyAnalysisSlice = createSlice({
     })
     builder.addCase(fetchDatadailyAnalyse.rejected,(state,action)=>{
       return {...state,dailyAnalyse:null,loding:false,error:action.payload.message}
+    })
+    builder.addCase(sendCommintDailyAnalyse.pending,(state,action)=>{
+      return {...state,lodingSendCommint:true,errorSendCommint:null}
+    })
+    builder.addCase(sendCommintDailyAnalyse.fulfilled,(state,action)=>{
+      return {...state,dailyAnalyse:action.payload,lodingSendCommint:false,errorSendCommint:null}
+    })
+    builder.addCase(sendCommintDailyAnalyse.rejected,(state,action)=>{
+      return {...state,lodingSendCommint:false,errorSendCommint:action.payload.message}
+    })
+    builder.addCase(sendReplayDailyAnalyse.pending,(state,action)=>{
+      return {...state,lodingSendReplay:true,errorSendReplay:null}
+    })
+    builder.addCase(sendReplayDailyAnalyse.fulfilled,(state,action)=>{
+      return {...state,dailyAnalyse:action.payload,lodingSendReplay:false,errorSendReplay:null}
+    })
+    builder.addCase(sendReplayDailyAnalyse.rejected,(state,action)=>{
+      return {...state,lodingSendReplay:false,errorSendReplay:action.payload.message}
     })
   },
 });

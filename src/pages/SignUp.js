@@ -93,7 +93,7 @@ const SignUp = () => {
                 )}
                 <input
                   type="text"
-                  className=" border-b border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   placeholder="اسم"
                   name="name"
                   {...formik.getFieldProps("name")}
@@ -111,7 +111,7 @@ const SignUp = () => {
                 <input
                   type="tel"
                   placeholder="شماره موبایل"
-                  className=" border-b border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="phoneNumber"
                   {...formik.getFieldProps("phoneNumber")}
                 />
@@ -128,7 +128,7 @@ const SignUp = () => {
                 <input
                   type={show ? "text" : "password"}
                   placeholder="رمز عبور"
-                  className=" border-b border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="password"
                   {...formik.getFieldProps("password")}
                 />

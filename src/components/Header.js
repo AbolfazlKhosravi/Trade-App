@@ -58,7 +58,6 @@ const Header = () => {
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
-  console.log(user);
 
   useEffect(() => {
     const htmlElement = document.querySelector("html");

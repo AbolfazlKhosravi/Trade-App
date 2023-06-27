@@ -1,8 +1,8 @@
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchDataProduct} from "../features/products/productsSlice";
+import {fetchDataProduct, sendCommintProducte, sendReplayProducte} from "../features/products/productsSlice";
 import {fetchCart} from "../features/products/cartSlice";
 import {fetchFavorite} from "../features/products/favoritesSlice";
 import lodingSvg from "../assets/images/loading.svg";
@@ -23,30 +23,52 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/fa";
 import convertToPersianNumber from "../utils/ConverToPersianNumber";
+import { toast } from "react-hot-toast";
 
 dayjs.extend(relativeTime);
 dayjs.locale("fa");
 
 const Book = () => {
   const location = useLocation();
-  const {error, loding, product} = useSelector((state) => state.products);
+  const {
+    error,
+    loding,
+    product,
+    errorSendCommint,
+    lodingSendCommint,
+    errorSendReplay,
+    lodingSendReplay,
+  } = useSelector((state) => state.products);
   const productId = location.state.productId;
   const dispatch = useDispatch();
   const writeCommentRef = useRef(null);
   const writeCommentReaplayRef = useRef(null);
   const [sendCommint, setSendCommint] = useState(false);
   const [sendReplay, setSendReplay] = useState(null);
+  const [values, setValues] = useState({text: "", rate: 0});
+  const [valueReplay, setValueReplay] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchFavorite());
     dispatch(fetchCart());
     dispatch(fetchDataProduct({id: productId}));
   }, [dispatch, productId]);
-
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+  }, []);
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
     return parseInt(discount);
   };
+  useEffect(() => {
+    setSendCommint(false);
+    setSendReplay(false);
+    setValues({text: "", rate: 0});
+    setValueReplay("");
+  }, [product]);
 
   return (
     <Layout>
@@ -193,6 +215,10 @@ const Book = () => {
                       />
                     </span>
                     <textarea
+                     value={values.text}
+                     onChange={(e) =>
+                       setValues({...values, text: e.target.value})
+                     }
                       ref={writeCommentRef}
                       className="w-full rounded-lg bg-white dark:bg-slate-900 outline-none text-[1rem] text-slate-600 dark:text-slate-400 focus:border-blue-500 transition-all border-slate-300 dark:border-slate-700 shadow-sm border h-32  py-3 px-3 mt-1"
                       placeholder="نظر خودرا وارد کنید"
@@ -204,8 +230,11 @@ const Book = () => {
                         </h3>
                         <ReactStars
                           count={5}
-                          // value={filters.filterRating}
-                          // onChange={(e) => filterReatingHandler(e)}
+                          value={values.rate}
+                          onChange={(e) => {
+                            console.log(e);
+                            setValues({...values, rate: e});
+                          }}
                           size={18}
                           isHalf={true}
                           emptyIcon={<FaRegStar className="text-yellow-400" />}
@@ -216,9 +245,55 @@ const Book = () => {
                           activeColor="#ffd700"
                         />
                       </div>
-                      <button className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] px-8 py-1">
-                        ارسال{" "}
-                      </button>
+                      {lodingSendCommint ? (
+                        <div className="w-auto px-8 pt-[2px]  flex justify-center">
+                          <img
+                            className="w-8 h-8  "
+                            src={lodingSvg}
+                            alt="loding Svg"
+                          />
+                        </div>
+                      ) : errorSendCommint ? (
+                        <div className="w-auto px-8  pt-[2px]  flex justify-center text-xl  text-red-500">
+                          <span className="text-blue-600 ml-4 ">خطا</span> :{" "}
+                          {errorSendCommint}
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            if (user) {
+                              if (values.text.length > 0 && values.rate > 0) {
+                                const commint = {
+                                  id: new Date().getTime(),
+                                  name: user.name,
+                                  image: user.img,
+                                  comment: values.text,
+                                  rate: values.rate,
+                                  date: new Date().toISOString(),
+                                  replays: [],
+                                };
+                                dispatch(
+                                  sendCommintProducte({
+                                    id: productId,
+                                    commints: {
+                                      commints: [
+                                        ...product.commints,
+                                        commint,
+                                      ],
+                                    },
+                                  })
+                                );
+                              } else {
+                                toast.success("لطفا تمام قسمت هارو پر کنید");
+                              }
+                            } else {
+                              navigate("/sign-up");
+                            }
+                          }}
+                          className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] px-8 py-1">
+                          ارسال{" "}
+                        </button>
+                      )}
                     </div>
                   </div>
                   <div className="flex flex-col justify-start items-start mt-5 w-full">
@@ -227,7 +302,7 @@ const Book = () => {
                         return (
                           <div
                             key={p.id}
-                            className="flex flex-col items-start justify-start w-full ">
+                            className="flex flex-col items-start justify-start w-full mt-5">
                             <div className="flex items-start justify-start w-full ">
                               <img
                                 className="w-12 h-12 rounded-full object-cover translate-y-[2px]"
@@ -286,19 +361,83 @@ const Book = () => {
                               </span>
                               <textarea
                                 ref={writeCommentReaplayRef}
+                                value={valueReplay}
+                                onChange={(e) => setValueReplay(e.target.value)}
                                 className="w-full scrollbar-hide rounded-lg bg-white dark:bg-slate-900 outline-none text-slate-600 dark:text-slate-400 focus:border-blue-500 border-slate-300 dark:border-slate-700 shadow-sm border transition-all h-24  py-3 px-3"
                                 placeholder="نظر خودرا وارد کنید"
                               />
-                              <button className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">
-                                ارسال{" "}
-                              </button>
+                              {lodingSendReplay ? (
+                                <div className="w-auto px-8 my-3  flex justify-center">
+                                  <img
+                                    className="w-8 h-8  "
+                                    src={lodingSvg}
+                                    alt="loding Svg"
+                                  />
+                                </div>
+                              ) : errorSendReplay ? (
+                                <div className="w-auto px-8  my-3 flex justify-center text-xl  text-red-500">
+                                  <span className="text-blue-600 ml-4 ">
+                                    خطا
+                                  </span>{" "}
+                                  : {errorSendCommint}
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={() => {
+                                    if (user) {
+                                      if (valueReplay !== "") {
+                                        const replay = {
+                                          id: new Date().getTime(),
+                                          name: user.name,
+                                          image: user.img,
+                                          comment: valueReplay,
+                                          date: new Date().toISOString(),
+                                        };
+
+                                        const updatedComments =
+                                          product.commints.map(
+                                            (comment) => {
+                                              if (comment.id === p.id) {
+                                                return {
+                                                  ...comment,
+                                                  replays: [
+                                                    ...comment.replays,
+                                                    replay,
+                                                  ],
+                                                };
+                                              }
+                                              return comment;
+                                            }
+                                          );
+
+                                        dispatch(
+                                          sendReplayProducte({
+                                            id: productId,
+                                            commints: {
+                                              commints: updatedComments,
+                                            },
+                                          })
+                                        );
+                                      } else {
+                                        toast.success(
+                                          "لطفا تمام قسمت هارو پر کنید"
+                                        );
+                                      }
+                                    } else {
+                                      navigate("/sign-up");
+                                    }
+                                  }}
+                                  className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">
+                                  ارسال{" "}
+                                </button>
+                              )}
                             </div>
                             {p.replays.length > 0 &&
                               p.replays.map((r) => {
                                 return (
                                   <div
                                     key={r.id}
-                                    className="flex items-start justify-start w-full pr-6 my-4">
+                                    className="flex items-start justify-start w-full pr-6 mt-4">
                                     <img
                                       className="w-11 h-11 rounded-full object-cover translate-y-[2px]"
                                       src={r.image}
