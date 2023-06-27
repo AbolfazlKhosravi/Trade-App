@@ -2,19 +2,16 @@
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {useNavigate} from "react-router-dom";
-import {
-  FaLinkedin,
-  FaLock,
-  FaPhoneSquare,
-  FaArrowLeft,
-  FaUserAlt
-} from "react-icons/fa";
+import {FaLock, FaPhoneSquare, FaArrowLeft, FaUserAlt} from "react-icons/fa";
 import {FiEye, FiEyeOff} from "react-icons/fi";
 import toast from "react-hot-toast";
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import signUpImg from "../assets/images/signUp.svg";
 import iconeBrand from "../assets/images/iconeBrand.svg";
+import {useDispatch, useSelector} from "react-redux";
+import {posthDataUsers} from "../features/users/usersSlice";
+import lodingSvg  from "../assets/images/loading.svg"
 const initialValues = {
   name: "",
   phoneNumber: "",
@@ -30,19 +27,34 @@ const validationSchema = Yup.object({
     .max(11, " شماره تلفن درست نیست"),
   password: Yup.string()
     .required("پسورد خودرا وارد کنید")
-    .min(8, " پسورد کوتا هست "),
+    .min(8, " پسورد کوتاه هست "),
 });
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const {user, loding, error} = useSelector((state) => state.users);
   //   const redirect = searchParams.get("redirect") || "/";
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
   //   useEffect(() => {
   //     if (auth) navigate(redirect);
   //   }, [auth, redirect, navigate]);
 
-  const onSubmit = (values) => {};
+  const onSubmit = (values) => {
+    dispatch(posthDataUsers({...values, rule: "user"}));
+   
+  };
+  useEffect(()=>{
+    if(user){
+      console.log('a');
+      toast.success(`${user.name} خوش امدید`)
+      navigate("/")
+    }
+    if(error){
+      toast.error(`یک  مشکلی دارد`)
+    }
+  },[user,error,navigate])
 
   const formik = useFormik({
     initialValues,
@@ -88,7 +100,7 @@ const SignUp = () => {
                   {...formik.getFieldProps("name")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaUserAlt className="text-slate-400 text-lg"/>
+                  <FaUserAlt className="text-slate-400 text-lg" />
                 </span>
               </div>
               <div className="my-3 w-full relative">
@@ -105,7 +117,7 @@ const SignUp = () => {
                   {...formik.getFieldProps("phoneNumber")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaPhoneSquare className="text-slate-400 text-xl"/>
+                  <FaPhoneSquare className="text-slate-400 text-xl" />
                 </span>
               </div>
               <div className="my-3 w-full relative">
@@ -122,7 +134,7 @@ const SignUp = () => {
                   {...formik.getFieldProps("password")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaLock className="text-slate-400 text-lg"/>
+                  <FaLock className="text-slate-400 text-lg" />
                 </span>
                 {show ? (
                   <FiEye
@@ -136,17 +148,26 @@ const SignUp = () => {
                   />
                 )}
               </div>
-              <button
-                type="submit"
-                disabled={!formik.isValid}
-                className="cursor-pointer mt-8 md:mt-2  mx-4 w-44 h-14 ml-10 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
-                ثبت نام
-              </button>
+              {loding ? (
+                <div className="w-full mt-12 md:mt-2  ml-10 flex justify-center">
+                  <img className="w-10 h-10  " src={lodingSvg} alt="loding Svg" />
+                </div>
+              ) : error ? (
+                <div className="w-full mt-12 md:mt-2  ml-10 flex justify-center text-xl  text-red-500">
+                  <span className="text-blue-600 ml-4 ">خطا</span> : {error}
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={!formik.isValid}
+                  className="cursor-pointer mt-8 md:mt-2  mx-4 w-44 h-14 ml-12 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
+                  ثبت نام
+                </button>
+              )}
             </form>
             <button
               className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500 "
-              onClick={() => navigate("/login")}
-            >
+              onClick={() => navigate("/login")}>
               <p> ایا حساب باز کردین ؟</p>
               <span className="text-blue-500 mr-1">ورود</span>
             </button>

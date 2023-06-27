@@ -15,6 +15,9 @@ import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import loginImg from "../assets/images/login.svg";
 import iconeBrand from "../assets/images/iconeBrand.svg";
+import {useDispatch, useSelector} from "react-redux";
+import lodingSvg from "../assets/images/loading.svg";
+import {fetchDataUsers} from "../features/users/usersSlice";
 const initialValues = {
   phoneNumber: "",
   password: "",
@@ -32,21 +35,42 @@ const validationSchema = Yup.object({
 const Login = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const {users, loding, error} = useSelector((state) => state.users);
+  const dispatch = useDispatch();
   //   const redirect = searchParams.get("redirect") || "/";
   const [show, setShow] = useState(false);
   //   useEffect(() => {
   //     if (auth) navigate(redirect);
   //   }, [auth, redirect, navigate]);
 
-  const onSubmit = (values) => {};
-  const style = {color: "#444", fontSize: "2em", margin: " 1rem"};
-
+  const onSubmit = (values) => {
+    dispatch(fetchDataUsers());
+  };
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
     validateOnMount: true,
   });
+  console.log();
+
+  useEffect(() => {
+    if (users&&users.length>0) {
+      const filteruserPhoneNumver = users.find((u) => {
+        return u.phoneNumber.split(" ").join("") === formik.values.phoneNumber;
+      });
+      console.log(filteruserPhoneNumver);
+      if (filteruserPhoneNumver.password === formik.values.password) {
+        console.log("a");
+        toast.success(`${filteruserPhoneNumver.name} خوش امدید`);
+        navigate("/");
+      }
+    }
+    if (error) {
+      toast.error(`یک  مشکلی دارد`);
+    }
+  }, [error, users]);
+
 
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-[#F2F0F0] dark:bg-slate-900 py-12 px-6">
@@ -66,12 +90,11 @@ const Login = () => {
           <section className="flex flex-col items-start justify-between w-full h-full mt-6 ">
             <h2 className="text-blue-500 font-extrabold text-[1.8rem] mt-2 my-8  md:my-0 pr-4">
               {" "}
-               ورود{" "}
+              ورود{" "}
             </h2>
             <form
               className="flex flex-col items-center justify-between mt-8 w-full pr-4"
               onSubmit={formik.handleSubmit}>
-              
               <div className="my-3 w-full relative">
                 {formik.errors.phoneNumber && formik.touched.phoneNumber && (
                   <div className="absolute top-1/2 left-0 -translate-y-1/2 text-red-500 text-sm">
@@ -117,18 +140,31 @@ const Login = () => {
                   />
                 )}
               </div>
-              <button
-                type="submit"
-                disabled={!formik.isValid}
-                className="cursor-pointer mt-8 mx-4 w-44 h-14 ml-10 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
-                ورود
-              </button>
+              {loding ? (
+                <div className="w-full mt-12 md:mt-2  ml-10 flex justify-center">
+                  <img
+                    className="w-10 h-10  "
+                    src={lodingSvg}
+                    alt="loding Svg"
+                  />
+                </div>
+              ) : error ? (
+                <div className="w-full mt-12 md:mt-2  ml-10 flex justify-center text-xl  text-red-500">
+                  <span className="text-blue-600 ml-4 ">خطا</span> : {error}
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={!formik.isValid}
+                  className="cursor-pointer mt-8 mx-4 w-44 h-14 ml-10 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
+                  ورود
+                </button>
+              )}
             </form>
             <button
               className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500 "
-              onClick={() => navigate("/sign-up")}
-            >
-              <p> ایا هنوز  حساب باز نکردین ؟</p>
+              onClick={() => navigate("/sign-up")}>
+              <p> ایا هنوز حساب باز نکردین ؟</p>
               <span className="text-blue-500 mr-1">ثبت نام</span>
             </button>
           </section>

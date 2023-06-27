@@ -5,6 +5,7 @@ import cartReducer from './products/cartSlice'
 import coursesSlice from './products/coursesSlice'
 import dailyAnalysisSlice from './products/dailyAnalysisSlice'
 import  darkModeSlice  from './Attributes/darkMode'
+import usersSlice from './users/usersSlice'
 const store = configureStore({
     reducer: {
         products:productsReducer,
@@ -12,7 +13,8 @@ const store = configureStore({
         cart:cartReducer,
         courses:coursesSlice,
         dailyAnalysis:dailyAnalysisSlice,
-        darkMode:darkModeSlice
+        darkMode:darkModeSlice,
+        users:usersSlice
     },
 })
 
