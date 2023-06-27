@@ -492,15 +492,16 @@ const Cart = () => {
           />
         </div>
         <div className="flex flex-col lg:flex-row items-start justify-between  w-full ">
-          <div className="flex flex-col items-start justify-start w-full lg:w-3/4">
-            <div className=" w-full flex flex-col justify-center text-lg font-bold text-blue-500 mt-4 px-2 md:px-6 ">
-              <h2 className="md:text-xl lg:my-4">محصولات شما</h2>
-              {HandleShoweProductsCart()}
-            </div>
-            <div className=" w-full flex flex-col justify-center text-lg font-bold text-blue-500 mt-4 px-2 md:px-6 ">
+          <div className="flex flex-wrap items-start justify-center md:justify-start w-full lg:w-3/4 gap-x-8">
+            <div className=" w-auto   flex flex-col justify-center text-lg font-bold text-blue-500 mt-4 px-2 md:px-6 ">
               <h2 className="md:text-xl lg:my-4">دوره های شما</h2>
               {HandleShoweCourseCart()}
             </div>
+            <div className=" w-auto  flex flex-col justify-center text-lg font-bold text-blue-500 mt-4 px-2 md:px-6 ">
+              <h2 className="md:text-xl lg:my-4">محصولات شما</h2>
+              {HandleShoweProductsCart()}
+            </div>
+            
           </div>
           {cart.length > 0 && (
             <div className="w-full lg:w-[35rem] lg:sticky top-16 lg:mt-6 lg:ml-6">

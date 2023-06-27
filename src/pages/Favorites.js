@@ -402,15 +402,16 @@ const Favorites = () => {
             className="text-slate-600 text-lg hover:scale-105 transition-all cursor-pointer md:text-2xl"
           />
         </div>
-        <div className="flex flex-col items-start justify-between  w-full ">
-          <div className=" w-full flex flex-col justify-center text-lg font-bold text-blue-500 mt-3 md:mt-0 px-2 md:px-6 ">
-            <h2 className="md:text-xl lg:my-4">محصولات مورد علاقه شما</h2>
-            {HandleShoweProductsFavorites()}
-          </div>
-          <div className=" w-full flex flex-col justify-center text-lg font-bold text-blue-500 mt-4 px-2 md:px-6 ">
+        <div className="flex flex-wrap items-start justify-center md:justify-start  w-full gap-x-8">
+          <div className=" w-auto  flex flex-col justify-center text-lg font-bold text-blue-500 mt-3 md:mt-0 px-2 md:px-6 ">
             <h2 className="md:text-xl lg:my-4">دوره های مورد علاقه شما</h2>
             {HandleShoweCourseFavorites()}
           </div>
+          <div className=" w-auto flex flex-col justify-center text-lg font-bold text-blue-500 mt-3 md:mt-0 px-2 md:px-6 ">
+            <h2 className="md:text-xl lg:my-4">محصولات مورد علاقه شما</h2>
+            {HandleShoweProductsFavorites()}
+          </div>
+          
         </div>
       </main>
     </Layout>
