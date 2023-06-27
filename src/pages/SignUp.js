@@ -42,12 +42,11 @@ const SignUp = () => {
   //   }, [auth, redirect, navigate]);
 
   const onSubmit = (values) => {
-    dispatch(posthDataUsers({...values, rule: "user"}));
-   
+    dispatch(posthDataUsers({...values, rule: "user",img:""}));
   };
   useEffect(()=>{
     if(user){
-      console.log('a');
+      localStorage.setItem("user",JSON.stringify(user))
       toast.success(`${user.name} خوش امدید`)
       navigate("/")
     }

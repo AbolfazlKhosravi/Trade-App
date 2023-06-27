@@ -1,7 +1,7 @@
 // import "loginform.css";
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import {useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {
   FaLinkedin,
   FaLock,
@@ -56,13 +56,12 @@ const Login = () => {
 
   useEffect(() => {
     if (users&&users.length>0) {
-      const filteruserPhoneNumver = users.find((u) => {
+      const filteruserPhoneNumber = users.find((u) => {
         return u.phoneNumber.split(" ").join("") === formik.values.phoneNumber;
       });
-      console.log(filteruserPhoneNumver);
-      if (filteruserPhoneNumver.password === formik.values.password) {
-        console.log("a");
-        toast.success(`${filteruserPhoneNumver.name} خوش امدید`);
+      if (filteruserPhoneNumber.password === formik.values.password) {
+        localStorage.setItem("user",JSON.stringify(filteruserPhoneNumber))
+        toast.success(`${filteruserPhoneNumber.name} خوش امدید`);
         navigate("/");
       }
     }
@@ -156,7 +155,7 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={!formik.isValid}
-                  className="cursor-pointer mt-8 mx-4 w-44 h-14 ml-10 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
+                  className="cursor-pointer mt-8 mx-4 w-44 h-14 ml-12 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
                   ورود
                 </button>
               )}
