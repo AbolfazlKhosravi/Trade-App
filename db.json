@@ -1345,7 +1345,7 @@
       "instuctorId": "warrenBuffett",
       "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
       "hours": "40 m",
-      "type": "course",
+      "type": "dailyAnalyise",
       "recordingStatus": false,
       "quantity": 1,
       "Date": "2023-06-20T20:39:24.289Z",
@@ -1391,7 +1391,7 @@
       "instuctorId": "warrenBuffett",
       "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
       "hours": " 30 m",
-      "type": "course",
+      "type": "dailyAnalyise",
       "recordingStatus": false,
       "quantity": 1,
       "Date": "2023-06-20T20:39:24.289Z",
@@ -1445,7 +1445,7 @@
       "instuctorId": "warrenBuffett",
       "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
       "hours": " 20 m",
-      "type": "course",
+      "type": "dailyAnalyise",
       "recordingStatus": true,
       "quantity": 1,
       "Date": "2023-06-20T20:39:24.289Z",
@@ -1491,11 +1491,11 @@
       "instuctorId": "warrenBuffett",
       "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
       "hours": " 10 m",
-      "type": "course",
+      "type": "dailyAnalyise",
       "recordingStatus": true,
       "quantity": 1,
       "Date": "2023-06-20T20:39:24.289Z",
-       "commints": [
+      "commints": [
         {
           "id": 2,
           "name": "الکساندر آندرسون",
@@ -1533,22 +1533,74 @@
       ]
     }
   ],
-  "myFavorites": [],
-  "cart": [
+  "myFavorites": [
     {
-      "id": 6,
-      "name": "۳۰ روز",
-      "nameEnglish": "30 Day",
-      "price": 500000,
+      "id": 7,
+      "name": "زندگی",
+      "nameEnglish": "Living",
+      "price": 105000,
       "rate": "4.1",
       "quantity": 1,
       "writer": "وارن بافت",
       "writerImg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
       "publisher": "مک میلان",
       "publisherImg": "https://s8.uupload.ir/files/download_lxmr.jpg",
-      "numberOfPages": 25,
-      "img": "https://s8.uupload.ir/files/win_a_036_30_lucid_dreaming_course_a_036_24_99_superpowers_ebook_for_free_33__3imr.png",
-      "discountedPrice": 450000,
+      "numberOfPages": 55,
+      "img": "https://s8.uupload.ir/files/book_cover--_living_uncommonly_book_cover_contest-removebg-preview_yubf.png",
+      "discountedPrice": 80000,
+      "type": "prodcte",
+      "isPopular": false,
+      "commints": [
+        {
+          "id": 2,
+          "name": "الکساندر آندرسون",
+          "image": "https://s8.uupload.ir/files/i_cut_my_own_hair_after_my_stylist_taught_me_over_facetime_oiuv.jpg",
+          "comment": "کتاب خوب وارزشمندی بود",
+          "date": "2023-06-20T20:39:24.289Z",
+          "rate": 4.3,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": " ممنون از نظرتوون",
+              "date": "2023-06-20T20:39:24.289Z"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "ویلیام جونز",
+          "image": "https://s8.uupload.ir/files/brant_daugherty_ing.jpg",
+          "comment": "این کتاب خیلی به من کمک کرد",
+          "date": "2023-06-21T22:39:24.289Z",
+          "rate": 4.4,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": "خوشحالم که بهتون کمک کرده ",
+              "date": "2023-06-20T20:39:24.289Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "خروجی شما",
+      "nameEnglish": "Your Exit",
+      "price": 120000,
+      "rate": "4.1",
+      "quantity": 1,
+      "writer": "وارن بافت",
+      "writerImg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+      "publisher": "مک میلان",
+      "publisherImg": "https://s8.uupload.ir/files/download_lxmr.jpg",
+      "numberOfPages": 65,
+      "img": "https://s8.uupload.ir/files/book_design_-_hacking_your_exit_valuation_book_cover_contest_1_-removebg-preview_8yt5.png",
+      "discountedPrice": 80000,
       "type": "prodcte",
       "isPopular": true,
       "commints": [
@@ -1579,6 +1631,221 @@
           "replays": []
         }
       ]
+    },
+    {
+      "id": 24,
+      "title": "تحلیل تکنیکال",
+      "nameEnglish": "technical analysis",
+      "price": 200000,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/best_free_real-time_stock_charts_iec.jpg",
+      "discountedPrice": 200000,
+      "instructor": "وارن بافت",
+      "instuctorId": "warrenBuffett",
+      "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+      "isPopular": true,
+      "hours": "4 h 30 m",
+      "type": "course",
+      "recordingStatus": true,
+      "quantity": 1,
+      "commints": [
+        {
+          "id": 2,
+          "name": "الکساندر آندرسون",
+          "image": "https://s8.uupload.ir/files/i_cut_my_own_hair_after_my_stylist_taught_me_over_facetime_oiuv.jpg",
+          "comment": "دوره کامل وجامع ای بود",
+          "date": "2023-01-25T20:39:24.289Z",
+          "rate": 4,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": " ممنون از نظرتوون",
+              "date": "2023-06-20T20:39:24.289Z"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "ویلیام جونز",
+          "image": "https://s8.uupload.ir/files/brant_daugherty_ing.jpg",
+          "comment": "این دوره خیلی به من کمک کرد",
+          "date": "2023-06-21T22:39:24.289Z",
+          "rate": 5,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": "خوشحالم که بهتون کمک کرده ",
+              "date": "2023-06-24T20:39:24.289Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "cart": [
+    {
+      "id": 7,
+      "name": "زندگی",
+      "nameEnglish": "Living",
+      "price": 105000,
+      "rate": "4.1",
+      "quantity": 1,
+      "writer": "وارن بافت",
+      "writerImg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+      "publisher": "مک میلان",
+      "publisherImg": "https://s8.uupload.ir/files/download_lxmr.jpg",
+      "numberOfPages": 55,
+      "img": "https://s8.uupload.ir/files/book_cover--_living_uncommonly_book_cover_contest-removebg-preview_yubf.png",
+      "discountedPrice": 80000,
+      "type": "prodcte",
+      "isPopular": false,
+      "commints": [
+        {
+          "id": 2,
+          "name": "الکساندر آندرسون",
+          "image": "https://s8.uupload.ir/files/i_cut_my_own_hair_after_my_stylist_taught_me_over_facetime_oiuv.jpg",
+          "comment": "کتاب خوب وارزشمندی بود",
+          "date": "2023-06-20T20:39:24.289Z",
+          "rate": 4.3,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": " ممنون از نظرتوون",
+              "date": "2023-06-20T20:39:24.289Z"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "ویلیام جونز",
+          "image": "https://s8.uupload.ir/files/brant_daugherty_ing.jpg",
+          "comment": "این کتاب خیلی به من کمک کرد",
+          "date": "2023-06-21T22:39:24.289Z",
+          "rate": 4.4,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": "خوشحالم که بهتون کمک کرده ",
+              "date": "2023-06-20T20:39:24.289Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "title": "تحلیل طلا",
+      "nameEnglish": "gold analysis",
+      "price": 0,
+      "rate": "5",
+      "img": "https://s8.uupload.ir/files/michael_gray_is_goldcorps_bid_for_osisko_harbinger_of_gold_renaissance__gj7d.jpg",
+      "discountedPrice": 0,
+      "isPopular": true,
+      "instructor": "وارن بافت",
+      "instuctorId": "warrenBuffett",
+      "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+      "hours": " 10 m",
+      "type": "dailyAnalyise",
+      "recordingStatus": true,
+      "quantity": 1,
+      "Date": "2023-06-20T20:39:24.289Z",
+      "commints": [
+        {
+          "id": 2,
+          "name": "الکساندر آندرسون",
+          "image": "https://s8.uupload.ir/files/i_cut_my_own_hair_after_my_stylist_taught_me_over_facetime_oiuv.jpg",
+          "comment": "تحلیل کامل وجامع ای بود",
+          "date": "2023-01-25T20:39:24.289Z",
+          "rate": 4,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": " ممنون از نظرتوون",
+              "date": "2023-06-20T20:39:24.289Z"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "ویلیام جونز",
+          "image": "https://s8.uupload.ir/files/brant_daugherty_ing.jpg",
+          "comment": "این تحلیل خیلی به من کمک کرد",
+          "date": "2023-06-21T22:39:24.289Z",
+          "rate": 5,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": "خوشحالم که بهتون کمک کرده ",
+              "date": "2023-06-24T20:39:24.289Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "title": "مقدمه ای به بازار",
+      "nameEnglish": "An introduction to the market",
+      "price": 0,
+      "rate": "4",
+      "img": "https://s8.uupload.ir/files/don_39_t_wait_for_a_market_crash_to_buy_these_2_growth_stocks_-_motley_fool_8cil.jpg",
+      "discountedPrice": 0,
+      "instructor": "وارن بافت",
+      "instuctorId": "warrenBuffett",
+      "instructorimg": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+      "isPopular": true,
+      "hours": "1 h 30 m",
+      "quantity": 1,
+      "type": "course",
+      "recordingStatus": false,
+      "commints": [
+        {
+          "id": 4,
+          "name": "اما جانسون",
+          "image": "https://s8.uupload.ir/files/amelie_necklace,_tortoise_shell_necklace,_front_clasp_necklace,_thick_gold_necklace,_tortoise_shell_clasp,_acetate_necklace_0ih5.jpg",
+          "comment": "دوره خوب وارزشمندی بود",
+          "date": "2023-06-20T20:39:24.289Z",
+          "rate": 3.8,
+          "replays": [
+            {
+              "id": 1,
+              "name": "ابوالفض خسروی",
+              "image": "https://s8.uupload.ir/files/home_-_illusions_color_spa_8sxy.jpg",
+              "comment": " ممنون از نظرتوون",
+              "date": "2023-06-23T20:39:24.289Z"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "بنجامین میلر",
+          "image": "https://s8.uupload.ir/files/mens_and_boys_aran_sweater_knitting_pattern_pdf_26,_28_-_30,_32_-_34,_36,_38_-_40,_42_-_44_and_46_-_48_inch_chest,_aran_jumper,_pdf_download_gz5r.jpg",
+          "comment": "این دوره خیلی به من کمک کرد",
+          "date": "2023-06-21T22:39:24.289Z",
+          "rate": 4.9,
+          "replays": []
+        }
+      ]
+    }
+  ],
+  "users":[
+    {"id":1,
+     "name":"ابوالفضل",
+     "phoneNumber":"0990 618 2988",
+     "password":"12345678",
+     "rule":"admin"
     }
   ]
 }

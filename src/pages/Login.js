@@ -108,12 +108,12 @@ const Login = () => {
                 {show ? (
                   <FiEye
                     onClick={() => setShow(false)}
-                    className="text-slate-600 font-[1.2rem] absolute cursor-pointer translate-x-[125px] translate-y-[8px]"
+                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-sm cursor-pointer"
                   />
                 ) : (
                   <FiEyeOff
                     onClick={() => setShow(true)}
-                    className="text-slate-600 font-[1.2rem] absolute cursor-pointer translate-x-[125px] translate-y-[8px]"
+                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-sm cursor-pointer"
                   />
                 )}
               </div>
