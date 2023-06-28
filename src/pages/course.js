@@ -2,9 +2,6 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchDataProduct} from "../features/products/productsSlice";
-import {fetchCart} from "../features/products/cartSlice";
-import {fetchFavorite} from "../features/products/favoritesSlice";
 import lodingSvg from "../assets/images/loading.svg";
 import HandleFavorite from "../components/handleFavorate";
 import HandleCartAll from "../components/HandleCartAll";
@@ -26,6 +23,7 @@ import convertToPersianNumber from "../utils/ConverToPersianNumber";
 import {fetchDataCourse, sendCommintCourse, sendReplayCourse} from "../features/products/coursesSlice";
 import ReactPlayer from "react-player";
 import { toast } from "react-hot-toast";
+import HandleShoweToast from "../common/HandleShoweToast";
 
 dayjs.extend(relativeTime);
 dayjs.locale("fa");
@@ -59,8 +57,6 @@ const Course = () => {
   const [valueReplay, setValueReplay] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
     dispatch(fetchDataCourse({id: courseId}));
   }, [dispatch, courseId]);
   const [user, setUser] = useState(null);
@@ -83,6 +79,7 @@ const Course = () => {
 
   return (
     <Layout>
+       <HandleShoweToast/>
       <div className="2xl:container mx-auto flex  items-center justify-center">
         {loding ? (
           <div className="w-full my-12 flex justify-center">
