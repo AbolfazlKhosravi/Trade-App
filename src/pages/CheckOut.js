@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {fetchFavorite} from "../features/products/favoritesSlice";
 import {fetchCart} from "../features/products/cartSlice";
 import Layout from "../layout/layout";
@@ -17,6 +17,9 @@ const CheckOut = () => {
   const {loadingAll, errorAll, cart} = useSelector((state) => state.cart);
   const [user, setUser] = useState("");
   const [pricePost, setPricePost] = useState(0);
+  
+
+
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -77,10 +80,10 @@ const CheckOut = () => {
                   ادرس :
                 </p>
                 <p className="pr-4 font-medium flex flex-row-reverse text-slate-600 dark:text-slate-400 text-lg">
-                  {user.addres ? "" : "هنوز ادرسی وارد نکردید"}
+                  {user.addres ? user.addres : "هنوز ادرسی وارد نکردید"}
                 </p>
               </div>
-              <button className="w-full mt-4 text-white bg-blue-500 cursor-pointer font-bold text-lg py-3 rounded-2xl ">
+              <button onClick={()=>navigate(`/user/${user.name}?redirect=/check-out`)} className="w-full mt-4 text-white bg-blue-500 cursor-pointer font-bold text-lg py-3 rounded-2xl ">
                 ویرایش مشخصات
               </button>
               <div className="w-full flex items-center justify-between my-8 px-1 max-w-[28rem] ">

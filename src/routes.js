@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import NotFoundPage from "./pages/NotFountPage";
 import CheckOut from "./pages/CheckOut";
+import Profile from "./pages/Profile";
 const routes=[
   {path:"/" ,element:<Hoom/>},
   {path:"/aboutMe" ,element:<AboutMe/>},
@@ -28,6 +29,7 @@ const routes=[
   {path:"/login" ,element:<Login/>},
   {path:"/check-out" ,element:<CheckOut/>},
   {path:"/dilyAnalysis/:name" ,element:<DailyAnalyse/>},
+  {path:"/user/:name" ,element:<Profile/>},
   {path:"*", element:<NotFoundPage/>},
 ]
 export default routes;

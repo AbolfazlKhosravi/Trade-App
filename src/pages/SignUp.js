@@ -48,6 +48,7 @@ const SignUp = () => {
         ...values,
         rule: "user",
         img: "https://s8.uupload.ir/files/_fundamental_pitching_drills_-_baseball_tutorials_52eq.png",
+        addres:""
       })
     );
   };

@@ -23,6 +23,17 @@ export const posthDataUsers = createAsyncThunk(
     }
   }
 );
+export const updateDataUser = createAsyncThunk(
+  "Users/updateDataUser",
+  async (payload, {rejectWithValue}) => {
+    try {
+      const data = await axios.patch(`https://khosravitradapp.glitch.me/users/${payload.id}`,payload.user);
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const initialState = {
   users: [],
@@ -56,6 +67,18 @@ export const UsersSlice = createSlice({
       return {...state, user: action.payload, loding: false, error: null};
     });
     builder.addCase(posthDataUsers.rejected, (state, action) => {
+      return {
+        ...state,
+        user: null,
+        loding: false,
+        error: action.payload.message,
+      };
+    });
+    builder.addCase(updateDataUser.pending, (state, action) => {
+      return {...state, user: null, loding: true, error: null};
+    }).addCase(updateDataUser.fulfilled, (state, action) => {
+      return {...state, user: action.payload, loding: false, error: null};
+    }).addCase(updateDataUser.rejected, (state, action) => {
       return {
         ...state,
         user: null,

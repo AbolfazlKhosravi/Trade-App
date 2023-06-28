@@ -375,7 +375,7 @@ const Header = () => {
           <NavLink to="/login">ورود</NavLink>
         </div>}
         {user?<div className="w-9 h-9 min-[501px]:h-10 min-[501px]:w-10">
-          <img className="w-full h-full rounded-full object-cover hover:scale-105 transition-all cursor-pointer" onClick={()=>navigate(`user/${user.name}`)} src={user.img} alt="userImg"/>
+          <img className="w-full h-full rounded-full object-cover hover:scale-105 transition-all cursor-pointer" onClick={()=>navigate(`/user/${user.name}`)} src={user.img} alt="userImg"/>
         </div>:<div className="max-[500px]:px-2  px-4 mx-1 py-1 rounded-lg bg-blue-700 text-white cursor-pointer dark:bg-blue-700 dark:text-slate-100">
           <NavLink to="/sign-up">عضویت </NavLink>
         </div>}
