@@ -1,25 +1,19 @@
 import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useSearchParams} from "react-router-dom";
-import {fetchFavorite} from "../features/products/favoritesSlice";
-import {fetchCart} from "../features/products/cartSlice";
+import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 import Layout from "../layout/layout";
 import lodingSvg from "../assets/images/loading.svg";
 import {useState} from "react";
 import convertToPersianNumber from "../utils/ConverToPersianNumber";
-
+import React from "react";
 import {FaCcAmazonPay} from "react-icons/fa";
 import {toast} from "react-hot-toast";
 
 const CheckOut = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const {loadingAll, errorAll, cart} = useSelector((state) => state.cart);
   const [user, setUser] = useState("");
   const [pricePost, setPricePost] = useState(0);
-  
-
-
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -28,14 +22,7 @@ const CheckOut = () => {
     } else {
       navigate("/");
     }
-  }, []);
-
-  console.log(cart);
-
-  useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
-  }, [dispatch]);
+  }, [navigate]);
 
   const toTalPrice = cart.reduce((acu, crr) => {
     return acu + crr.quantity * crr.price;
@@ -83,7 +70,11 @@ const CheckOut = () => {
                   {user.addres ? user.addres : "هنوز ادرسی وارد نکردید"}
                 </p>
               </div>
-              <button onClick={()=>navigate(`/user/${user.name}?redirect=/check-out`)} className="w-full mt-4 text-white bg-blue-500 cursor-pointer font-bold text-lg py-3 rounded-2xl ">
+              <button
+                onClick={() =>
+                  navigate(`/user/${user.name}?redirect=/check-out`)
+                }
+                className="w-full mt-4 text-white bg-blue-500 cursor-pointer font-bold text-lg py-3 rounded-2xl ">
                 ویرایش مشخصات
               </button>
               <div className="w-full flex items-center justify-between my-8 px-1 max-w-[28rem] ">
@@ -270,7 +261,11 @@ const Table = ({cart, loadingAll, errorAll}) => {
                         {p.quantity.toLocaleString("fa")}
                       </p>
                       <p className="hidden md:flex pl-3 text-blue-500 font-bold md:text-[1.05rem] md:pl-0  w-[5rem]">
-                        {p.quantity*p.discountedPrice=== 0?"رایگان":(p.quantity*p.discountedPrice).toLocaleString("fa")}
+                        {p.quantity * p.discountedPrice === 0
+                          ? "رایگان"
+                          : (p.quantity * p.discountedPrice).toLocaleString(
+                              "fa"
+                            )}
                       </p>
                     </td>
                   </tr>
@@ -284,4 +279,4 @@ const Table = ({cart, loadingAll, errorAll}) => {
   );
 };
 
-export default CheckOut;
+export default React.memo(CheckOut);
