@@ -36,8 +36,6 @@ const Profile = () => {
   const [userData, setUserData] = useState(null);
   const {loding, error, user} = useSelector((state) => state.users);
   const [show, setShow] = useState(false);
-  const [searchParams] = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/";
 
   const onSubmit = (values) => {
     dispatch(
@@ -82,6 +80,7 @@ const Profile = () => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
     }
+  
      // eslint-disable-next-line
   }, [user]);
 
