@@ -1,9 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
 import {useCallback, useEffect, useRef, useState} from "react";
-import {fetchFavorite} from "../features/products/favoritesSlice";
-import {fetchCart} from "../features/products/cartSlice";
-import {toast} from "react-hot-toast";
 import {
   fetchDataDailyAnalysis,
   multipleFilterAsynchDaulyAnalysis,
@@ -15,10 +12,10 @@ import {FiX} from "react-icons/fi";
 import ReactStars from "react-rating-stars-component";
 import {FaRegStar, FaStar, FaStarHalfAlt, FaSadTear} from "react-icons/fa";
 import {animateScroll as scroll} from "react-scroll";
+import HandleShoweToast from "../common/HandleShoweToast";
 
 function DailyAnalysis() {
   const dispatch = useDispatch();
-  const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
   const [filters, SetFilters] = useState({
     search: "",
     filrerPrice: "",
@@ -31,75 +28,10 @@ function DailyAnalysis() {
 
   const removeDropShot = useRef(null);
   useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
     dispatch(fetchDataDailyAnalysis());
   }, [dispatch]);
-  const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
-    useSelector((state) => state.cart);
-  const {
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  } = useSelector((state) => state.favorites);
 
   const dailyAnalysisData = useSelector((state) => state.dailyAnalysis);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-
-    if (product && checkedAddedToThecard === product.id) {
-      toast.success(`به سبد خرید اضافه شد`);
-    }
-    if (!errorCart && checkedRemovedToThecard) {
-      toast.success(`از سبد خرید حذف شد`);
-    }
-    if (errorCart && checkedAddedToThecard) {
-      toast.error(`به سبد خرید اضافه نشد`);
-    }
-    if (errorCart && checkedRemovedToThecard) {
-      toast.error(`از سبد خرید حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToThecard,
-    product,
-    errorCart,
-    checkedRemovedToThecard,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-    if (favorite && checkedAddedToTheFavorites === favorite.id) {
-      toast.success(`به لیست علاقه مندی ها اضافه شد`);
-    }
-    if (!error && checkedRemovedToTheFavorites) {
-      toast.success(`از لیست علاقه مندی ها حذف شد`);
-    }
-    if (error && checkedAddedToTheFavorites) {
-      toast.error(`به لیست علاقه مندی ها اضافه نشد`);
-    }
-    if (error && checkedRemovedToTheFavorites) {
-      toast.error(`از لیست علاقه مندی ها حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      setShouldExecuteCode(true);
-    }
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -125,28 +57,29 @@ function DailyAnalysis() {
     }
   }, [moreFilters]);
 
-
   const filtersHandler = useCallback((e) => {
     const {name, value} = e.target;
     SetFilters({...filters, [name]: value});
 
     debouncedFilters({name, value});
+    // eslint-disable-next-line
   }, []);
 
   const debouncedFilters = debounce(({name, value}) => {
     dispatch(multipleFilterAsynchDaulyAnalysis({...filters, [name]: value}));
   }, 500);
 
-
   const filterReatingHandler = useCallback((value) => {
     SetFilters({...filters, filterRating: value});
 
     debouncedSearch({value});
+    // eslint-disable-next-line
   }, []);
   const debouncedSearch = debounce(({value}) => {
-    dispatch(multipleFilterAsynchDaulyAnalysis({...filters, filterRating: value}));
+    dispatch(
+      multipleFilterAsynchDaulyAnalysis({...filters, filterRating: value})
+    );
   }, 500);
-
 
   const removeFilterReatingHandler = (e) => {
     const {name, value} = e.target;
@@ -161,6 +94,7 @@ function DailyAnalysis() {
 
   return (
     <Layout>
+      <HandleShoweToast />
       <main className="  max-w-full 2xl:container mx-auto flex flex-col h-full">
         <Dropshot
           setMoreFilters={setMoreFilters}
@@ -419,7 +353,7 @@ function DailyAnalysis() {
                     <div
                       key={course.id}
                       className="relative  my-4 lg:my-0 lg:mb-4 bg-white dark:bg-slate-950 rounded-b-2xl rounded-t-3xl mb-8 shadow-sm w-full max-w-[24rem] md:max-w-[23rem] lg:md:max-w-[22rem] mx-1">
-                      <CourseComponente course={course} key={course.id} />
+                      <CourseComponente course={course} id={course.type} key={course.id} />
                     </div>
                   );
                 })}

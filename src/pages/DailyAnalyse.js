@@ -2,8 +2,6 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchCart} from "../features/products/cartSlice";
-import {fetchFavorite} from "../features/products/favoritesSlice";
 import lodingSvg from "../assets/images/loading.svg";
 import HandleFavorite from "../components/handleFavorate";
 import HandleCartAll from "../components/HandleCartAll";
@@ -17,7 +15,6 @@ import {
 import ReactStars from "react-rating-stars-component";
 import {useState} from "react";
 import {useRef} from "react";
-
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/fa";
@@ -29,6 +26,7 @@ import {
   sendReplayDailyAnalyse,
 } from "../features/products/dailyAnalysisSlice";
 import {toast} from "react-hot-toast";
+import HandleShoweToast from "../common/HandleShoweToast";
 
 dayjs.extend(relativeTime);
 dayjs.locale("fa");
@@ -46,11 +44,11 @@ const DailyAnalyse = () => {
   } = useSelector((state) => state.dailyAnalysis);
   const [searchParams] = useSearchParams();
 
-  let courseId=null
-  if(location.state){
-    courseId = location.state.courseId
-  }else{
-    courseId = searchParams.get("id") 
+  let courseId = null;
+  if (location.state) {
+    courseId = location.state.courseId;
+  } else {
+    courseId = searchParams.get("id");
   }
   const dispatch = useDispatch();
   const writeCommentRef = useRef(null);
@@ -61,8 +59,6 @@ const DailyAnalyse = () => {
   const [valueReplay, setValueReplay] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
     dispatch(fetchDatadailyAnalyse({id: courseId}));
   }, [dispatch, courseId]);
 
@@ -87,6 +83,7 @@ const DailyAnalyse = () => {
 
   return (
     <Layout>
+      <HandleShoweToast />
       <div className="2xl:container mx-auto flex  items-center justify-center">
         {loding ? (
           <div className="w-full my-12 flex justify-center">
@@ -294,7 +291,9 @@ const DailyAnalyse = () => {
                                 toast.success("لطفا تمام قسمت هارو پر کنید");
                               }
                             } else {
-                              navigate(`/sign-up?redirect=${location.pathname}&&id=${courseId}`);
+                              navigate(
+                                `/sign-up?redirect=${location.pathname}&&id=${courseId}`
+                              );
                             }
                           }}
                           className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] px-8 py-1">
@@ -431,7 +430,9 @@ const DailyAnalyse = () => {
                                         );
                                       }
                                     } else {
-                                      navigate(`/sign-up?redirect=${location.pathname}&&id=${courseId}`);
+                                      navigate(
+                                        `/sign-up?redirect=${location.pathname}&&id=${courseId}`
+                                      );
                                     }
                                   }}
                                   className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">

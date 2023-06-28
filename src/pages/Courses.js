@@ -363,7 +363,7 @@ function Courses() {
                     <div
                       key={course.id}
                       className="relative  my-4 lg:my-0 lg:mb-4 bg-white dark:bg-slate-950 rounded-b-2xl rounded-t-3xl mb-8 shadow-sm w-full max-w-[24rem] md:max-w-[23rem] lg:md:max-w-[22rem] mx-1">
-                      <CourseComponente course={course} key={course.id} />
+                      <CourseComponente course={course} id={course.type} key={course.id} />
                     </div>
                   );
                 })}

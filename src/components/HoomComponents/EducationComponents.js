@@ -14,7 +14,7 @@ const EducationComponents = () => {
       <h2 className="text-2xl pt-2 font-extrabold text-blue-700 lg:text-3xl lg:pb-2">
         آموزش
       </h2>
-      <EducationComponent text="تحلیل روزانه" id="dailyAnalysis" />
+      <EducationComponent text="تحلیل روزانه" id="dailyAnalyise" />
       <EducationComponent text=" دوره های اموزشی  " id="courses " />
     </section>
   );
@@ -22,12 +22,12 @@ const EducationComponents = () => {
 
 const EducationComponent = ({text, id}) => {
   return (
-    <article className="mt-7 px-1" id={id==="dailyAnalysis"? "dailyAnalysis" : "courses"}>
+    <article className="mt-7 px-1" id={id==="dailyAnalyise"? "dailyAnalyise" : "courses"}>
       <div className="flex justify-between items-center w-full">
         <h3 className="text-slate-700 dark:text-slate-300 text-[1.1rem] font-bold lg:text-[1.15rem]">
           {text}
         </h3>
-        <NavLink to={id==="dailyAnalysis"? "dilyAnalysis": "courses"} className="opacity-70 text-[.75rem] text-slate-600 dark:text-slate-200">
+        <NavLink to={id==="dailyAnalyise"? "dailyAnalyise": "courses"} className="opacity-70 text-[.75rem] text-slate-600 dark:text-slate-200">
           دیدن همه
         </NavLink>
       </div>
@@ -42,7 +42,7 @@ const SwiperProducts = ({id}) => {
   const productsData = useSelector((state) => state.courses);
   const dailyAnalysisData = useSelector((state) => state.dailyAnalysis);
 
-  if (id === "dailyAnalysis") {
+  if (id === "dailyAnalyise") {
     data = dailyAnalysisData;
   } else {
     data = productsData;
