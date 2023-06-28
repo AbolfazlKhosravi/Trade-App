@@ -1,6 +1,7 @@
 import {FaTwitter, FaLinkedin, FaGithub, FaYoutube} from "react-icons/fa";
 import iconeBrand from "../assets/images/iconeBrand.svg";
 import {NavLink, useNavigate} from "react-router-dom";
+
 const Footer = () => {
   const navigate = useNavigate();
   return (
@@ -33,10 +34,14 @@ const Footer = () => {
           <div className="flex flex-col">
             <h3 className="text-2xl text-blue-600">خدمات</h3>
             <div className="mt-5 flex flex-col items-start justify-between">
-              <NavLink to="/store" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              <NavLink
+                to="/store"
+                className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 فروشگاه
               </NavLink>
-              <NavLink to="/courses" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              <NavLink
+                to="/courses"
+                className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 اموزش ها
               </NavLink>
               <NavLink
@@ -55,21 +60,23 @@ const Footer = () => {
           <div className="flex flex-col">
             <h3 className="text-md text-blue-600 mt-1 ">پیوستن به ما</h3>
             <div className="mt-[1.4rem] flex flex-col items-start justify-between">
-              <NavLink to="/sign-up" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              <NavLink
+                to="/sign-up"
+                className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 ثبت نام
               </NavLink>
-              <NavLink to="/login" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
+              <NavLink
+                to="/login"
+                className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 ورود
               </NavLink>
             </div>
           </div>
         </div>
-
         <div className="">
           <a href="# ">
             <FaTwitter className="text-3xl hover:scale-105 transition-all mb-4 text-blue-500" />
           </a>
-
           <a
             href="https://github.com/AbolfazlKhosravi"
             target="_blank"
