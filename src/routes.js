@@ -12,6 +12,7 @@ import DailyAnalyse from "./pages/DailyAnalyse";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import NotFoundPage from "./pages/NotFountPage";
+import CheckOut from "./pages/CheckOut";
 const routes=[
   {path:"/" ,element:<Hoom/>},
   {path:"/aboutMe" ,element:<AboutMe/>},
@@ -25,6 +26,7 @@ const routes=[
   {path:"/courses/:name" ,element:<Course/>},
   {path:"/sign-up" ,element:<SignUp/>},
   {path:"/login" ,element:<Login/>},
+  {path:"/check-out" ,element:<CheckOut/>},
   {path:"/dilyAnalysis/:name" ,element:<DailyAnalyse/>},
   {path:"*", element:<NotFoundPage/>},
 ]
