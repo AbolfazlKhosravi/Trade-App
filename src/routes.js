@@ -14,6 +14,7 @@ import SignUp from "./pages/SignUp";
 import NotFoundPage from "./pages/NotFountPage";
 import CheckOut from "./pages/CheckOut";
 import Profile from "./pages/Profile";
+
 const routes=[
   {path:"/" ,element:<Hoom/>},
   {path:"/aboutMe" ,element:<AboutMe/>},
@@ -32,4 +33,5 @@ const routes=[
   {path:"/user/:name" ,element:<Profile/>},
   {path:"*", element:<NotFoundPage/>},
 ]
+
 export default routes;
