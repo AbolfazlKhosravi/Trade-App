@@ -2,9 +2,11 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchDataProduct, sendCommintProducte, sendReplayProducte} from "../features/products/productsSlice";
-import {fetchCart} from "../features/products/cartSlice";
-import {fetchFavorite} from "../features/products/favoritesSlice";
+import {
+  fetchDataProduct,
+  sendCommintProducte,
+  sendReplayProducte,
+} from "../features/products/productsSlice";
 import lodingSvg from "../assets/images/loading.svg";
 import HandleFavorite from "../components/handleFavorate";
 import HandleCartAll from "../components/HandleCartAll";
@@ -18,18 +20,27 @@ import {
 import ReactStars from "react-rating-stars-component";
 import {useState} from "react";
 import {useRef} from "react";
-
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/fa";
 import convertToPersianNumber from "../utils/ConverToPersianNumber";
-import { toast } from "react-hot-toast";
-
+import {toast} from "react-hot-toast";
+import HandleShoweToast from "../common/HandleShoweToast";
+import React from "react";
 dayjs.extend(relativeTime);
 dayjs.locale("fa");
 
 const Book = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const writeCommentRef = useRef(null);
+  const writeCommentReaplayRef = useRef(null);
+  const [sendCommint, setSendCommint] = useState(false);
+  const [sendReplay, setSendReplay] = useState(null);
+  const [values, setValues] = useState({text: "", rate: 0});
+  const [valueReplay, setValueReplay] = useState("");
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
   const {
     error,
     loding,
@@ -40,27 +51,17 @@ const Book = () => {
     lodingSendReplay,
   } = useSelector((state) => state.products);
   const [searchParams] = useSearchParams();
-  let productId=null
-  if(location.state){
-    productId = location.state.productId
-  }else{
-    productId = searchParams.get("id") 
+  let productId = null;
+  if (location.state) {
+    productId = location.state.productId;
+  } else {
+    productId = searchParams.get("id");
   }
-  const dispatch = useDispatch();
-  const writeCommentRef = useRef(null);
-  const writeCommentReaplayRef = useRef(null);
-  const [sendCommint, setSendCommint] = useState(false);
-  const [sendReplay, setSendReplay] = useState(null);
-  const [values, setValues] = useState({text: "", rate: 0});
-  const [valueReplay, setValueReplay] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
     dispatch(fetchDataProduct({id: productId}));
   }, [dispatch, productId]);
-  const [user, setUser] = useState(null);
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     setUser(user);
@@ -78,6 +79,7 @@ const Book = () => {
 
   return (
     <Layout>
+      <HandleShoweToast/>
       <div className="2xl:container mx-auto flex  items-center justify-center">
         {loding ? (
           <div className="w-full my-12 flex justify-center">
@@ -221,10 +223,10 @@ const Book = () => {
                       />
                     </span>
                     <textarea
-                     value={values.text}
-                     onChange={(e) =>
-                       setValues({...values, text: e.target.value})
-                     }
+                      value={values.text}
+                      onChange={(e) =>
+                        setValues({...values, text: e.target.value})
+                      }
                       ref={writeCommentRef}
                       className="w-full rounded-lg bg-white dark:bg-slate-900 outline-none text-[1rem] text-slate-600 dark:text-slate-400 focus:border-blue-500 transition-all border-slate-300 dark:border-slate-700 shadow-sm border h-32  py-3 px-3 mt-1"
                       placeholder="نظر خودرا وارد کنید"
@@ -282,10 +284,7 @@ const Book = () => {
                                   sendCommintProducte({
                                     id: productId,
                                     commints: {
-                                      commints: [
-                                        ...product.commints,
-                                        commint,
-                                      ],
+                                      commints: [...product.commints, commint],
                                     },
                                   })
                                 );
@@ -293,7 +292,9 @@ const Book = () => {
                                 toast.success("لطفا تمام قسمت هارو پر کنید");
                               }
                             } else {
-                              navigate(`/sign-up?redirect=${location.pathname}&&id=${productId}`);
+                              navigate(
+                                `/sign-up?redirect=${location.pathname}&&id=${productId}`
+                              );
                             }
                           }}
                           className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] px-8 py-1">
@@ -401,20 +402,18 @@ const Book = () => {
                                         };
 
                                         const updatedComments =
-                                          product.commints.map(
-                                            (comment) => {
-                                              if (comment.id === p.id) {
-                                                return {
-                                                  ...comment,
-                                                  replays: [
-                                                    ...comment.replays,
-                                                    replay,
-                                                  ],
-                                                };
-                                              }
-                                              return comment;
+                                          product.commints.map((comment) => {
+                                            if (comment.id === p.id) {
+                                              return {
+                                                ...comment,
+                                                replays: [
+                                                  ...comment.replays,
+                                                  replay,
+                                                ],
+                                              };
                                             }
-                                          );
+                                            return comment;
+                                          });
 
                                         dispatch(
                                           sendReplayProducte({
@@ -430,7 +429,9 @@ const Book = () => {
                                         );
                                       }
                                     } else {
-                                      navigate(`/sign-up?redirect=${location.pathname}&&id=${productId}`);
+                                      navigate(
+                                        `/sign-up?redirect=${location.pathname}&&id=${productId}`
+                                      );
                                     }
                                   }}
                                   className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">
@@ -484,4 +485,4 @@ const Book = () => {
   );
 };
 
-export default Book;
+export default React.memo(Book);
