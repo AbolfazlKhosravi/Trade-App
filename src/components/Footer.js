@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col">
             <h3 className="text-md text-blue-600 mt-1 ">پیوستن به ما</h3>
-            <div className="mt-[1.4rem]">
+            <div className="mt-[1.4rem] flex flex-col items-start justify-between">
               <NavLink to="/sign-up" className="mb-2 text-slate-500 hover:text-blue-500 cursor-pointer">
                 ثبت نام
               </NavLink>

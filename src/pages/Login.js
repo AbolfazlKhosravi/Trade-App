@@ -51,7 +51,12 @@ const Login = () => {
     validationSchema,
     validateOnMount: true,
   });
-  console.log();
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      navigate("/")
+    }
+  }, []);
 
   useEffect(() => {
     if (users && users.length > 0) {
@@ -157,7 +162,7 @@ const Login = () => {
                 <button
                   type="submit"
                   disabled={!formik.isValid}
-                  className="cursor-pointer mt-8 mx-4 w-44 h-14 ml-12 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
+                  className="cursor-pointer mt-8 mx-4 w-44 h-14 ml-12 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl translate-x-1">
                   ورود
                 </button>
               )}

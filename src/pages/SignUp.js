@@ -52,6 +52,12 @@ const SignUp = () => {
     );
   };
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      navigate("/");
+    }
+  }, []);
+  useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
       toast.success(`${user.name} خوش امدید`);
@@ -174,7 +180,7 @@ const SignUp = () => {
                 <button
                   type="submit"
                   disabled={!formik.isValid}
-                  className="cursor-pointer mt-8 md:mt-2  mx-4 w-44 h-14 ml-12 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl">
+                  className="cursor-pointer mt-8 md:mt-2  mx-4 w-44 h-14 ml-12 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl translate-x-1">
                   ثبت نام
                 </button>
               )}
