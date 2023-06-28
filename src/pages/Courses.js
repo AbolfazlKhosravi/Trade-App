@@ -1,10 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
 import {useCallback, useEffect, useRef, useState} from "react";
-import {fetchFavorite} from "../features/products/favoritesSlice";
-import {fetchCart} from "../features/products/cartSlice";
-import {toast} from "react-hot-toast";
-
 import lodingSvg from "../assets/images/loading.svg";
 import CourseComponente from "../components/HoomComponents/CourseComponente";
 import {debounce} from "debounce";
@@ -12,12 +8,15 @@ import {FiX} from "react-icons/fi";
 import ReactStars from "react-rating-stars-component";
 import {FaRegStar, FaStar, FaStarHalfAlt, FaSadTear} from "react-icons/fa";
 import {animateScroll as scroll} from "react-scroll";
-import { fetchDataCourses, multipleFilterAsynchCourses } from "../features/products/coursesSlice";
-import { useSearchParams } from "react-router-dom";
+import {
+  fetchDataCourses,
+  multipleFilterAsynchCourses,
+} from "../features/products/coursesSlice";
+import {useSearchParams} from "react-router-dom";
+import HandleShoweToast from "../common/HandleShoweToast";
 
 function Courses() {
   const dispatch = useDispatch();
-  const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
   const [filters, SetFilters] = useState({
     search: "",
     filrerPrice: "",
@@ -25,88 +24,25 @@ function Courses() {
     filterRecordingStatus: null,
     filterRating: 0,
   });
-
   const [moreFilters, setMoreFilters] = useState(false);
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("price") || "/";
   const removeDropShot = useRef(null);
-  console.log(redirect);
+
   useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
-    if(redirect==="/"){
-      SetFilters({...filters,filrerPrice:""})
+    if (redirect === "/") {
+      SetFilters({...filters, filrerPrice: ""});
       dispatch(fetchDataCourses());
-    }else{
-      SetFilters({...filters,filrerPrice:redirect})
-      dispatch(multipleFilterAsynchCourses({...filters,filrerPrice:redirect}))
+    } else {
+      SetFilters({...filters, filrerPrice: redirect});
+      dispatch(
+        multipleFilterAsynchCourses({...filters, filrerPrice: redirect})
+      );
     }
-  }, [dispatch,redirect]);
-  const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
-    useSelector((state) => state.cart);
-  const {
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  } = useSelector((state) => state.favorites);
+    // eslint-disable-next-line
+  }, [dispatch, redirect]);
 
   const coursesData = useSelector((state) => state.courses);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-
-    if (product && checkedAddedToThecard === product.id) {
-      toast.success(`به سبد خرید اضافه شد`);
-    }
-    if (!errorCart && checkedRemovedToThecard) {
-      toast.success(`از سبد خرید حذف شد`);
-    }
-    if (errorCart && checkedAddedToThecard) {
-      toast.error(`به سبد خرید اضافه نشد`);
-    }
-    if (errorCart && checkedRemovedToThecard) {
-      toast.error(`از سبد خرید حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToThecard,
-    product,
-    errorCart,
-    checkedRemovedToThecard,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-    if (favorite && checkedAddedToTheFavorites === favorite.id) {
-      toast.success(`به لیست علاقه مندی ها اضافه شد`);
-    }
-    if (!error && checkedRemovedToTheFavorites) {
-      toast.success(`از لیست علاقه مندی ها حذف شد`);
-    }
-    if (error && checkedAddedToTheFavorites) {
-      toast.error(`به لیست علاقه مندی ها اضافه نشد`);
-    }
-    if (error && checkedRemovedToTheFavorites) {
-      toast.error(`از لیست علاقه مندی ها حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      setShouldExecuteCode(true);
-    }
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -132,29 +68,28 @@ function Courses() {
     }
   }, [moreFilters]);
 
-
   const filtersHandler = useCallback((e) => {
     const {name, value} = e.target;
     SetFilters({...filters, [name]: value});
 
     debouncedFilters({name, value});
+    // eslint-disable-next-line
   }, []);
 
   const debouncedFilters = debounce(({name, value}) => {
     dispatch(multipleFilterAsynchCourses({...filters, [name]: value}));
   }, 500);
 
-
   const filterReatingHandler = useCallback((value) => {
     SetFilters({...filters, filterRating: value});
 
     debouncedSearch({value});
+    // eslint-disable-next-line
   }, []);
 
   const debouncedSearch = debounce(({value}) => {
     dispatch(multipleFilterAsynchCourses({...filters, filterRating: value}));
   }, 500);
-
 
   const removeFilterReatingHandler = (e) => {
     const {name, value} = e.target;
@@ -169,6 +104,7 @@ function Courses() {
 
   return (
     <Layout>
+      <HandleShoweToast />
       <main className="  max-w-full 2xl:container mx-auto flex flex-col h-full">
         <Dropshot
           setMoreFilters={setMoreFilters}
