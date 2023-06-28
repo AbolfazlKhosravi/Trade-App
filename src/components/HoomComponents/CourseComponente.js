@@ -4,7 +4,6 @@ import HandleCartAll from "../HandleCartAll";
 import StarRating from "../StarRating";
 import {NavLink} from "react-router-dom";
 const CourseComponente = ({course, id}) => {
-  console.log(id);
   const calculationOfDiscountPercentage = (discountedPrice, price) => {
     const discount = (((price - discountedPrice) / price) * 100).toFixed(0);
     return parseInt(discount);

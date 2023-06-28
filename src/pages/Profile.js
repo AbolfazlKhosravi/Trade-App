@@ -81,7 +81,6 @@ const Profile = () => {
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
-      navigate(redirect);
     }
      // eslint-disable-next-line
   }, [user]);
@@ -110,7 +109,7 @@ const Profile = () => {
                 )}
                 <input
                   type="text"
-                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50  dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900   dark:border-slate-700  py-4 px-2  w-full"
                   placeholder="اسم"
                   name="name"
                   {...formik.getFieldProps("name")}
@@ -128,7 +127,7 @@ const Profile = () => {
                 <input
                   type="tel"
                   placeholder="شماره موبایل"
-                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50  dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900   dark:border-slate-700  py-4 px-2  w-full"
                   name="phoneNumber"
                   {...formik.getFieldProps("phoneNumber")}
                 />
@@ -145,7 +144,7 @@ const Profile = () => {
                 <input
                   type={show ? "text" : "password"}
                   placeholder="رمز عبور"
-                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50  dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900   dark:border-slate-700  py-4 px-2  w-full"
                   name="password"
                   {...formik.getFieldProps("password")}
                 />
@@ -168,7 +167,7 @@ const Profile = () => {
                 <input
                   type="text"
                   placeholder="ادرس "
-                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50  dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-600 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900   dark:border-slate-700  py-4 px-2  w-full"
                   name="addres"
                   {...formik.getFieldProps("addres")}
                 />

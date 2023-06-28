@@ -90,7 +90,7 @@ const SignUp = () => {
         </section>
         <section className=" w-full md:w-1/2 h-full flex flex-col items-start rounded-lg relative ">
           <FaArrowLeft
-            className="cursor-pointer left-4  md:mr-5 m-1 text-xl mt-2  text-slate-600 dark:text-slate-400"
+            className="cursor-pointer left-4  md:mr-5 m-1 text-xl mt-2  text-slate-600 dark:text-slate-700 dark:text-slate-400"
             onClick={() => navigate("/")}
           />
           <section className="flex flex-col items-start justify-between w-full mt-6 md:mt-2">
@@ -109,13 +109,13 @@ const SignUp = () => {
                 )}
                 <input
                   type="text"
-                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-700 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   placeholder="اسم"
                   name="name"
                   {...formik.getFieldProps("name")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaUserAlt className="text-slate-400 text-lg" />
+                  <FaUserAlt className="text-slate-500 text-lg" />
                 </span>
               </div>
               <div className="my-3 w-full relative">
@@ -127,12 +127,12 @@ const SignUp = () => {
                 <input
                   type="tel"
                   placeholder="شماره موبایل"
-                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-700 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="phoneNumber"
                   {...formik.getFieldProps("phoneNumber")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaPhoneSquare className="text-slate-400 text-xl" />
+                  <FaPhoneSquare className="text-slate-500 text-xl" />
                 </span>
               </div>
               <div className="my-3 w-full relative">
@@ -144,22 +144,22 @@ const SignUp = () => {
                 <input
                   type={show ? "text" : "password"}
                   placeholder="رمز عبور"
-                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-300 outline-none pr-8 text-slate-700 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900 md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="password"
                   {...formik.getFieldProps("password")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaLock className="text-slate-400 text-lg" />
+                  <FaLock className="text-slate-500 text-lg" />
                 </span>
                 {show ? (
                   <FiEye
                     onClick={() => setShow(false)}
-                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-sm cursor-pointer"
+                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-[1rem] cursor-pointer"
                   />
                 ) : (
                   <FiEyeOff
                     onClick={() => setShow(true)}
-                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-sm cursor-pointer"
+                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-[1rem] cursor-pointer"
                   />
                 )}
               </div>

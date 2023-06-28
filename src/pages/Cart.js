@@ -292,7 +292,7 @@ const Cart = () => {
         </div>
       );
     }
-    const isExist = cart.filter((p) => p.type === "course");
+    const isExist = cart.filter((p) => p.type === "course" || p.type==="dailyAnalyise");
     if (isExist.length === 0) {
       return (
         <div className="flex items-center justify-center w-full my-20 ">
@@ -311,7 +311,7 @@ const Cart = () => {
         {" "}
         {cart.length &&
           cart.map((product) => {
-            if (product.type === "course") {
+            if (product.type === "course" || product.type === "dailyAnalyise" ) {
               const isClickedLoding = clickedShowLoding.find(
                 (cli) => cli === product.id
               );

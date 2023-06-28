@@ -10,6 +10,7 @@ import loginImg from "../assets/images/login.svg";
 import {useDispatch, useSelector} from "react-redux";
 import lodingSvg from "../assets/images/loading.svg";
 import {fetchDataUsers} from "../features/users/usersSlice";
+import convertToPersianNumber from "../utils/ConverToPersianNumber";
 const initialValues = {
   phoneNumber: "",
   password: "",
@@ -52,9 +53,9 @@ const Login = () => {
   useEffect(() => {
     if (users && users.length > 0) {
       const filteruserPhoneNumber = users.find((u) => {
-        return u.phoneNumber.split(" ").join("") === formik.values.phoneNumber;
+        return convertToPersianNumber(u.phoneNumber.split(" ").join(""))=== convertToPersianNumber(formik.values.phoneNumber.split(" ").join(""));
       });
-      if (filteruserPhoneNumber.password === formik.values.password) {
+      if (filteruserPhoneNumber&& filteruserPhoneNumber.password === formik.values.password) {
         localStorage.setItem("user", JSON.stringify(filteruserPhoneNumber));
         toast.success(`${filteruserPhoneNumber.name} خوش امدید`);
         if (id) {
@@ -62,6 +63,8 @@ const Login = () => {
         } else {
           navigate(redirect);
         }
+      }else{
+        toast.error("کاربر یافت نشد")
       }
     }
     if (error) {
@@ -82,7 +85,7 @@ const Login = () => {
         </section>
         <section className=" w-full md:w-1/2   flex flex-col items-start rounded-lg relativec ">
           <FaArrowLeft
-            className="cursor-pointer left-4 m-4 text-xl text-slate-600 dark:text-slate-400"
+            className="cursor-pointer left-4 m-4 text-xl text-slate-600 dark:text-slate-700 dark:text-slate-400"
             onClick={() => navigate("/")}
           />
           <section className="flex flex-col items-start justify-between w-full h-full mt-6 ">
@@ -102,12 +105,12 @@ const Login = () => {
                 <input
                   type="tel"
                   placeholder="شماره موبایل"
-                  className=" border-b focus:border-blue-500 border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0] dark:bg-slate-900  md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-400 outline-none pr-8 text-slate-700 dark:text-slate-400 bg-[#F2F0F0] dark:bg-slate-900  md:bg-slate-50 md:dark:bg-slate-800 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="phoneNumber"
                   {...formik.getFieldProps("phoneNumber")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaPhoneSquare className="text-slate-400 text-xl" />
+                  <FaPhoneSquare className="text-slate-500 text-xl" />
                 </span>
               </div>
               <div className="my-3 w-full relative">
@@ -119,29 +122,29 @@ const Login = () => {
                 <input
                   type={show ? "text" : "password"}
                   placeholder="رمز عبور"
-                  className=" border-b focus:border-blue-500 border-slate-400 outline-none pr-8 text-slate-400 bg-[#F2F0F0]  dark:bg-slate-900 md:dark:bg-slate-800 md:bg-slate-50 dark:border-slate-600 shadow-sm py-4 px-2  w-full"
+                  className=" border-b focus:border-blue-500 border-slate-400 outline-none pr-8 text-slate-700 dark:text-slate-400 bg-[#F2F0F0]  dark:bg-slate-900 md:dark:bg-slate-800 md:bg-slate-50 dark:border-slate-700 shadow-sm py-4 px-2  w-full"
                   name="password"
                   {...formik.getFieldProps("password")}
                 />
                 <span className="absolute top-1/2 right-2 -translate-y-1/2">
-                  <FaLock className="text-slate-400 text-lg" />
+                  <FaLock className="text-slate-500 text-lg" />
                 </span>
                 {show ? (
                   <FiEye
                     onClick={() => setShow(false)}
-                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-sm cursor-pointer"
+                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-[1rem] cursor-pointer"
                   />
                 ) : (
                   <FiEyeOff
                     onClick={() => setShow(true)}
-                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-sm cursor-pointer"
+                    className="text-slate-600 absolute top-1/2 left-0 -translate-y-1/2  text-[1rem] cursor-pointer"
                   />
                 )}
               </div>
               {loding ? (
                 <div className="w-full mt-12 md:mt-2  ml-10 flex justify-center">
                   <img
-                    className="w-10 h-10  "
+                    className="w-10 h-10 mt-[2.5rem] "
                     src={lodingSvg}
                     alt="loding Svg"
                   />
