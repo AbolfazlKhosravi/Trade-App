@@ -96,9 +96,9 @@ const DailyAnalyse = () => {
         ) : (
           dailyAnalyse && (
             <div className="flex flex-col lg:flex-row  items-center lg:items-start lg:justify-between  justify-start  w-full lg:h-[35rem] lg:bg-slate-50 lg:dark:bg-slate-800 ">
-              <div className="flex flex-col  md:flex-row lg:items-start lg:justify-between   items-center md:items-start justify-start md:justify-between w-full lg:w-auto md:mt-8 rounded-2xl">
+              <div className="flex flex-col  md:flex-row lg:items-start lg:justify-between   items-center md:items-start justify-start md:justify-between w-full lg:w-full md:mt-8 rounded-2xl">
                 <div className=" relative flex items-start justify-center w-full md:w-3/5   ">
-                  <div className="w-full h-full rounded-3xl relative lg:px-8 ">
+                  <div className="w-full  h-full  rounded-3xl relative lg:px-8 ">
                     <ReactPlayer
                       url="https://s6.uplod.ir:182/d/2k2we5ek4hvhuf6tvgnz33tmwebxbpzukq35hxd7ltx36wolapri4ax7ahtyfvdemd2iybp3/pexels-ambientnature-atmosphere-6136576-1280x720-60fps.mp4"
                       className=" overflow-hidden md:rounded-2xl"
@@ -184,7 +184,7 @@ const DailyAnalyse = () => {
                       </p>
                     </div>
                     <div className=" sticky bottom-5  w-full flex items-center justify-end pl-8 ">
-                      <HandleCartAll product={dailyAnalyse} prductPage={true} />
+                      <span className="min-h-[3rem]"><HandleCartAll product={dailyAnalyse} prductPage={true} /></span>
                     </div>
                   </div>
                 </div>

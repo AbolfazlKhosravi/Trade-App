@@ -146,8 +146,8 @@ const Favorites = () => {
                         </p>
                       </div>
                     )}
-                    <div className="flex my-3 w-full items-center justify-end">
-                      <HandleCartAll product={product} />
+                    <div className="flex my-3 w-full items-center justify-end relative">
+                     <span className="absolute -bottom-9"> <HandleCartAll product={product} /></span>
                     </div>
                   </div>
                 </div>
@@ -260,7 +260,7 @@ const Favorites = () => {
                         />
                       )}
                     </div>
-                    <div className="px-2 pt-1 w-full flex justify-between items-center ">
+                    <div className="px-2 pt-1 w-full flex justify-between items-center relative">
                       <div className=" w-auto flex justify-start items-center ">
                         {product.price === product.discountedPrice ? (
                           product.price === 0 ? (
@@ -293,7 +293,7 @@ const Favorites = () => {
                           <StarRating rating={product.rate} />
                         </div>
                       </div>
-                      <HandleCartAll product={product} />
+                      <span className="absolute left-2"><HandleCartAll product={product} /></span>
                     </div>
                   </div>
                 </div>
