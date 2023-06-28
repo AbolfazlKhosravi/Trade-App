@@ -1,4 +1,4 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
@@ -41,7 +41,15 @@ const Course = () => {
     errorSendReplay,
     lodingSendReplay,
   } = useSelector((state) => state.courses);
-  const courseId = location.state.courseId;
+
+  const [searchParams] = useSearchParams();
+  let courseId=null
+  if(location.state){
+    courseId = location.state.courseId
+  }else{
+    courseId = searchParams.get("id") 
+  }
+
   const dispatch = useDispatch();
   const writeCommentRef = useRef(null);
   const writeCommentReaplayRef = useRef(null);
@@ -282,7 +290,7 @@ const Course = () => {
                                 toast.success("لطفا تمام قسمت هارو پر کنید");
                               }
                             } else {
-                              navigate("/sign-up");
+                              navigate(`/sign-up?redirect=${location.pathname}&&id=${courseId}`);
                             }
                           }}
                           className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] px-8 py-1">
@@ -419,7 +427,7 @@ const Course = () => {
                                         );
                                       }
                                     } else {
-                                      navigate("/sign-up");
+                                      navigate(`/sign-up?redirect=${location.pathname}&&id=${courseId}`);
                                     }
                                   }}
                                   className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">

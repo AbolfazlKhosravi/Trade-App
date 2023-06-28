@@ -11,7 +11,7 @@ import signUpImg from "../assets/images/signUp.svg";
 import iconeBrand from "../assets/images/iconeBrand.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {posthDataUsers} from "../features/users/usersSlice";
-import lodingSvg  from "../assets/images/loading.svg"
+import lodingSvg from "../assets/images/loading.svg";
 const initialValues = {
   name: "",
   phoneNumber: "",
@@ -34,7 +34,8 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const {user, loding, error} = useSelector((state) => state.users);
-  //   const redirect = searchParams.get("redirect") || "/";
+  const redirect = searchParams.get("redirect") || "/";
+  const id = searchParams.get("id") || null;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   //   useEffect(() => {
@@ -42,18 +43,28 @@ const SignUp = () => {
   //   }, [auth, redirect, navigate]);
 
   const onSubmit = (values) => {
-    dispatch(posthDataUsers({...values, rule: "user",img:"https://s8.uupload.ir/files/_fundamental_pitching_drills_-_baseball_tutorials_52eq.png"}));
+    dispatch(
+      posthDataUsers({
+        ...values,
+        rule: "user",
+        img: "https://s8.uupload.ir/files/_fundamental_pitching_drills_-_baseball_tutorials_52eq.png",
+      })
+    );
   };
-  useEffect(()=>{
-    if(user){
-      localStorage.setItem("user",JSON.stringify(user))
-      toast.success(`${user.name} خوش امدید`)
-      navigate("/")
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+      toast.success(`${user.name} خوش امدید`);
+      if (id) {
+        navigate(`${redirect}?id=${id}`);
+      } else {
+        navigate(redirect);
+      }
     }
-    if(error){
-      toast.error(`یک  مشکلی دارد`)
+    if (error) {
+      toast.error(`یک  مشکلی دارد`);
     }
-  },[user,error,navigate])
+  }, [user, error, navigate]);
 
   const formik = useFormik({
     initialValues,
@@ -149,7 +160,11 @@ const SignUp = () => {
               </div>
               {loding ? (
                 <div className="w-full mt-12 md:mt-2  ml-10 flex justify-center">
-                  <img className="w-10 h-10  " src={lodingSvg} alt="loding Svg" />
+                  <img
+                    className="w-10 h-10  "
+                    src={lodingSvg}
+                    alt="loding Svg"
+                  />
                 </div>
               ) : error ? (
                 <div className="w-full mt-12 md:mt-2  ml-10 flex justify-center text-xl  text-red-500">
@@ -166,7 +181,13 @@ const SignUp = () => {
             </form>
             <button
               className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500 "
-              onClick={() => navigate("/login")}>
+              onClick={() => {
+                if (id) {
+                  navigate(`/login?redirect=${redirect}&&id=${id}`);
+                } else {
+                  navigate(`/login?redirect=${redirect}`);
+                }
+              }}>
               <p> ایا حساب باز کردین ؟</p>
               <span className="text-blue-500 mr-1">ورود</span>
             </button>

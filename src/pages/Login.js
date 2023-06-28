@@ -1,7 +1,7 @@
 // import "loginform.css";
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import { useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {
   FaLinkedin,
   FaLock,
@@ -37,11 +37,10 @@ const Login = () => {
   const [searchParams] = useSearchParams();
   const {users, loding, error} = useSelector((state) => state.users);
   const dispatch = useDispatch();
+  const redirect = searchParams.get("redirect") || "/";
+  const id = searchParams.get("id") || null;
   //   const redirect = searchParams.get("redirect") || "/";
   const [show, setShow] = useState(false);
-  //   useEffect(() => {
-  //     if (auth) navigate(redirect);
-  //   }, [auth, redirect, navigate]);
 
   const onSubmit = (values) => {
     dispatch(fetchDataUsers());
@@ -55,21 +54,24 @@ const Login = () => {
   console.log();
 
   useEffect(() => {
-    if (users&&users.length>0) {
+    if (users && users.length > 0) {
       const filteruserPhoneNumber = users.find((u) => {
         return u.phoneNumber.split(" ").join("") === formik.values.phoneNumber;
       });
       if (filteruserPhoneNumber.password === formik.values.password) {
-        localStorage.setItem("user",JSON.stringify(filteruserPhoneNumber))
+        localStorage.setItem("user", JSON.stringify(filteruserPhoneNumber));
         toast.success(`${filteruserPhoneNumber.name} خوش امدید`);
-        navigate("/");
+        if (id) {
+          navigate(`${redirect}?id=${id}`);
+        } else {
+          navigate(redirect);
+        }
       }
     }
     if (error) {
       toast.error(`یک  مشکلی دارد`);
     }
   }, [error, users]);
-
 
   return (
     <main className="min-h-screen w-full flex items-center justify-center bg-[#F2F0F0] dark:bg-slate-900 py-12 px-6">
@@ -162,7 +164,13 @@ const Login = () => {
             </form>
             <button
               className="w-full flex items-center justify-center text-[.7rem] mt-5 pl-4 text-slate-500 "
-              onClick={() => navigate("/sign-up")}>
+              onClick={() => {
+                if (id) {
+                  navigate(`/sign-up?redirect=${redirect}&&id=${id}`);
+                } else {
+                  navigate(`/sign-up?redirect=${redirect}`);
+                }
+              }}>
               <p> ایا هنوز حساب باز نکردین ؟</p>
               <span className="text-blue-500 mr-1">ثبت نام</span>
             </button>

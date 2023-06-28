@@ -2,8 +2,20 @@ import Layout from "../layout/layout";
 import notFoundPage from "../assets/images/404Error.svg"
 import { FaSadTear } from "react-icons/fa"
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchFavorite } from "../features/products/favoritesSlice";
+import { fetchCart } from "../features/products/cartSlice";
+
 const NotFoundPage = () => {
     const navigate=useNavigate()
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(fetchFavorite());
+      dispatch(fetchCart());
+    }, [dispatch]);
+
   return (
     <Layout>
       <main className="2xl:container mx-auto h-full w-full flex flex-col  items-center justify-start ">

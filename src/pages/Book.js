@@ -1,4 +1,4 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
@@ -39,7 +39,13 @@ const Book = () => {
     errorSendReplay,
     lodingSendReplay,
   } = useSelector((state) => state.products);
-  const productId = location.state.productId;
+  const [searchParams] = useSearchParams();
+  let productId=null
+  if(location.state){
+    productId = location.state.productId
+  }else{
+    productId = searchParams.get("id") 
+  }
   const dispatch = useDispatch();
   const writeCommentRef = useRef(null);
   const writeCommentReaplayRef = useRef(null);
@@ -287,7 +293,7 @@ const Book = () => {
                                 toast.success("لطفا تمام قسمت هارو پر کنید");
                               }
                             } else {
-                              navigate("/sign-up");
+                              navigate(`/sign-up?redirect=${location.pathname}&&id=${productId}`);
                             }
                           }}
                           className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] px-8 py-1">
@@ -424,7 +430,7 @@ const Book = () => {
                                         );
                                       }
                                     } else {
-                                      navigate("/sign-up");
+                                      navigate(`/sign-up?redirect=${location.pathname}&&id=${productId}`);
                                     }
                                   }}
                                   className="bg-blue-500  text-white font-bold rounded-xl text-[1.1rem] mt-3 px-4 py-1 w-36 mb-3">

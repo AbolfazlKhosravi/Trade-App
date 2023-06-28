@@ -27,6 +27,12 @@ const Cart = () => {
   const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
   const [operationType, setOperationType] = useState("");
   const [isScrolledUp, setIsScrolledUp] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+  }, []);
   const {
     checkedAddedToThecard,
     product,
@@ -501,7 +507,6 @@ const Cart = () => {
               <h2 className="md:text-xl lg:my-4">محصولات شما</h2>
               {HandleShoweProductsCart()}
             </div>
-            
           </div>
           {cart.length > 0 && (
             <div className="w-full lg:w-[35rem] lg:sticky top-16 lg:mt-6 lg:ml-6">
@@ -529,7 +534,15 @@ const Cart = () => {
                       {priceAfterDisount.toLocaleString("fa")} تومان
                     </span>
                   </div>
-                  <button className="w-4/5 bg-blue-400 rounded-2xl py-2 text-white text-xl mt-4">
+                  <button
+                    onClick={() => {
+                      if (user) {
+                        navigate("/check-out");
+                      } else {
+                        navigate("/sign-up?redirect=/check-out");
+                      }
+                    }}
+                    className="w-4/5 bg-blue-400 rounded-2xl py-2 text-white text-xl mt-4">
                     پرداخت
                   </button>
                   <div className="flex items-center pt-1 ">
@@ -561,7 +574,15 @@ const Cart = () => {
                       </span>
                     </div>
                   </div>
-                  <button className="text-white bg-blue-500 rounded-2xl text-lg font-bold px-4 py-2">
+                  <button
+                    onClick={() => {
+                      if (user) {
+                        navigate("/check-out");
+                      } else {
+                        navigate("/sign-up?redirect=/check-out");
+                      }
+                    }}
+                    className="text-white bg-blue-500 rounded-2xl text-lg font-bold px-4 py-2">
                     پرداخت
                   </button>
                 </div>
