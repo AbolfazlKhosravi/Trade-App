@@ -1,20 +1,12 @@
-// import "loginform.css";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {useNavigate} from "react-router-dom";
-import {
-  FaLinkedin,
-  FaLock,
-  FaPhoneSquare,
-  FaArrowLeft,
-  FaUserAlt,
-} from "react-icons/fa";
+import {FaLock, FaPhoneSquare, FaArrowLeft} from "react-icons/fa";
 import {FiEye, FiEyeOff} from "react-icons/fi";
 import toast from "react-hot-toast";
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import loginImg from "../assets/images/login.svg";
-import iconeBrand from "../assets/images/iconeBrand.svg";
 import {useDispatch, useSelector} from "react-redux";
 import lodingSvg from "../assets/images/loading.svg";
 import {fetchDataUsers} from "../features/users/usersSlice";
@@ -39,7 +31,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const redirect = searchParams.get("redirect") || "/";
   const id = searchParams.get("id") || null;
-  //   const redirect = searchParams.get("redirect") || "/";
   const [show, setShow] = useState(false);
 
   const onSubmit = (values) => {
@@ -54,9 +45,9 @@ const Login = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-      navigate("/")
+      navigate("/");
     }
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     if (users && users.length > 0) {
@@ -76,6 +67,7 @@ const Login = () => {
     if (error) {
       toast.error(`یک  مشکلی دارد`);
     }
+    // eslint-disable-next-line
   }, [error, users]);
 
   return (

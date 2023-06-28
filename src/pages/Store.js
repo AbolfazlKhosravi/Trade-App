@@ -1,9 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
 import {useCallback, useEffect, useRef, useState} from "react";
-import {fetchFavorite} from "../features/products/favoritesSlice";
-import {fetchCart} from "../features/products/cartSlice";
-import {toast} from "react-hot-toast";
 import lodingSvg from "../assets/images/loading.svg";
 import {debounce} from "debounce";
 import {FiX} from "react-icons/fi";
@@ -18,10 +15,10 @@ import {
 import ProductComponent from "../components/HoomComponents/productComponent";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import HandleShoweToast from "../common/HandleShoweToast";
 
 function Store() {
   const dispatch = useDispatch();
-  const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
   const [filters, SetFilters] = useState({
     search: "",
     filrerPrice: "",
@@ -51,8 +48,6 @@ function Store() {
   const redirect = searchParams.get("discount") || "/";
   const removeDropShot = useRef(null);
   useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
     if (redirect === "/") {
       SetFilters({...filters, filrerPrice: ""});
       dispatch(fetchDataProducts());
@@ -60,73 +55,12 @@ function Store() {
       SetFilters({...filters, filrerPrice: redirect});
       dispatch(multipleFilterAsynchStore({...filters, filrerPrice: redirect}));
     }
+
+    // eslint-disable-next-line
   }, [dispatch, redirect]);
-  
-  const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
-    useSelector((state) => state.cart);
-  const {
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  } = useSelector((state) => state.favorites);
 
   const productsData = useSelector((state) => state.products);
 
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-
-    if (product && checkedAddedToThecard === product.id) {
-      toast.success(`به سبد خرید اضافه شد`);
-    }
-    if (!errorCart && checkedRemovedToThecard) {
-      toast.success(`از سبد خرید حذف شد`);
-    }
-    if (errorCart && checkedAddedToThecard) {
-      toast.error(`به سبد خرید اضافه نشد`);
-    }
-    if (errorCart && checkedRemovedToThecard) {
-      toast.error(`از سبد خرید حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToThecard,
-    product,
-    errorCart,
-    checkedRemovedToThecard,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-    if (favorite && checkedAddedToTheFavorites === favorite.id) {
-      toast.success(`به لیست علاقه مندی ها اضافه شد`);
-    }
-    if (!error && checkedRemovedToTheFavorites) {
-      toast.success(`از لیست علاقه مندی ها حذف شد`);
-    }
-    if (error && checkedAddedToTheFavorites) {
-      toast.error(`به لیست علاقه مندی ها اضافه نشد`);
-    }
-    if (error && checkedRemovedToTheFavorites) {
-      toast.error(`از لیست علاقه مندی ها حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      setShouldExecuteCode(true);
-    }
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -157,6 +91,7 @@ function Store() {
     SetFilters({...filters, [name]: value});
 
     debouncedFilters({name, value});
+     // eslint-disable-next-line
   }, []);
 
   const debouncedFilters = debounce(({name, value}) => {
@@ -167,6 +102,7 @@ function Store() {
     SetFilters({...filters, filterRating: value});
 
     debouncedRating({value});
+     // eslint-disable-next-line
   }, []);
   const debouncedRating = debounce(({value}) => {
     dispatch(multipleFilterAsynchStore({...filters, filterRating: value}));
@@ -175,6 +111,7 @@ function Store() {
   const handleRangePrice = useCallback((newrangePrice) => {
     SetFilters({...filters, rangePrice: newrangePrice});
     debouncedRangePrice(newrangePrice);
+     // eslint-disable-next-line
   }, []);
 
   const debouncedRangePrice = debounce((newrangePrice) => {
@@ -196,6 +133,7 @@ function Store() {
 
   return (
     <Layout>
+       <HandleShoweToast />
       <main className="  max-w-full 2xl:container mx-auto flex flex-col h-full">
         <Dropshot
           setMoreFilters={setMoreFilters}

@@ -1,8 +1,6 @@
-import {json, useNavigate, useSearchParams} from "react-router-dom";
+import { useNavigate, useSearchParams} from "react-router-dom";
 import Layout from "../layout/layout";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchFavorite} from "../features/products/favoritesSlice";
-import {fetchCart} from "../features/products/cartSlice";
 import {useEffect, useState} from "react";
 import {useFormik} from "formik";
 import * as Yup from "yup";
@@ -78,18 +76,16 @@ const Profile = () => {
       formik.values.password = user.password;
       formik.values.addres = user.addres;
     }
+     // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (user) {
       localStorage.setItem("user", JSON.stringify(user));
       navigate(redirect);
     }
+     // eslint-disable-next-line
   }, [user]);
 
-  useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
-  }, [dispatch]);
 
   return (
     <Layout>

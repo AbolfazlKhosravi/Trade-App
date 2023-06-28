@@ -8,7 +8,6 @@ import toast from "react-hot-toast";
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import signUpImg from "../assets/images/signUp.svg";
-import iconeBrand from "../assets/images/iconeBrand.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {posthDataUsers} from "../features/users/usersSlice";
 import lodingSvg from "../assets/images/loading.svg";
@@ -38,9 +37,6 @@ const SignUp = () => {
   const id = searchParams.get("id") || null;
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  //   useEffect(() => {
-  //     if (auth) navigate(redirect);
-  //   }, [auth, redirect, navigate]);
 
   const onSubmit = (values) => {
     dispatch(
@@ -48,7 +44,7 @@ const SignUp = () => {
         ...values,
         rule: "user",
         img: "https://s8.uupload.ir/files/_fundamental_pitching_drills_-_baseball_tutorials_52eq.png",
-        addres:""
+        addres: "",
       })
     );
   };
@@ -57,6 +53,7 @@ const SignUp = () => {
     if (user) {
       navigate("/");
     }
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (user) {
@@ -71,6 +68,7 @@ const SignUp = () => {
     if (error) {
       toast.error(`یک  مشکلی دارد`);
     }
+    // eslint-disable-next-line
   }, [user, error, navigate]);
 
   const formik = useFormik({

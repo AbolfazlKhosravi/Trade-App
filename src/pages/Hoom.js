@@ -2,98 +2,32 @@ import Layout from "../layout/layout";
 import imgTitle from "../assets/images/imageDiscription.svg";
 import imgTitleDark from "../assets/images/imageDiscriptionDark.svg";
 import {useSelector, useDispatch} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import ProductsHoom from "../components/HoomComponents/ProductsHoom";
-import {toast} from "react-hot-toast";
 import SwiperBanner from "../components/HoomComponents/SwiperBanner";
 import MarketHoom from "../components/HoomComponents/marketHoom";
 import {fetchDataProducts} from "../features/products/productsSlice";
-import {fetchFavorite} from "../features/products/favoritesSlice";
-import {fetchCart} from "../features/products/cartSlice";
 import {fetchDataCourses} from "../features/products/coursesSlice";
 import EducationComponents from "../components/HoomComponents/EducationComponents";
 import {fetchDataDailyAnalysis} from "../features/products/dailyAnalysisSlice";
 import {Link} from "react-scroll";
+import HandleShoweToast from "../common/HandleShoweToast";
+import { NavLink } from "react-router-dom";
 
 
 const Hoom = () => {
   const dispatch = useDispatch();
-  const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
 
   useEffect(() => {
     dispatch(fetchDataProducts());
     dispatch(fetchDataCourses());
     dispatch(fetchDataDailyAnalysis());
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
   }, [dispatch]);
 
-  const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
-    useSelector((state) => state.cart);
-  const {
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  } = useSelector((state) => state.favorites);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-
-    if (product && checkedAddedToThecard === product.id) {
-      toast.success(`به سبد خرید اضافه شد`);
-    }
-    if (!errorCart && checkedRemovedToThecard) {
-      toast.success(`از سبد خرید حذف شد`);
-    }
-    if (errorCart && checkedAddedToThecard) {
-      toast.error(`به سبد خرید اضافه نشد`);
-    }
-    if (errorCart && checkedRemovedToThecard) {
-      toast.error(`از سبد خرید حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToThecard,
-    product,
-    errorCart,
-    checkedRemovedToThecard,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-    if (favorite && checkedAddedToTheFavorites === favorite.id) {
-      toast.success(`به لیست علاقه مندی ها اضافه شد`);
-    }
-    if (!error && checkedRemovedToTheFavorites) {
-      toast.success(`از لیست علاقه مندی ها حذف شد`);
-    }
-    if (error && checkedAddedToTheFavorites) {
-      toast.error(`به لیست علاقه مندی ها اضافه نشد`);
-    }
-    if (error && checkedRemovedToTheFavorites) {
-      toast.error(`از لیست علاقه مندی ها حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      setShouldExecuteCode(true);
-    }
-  }, []);
 
   return (
     <Layout>
+      <HandleShoweToast />
       <main className="  max-w-full 2xl:container mx-auto flex flex-col">
         <DescriptionSite />
         <div className="w-full flex flex-col pt-6 md:pt-12 ">
@@ -132,9 +66,9 @@ const DescriptionSite = () => {
         </div>
       </div>
       <div className=" mb-8 flex justify-between items-start flex-wrap  mx-4   lg:px-16 lg:pb-2">
-        <a className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10  py-4 rounded-3xl mx-4  md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <NavLink  to="/login" className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10  py-4 rounded-3xl mx-4  md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           شروع
-        </a>
+        </NavLink>
         <Link
           to="store"
           className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10 py-4 rounded-3xl mx-4 md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem] bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900"
@@ -167,9 +101,9 @@ const DescriptionSite = () => {
           duration={500}>
           تحلیل روزانه
         </Link>
-        <a className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10  py-4 rounded-3xl mx-4  md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
+        <NavLink to="/sign-up" className="flex justify-center cursor-pointer hover:scale-105 transition-all items-center w-28 mt-10  py-4 rounded-3xl mx-4  md:mx-1 md:w-24 lg:w-28 md:text-sm lg:text-[1rem]  bg-blue-700 text-white shadow-lg shadow-blue-500/50 dark:shadow-slate-900">
           ثبت نام
-        </a>
+        </NavLink>
       </div>
     </div>
   );
