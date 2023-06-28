@@ -1,110 +1,22 @@
 import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
-import {useEffect, useState} from "react";
-import {
-  deleteFavorite,
-  fetchFavorite,
-} from "../features/products/favoritesSlice";
-import {
-  deleteCart,
-  fetchCart,
-  HandleNumberProudctsCart,
-} from "../features/products/cartSlice";
+import {deleteFavorite} from "../features/products/favoritesSlice";
+
 import lodingSvg from "../assets/images/loading.svg";
 import HandleFavorateAll from "../components/HandleFavorateAll";
 import StarRating from "../components/StarRating";
-import {
-  FaTimes,
-  FaRedoAlt,
-  FaReply,
-  FaSadTear,
-  FaPlusCircle,
-  FaMinusCircle,
-} from "react-icons/fa";
+import {FaTimes, FaRedoAlt, FaReply, FaSadTear} from "react-icons/fa";
 import {NavLink, useNavigate} from "react-router-dom";
-import {toast} from "react-hot-toast";
 import HandleCartAll from "../components/HandleCartAll";
+import HandleShoweToast from "../common/HandleShoweToast";
 
 const Favorites = () => {
   const dispatch = useDispatch();
-  const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
-  const [operationType, setOperationType] = useState("");
 
-  const {checkedAddedToThecard, product, errorCart, checkedRemovedToThecard} =
-    useSelector((state) => state.cart);
-
-  const {
-    favorites,
-    favorite,
-    errorAll,
-    loadingAll,
-    clickedShowLoding,
-    clickedShowError,
-    error,
-    checkedAddedToTheFavorites,
-    checkedRemovedToTheFavorites,
-  } = useSelector((state) => state.favorites);
+  const {favorites, errorAll, loadingAll, clickedShowLoding, clickedShowError} =
+    useSelector((state) => state.favorites);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-
-    if (product && checkedAddedToThecard === product.id) {
-      toast.success(`به سبد خرید اضافه شد`);
-    }
-    if (!errorCart && checkedRemovedToThecard) {
-      toast.success(`از سبد خرید حذف شد`);
-    }
-    if (errorCart && checkedAddedToThecard) {
-      toast.error(`به سبد خرید اضافه نشد`);
-    }
-    if (errorCart && checkedRemovedToThecard) {
-      toast.error(`از سبد خرید حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToThecard,
-    product,
-    errorCart,
-    checkedRemovedToThecard,
-  ]);
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-    if (favorite && checkedAddedToTheFavorites === favorite.id) {
-      toast.success(`به لیست علاقه مندی ها اضافه شد`);
-    }
-    if (!error && checkedRemovedToTheFavorites) {
-      toast.success(`از لیست علاقه مندی ها حذف شد`);
-    }
-    if (error && checkedAddedToTheFavorites) {
-      toast.error(`به لیست علاقه مندی ها اضافه نشد`);
-    }
-    if (error && checkedRemovedToTheFavorites) {
-      toast.error(`از لیست علاقه مندی ها حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      setShouldExecuteCode(true);
-    }
-  }, [shouldExecuteCode]);
 
   const HandleShoweProductsFavorites = () => {
     if (loadingAll) {
@@ -395,6 +307,7 @@ const Favorites = () => {
 
   return (
     <Layout>
+       <HandleShoweToast />
       <main className="2xl:container mx-auto flex flex-col items-start justify-start  ">
         <div className=" flex items-center w-full justify-end px-1 md:px-4 md:my-4">
           <FaReply
@@ -411,7 +324,6 @@ const Favorites = () => {
             <h2 className="md:text-xl lg:my-4">محصولات مورد علاقه شما</h2>
             {HandleShoweProductsFavorites()}
           </div>
-          
         </div>
       </main>
     </Layout>
