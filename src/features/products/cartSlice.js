@@ -31,7 +31,6 @@ export const deleteCart = createAsyncThunk(
   async (payload, {rejectWithValue}) => {
     try {
       await axios.delete(`https://khosravitradapp.glitch.me/cart/${payload}`);
-      console.log(payload);
       return payload;
     } catch (error) {
       return rejectWithValue(error);

@@ -98,7 +98,6 @@ export const productsSlice = createSlice({
           parseFloat(p.rate) >= parseFloat(action.payload.filter.filterRating)
         );
       });
-      console.log(action.payload.filter.rangePrice);
       
       filterdData = filterdData.filter((p) => {
         return (

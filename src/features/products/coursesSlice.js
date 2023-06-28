@@ -108,11 +108,9 @@ export const coursesSlice = createSlice({
       if (action.payload.filter.filrerPrice !== "") {
         filterdData = filterdData.filter((p) => {
           if (action.payload.filter.filrerPrice === "free") {
-            console.log("free");
 
             return p.price === 0;
           } else {
-            console.log("noFree");
             return p.price !== 0;
           }
         });
@@ -121,10 +119,8 @@ export const coursesSlice = createSlice({
       if (action.payload.filter.filrerInstuctor !== "") {
         filterdData = filterdData.filter((p) => {
           if (action.payload.filter.filrerInstuctor === "warrenBuffett") {
-            console.log("warrenBuffett");
             return p.instuctorId === "warrenBuffett";
           } else {
-            console.log("jasonHardy");
             return p.instuctorId === "jasonHardy";
           }
         });
@@ -133,10 +129,8 @@ export const coursesSlice = createSlice({
       if (action.payload.filter.filterRecordingStatus !== null) {
         filterdData = filterdData.filter((p) => {
           if (action.payload.filter.filterRecordingStatus === "true") {
-            console.log("recording");
             return p.recordingStatus;
           } else {
-            console.log("full");
             return !p.recordingStatus;
           }
         });
