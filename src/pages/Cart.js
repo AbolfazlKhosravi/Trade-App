@@ -1,10 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import Layout from "../layout/layout";
 import {useEffect, useState} from "react";
-import {fetchFavorite} from "../features/products/favoritesSlice";
 import {
   deleteCart,
-  fetchCart,
   HandleNumberProudctsCart,
 } from "../features/products/cartSlice";
 import lodingSvg from "../assets/images/loading.svg";
@@ -20,24 +18,22 @@ import {
   FaCcAmazonPay,
 } from "react-icons/fa";
 import {NavLink, useNavigate} from "react-router-dom";
-import {toast} from "react-hot-toast";
+import HandleShoweToast from "../common/HandleShoweToast";
+import React from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const [shouldExecuteCode, setShouldExecuteCode] = useState(false);
   const [operationType, setOperationType] = useState("");
   const [isScrolledUp, setIsScrolledUp] = useState(false);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     setUser(user);
   }, []);
+
   const {
-    checkedAddedToThecard,
-    product,
-    errorCart,
-    checkedRemovedToThecard,
     loadingAll,
     errorAll,
     cart,
@@ -46,73 +42,6 @@ const Cart = () => {
     clickedShowLodingchangeNumberProduct,
     clickedShowErrorChangeNumberProduct,
   } = useSelector((state) => state.cart);
-  const {
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  } = useSelector((state) => state.favorites);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(fetchFavorite());
-    dispatch(fetchCart());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-
-    if (product && checkedAddedToThecard === product.id) {
-      toast.success(`به سبد خرید اضافه شد`);
-    }
-    if (!errorCart && checkedRemovedToThecard) {
-      toast.success(`از سبد خرید حذف شد`);
-    }
-    if (errorCart && checkedAddedToThecard) {
-      toast.error(`به سبد خرید اضافه نشد`);
-    }
-    if (errorCart && checkedRemovedToThecard) {
-      toast.error(`از سبد خرید حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToThecard,
-    product,
-    errorCart,
-    checkedRemovedToThecard,
-  ]);
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      return;
-    }
-    if (favorite && checkedAddedToTheFavorites === favorite.id) {
-      toast.success(`به لیست علاقه مندی ها اضافه شد`);
-    }
-    if (!error && checkedRemovedToTheFavorites) {
-      toast.success(`از لیست علاقه مندی ها حذف شد`);
-    }
-    if (error && checkedAddedToTheFavorites) {
-      toast.error(`به لیست علاقه مندی ها اضافه نشد`);
-    }
-    if (error && checkedRemovedToTheFavorites) {
-      toast.error(`از لیست علاقه مندی ها حذف نشد`);
-    }
-  }, [
-    shouldExecuteCode,
-    checkedAddedToTheFavorites,
-    favorite,
-    error,
-    checkedRemovedToTheFavorites,
-  ]);
-
-  useEffect(() => {
-    if (!shouldExecuteCode) {
-      setShouldExecuteCode(true);
-    }
-  }, [shouldExecuteCode]);
 
   useEffect(() => {
     let previousScrollPosition = window.scrollY || window.pageYOffset;
@@ -129,7 +58,6 @@ const Cart = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  console.log(isScrolledUp);
 
   const HandleShoweProductsCart = () => {
     if (loadingAll) {
@@ -487,6 +415,7 @@ const Cart = () => {
 
   return (
     <Layout>
+      <HandleShoweToast />;
       <main className="2xl:container mx-auto flex flex-col items-start justify-start  ">
         <div className=" py-6 flex items-center w-full justify-between px-1 md:px-4 ">
           <h1 className="text-xl font-bold text-blue-500 md:text-[1.7rem]">
@@ -595,4 +524,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default React.memo(Cart);
