@@ -47,6 +47,7 @@ function Store() {
   const redirect = searchParams.get("discount") || "/";
   const removeDropShot = useRef(null);
   const filtersRef = useRef(filters);
+  
   useEffect(() => {
     if (redirect === "/") {
       SetFilters({...filters, filrerPrice: ""});
