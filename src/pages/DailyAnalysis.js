@@ -23,9 +23,8 @@ function DailyAnalysis() {
     filterRecordingStatus: null,
     filterRating: 0,
   });
-
   const [moreFilters, setMoreFilters] = useState(false);
-
+  const filtersRef = useRef(filters);
   const removeDropShot = useRef(null);
   useEffect(() => {
     dispatch(fetchDataDailyAnalysis());
@@ -59,38 +58,23 @@ function DailyAnalysis() {
 
   const filtersHandler = useCallback((e) => {
     const {name, value} = e.target;
-    SetFilters({...filters, [name]: value});
-
-    debouncedFilters({name, value});
+    SetFilters((prevFilters) => ({...prevFilters, [name]: value}));
+    filtersRef.current = {...filtersRef.current, [name]: value};
+    debouncedFilters();
     // eslint-disable-next-line
   }, []);
-
-  const debouncedFilters = debounce(({name, value}) => {
-    dispatch(multipleFilterAsynchDaulyAnalysis({...filters, [name]: value}));
-  }, 500);
 
   const filterReatingHandler = useCallback((value) => {
-    SetFilters({...filters, filterRating: value});
-
-    debouncedSearch({value});
+    SetFilters((prevFilters) => ({...prevFilters, filterRating: value}));
+    filtersRef.current = {...filtersRef.current, filterRating: value};
+    debouncedFilters();
     // eslint-disable-next-line
   }, []);
-  const debouncedSearch = debounce(({value}) => {
-    dispatch(
-      multipleFilterAsynchDaulyAnalysis({...filters, filterRating: value})
-    );
+
+
+  const debouncedFilters = debounce(() => {
+    dispatch(multipleFilterAsynchDaulyAnalysis(filtersRef.current));
   }, 500);
-
-  const removeFilterReatingHandler = (e) => {
-    const {name, value} = e.target;
-    SetFilters({...filters, [name]: value});
-
-    const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchDaulyAnalysis({...filters, [name]: value}));
-    }, 500);
-
-    debouncedSearch();
-  };
 
   return (
     <Layout>
@@ -103,7 +87,7 @@ function DailyAnalysis() {
           filters={filters}
           filtersHandler={filtersHandler}
           filterReatingHandler={filterReatingHandler}
-          removeFilterReatingHandler={removeFilterReatingHandler}
+          
         />
         <div className="flex flex-col lg:flex-row justify-start">
           <h1 className="text-2xl px-2 pt-6 font-extrabold text-slate-600 dark:text-slate-300 lg:px-16 lg:w-1/4">
@@ -149,7 +133,7 @@ function DailyAnalysis() {
                   </h3>
                   <button
                     onClick={() =>
-                      removeFilterReatingHandler({
+                      filtersHandler({
                         target: {name: "filrerPrice", value: ""},
                       })
                     }
@@ -208,7 +192,7 @@ function DailyAnalysis() {
                   </h3>
                   <button
                     onClick={() =>
-                      removeFilterReatingHandler({
+                      filtersHandler({
                         target: {name: "filrerInstuctor", value: ""},
                       })
                     }
@@ -269,7 +253,7 @@ function DailyAnalysis() {
                   </h3>
                   <button
                     onClick={() =>
-                      removeFilterReatingHandler({
+                      filtersHandler({
                         target: {name: "filterRecordingStatus", value: null},
                       })
                     }
@@ -353,7 +337,11 @@ function DailyAnalysis() {
                     <div
                       key={course.id}
                       className="relative  my-4 lg:my-0 lg:mb-4 bg-white dark:bg-slate-950 rounded-b-2xl rounded-t-3xl mb-8 shadow-sm w-full max-w-[24rem] md:max-w-[23rem] lg:md:max-w-[22rem] mx-1">
-                      <CourseComponente course={course} id={course.type} key={course.id} />
+                      <CourseComponente
+                        course={course}
+                        id={course.type}
+                        key={course.id}
+                      />
                     </div>
                   );
                 })}
@@ -379,7 +367,7 @@ const Dropshot = ({
   filters,
   filtersHandler,
   filterReatingHandler,
-  removeFilterReatingHandler,
+
 }) => {
   return (
     <div
@@ -415,7 +403,7 @@ const Dropshot = ({
               </h3>
               <button
                 onClick={() =>
-                  removeFilterReatingHandler({
+                  filtersHandler({
                     target: {name: "filrerPrice", value: ""},
                   })
                 }
@@ -474,7 +462,7 @@ const Dropshot = ({
               </h3>
               <button
                 onClick={() =>
-                  removeFilterReatingHandler({
+                  filtersHandler({
                     target: {name: "filrerInstuctor", value: ""},
                   })
                 }
@@ -533,7 +521,7 @@ const Dropshot = ({
               </h3>
               <button
                 onClick={() =>
-                  removeFilterReatingHandler({
+                  filtersHandler({
                     target: {name: "filterRecordingStatus", value: null},
                   })
                 }

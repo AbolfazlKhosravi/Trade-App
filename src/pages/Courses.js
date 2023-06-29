@@ -9,7 +9,7 @@ import ReactStars from "react-rating-stars-component";
 import {FaRegStar, FaStar, FaStarHalfAlt, FaSadTear} from "react-icons/fa";
 import {animateScroll as scroll} from "react-scroll";
 import {
-  fetchDataCourses,
+
   multipleFilterAsynchCourses,
 } from "../features/products/coursesSlice";
 import {useSearchParams} from "react-router-dom";
@@ -28,13 +28,18 @@ function Courses() {
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("price") || "/";
   const removeDropShot = useRef(null);
+  const filtersRef = useRef(filters);
 
   useEffect(() => {
     if (redirect === "/") {
       SetFilters({...filters, filrerPrice: ""});
-      dispatch(fetchDataCourses());
+      filtersRef.current = {...filtersRef.current, filrerPrice: ""};
+      dispatch(
+        multipleFilterAsynchCourses({...filters, filrerPrice: ""})
+      );
     } else {
       SetFilters({...filters, filrerPrice: redirect});
+      filtersRef.current = {...filtersRef.current, filrerPrice: redirect};
       dispatch(
         multipleFilterAsynchCourses({...filters, filrerPrice: redirect})
       );
@@ -70,37 +75,24 @@ function Courses() {
 
   const filtersHandler = useCallback((e) => {
     const {name, value} = e.target;
-    SetFilters({...filters, [name]: value});
-
-    debouncedFilters({name, value});
+    SetFilters((prevFilters) => ({...prevFilters, [name]: value}));
+    filtersRef.current = {...filtersRef.current, [name]: value};
+    debouncedFilters();
     // eslint-disable-next-line
   }, []);
 
-  const debouncedFilters = debounce(({name, value}) => {
-    dispatch(multipleFilterAsynchCourses({...filters, [name]: value}));
-  }, 500);
+ 
 
   const filterReatingHandler = useCallback((value) => {
-    SetFilters({...filters, filterRating: value});
-
-    debouncedSearch({value});
+    SetFilters((prevFilters) => ({...prevFilters, filterRating: value}));
+    filtersRef.current = {...filtersRef.current, filterRating: value};
+    debouncedFilters();
     // eslint-disable-next-line
   }, []);
 
-  const debouncedSearch = debounce(({value}) => {
-    dispatch(multipleFilterAsynchCourses({...filters, filterRating: value}));
+  const debouncedFilters = debounce(() => {
+    dispatch(multipleFilterAsynchCourses(filtersRef.current));
   }, 500);
-
-  const removeFilterReatingHandler = (e) => {
-    const {name, value} = e.target;
-    SetFilters({...filters, [name]: value});
-
-    const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchCourses({...filters, [name]: value}));
-    }, 500);
-
-    debouncedSearch();
-  };
 
   return (
     <Layout>
@@ -113,7 +105,7 @@ function Courses() {
           filters={filters}
           filtersHandler={filtersHandler}
           filterReatingHandler={filterReatingHandler}
-          removeFilterReatingHandler={removeFilterReatingHandler}
+          
         />
         <div className="flex flex-col lg:flex-row justify-start">
           <h1 className="text-2xl px-2 pt-6 font-extrabold text-slate-600 dark:text-slate-300 lg:px-16 lg:w-1/4">
@@ -159,7 +151,7 @@ function Courses() {
                   </h3>
                   <button
                     onClick={() =>
-                      removeFilterReatingHandler({
+                      filtersHandler({
                         target: {name: "filrerPrice", value: ""},
                       })
                     }
@@ -218,7 +210,7 @@ function Courses() {
                   </h3>
                   <button
                     onClick={() =>
-                      removeFilterReatingHandler({
+                      filtersHandler({
                         target: {name: "filrerInstuctor", value: ""},
                       })
                     }
@@ -279,7 +271,7 @@ function Courses() {
                   </h3>
                   <button
                     onClick={() =>
-                      removeFilterReatingHandler({
+                      filtersHandler({
                         target: {name: "filterRecordingStatus", value: null},
                       })
                     }
@@ -389,7 +381,7 @@ const Dropshot = ({
   filters,
   filtersHandler,
   filterReatingHandler,
-  removeFilterReatingHandler,
+  
 }) => {
   return (
     <div
@@ -425,7 +417,7 @@ const Dropshot = ({
               </h3>
               <button
                 onClick={() =>
-                  removeFilterReatingHandler({
+                  filtersHandler({
                     target: {name: "filrerPrice", value: ""},
                   })
                 }
@@ -484,7 +476,7 @@ const Dropshot = ({
               </h3>
               <button
                 onClick={() =>
-                  removeFilterReatingHandler({
+                  filtersHandler({
                     target: {name: "filrerInstuctor", value: ""},
                   })
                 }
@@ -543,7 +535,7 @@ const Dropshot = ({
               </h3>
               <button
                 onClick={() =>
-                  removeFilterReatingHandler({
+                  filtersHandler({
                     target: {name: "filterRecordingStatus", value: null},
                   })
                 }

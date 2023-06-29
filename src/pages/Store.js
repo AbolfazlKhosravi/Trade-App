@@ -9,7 +9,6 @@ import {FaRegStar, FaStar, FaStarHalfAlt, FaSadTear} from "react-icons/fa";
 import {animateScroll as scroll} from "react-scroll";
 import {useSearchParams} from "react-router-dom";
 import {
-  fetchDataProducts,
   multipleFilterAsynchStore,
 } from "../features/products/productsSlice";
 import ProductComponent from "../components/HoomComponents/productComponent";
@@ -47,12 +46,17 @@ function Store() {
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("discount") || "/";
   const removeDropShot = useRef(null);
+  const filtersRef = useRef(filters);
   useEffect(() => {
     if (redirect === "/") {
       SetFilters({...filters, filrerPrice: ""});
-      dispatch(fetchDataProducts());
+      filtersRef.current = {...filtersRef.current, filrerPrice: ""};
+      dispatch(
+        multipleFilterAsynchStore({...filters, filrerPrice: ""})
+      );
     } else {
       SetFilters({...filters, filrerPrice: redirect});
+      filtersRef.current = {...filtersRef.current, filrerPrice: redirect};
       dispatch(multipleFilterAsynchStore({...filters, filrerPrice: redirect}));
     }
 
@@ -88,48 +92,34 @@ function Store() {
 
   const filtersHandler = useCallback((e) => {
     const {name, value} = e.target;
-    SetFilters({...filters, [name]: value});
-
-    debouncedFilters({name, value});
+    SetFilters((prevFilters) => ({...prevFilters, [name]: value}));
+    filtersRef.current = {...filtersRef.current, [name]: value};
+    debouncedFilters();
      // eslint-disable-next-line
   }, []);
 
-  const debouncedFilters = debounce(({name, value}) => {
-    dispatch(multipleFilterAsynchStore({...filters, [name]: value}));
-  }, 500);
+ 
 
   const filterReatingHandler = useCallback((value) => {
-    SetFilters({...filters, filterRating: value});
-
-    debouncedRating({value});
+    SetFilters((prevFilters) => ({...prevFilters, filterRating: value}));
+    filtersRef.current = {...filtersRef.current, filterRating: value};
+    debouncedFilters();
      // eslint-disable-next-line
   }, []);
-  const debouncedRating = debounce(({value}) => {
-    dispatch(multipleFilterAsynchStore({...filters, filterRating: value}));
-  }, 500);
 
   const handleRangePrice = useCallback((newrangePrice) => {
-    SetFilters({...filters, rangePrice: newrangePrice});
-    debouncedRangePrice(newrangePrice);
+    SetFilters((prevFilters) => ({...prevFilters, rangePrice: newrangePrice}));
+    filtersRef.current = {...filtersRef.current, rangePrice: newrangePrice};
+    debouncedFilters();
      // eslint-disable-next-line
   }, []);
 
-  const debouncedRangePrice = debounce((newrangePrice) => {
-    dispatch(
-      multipleFilterAsynchStore({...filters, rangePrice: newrangePrice})
-    );
+
+ 
+
+  const debouncedFilters = debounce(() => {
+    dispatch(multipleFilterAsynchStore(filtersRef.current));
   }, 500);
-
-  const removeFilterReatingHandler = (e) => {
-    const {name, value} = e.target;
-    SetFilters({...filters, [name]: value});
-
-    const debouncedSearch = debounce(() => {
-      dispatch(multipleFilterAsynchStore({...filters, [name]: value}));
-    }, 500);
-
-    debouncedSearch();
-  };
 
   return (
     <Layout>
@@ -142,7 +132,7 @@ function Store() {
           filters={filters}
           filtersHandler={filtersHandler}
           filterReatingHandler={filterReatingHandler}
-          removeFilterReatingHandler={removeFilterReatingHandler}
+       
           handleRangePrice={handleRangePrice}
         />
         <div className="flex flex-col lg:flex-row justify-start">
@@ -189,7 +179,7 @@ function Store() {
                   </h3>
                   <button
                     onClick={() =>
-                      removeFilterReatingHandler({
+                      filtersHandler({
                         target: {name: "filrerPrice", value: ""},
                       })
                     }
@@ -334,7 +324,7 @@ const Dropshot = ({
   filters,
   filtersHandler,
   filterReatingHandler,
-  removeFilterReatingHandler,
+ 
   handleRangePrice,
 }) => {
   const handleStyle = {
@@ -387,7 +377,7 @@ const Dropshot = ({
               </h3>
               <button
                 onClick={() =>
-                  removeFilterReatingHandler({
+                  filtersHandler({
                     target: {name: "filrerPrice", value: ""},
                   })
                 }
