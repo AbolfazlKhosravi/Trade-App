@@ -98,7 +98,7 @@ const Profile = () => {
               />
             </div>
             <form
-              className="md:w-1/2 flex flex-col items-center justify-between mt-8 md:mt-0 w-full px-4"
+              className="md:w-4/5 lg:w-2/5 flex flex-col items-center justify-between mt-8 md:mt-0 w-full px-4"
               onSubmit={formik.handleSubmit}>
               <div className="my-3 w-full relative">
                 {formik.errors.name && formik.touched.name && (
@@ -174,6 +174,7 @@ const Profile = () => {
                   <FaMapMarkedAlt className="text-slate-600 dark:text-slate-400 text-lg" />
                 </span>
               </div>
+              <div className="flex items-center justify-between gap-x-4 flex-wrap">
               {loding ? (
                 <div className="w-full mt-10 mb-2 ml-2 md:translate-x-0 flex justify-center">
                   <img
@@ -190,10 +191,19 @@ const Profile = () => {
                 <button
                   type="submit"
                   disabled={!formik.isValid}
-                  className="cursor-pointer mt-8 md:translate-x-0  mx-4 w-44 h-14 translate-x-1 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl ">
+                  className="cursor-pointer mt-8 md:translate-x-0  md:mx-4 w-36  md:w-44 h-14 translate-x-1 rounded-[3rem] text-white bg-blue-500 font-extrabold text-2xl ">
                   ثبت
                 </button>
               )}
+               <button
+                  onClick={()=>{
+                    localStorage.setItem("user",JSON.stringify(null));
+                    navigate("/")
+                  }}
+                  className="cursor-pointer mt-8 md:translate-x-0  w-36 md:mx-4 md:w-44 h-14 translate-x-1 rounded-[3rem] bg-slate-50 dark:bg-slate-800 border-blue-500 border  text-blue-500 font-medium text-xl ">
+                   خروج از حساب 
+                </button>
+              </div>
             </form>
           </div>
         )}
